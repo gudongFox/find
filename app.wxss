@@ -1,0 +1,127 @@
+/**app.wxss**/
+/* Vant 中默认包含了一些常用样式，可以直接通过 className 的方式使用。 */
+@import 'miniprogram_npm/@vant/weapp/common/index.wxss';
+
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+.wholebackgroud{
+  background-color: #D1D1D1;
+}
+.background{
+  background-color: white;
+  height: 435rpx;
+}
+.background1{
+  background-color: darkseagreen;
+  height: 150rpx;
+  width: 600rpx;
+  margin-left: 75rpx;
+  margin-bottom: 30rpx;
+}
+
+/* ========================margin============== */
+.margin1{
+  margin-top: 0.5em;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.margin2{
+  margin-top: 0.5em;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
+}
+
+/* =========================border============== */
+.border5{
+  border-radius: 10 !important;
+}
+
+/* ==========================text=============== */
+.textmedium{
+  font-size: medium;
+  align-self: center;
+}
+.textsmall{
+  font-size: small;
+}
+.textbig{
+  font-size: large;
+}
+.textblack{
+  color: #000;
+}
+.textgreen{
+  color: green;
+}
+.tabw{
+  display: inline !important;
+}
+.textred{
+  color: red;
+}
+.textwhite{
+  color: white;
+}
+/* ===============中心展示============== */
+.display-center{
+  display: flex;
+  justify-content: center; 
+}
+.top{
+  border-radius:10px !important;
+  }
+  .tabw{
+    display: inline !important;
+  }
+  /* =============分割线========= */
+.divLine{
+  background: #D1D1D1;
+  width: 750rpx;
+  height: 5rpx;
+}
+.divLine2{
+  background: #D1D1D1;
+  width: 650rpx;
+  height: 1rpx;
+}
+.divLine3{
+  background: white;
+  width: 0rpx;
+  height: 1rpx;
+}
+
+/* ================button========= */
+.button-display{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.button-margin{
+  margin:5rpx;
+}
+.button-appading{
+  padding: 0.5em;
+}
+
+
+/* 全局字体 */
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
+  --button-border-radius: 10px;
+  --button-default-color: #f2f3f5;
+  --toast-max-width: 100px;
+  --toast-background-color: pink;
+  background-color: #f0f0f0;
+}

@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "component_record": "/pages/component/record/record",
+    "component_index": "/pages/component/index/index",
+    "component_manage": "/pages/component/manage/manage",
+    "component_mine": "/pages/component/mine/mine"
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#00AA00",
+  "navigationBarTitleText": "找服务",
+  "navigationBarTextStyle": "white"
+}

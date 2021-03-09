@@ -1,0 +1,36 @@
+<!--pages/nav/nav.wxml-->
+<view class="center,display-center,margin1">
+	<van-image round width="100rpx" height="100rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+	<text> 《成都》服务中心</text>
+</view>
+<view class="center,display-center">
+	<view class="block1">
+		<text style="margin:20rpx" class="textwhite">平台特色</text>
+	</view>
+	<view>
+		<view class="block2,margin1">
+			<text style="margin:20rpx" class="textwhite">操作指导</text>
+		</view>
+		<view class="block3,margin1">
+			<text style="margin:20rpx" class="textwhite">最新消息</text>
+		</view>
+	</view>
+</view>
+<view class="center,display-center">
+	<view class="block4" bindtap="jump1">
+		<text style="margin:20rpx" class="textwhite">我是服务人</text>
+	</view>
+</view>
+<view class="center,display-center">
+	<view class="block5" bindtap="jump">
+		<text style="margin:20rpx" class="textwhite">我是下单人</text>
+	</view>
+	<view>
+		<view class="block6,margin1">
+			<text style="margin:20rpx" class="textwhite">我是客户</text>
+		</view>
+		<view class="block7,margin1">
+			<text style="margin:20rpx" class="textwhite">版本转换</text>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,155 @@
+<!--index.wxml-->
+<!-- 顶部导航 -->
+<view>
+  <view>
+    <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
+      <van-tab title="今日接单">
+        <view class="margin1">
+          <van-icon name="bell" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:1rem">2021.01.11</text>
+        </view>
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true" url="/pages/toRecieve/index">
+              <van-row>
+                <van-col span="5">
+                  <view class="display-center">
+                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+                  </view>
+                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
+                </van-col>
+                <van-col span="5">
+                  <view><text class="textbig,textblack">王老师</text></view>
+                </van-col>
+                <van-col span="10">
+                  <view class="display-center">
+                    <text class="textsmall">7月8日，8:00-10:00</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall，textred">广播选人待确认</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                  </view>
+                </van-col>
+                <van-col span="4">
+                  <van-icon name="question-o" size="50px" color="#FF0000" />
+                </van-col>
+              </van-row>
+
+            </van-cell>
+
+          </van-cell-group>
+        </view>
+        <view class="divLine"></view>
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true">
+              <van-row>
+                <van-col span="5">
+                  <view class="display-center">
+                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+                  </view>
+                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
+                </van-col>
+                <van-col span="5">
+                  <view><text class="textbig,textblack">王老师</text></view>
+                </van-col>
+                <van-col span="10">
+                  <view class="display-center">
+                    <text class="textsmall">7月8日，8:00-10:00</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall，textred">团队，广播选人待确认</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                  </view>
+                </van-col>
+                <van-col span="4">
+                  <van-icon name="question-o" size="50px" color="#FF0000" />
+                </van-col>
+              </van-row>
+
+            </van-cell>
+
+          </van-cell-group>
+        </view>
+      </van-tab>
+      <van-tab title="广播项目">
+        <view class="margin1">
+          <van-icon name="bell" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:1rem">已报名项目</text>
+        </view>
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true"  url="/pages/toRecieve/index">
+              <van-row>
+                <van-col span="5">
+                  <view class="display-center">
+                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+                  </view>
+                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
+                </van-col>
+                <van-col span="5">
+                  <view><text class="textbig,textblack">王老师</text></view>
+                </van-col>
+                <van-col span="10">
+                  <view class="display-center">
+                    <text class="textsmall">7月8日，8:00-10:00</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall，textred">已报名</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                  </view>
+                </van-col>
+                <van-col span="4">
+                  <van-tag round type="danger" size="large">新</van-tag>
+                </van-col>
+              </van-row>
+
+            </van-cell>
+
+          </van-cell-group>
+        </view>
+        <view class="divLine"></view>
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true">
+              <van-row>
+                <van-col span="5">
+                  <view class="display-center">
+                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+                  </view>
+                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
+                </van-col>
+                <van-col span="5">
+                  <view><text class="textbig,textblack">王老师</text></view>
+                </van-col>
+                <van-col span="10">
+                  <view class="display-center">
+                    <text class="textsmall">7月8日，8:00-10:00</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall,textred">团队，已报名</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                  </view>
+                </van-col>
+                <van-col span="4">
+                  <van-tag round type="danger" size="large">新</van-tag>
+                </van-col>
+              </van-row>
+
+            </van-cell>
+
+          </van-cell-group>
+        </view>
+      </van-tab>
+      <van-tab title="设置"></van-tab>
+    </van-tabs>
+  </view>
+</view>

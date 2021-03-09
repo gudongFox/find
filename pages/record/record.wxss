@@ -1,0 +1,4 @@
+/* pages/record/record.wxss */
+.calendar {
+  --calendar-height: 300px;
+}

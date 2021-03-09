@@ -1,0 +1,5 @@
+/* pages/toRecieve/index.wxss */
+.background3{
+  background-color: white;
+  height: 170px;
+}

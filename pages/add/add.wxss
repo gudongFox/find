@@ -1,0 +1,36 @@
+/* pages/add/add.wxss */
+.whitebackground{
+  background-color: white !important;
+}
+.appading{
+  padding-top: 1em;
+  margin-left: 1rem;
+}
+.appadingleft{
+  margin-left: 1rem;
+}
+
+.appading1{
+  padding-top: 0.5em;
+  padding-bottom: 0.5rem;
+}
+.member{
+  width: 250rpx;
+  background: #fff;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.goods{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+.goods:nth-child(2n) {
+  margin-right: 0;
+}

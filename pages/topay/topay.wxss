@@ -1,0 +1,8 @@
+/* pages/manage/topay/topay.wxss */
+.background2{
+  background-color: pink;
+  height: 150rpx;
+  width: 600rpx;
+  margin-left: 75rpx;
+  margin-bottom: 30rpx;
+}

@@ -1,0 +1,202 @@
+<!--pages/manage/manage.wxml-->
+<view>
+  <view>
+    <van-tabs active="{{ active }}" sticky color="#8A2BE2" class="tabw">
+      <van-tab title="待执行">
+
+        <view class="margin1">
+          <van-icon name="bell" color="#8A2BE2" />
+          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">2021.01.11</text>
+        </view>
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true" url="/pages/todo/todo">
+              <van-row>
+                <van-col span="5">
+                  <view class="display-center">
+                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+                  </view>
+                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
+                </van-col>
+                <van-col span="5">
+                  <view><text class="textbig,textblack">王老师</text></view>
+                </van-col>
+                <van-col span="10">
+                  <view class="display-center">
+                    <text class="textsmall">7月8日，8:00-10:00</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">多次，第5次/共10次</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                  </view>
+                </van-col>
+                <van-col span="4">
+                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                  <text>李阿姨</text>
+                </van-col>
+              </van-row>
+
+            </van-cell>
+
+          </van-cell-group>
+        </view>
+        <view class="divLine"></view>
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true">
+              <van-row>
+                <van-col span="5">
+                  <view class="display-center">
+                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+                  </view>
+                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
+                </van-col>
+                <van-col span="5">
+                  <view><text class="textbig,textblack">王老师</text></view>
+                </van-col>
+                <van-col span="10">
+                  <view class="display-center">
+                    <text class="textsmall">7月8日，8:00-10:00</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">多次，第5次/共10次</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                  </view>
+                </van-col>
+                <van-col span="4">
+                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                  <text>李阿姨</text>
+                </van-col>
+              </van-row>
+
+            </van-cell>
+
+          </van-cell-group>
+        </view>
+      </van-tab>
+      <van-tab title="待收取">
+        <view class="margin1">
+          <van-icon name="bell" color="#8A2BE2" />
+          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">收取客户服务费</text>
+        </view>
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true" url="/pages/toget/toget">
+              <van-row>
+                <van-col span="5">
+                  <view class="display-center">
+                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+                  </view>
+                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
+                </van-col>
+                <van-col span="5">
+                  <view><text class="textbig,textblack">王老师</text></view>
+                </van-col>
+                <van-col span="10">
+                  <view class="display-center">
+                    <text class="textsmall">7月8日，8:00-10:00</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">单次</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                  </view>
+                </van-col>
+                <van-col span="4">
+                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                  <text>李阿姨</text>
+                </van-col>
+              </van-row>
+
+            </van-cell>
+
+          </van-cell-group>
+        </view>
+        <view class="divLine"></view>
+        <view class="margin1">
+          <van-icon name="bell" color="#8A2BE2" />
+          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">收取服务师管理费</text>
+        </view>
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true">
+              <van-row>
+                <van-col span="5">
+                  <view class="display-center">
+                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+                  </view>
+                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
+                </van-col>
+                <van-col span="5">
+                  <view><text class="textbig,textblack">王老师</text></view>
+                </van-col>
+                <van-col span="10">
+                  <view class="display-center">
+                    <text class="textsmall">7月8日，8:00-10:00</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">多次</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                  </view>
+                </van-col>
+                <van-col span="4">
+                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                  <text>李阿姨</text>
+                </van-col>
+              </van-row>
+
+            </van-cell>
+
+          </van-cell-group>
+        </view>
+      </van-tab>
+      <van-tab title="待支付">
+        <view class="margin1">
+          <van-icon name="bell" color="#8A2BE2" />
+          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">支付服务师劳务费</text>
+        </view>
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true" url="/pages/topay/topay">
+              <van-row>
+                <van-col span="5">
+                  <view class="display-center">
+                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+                  </view>
+                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
+                </van-col>
+                <van-col span="5">
+                  <view><text class="textbig,textblack">王老师</text></view>
+                </van-col>
+                <van-col span="10">
+                  <view class="display-center">
+                    <text class="textsmall">7月8日，8:00-10:00</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">多次</text>
+                  </view>
+                  <view class="display-center">
+                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                  </view>
+                </van-col>
+                <van-col span="4">
+                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                  <text>李阿姨</text>
+                </van-col>
+              </van-row>
+
+            </van-cell>
+
+          </van-cell-group>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+</view>

@@ -1,0 +1,113 @@
+<view class="headview">
+  <van-row gutter="20" custom-class="happading">
+    <van-col span="6" offset="1">
+      <text>\n\n</text>
+      <van-image width="80" round height="80" src="https://thirdwx.qlogo.cn/mmopen/vi_32/sHPrgfrTWlUuMveposfYmp2l1suPricsaxuP5OX3WnX8vye9QqcbMfwBZbibg18NkRJ247UPgWtH0l5icOwicyXQHA/132" />
+    </van-col>
+    <van-col span="11">
+      <view style="display:flex;flex-direction: column;">
+        <text class="alignandappading">\n\n李阿姨</text>
+        <text class="textsmall" style="color:#888888">团队：成都李阿姨</text>
+      </view>
+    </van-col>
+    <van-col span="6">
+      <text>\n</text>
+      <van-tag color="#9999FF" round>实名认证</van-tag>
+    </van-col>
+  </van-row>
+
+<van-row>
+  <van-col span="6">
+    <view class="textsmall,text_align" style="color:#888888">{{num}}</view>
+    <view class="textsmall,text_align" style="color:#888888">团队人数
+    </view>
+  </van-col>
+  <van-col span="6">
+    <view class="textsmall,text_align" style="color:#888888">{{total}}</view>
+    <view class="textsmall,text_align" style="color:#888888">订单总数</view>
+  </van-col>
+  <van-col span="6">
+    <view class="textsmall,text_align" style="color:#888888">{{success}}</view>
+    <view class="textsmall,text_align" style="color:#888888">订单完成率</view>
+  </van-col>
+  <van-col span="6">
+    <view class="textsmall,text_align" style="color:#888888">{{score}}</view>
+    <view class="textsmall,text_align" style="color:#888888">大众口碑</view>
+  </van-col>
+</van-row>
+</view>
+<view>
+  <view class="divLine"></view>
+  <view class="view-white,appading">
+    <view>
+      <van-row>
+        <van-col span="6">
+          <view class="text_align" style="margin-top:10rpx">
+            <van-icon name="notes-o" size="70rpx" color="#8A2BE2" />
+          </view>
+          <view class="textsmall,text_align">个人信息
+          </view>
+        </van-col>
+        <van-col span="6">
+          <view class="text_align" style="margin-top:10rpx">
+            <van-icon name="notes-o" size="70rpx" color="#8A2BE2" />
+          </view>
+          <view class="textsmall,text_align">我的积分
+          </view>
+        </van-col>
+      </van-row>
+    </view>
+  </view>
+  <view class="view-white,appading">
+    
+    <view>
+      <van-row>
+        <van-col span="6">
+          <view class="text_align" style="margin-top:10rpx">
+            <van-icon name="notes-o" size="70rpx" color="#8A2BE2" />
+          </view>
+          <view class="textsmall,text_align">团队信息
+          </view>
+        </van-col>
+        <van-col span="6">
+          <view class="text_align" style="margin-top:10rpx">
+            <van-icon name="notes-o" size="70rpx" color="#8A2BE2" />
+          </view>
+          <view class="textsmall,text_align">团队成员
+          </view>
+        </van-col>
+        <van-col span="6" offset="6">
+          <view class="text_align" style="margin-top:10rpx">
+            <van-icon name="notes-o" size="70rpx" color="#8A2BE2" />
+          </view>
+          <view class="textsmall,text_align">业务统计
+          </view>
+        </van-col>
+      </van-row>
+    </view>
+  </view>
+  <view class="view-white,appading">
+    
+    <view>
+      <van-row>
+        <van-col span="6">
+          <view class="text_align" style="margin-top:10rpx">
+            <van-icon name="notes-o" size="70rpx" color="#8A2BE2" />
+          </view>
+          <view class="textsmall,text_align">问题反映
+          </view>
+        </van-col>
+        <van-col span="6" offset="12">
+          <view class="text_align" style="margin-top:10rpx">
+            <van-icon name="notes-o" size="70rpx" color="#8A2BE2" />
+          </view>
+          <view class="textsmall,text_align">使用帮助
+          </view>
+        </van-col>
+      </van-row>
+    </view>
+  </view>
+  <view bindtap="click">
+    <van-button plain hairline type="default" block><text class="textred" >退出登录</text></van-button>
+  </view>
+</view>

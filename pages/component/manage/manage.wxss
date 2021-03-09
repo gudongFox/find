@@ -1,0 +1,5 @@
+/* pages/component/manage/manage.wxss */
+.display-center{
+  display: flex;
+  justify-content: center; 
+}
