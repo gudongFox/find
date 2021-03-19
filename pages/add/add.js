@@ -13,23 +13,18 @@ Page({
     steps: [
       {
         text: '1 -选择服务类型',
-        
       },
       {
         text: '2 -录入客户信息',
-        
       },
       {
         text: '3 -确定上门时间',
-        
       },
       {
         text: '4 -选服务候选人',
-        
       },
       {
         text: '5 -形成订单',
-        
       },
     ],
     kinds: [
@@ -39,15 +34,30 @@ Page({
       {text: '护工'},
     ],
     user: [
+      {id: null},
       {name: '李先生'},
       {tel: '13368227224'},
       {location: '成都市锦江文化中心'},
       {number: '虎溪花园，4-5-6-1'}
-    ]
-    
+    ],
+    date: null,
+    time: null,
+    price: null,
+    times: null,
+    remark: null
   },
   onChange(event) {
     console.log(event.detail)
+  },
+
+  formSubmit: function(e){
+    this.setData({
+      date: e.detail.value.date,
+      time: e.detail.value.time,
+      price: e.detail.value.price,
+      times: e.detail.value.times,
+      remark: e.detail.value.remark
+    })
   },
   show1:function(e){
     var that = this;
@@ -103,7 +113,25 @@ Page({
     wx.switchTab({
       url: '../index/index',
     })
+  },
+  chooseCustomer:function(){
+    wx.navigateTo({
+      url: '../add/chooseCustomer/chooseCustomer',
+      success:function(res){
+        console.log("选择客户");
+      },
+      fail:function(res){
+        console.log("跳转失败");
+      }
+    })
+  },
+
+  onLoad:function(option){
+    //获得客户信息
+    console.log(option)
+    this.setData({
+      'user[0].id': option.id
+    })
+    console.log(this.data.user[0].id)
   }
-
-
 })
