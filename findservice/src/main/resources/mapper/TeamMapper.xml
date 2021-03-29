@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.service.findservice.dao.TeamMapper">
+  <resultMap id="BaseResultMap" type="com.service.findservice.entity.Team">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="agency_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="registered_date" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="team_logo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="team_abstract" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ratio_management_fee" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, agency_id, registered_date, team_logo, team_abstract, ratio_management_fee, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from team_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from team_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.service.findservice.entity.Team">
+    insert into team_info (id, agency_id, registered_date, 
+      team_logo, team_abstract, ratio_management_fee, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{agencyId,jdbcType=INTEGER}, #{registeredDate,jdbcType=DATE}, 
+      #{teamLogo,jdbcType=VARCHAR}, #{teamAbstract,jdbcType=VARCHAR}, #{ratioManagementFee,jdbcType=REAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.service.findservice.entity.Team">
+    insert into team_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="agencyId != null">
+        agency_id,
+      </if>
+      <if test="registeredDate != null">
+        registered_date,
+      </if>
+      <if test="teamLogo != null">
+        team_logo,
+      </if>
+      <if test="teamAbstract != null">
+        team_abstract,
+      </if>
+      <if test="ratioManagementFee != null">
+        ratio_management_fee,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="registeredDate != null">
+        #{registeredDate,jdbcType=DATE},
+      </if>
+      <if test="teamLogo != null">
+        #{teamLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="teamAbstract != null">
+        #{teamAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="ratioManagementFee != null">
+        #{ratioManagementFee,jdbcType=REAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.Team">
+    update team_info
+    <set>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="registeredDate != null">
+        registered_date = #{registeredDate,jdbcType=DATE},
+      </if>
+      <if test="teamLogo != null">
+        team_logo = #{teamLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="teamAbstract != null">
+        team_abstract = #{teamAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="ratioManagementFee != null">
+        ratio_management_fee = #{ratioManagementFee,jdbcType=REAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.Team">
+    update team_info
+    set agency_id = #{agencyId,jdbcType=INTEGER},
+      registered_date = #{registeredDate,jdbcType=DATE},
+      team_logo = #{teamLogo,jdbcType=VARCHAR},
+      team_abstract = #{teamAbstract,jdbcType=VARCHAR},
+      ratio_management_fee = #{ratioManagementFee,jdbcType=REAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

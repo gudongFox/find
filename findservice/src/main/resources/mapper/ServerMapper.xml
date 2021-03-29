@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.service.findservice.dao.ServerMapper">
+  <resultMap id="BaseResultMap" type="com.service.findservice.entity.Server">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="server_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="se_name" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="se_gender" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="se_tel" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="se_remaining_points" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="se_frozen_points" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="se_province" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="se_city" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="se_district" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="se_street" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="se_community" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="se_house_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="se_administrator_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, server_id, se_name, se_gender, se_tel, se_remaining_points, se_frozen_points, 
+    se_province, se_city, se_district, se_street, se_community, se_house_num, se_administrator_id, 
+    create_time, update_time
+  </sql>
+
+  <select id="selectServerById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from server_info
+    where server_id = #{server_id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from server_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from server_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.service.findservice.entity.Server">
+    insert into server_info (id, server_id, se_name, 
+      se_gender, se_tel, se_remaining_points, 
+      se_frozen_points, se_province, se_city, 
+      se_district, se_street, se_community, 
+      se_house_num, se_administrator_id, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{serverId,jdbcType=INTEGER}, #{seName,jdbcType=CHAR}, 
+      #{seGender,jdbcType=CHAR}, #{seTel,jdbcType=CHAR}, #{seRemainingPoints,jdbcType=INTEGER}, 
+      #{seFrozenPoints,jdbcType=INTEGER}, #{seProvince,jdbcType=CHAR}, #{seCity,jdbcType=VARCHAR}, 
+      #{seDistrict,jdbcType=VARCHAR}, #{seStreet,jdbcType=VARCHAR}, #{seCommunity,jdbcType=VARCHAR}, 
+      #{seHouseNum,jdbcType=VARCHAR}, #{seAdministratorId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.service.findservice.entity.Server">
+    insert into server_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="serverId != null">
+        server_id,
+      </if>
+      <if test="seName != null">
+        se_name,
+      </if>
+      <if test="seGender != null">
+        se_gender,
+      </if>
+      <if test="seTel != null">
+        se_tel,
+      </if>
+      <if test="seRemainingPoints != null">
+        se_remaining_points,
+      </if>
+      <if test="seFrozenPoints != null">
+        se_frozen_points,
+      </if>
+      <if test="seProvince != null">
+        se_province,
+      </if>
+      <if test="seCity != null">
+        se_city,
+      </if>
+      <if test="seDistrict != null">
+        se_district,
+      </if>
+      <if test="seStreet != null">
+        se_street,
+      </if>
+      <if test="seCommunity != null">
+        se_community,
+      </if>
+      <if test="seHouseNum != null">
+        se_house_num,
+      </if>
+      <if test="seAdministratorId != null">
+        se_administrator_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serverId != null">
+        #{serverId,jdbcType=INTEGER},
+      </if>
+      <if test="seName != null">
+        #{seName,jdbcType=CHAR},
+      </if>
+      <if test="seGender != null">
+        #{seGender,jdbcType=CHAR},
+      </if>
+      <if test="seTel != null">
+        #{seTel,jdbcType=CHAR},
+      </if>
+      <if test="seRemainingPoints != null">
+        #{seRemainingPoints,jdbcType=INTEGER},
+      </if>
+      <if test="seFrozenPoints != null">
+        #{seFrozenPoints,jdbcType=INTEGER},
+      </if>
+      <if test="seProvince != null">
+        #{seProvince,jdbcType=CHAR},
+      </if>
+      <if test="seCity != null">
+        #{seCity,jdbcType=VARCHAR},
+      </if>
+      <if test="seDistrict != null">
+        #{seDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="seStreet != null">
+        #{seStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="seCommunity != null">
+        #{seCommunity,jdbcType=VARCHAR},
+      </if>
+      <if test="seHouseNum != null">
+        #{seHouseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="seAdministratorId != null">
+        #{seAdministratorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.Server">
+    update server_info
+    <set>
+      <if test="serverId != null">
+        server_id = #{serverId,jdbcType=INTEGER},
+      </if>
+      <if test="seName != null">
+        se_name = #{seName,jdbcType=CHAR},
+      </if>
+      <if test="seGender != null">
+        se_gender = #{seGender,jdbcType=CHAR},
+      </if>
+      <if test="seTel != null">
+        se_tel = #{seTel,jdbcType=CHAR},
+      </if>
+      <if test="seRemainingPoints != null">
+        se_remaining_points = #{seRemainingPoints,jdbcType=INTEGER},
+      </if>
+      <if test="seFrozenPoints != null">
+        se_frozen_points = #{seFrozenPoints,jdbcType=INTEGER},
+      </if>
+      <if test="seProvince != null">
+        se_province = #{seProvince,jdbcType=CHAR},
+      </if>
+      <if test="seCity != null">
+        se_city = #{seCity,jdbcType=VARCHAR},
+      </if>
+      <if test="seDistrict != null">
+        se_district = #{seDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="seStreet != null">
+        se_street = #{seStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="seCommunity != null">
+        se_community = #{seCommunity,jdbcType=VARCHAR},
+      </if>
+      <if test="seHouseNum != null">
+        se_house_num = #{seHouseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="seAdministratorId != null">
+        se_administrator_id = #{seAdministratorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.Server">
+    update server_info
+    set server_id = #{serverId,jdbcType=INTEGER},
+      se_name = #{seName,jdbcType=CHAR},
+      se_gender = #{seGender,jdbcType=CHAR},
+      se_tel = #{seTel,jdbcType=CHAR},
+      se_remaining_points = #{seRemainingPoints,jdbcType=INTEGER},
+      se_frozen_points = #{seFrozenPoints,jdbcType=INTEGER},
+      se_province = #{seProvince,jdbcType=CHAR},
+      se_city = #{seCity,jdbcType=VARCHAR},
+      se_district = #{seDistrict,jdbcType=VARCHAR},
+      se_street = #{seStreet,jdbcType=VARCHAR},
+      se_community = #{seCommunity,jdbcType=VARCHAR},
+      se_house_num = #{seHouseNum,jdbcType=VARCHAR},
+      se_administrator_id = #{seAdministratorId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
