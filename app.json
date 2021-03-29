@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/nav/nav",
+    "pages/serviceDetail/serviceDetail",
     "pages/indexs/indexs",
     "pages/login/login",
     "pages/index/index",

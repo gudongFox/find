@@ -144,9 +144,9 @@
 		</view>
 		<text class="textsmall">我得收藏（15）</text>
 		<view class="goods">
-			<view class="margin2,member">
+			<view class="margin2,member" bindtap="chooseServicePerson">
 				<block>
-					<view class="goods">
+					<view class="goods" >
 						<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
 						<text>李阿姨\n2.5公里</text>
 					</view>

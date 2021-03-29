@@ -4,7 +4,9 @@ Page({
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: "",
-    isHide: false
+    isHide: false,
+    id: '',
+    name: ''
   },
 
   onLoad: function () {
@@ -33,9 +35,7 @@ Page({
               console.log("userInfo：", res.userInfo);
               that.setData({
                 userInfo: res.userInfo,
-
               })
-
               // 用户已经授权过,不需要显示授权页面,所以不需要改变 isHide 的值
               // 根据自己的需求有其他操作再补充
               wx.navigateBack(1) //返回前一页 返回前一页 返回前一页
@@ -59,6 +59,18 @@ Page({
       // 获取到用户的信息了，打印到控制台上看下
       console.log("用户的信息如下：");
       console.log(e.detail.userInfo);
+      //保存数据到后台
+      wx.request({
+        url: 'http://localhost:8081/service/login/save?id='+e.detail.userInfo.gender+'&name='+e.detail.userInfo.nickName+'allowPublicKeyRetrieval=true',
+        header: {'Content-Type': 'application/json'},
+        method: 'POST',
+        success: function(res){
+          console.log("成功");
+        },
+        fail:function(){
+          console.log("失败")
+        }
+      })
 
       //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
       that.setData({

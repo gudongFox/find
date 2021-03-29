@@ -1,0 +1,49 @@
+<view class="margin1" style="color:#8A2BE2">
+  <van-icon name="star" />
+  <text> 服务人基本信息</text>
+</view>
+<view>
+  <van-cell-group custom-class="margin2">
+    <van-cell>
+      <van-row>
+        <van-col span="6">
+          <view>服务人姓名</view>
+          <view>性别</view>
+          <view>年龄</view>
+          <view class="divLine2,margin2"></view>
+          <view>服务项目</view>
+          <view>出发位置</view>
+          <view>绑定电话</view>
+          <view class="divLine2,margin2"></view>
+          <view>大众口碑</view>
+          <view>为我接单</view>
+          <view>当前状态</view>
+          <view>我的备注</view>
+        </van-col>
+        <van-col offset="3">
+          <view class="textblack">王阿姨</view>
+          <view class="textblack">女</view>
+          <view class="textblack">48</view>
+          <view class="margin2,divLine3"></view>
+          <view class="textblack">家庭保洁</view>
+          <view class="textblack">成都市锦兴路锦江文化中心大门
+          </view>
+          <view class="textblack">13000000001
+            <van-button plain type="primary" size="mini">联络</van-button>
+          </view>
+          <view class="margin2,divLine3"></view>
+          <view class="textblack">3.5</view>
+          <view class="textblack">7次
+          </view>
+          <view class="textblack">我的团队人员</view>
+          <view class="textblack">经验丰富，动作麻利</view>
+        </van-col>
+      </van-row>
+    </van-cell>
+  </van-cell-group>
+</view>
+<view>
+  <view class="margin2,divLine3"></view>
+  <van-button plain type="primary" size="normal" style="margin-left:100rpx">取消</van-button>
+  <van-button type="primary" size="normal" style=" margin-left:250rpx">选择此人</van-button>
+</view>

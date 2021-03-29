@@ -153,7 +153,7 @@
           </van-cell-group>
         </view>
       </van-tab>
-      <van-tab title="排序"></van-tab>
+      <van-tab title=" "></van-tab>
     </van-tabs>
   </view>
 </view>

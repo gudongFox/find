@@ -49,6 +49,17 @@ Page({
   onChange(event) {
     console.log(event.detail)
   },
+  chooseServicePerson:function(){
+    wx.navigateTo({
+      url: '/pages/serviceDetail/serviceDetail',
+      success:function(res){
+        console.log("选择客户");
+      },
+      fail:function(res){
+        console.log("跳转失败");
+      }
+    })
+  },
 
   formSubmit: function(e){
     this.setData({
