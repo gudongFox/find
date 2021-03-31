@@ -11,31 +11,41 @@ Page({
 
   onLoad: function () {
     var that = this;
-    // 查看是否授权
     wx.getSetting({
       success: function (res) {
-        wx.request({
-          url: 'https://api.wexin.qq.com/sns/jscode2session',
-          data: {
-            appid: '',
-            secret: '',
-          },
-          success: function (res) {
-            var openid=''
-            openid = res.data.openid;
-            console.log(openid)
-          },
-          fail: function (res) {
-            console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res)
-          }
-        });
+        wx.login({
+            success: function(res) {
+              console.log('进入login方法')
+              var code = res.code;
+              console.log(code);
+              wx.request({
+                url: 'http://localhost:8081/service/login/login',
+                header: { 'Content-Type': 'application/json' },
+                data: {
+                  code: code
+                },
+                success: function (res) {
+                  var openid = ''
+                  openid = res.data;
+                  console.log(res.data)
+                  console.log(openid)
+                },
+                fail: function (res) {
+                      console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res);
+                    }
+              });
+            },
+            fail: function(){
+              console.log('调用失败')
+            }
+          });
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function (res) {
               console.log("userInfo：", res.userInfo);
               that.setData({
                 userInfo: res.userInfo,
-              })
+              });
               // 用户已经授权过,不需要显示授权页面,所以不需要改变 isHide 的值
               // 根据自己的需求有其他操作再补充
               wx.navigateBack(1) //返回前一页 返回前一页 返回前一页
@@ -60,17 +70,17 @@ Page({
       console.log("用户的信息如下：");
       console.log(e.detail.userInfo);
       //保存数据到后台
-      wx.request({
-        url: 'http://localhost:8081/service/login/save?id='+e.detail.userInfo.gender+'&name='+e.detail.userInfo.nickName+'allowPublicKeyRetrieval=true',
-        header: {'Content-Type': 'application/json'},
-        method: 'POST',
-        success: function(res){
-          console.log("成功");
-        },
-        fail:function(){
-          console.log("失败")
-        }
-      })
+      // wx.request({
+      //   url: 'http://localhost:8081/service/login/save?id=' + e.detail.userInfo.gender + '&name=' + e.detail.userInfo.nickName + 'allowPublicKeyRetrieval=true',
+      //   header: { 'Content-Type': 'application/json' },
+      //   method: 'POST',
+      //   success: function (res) {
+      //     console.log("成功");
+      //   },
+      //   fail: function () {
+      //     console.log("失败")
+      //   }
+      // })
 
       //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
       that.setData({
