@@ -38,6 +38,16 @@
     where order_id = #{order_id,jdbcType=INTEGER}
   </select>
 
+  <select id="selectBySId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from order_detail
+    where order_id in (
+    select order_id
+    from order_server_status
+    where server_id = #{server_id,jdbcType=INTEGER})
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
