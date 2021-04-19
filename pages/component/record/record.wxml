@@ -2,143 +2,120 @@
 <view>
   <view>
     <van-tabs active="{{ active }}" color="#00AA00" class="tabw">
-      <van-tab title="客户记录">
-        <van-search value="{{ value }}" placeholder="客户姓名" use-action-slot bind:change="onChange" bind:search="onSearch"
-          background="#f0f0f0" shape="round">
-          <view slot="action" bind:tap="onClick">
-            <van-button plain type="primary" size="small">搜索</van-button>
-          </view>
-        </van-search>
-        
-        <view class="margin1">
-          <van-icon name="bell" color="#00AA00" />
-          <text style="color:#00AA00;font-size:small;margin-left:1rem">我的客户</text>
+      <van-tab title="未结算委托">
+
+        <view class="specialLine"></view>
+        <view class="flexStart">
+          <view class="specialBlock"></view>
+          <van-icon name="clock" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:15rpx">与伙伴间的未结算委托订单</text>
         </view>
+        <view class="specialLine"></view>
+
         <view>
           <van-cell-group>
             <van-cell clickable="true">
-              <van-row>
-                <van-col span="5">
-                  <view class="display-center">
-                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+              <view class="flexRow">
+                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                <view style="display:flex;flex-direction:column">
+                  <view class="flexRow">
+                    <text class="textbig,textblack">王阿姨</text>
+                    <van-tag type="warning" plain>未结算(2)</van-tag>
                   </view>
-                </van-col>
-                <van-col span="5">
-                  <view><text class="textbig,textblack">王老师</text></view>
-                </van-col>
-                <van-col span="10">
-
-                  <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">服务：2次</text>
-                  </view>
-                </van-col>
-                <van-col span="4">
-                  <view class="display-center">
-                    <text class="textsmall">家有宠物</text>
-                  </view>
-                </van-col>
-              </van-row>
-
+                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
+                </view>
+                <view style="display:flex;flex-direction:column">
+                  <van-tag mark>委托(7)</van-tag>
+                  <van-tag mark>接单(3)</van-tag>
+                </view>
+              </view>
             </van-cell>
-
           </van-cell-group>
         </view>
-        <view class="divLine"></view>
-      </van-tab>
-      <van-tab title="下单人记录">
-        <van-search value="{{ value }}" placeholder="下单人姓名" use-action-slot bind:change="onChange"
-          bind:search="onSearch" background="##f0f0f0" shape="round">
-          <view slot="action" bind:tap="onClick">
-            <van-button plain type="primary" size="small">搜索</van-button>
-          </view>
-        </van-search>
-        <view class="margin1"> 
-          <van-icon name="bell" color="#00AA00" />
-          <text style="color:#00AA00;font-size:small;margin-left:1rem">我的下单人</text>
-        </view>
-        <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <van-row>
-                <van-col span="5">
-                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                </van-col>
-                <van-col span="10">
-                  <view class="display-center"><text class="textbig,textblack">李阿姨</text></view>
-                  <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
-                  </view>
-                </van-col>
-                <van-col span="5">
-                  <view class="display-center">
-                    <text class="textsmall">接单17次</text>
-                  </view>
 
-                </van-col>
-                <van-col span="4">
-                  <van-tag color="#9999FF">口碑4.0</van-tag>
-                </van-col>
-              </van-row>
-
-            </van-cell>
-
-          </van-cell-group>
-        </view>
         <view class="divLine"></view>
 
-
-      </van-tab>
-      <van-tab title="订单记录">
-        <van-search value="{{ value }}" placeholder="客户/下单人称呼" use-action-slot bind:change="onChange"
-          bind:search="onSearch" background="#f0f0f0" shape="round">
-          <view slot="action" bind:tap="onClick">
-            <van-button plain type="primary" size="small">搜索</van-button>
-          </view>
-        </van-search>
-        <van-cell title="选择单个日期" value="{{ date }}" bind:click="onDisplay" />
-        <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top" />
-        <view class="margin1">
-          <van-icon name="bell" color="#00AA00" />
-          <text style="color:#00AA00;font-size:small;margin-left:1rem">{{ date }}</text>
-        </view>
         <view>
           <van-cell-group>
             <van-cell clickable="true">
-              <van-row>
-                <van-col span="5">
-                  <view class="display-center">
-                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+              <view class="flexRow">
+                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                <view style="display:flex;flex-direction:column">
+                  <view class="flexRow">
+                    <text class="textbig,textblack">张阿姨</text>
+                    <van-tag type="warning" plain>未结算(1)</van-tag>
                   </view>
-                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
-                </van-col>
-                <van-col span="5">
-                  <view><text class="textbig,textblack">王老师</text></view>
-                </van-col>
-                <van-col span="10">
-                  <view class="display-center">
-                    <text class="textsmall">7月8日，8:00-10:00</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">多次</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
-                  </view>
-                </van-col>
-                <van-col span="4">
-                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                  <text>李阿姨</text>
-                </van-col>
-              </van-row>
-
+                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
+                </view>
+                <view style="display:flex;flex-direction:column">
+                  <van-tag mark>委托(3)</van-tag>
+                  <van-tag mark>接单(5)</van-tag>
+                </view>
+              </view>
             </van-cell>
-
           </van-cell-group>
         </view>
+
       </van-tab>
+
+      <van-tab title="伙伴名单">
+
+        <view class="specialLine"></view>
+        <view class="flexRow">
+          <view class="flexStart">
+            <view class="specialBlock"></view>
+            <van-icon name="clock" color="#00AA00" />
+            <text style="color:#00AA00;font-size:small;margin-left:15rpx">我的信任伙伴名单</text>
+          </view>
+          <view>
+            <button size="mini" type="primary">+ 添加</button>
+          </view>
+        </view>
+        <view class="specialLine"></view>
+
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true">
+              <view class="flexRow">
+                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                <view class="flexCol">
+                  <text class="textbig,textblack">王阿姨</text>
+                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
+                </view>
+                <view style="display:flex;flex-direction:column">
+                  <van-tag mark>委托(7)</van-tag>
+                  <van-tag mark>接单(3)</van-tag>
+                </view>
+              </view>
+            </van-cell>
+          </van-cell-group>
+        </view>
+
+        <view class="divLine"></view>
+
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true">
+              <view class="flexRow">
+                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                <view class="flexCol">
+                  <text class="textbig,textblack">张阿姨</text>
+                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
+                </view>
+                <view style="display:flex;flex-direction:column">
+                  <van-tag mark>委托(3)</van-tag>
+                  <van-tag mark>接单(5)</van-tag>
+                </view>
+              </view>
+            </van-cell>
+          </van-cell-group>
+        </view>
+
+      </van-tab>
+
+      <!-- <van-tab disabled></van-tab>
+      <van-tab disabled></van-tab> -->
+      
     </van-tabs>
   </view>
 </view>

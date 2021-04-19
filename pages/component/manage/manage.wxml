@@ -1,198 +1,199 @@
 <!--pages/manage/manage.wxml-->
 <view>
 <van-tabs active="{{ active }}" color="#00AA00" class="tabw">
-		<van-tab title="待执行">
+		<van-tab title="客户新需求">
       <view>
-        <view class="margin1">
-          <van-icon name="bell" color="#00AA00" />
-          <text style="color:#00AA00;font-size:small;margin-left:1rem">当前执行中的订单</text>
+				
+				<view class="specialLine"></view>
+        <view class="flexStart">
+          <view class="specialBlock"></view>
+          <van-icon name="clock" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:15rpx">待处理的客户需求</text>
         </view>
-        <view>
+        <view class="specialLine"></view>
+				
+				<view>
           <van-cell-group>
-            <van-cell clickable="true" url="/pages/todoService/todoService">
-              <van-row>
-                <van-col span="5">
-                  <view class="display-center">
-                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
-                  </view>
-                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
-                </van-col>
-                <van-col span="5">
-                  <view><text class="textbig,textblack">王老师</text></view>
-                </van-col>
-                <van-col span="10">
-                  <view class="display-center">
-                    <text class="textsmall">7月8日，8:00-10:00</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">多次，第5次/共10次</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
-                  </view>
-                </van-col>
-                <van-col span="4">
-                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                  <text>李阿姨</text>
-                </van-col>
-              </van-row>
+            <van-cell clickable="true">
+              <view class="flexRow">
+								<view class="flexCol">
+									<van-icon name="wap-home-o" size="50rpx" color="#66BB6A"></van-icon>
+									<text style="font-size:10;color:#66BB6A">家庭保洁</text>
+								</view>
+								<view class="flexCol" style="align-items:flex-start">
+									<view class="flexRow">
+										<text class="textbig,textblack">马先生</text>
+										<view class="specialBlock"></view>
+										<text>上门时间：未定</text>
+										<view class="specialBlock"></view>
+										<van-tag round type="primary">多次</van-tag>
+									</view>
+									<text>虎溪花园，4栋3-3-1</text>
+								</view>
+								<van-tag plain type="warning" size="medium">待处理</van-tag>
+							</view>
             </van-cell>
           </van-cell-group>
         </view>
-        <view class="divLine"></view>
-        <view>
+				
+				<view class="divLine"></view>
+				
+				<view>
           <van-cell-group>
             <van-cell clickable="true">
-              <van-row>
-                <van-col span="5">
-                  <view class="display-center">
-                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
-                  </view>
-                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
-                </van-col>
-                <van-col span="5">
-                  <view><text class="textbig,textblack">王老师</text></view>
-                </van-col>
-                <van-col span="10">
-                  <view class="display-center">
-                    <text class="textsmall">7月8日，8:00-10:00</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">多次，第5次/共10次</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
-                  </view>
-                </van-col>
-                <van-col span="4">
-                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                  <text>李阿姨</text>
-                </van-col>
-              </van-row>
-
+              <view class="flexRow">
+								<view class="flexCol">
+									<van-icon name="wap-home-o" size="50rpx" color="#66BB6A"></van-icon>
+									<text style="font-size:10;color:#66BB6A">家庭保洁</text>
+								</view>
+								<view class="flexCol" style="align-items:flex-start">
+									<view class="flexRow">
+										<text class="textbig,textblack">马先生</text>
+										<view class="specialBlock"></view>
+										<text>上门时间：未定</text>
+										<view class="specialBlock"></view>
+										<van-tag round type="primary">多次</van-tag>
+									</view>
+									<text>虎溪花园，4栋3-3-1</text>
+								</view>
+								<van-tag plain type="warning" size="medium">待处理</van-tag>
+							</view>
             </van-cell>
           </van-cell-group>
         </view>
       </view>
 		</van-tab>
-		<van-tab title="待收取">
-			<view class="margin1">
-				<van-icon name="bell" color="#00AA00" />
-				<text style="color:#00AA00;font-size:small;margin-left:1rem">收取客户服务费</text>
-			</view>
-			<view>
-				<van-cell-group>
-					<van-cell clickable="true" url="/pages/togetService/togetService">
-						<van-row>
-							<van-col span="5">
-								<view class="display-center">
-									<van-icon name="wap-home-o" size="30px" color="#00BBFF" />
-								</view>
-								<view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
-							</van-col>
-							<van-col span="5">
-								<view><text class="textbig,textblack">王老师</text></view>
-							</van-col>
-							<van-col span="10">
-								<view class="display-center">
-									<text class="textsmall">7月8日，8:00-10:00</text>
-								</view>
-								<view class="display-center">
-									<text class="textsmall">单次</text>
-								</view>
-								<view class="display-center">
-									<text class="textsmall">虎溪花园，4栋3-3-1</text>
-								</view>
-							</van-col>
-							<van-col span="4">
-								<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-								<text>李阿姨</text>
-							</van-col>
-						</van-row>
 
-					</van-cell>
+		<van-tab title="代客户下单">
+      <view>
+				
+				<view class="specialLine"></view>
+        <view class="flexStart">
+          <view class="specialBlock"></view>
+          <van-icon name="clock" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:15rpx">我的直接客户</text>
+        </view>
+        <view class="specialLine"></view>
+				
+				<view>
+          <van-cell-group>
+            <van-cell clickable="true">
+              <view class="flexRow">
+                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                <view style="display:flex;flex-direction:column">
+                  <view class="flexRow">
+                    <text class="textbig,textblack">王阿姨</text>
+                    <van-tag type="primary" plain>家庭保洁</van-tag>
+                  </view>
+                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
+                </view>
+                <view style="display:flex;flex-direction:column">
+                  <van-tag mark>服务(13)</van-tag>
+                  <van-tag mark>委托(5)</van-tag>
+                </view>
+              </view>
+            </van-cell>
+          </van-cell-group>
+        </view>
 
-				</van-cell-group>
-			</view>
-			<view class="divLine"></view>
-			<view class="margin1">
-				<van-icon name="bell" color="#00AA00" />
-				<text style="color:#00AA00;font-size:small;margin-left:1rem">收取服务师管理费</text>
-			</view>
-			<view>
-				<van-cell-group>
-					<van-cell clickable="true">
-						<van-row>
-							<van-col span="5">
-								<view class="display-center">
-									<van-icon name="wap-home-o" size="30px" color="#00BBFF" />
-								</view>
-								<view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
-							</van-col>
-							<van-col span="5">
-								<view><text class="textbig,textblack">王老师</text></view>
-							</van-col>
-							<van-col span="10">
-								<view class="display-center">
-									<text class="textsmall">7月8日，8:00-10:00</text>
-								</view>
-								<view class="display-center">
-									<text class="textsmall">多次</text>
-								</view>
-								<view class="display-center">
-									<text class="textsmall">虎溪花园，4栋3-3-1</text>
-								</view>
-							</van-col>
-							<van-col span="4">
-								<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-								<text>李阿姨</text>
-							</van-col>
-						</van-row>
+        <view class="divLine"></view>
 
-					</van-cell>
+        <view>
+          <van-cell-group>
+            <van-cell clickable="true">
+              <view class="flexRow">
+                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                <view style="display:flex;flex-direction:column">
+                  <view class="flexRow">
+                    <text class="textbig,textblack">何老师</text>
+                    <van-tag type="primary" plain>钟点工</van-tag>
+                  </view>
+                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
+                </view>
+                <view style="display:flex;flex-direction:column">
+                  <van-tag mark>服务(3)</van-tag>
+                  <van-tag mark>委托(5)</van-tag>
+                </view>
+              </view>
+            </van-cell>
+          </van-cell-group>
+				</view>
+				
 
-				</van-cell-group>
-			</view>
+      </view>
 		</van-tab>
-		<van-tab title="待支付">
-			<view class="margin1">
-				<van-icon name="bell" color="#00AA00" />
-				<text style="color:#00AA00;font-size:small;margin-left:1rem">支付服务师劳务费</text>
-			</view>
-			<view>
-				<van-cell-group>
-					<van-cell clickable="true" url="/pages/topayService/topayService">
-						<van-row>
-							<van-col span="5">
-								<view class="display-center">
-									<van-icon name="wap-home-o" size="30px" color="#00BBFF" />
-								</view>
-								<view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
-							</van-col>
-							<van-col span="5">
-								<view><text class="textbig,textblack">王老师</text></view>
-							</van-col>
-							<van-col span="10">
-								<view class="display-center">
-									<text class="textsmall">7月8日，8:00-10:00</text>
-								</view>
-								<view class="display-center">
-									<text class="textsmall">多次</text>
-								</view>
-								<view class="display-center">
-									<text class="textsmall">虎溪花园，4栋3-3-1</text>
-								</view>
-							</van-col>
-							<van-col span="4">
-								<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-								<text>李阿姨</text>
-							</van-col>
-						</van-row>
 
-					</van-cell>
+		<van-tab disabled></van-tab>
 
-				</van-cell-group>
-			</view>
+		<van-tab title="设置">
+			
+			<view class="specialLine"></view>
+        <view class="flexRow">
+          <view class="flexStart">
+            <view class="specialBlock"></view>
+            <van-icon name="clock" color="#00AA00" />
+            <text style="color:#00AA00;font-size:small;margin-left:15rpx">可接单时段</text>
+          </view>
+          <view>
+						<button size="mini" type="primary" plain="true">修改</button>
+          </view>
+        </view>
+        <view class="specialLine"></view>
+				
+				<!-- <van-grid column-num="8" square>
+					<van-grid-item text="上午(时)" />
+					<van-grid-item text="周一" />
+					<van-grid-item text="周二" />
+					<van-grid-item text="周三" />
+					<van-grid-item text="周四" />
+					<van-grid-item text="周五" />
+					<van-grid-item text="周六" />
+					<van-grid-item text="周天" />
+					<view wx:for="{{4}}" wx:for-item="row">
+						<van-grid-item text="{{row+8}}~{{row+9}}" />
+						<van-grid-item wx:for="{{7}}" />
+					</view>
+					<van-grid-item text="下午(时)" />
+					<van-grid-item wx:for="{{7}}" />
+					<view wx:for="{{5}}" wx:for-item="row">
+						<van-grid-item text="{{row+13}}~{{row+14}}" />
+						<van-grid-item wx:for="{{7}}" />
+					</view>
+				</van-grid> -->
+
+				<view class="specialLine"></view>
+        <view class="flexRow">
+          <view class="flexStart">
+            <view class="specialBlock"></view>
+            <van-icon name="clock" color="#00AA00" />
+            <text style="color:#00AA00;font-size:small;margin-left:15rpx">接单参数设置</text>
+          </view>
+          <!-- <view>
+						<button size="mini" type="primary" plain="true">修改</button>
+          </view> -->
+        </view>
+				<view class="specialLine"></view>
+				
+				<view class="flexCol">
+					<view class="flexRow">
+						<view><text>出发上门最大距离（公里）</text></view>
+						<van-stepper value="{{ 1 }}" bind:change="onChange" />
+					</view>
+					<view class="flexRow">
+						<view><text>两单间隔最大距离（公里）</text></view>
+						<van-stepper value="{{ 1 }}" bind:change="onChange" />
+					</view>
+					<view class="flexRow">
+						<view><text>最小服务时长（小时）</text></view>
+						<van-stepper value="{{ 1 }}" step="0.5" decimal-length="{{1}}" />
+					</view>
+					<view class="flexRow">
+						<view><text>两单间隔最大时间</text></view>
+						<van-stepper value="{{ 1 }}" step="0.5" decimal-length="{{1}}" />
+					</view>
+				</view>
+				
+
 		</van-tab>
 </van-tabs>
 </view>

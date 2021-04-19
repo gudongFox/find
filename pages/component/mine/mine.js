@@ -17,10 +17,10 @@ Component({
 
   /* 组件的初始数据 */
   data: {
-    num:65,
-    total:207,
-    success:95.4+'%',
-    score:3.5
+    numClient:15,
+    numPartner:12,
+    numOrder:36,
+    numDelegation:3.5
   },
   
 

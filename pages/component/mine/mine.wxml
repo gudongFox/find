@@ -6,33 +6,34 @@
     </van-col>
     <van-col span="11">
       <view style="display:flex;flex-direction: column;">
-        <text class="alignandappading">\n\n李阿姨</text>
-        <text class="textsmall" style="color:#888888">团队：成都李阿姨</text>
+        <text class="alignandappading">\n\n李玲</text>
+        <text class="textsmall" style="color:#888888">成都市杜甫草堂</text>
       </view>
     </van-col>
     <van-col span="6">
       <text>\n</text>
-      <van-tag color="#9999FF" round>实名认证</van-tag>
+      <!-- <van-tag color="#9999FF" round>实名认证</van-tag> -->
+      <van-icon name="qr" size="90rpx" color="#00AA00" />
     </van-col>
   </van-row>
 
 <van-row>
   <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{num}}</view>
-    <view class="textsmall,text_align" style="color:#888888">团队人数
+    <view class="textsmall,text_align" style="color:#888888">{{numClient}}</view>
+    <view class="textsmall,text_align" style="color:#888888">客户数
     </view>
   </van-col>
   <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{total}}</view>
-    <view class="textsmall,text_align" style="color:#888888">订单总数</view>
+    <view class="textsmall,text_align" style="color:#888888">{{numPartner}}</view>
+    <view class="textsmall,text_align" style="color:#888888">伙伴数</view>
   </van-col>
   <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{success}}</view>
-    <view class="textsmall,text_align" style="color:#888888">订单完成率</view>
+    <view class="textsmall,text_align" style="color:#888888">{{numOrder}}</view>
+    <view class="textsmall,text_align" style="color:#888888">订单率</view>
   </van-col>
   <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{score}}</view>
-    <view class="textsmall,text_align" style="color:#888888">大众口碑</view>
+    <view class="textsmall,text_align" style="color:#888888">{{numDelegation}}</view>
+    <view class="textsmall,text_align" style="color:#888888">委托单数</view>
   </van-col>
 </van-row>
 </view>
@@ -50,56 +51,14 @@
         </van-col>
         <van-col span="6">
           <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="notes-o" size="70rpx" color="#00AA00" />
+            <van-icon name="vip-card-o" size="70rpx" color="#00AA00" />
           </view>
-          <view class="textsmall,text_align">我的积分
-          </view>
-        </van-col>
-      </van-row>
-    </view>
-  </view>
-  <view class="view-white,appading">
-    
-    <view>
-      <van-row>
-        <van-col span="6">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="notes-o" size="70rpx" color="#00AA00" />
-          </view>
-          <view class="textsmall,text_align">团队信息
-          </view>
-        </van-col>
-        <van-col span="6">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="notes-o" size="70rpx" color="#00AA00" />
-          </view>
-          <view class="textsmall,text_align">团队成员
+          <view class="textsmall,text_align">会员情况
           </view>
         </van-col>
         <van-col span="6" offset="6">
           <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="notes-o" size="70rpx" color="#00AA00" />
-          </view>
-          <view class="textsmall,text_align">业务统计
-          </view>
-        </van-col>
-      </van-row>
-    </view>
-  </view>
-  <view class="view-white,appading">
-    
-    <view>
-      <van-row>
-        <van-col span="6">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="notes-o" size="70rpx" color="#00AA00" />
-          </view>
-          <view class="textsmall,text_align">问题反映
-          </view>
-        </van-col>
-        <van-col span="6" offset="12">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="notes-o" size="70rpx" color="#00AA00" />
+            <van-icon name="question-o" size="70rpx" color="#00AA00" />
           </view>
           <view class="textsmall,text_align">使用帮助
           </view>
@@ -107,6 +66,7 @@
       </van-row>
     </view>
   </view>
+
   <view bindtap="click">
     <van-button plain hairline type="default" block><text class="textred" >退出登录</text></van-button>
   </view>

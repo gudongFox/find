@@ -2,3 +2,41 @@
 .calendar {
   --calendar-height: 300px;
 }
+
+.textleft {
+  text-align: left;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flexStart {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.specialLine{
+  width: 750rpx;
+  height: 15rpx;
+}
+
+.specialBlock {
+  width: 15rpx;
+  height: 10rpx;
+}
+
+.addBtn {
+  height: 60rpx;
+}
