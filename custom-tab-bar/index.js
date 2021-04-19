@@ -4,7 +4,7 @@ Component({
     list: [{
         "url": "/pages/index/index",
         "icon": "wap-nav",
-        "text": "下订单"
+        "text": "新需求"
       },
       {
         "url": "/pages/manage/manage",

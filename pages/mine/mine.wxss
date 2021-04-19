@@ -46,7 +46,7 @@
   margin-left: 10rpx;
   margin-right: 10rpx;
   background-color: white !important;
-  height: 150rpx;
+  height: 75px;
   width: 730rpx;
   border-radius: 10px;
 }

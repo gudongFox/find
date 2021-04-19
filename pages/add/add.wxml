@@ -6,9 +6,10 @@
 		</view>
 		<view class="margin2，whitebackground,top,appading1" wx:if="{{!showServiceKind}}">
 			<van-row gutter="20">
-				<van-col span="5"><text class="textred,textsmall">\n服务类型</text>
+				<van-col span="7">
+					<view class="display-center"><text class="textsmall,margin2">保洁服务</text></view>
 				</van-col>
-				<van-col span="19">
+				<van-col span="17">
 					<view class="flex">
 						<van-button round plain type="primary" size="small" wx:for="{{kinds}}" class="button-appading" bindtap="show1">{{item.text}}
 						</van-button>
@@ -34,7 +35,7 @@
 			</van-cell-group>
 		</view>
 	</view>
-	<view class="appadingleft">{{steps[1].text}}
+	<!-- <view class="appadingleft">{{steps[1].text}}
     <van-button plain type="primary" size="small" style="margin-left:150px" hairline round wx:if="{{showCustomer}}" bindtap="change2">修改</van-button>
 		<view class="margin2,whitebackground,top" wx:if="{{!showCustomer}}" >
 			<form>
@@ -74,18 +75,29 @@
 
 			</van-cell-group>
 		</view>
-	</view>
+	</view> -->
 
 	<!-- 3=============== -->
-	<view class="appadingleft">{{steps[2].text}}
+	<view class="appadingleft">{{steps[1].text}}
     <van-button plain type="primary" size="small" style="margin-left:150px" hairline round wx:if="{{showTime}}" bindtap="change3">修改</van-button>
 		<view class="margin2,whitebackground,top" wx:if="{{!showTime}}">
 			<form>
-				<van-field name="name" placeholder="请输入时间" label="上门时间" border="{{ false }}" bind:change="onChange">
-				</van-field>
-				<van-field name="tel" placeholder="请小时单价" label="小时单价" border="{{ false }}" bind:change="onChange" />
-				<van-field name="number" placeholder="请输入次数" label="次数周次" border="{{ false }}" bind:change="onChange" />
-				<van-field name="number" placeholder="备注" label="备注" border="{{ false }}" bind:change="onChange" />
+				<van-cell-group>
+					<van-field name="name" type="number" placeholder="2" label="预计服务小时(单位：h)：" title-width="55%" border="{{ false }}" bind:change="onChange">
+					</van-field>
+				</van-cell-group>
+				<van-cell-group>
+					<van-field name="tel" placeholder="2020.07.08" label="期望上门日期：" title-width="55%" border="{{ false }}" bind:change="onChange" />
+				</van-cell-group>
+				<van-cell-group>
+					<van-field name="tel" placeholder="8:00" label="期望上门时间：" title-width="55%" border="{{ false }}" bind:change="onChange" />
+				</van-cell-group>
+				<van-cell-group>
+					<van-field name="number" placeholder="请输入次数" label="次数/周次：" title-width="55%" border="{{ false }}" bind:change="onChange" />
+				</van-cell-group>
+				<van-cell-group>
+					<van-field name="remark" placeholder="备注" label="备注：" title-width="55%" border="{{ false }}" bind:change="onChange" />
+				</van-cell-group>
 			</form>
 		</view>
 		<view wx:if="{{!showTime}}">
@@ -97,16 +109,16 @@
 				<van-cell>
 					<van-row>
 						<van-col span="8">
-							<view>上门日期：</view>
-							<view>上门时间：</view>
-							<view>小时单价：</view>
-							<view>次数周次：</view>
+							<view>预计服务小时：</view>
+							<view>期望上门日期：</view>
+							<view>期望上门时间：</view>
+							<view>次数/周次：</view>
 							<view>备注：</view>
 						</van-col>
 						<van-col offset="2">
+							<view>2小时</view>
 							<view>2020.07.08</view>
-							<view>8:00-10:00</view>
-							<view>40元</view>
+							<view>8:00</view>
 							<view>共1次</view>
 							<view>有宠物</view>
 						</van-col>
@@ -117,55 +129,8 @@
 		</view>
 	</view>
 	<!-- 4=================== -->
-	<view class="appadingleft">{{steps[3].text}}
-    <van-button plain type="primary" size="small" style="margin-left:150px" hairline round wx:if="{{showTeam}}" bindtap="change4">修改</van-button>
-		<view wx:if="{{!showTeam}}">
-			<text class="textsmall,margin2">我的团队（2）</text>
-
-			<view class="goods">
-				<view class="margin2,member">
-					<block>
-						<view class="goods">
-							<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-							<text>李阿姨\n2.5公里</text>
-						</view>
-					</block>
-				</view>
-
-				<view class="margin2,member">
-					<block>
-						<view class="goods">
-							<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-							<text>李阿姨\n2.5公里</text>
-						</view>
-					</block>
-				</view>
-			</view>
-			<text class="textsmall">我得收藏（15）</text>
-			<view class="goods">
-				<view class="margin2,member">
-					<block>
-						<view class="goods">
-							<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-							<text>李阿姨\n2.5公里</text>
-						</view>
-					</block>
-				</view>
-
-				<view class="margin2,member">
-					<block>
-						<view class="goods">
-							<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-							<text>李阿姨\n2.5公里</text>
-						</view>
-					</block>
-				</view>
-			</view>
-			<van-button plain type="primary" size="small" style="margin-left:100rpx">暂存</van-button>
-			<van-button type="primary" size="small" style="margin-left:250rpx" bindtap="show4">下一步</van-button>
-		</view>
-
-		<view class="margin2" wx:if="{{showTeam}}">
+	<view class="appadingleft">{{steps[2].text}}
+		<view class="margin2">
 			<van-cell-group>
 				<van-cell clickable="true">
 					<van-row>
@@ -190,15 +155,14 @@
 					</van-row>
 
 				</van-cell>
-
 			</van-cell-group>
 		</view>
 	</view>
 
 	<!-- 5================== -->
-	<view wx:if="{{end}}">
-		<view class="appadingleft">{{steps[4].text}}</view>
-		<van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="info-o" text="形成订单前，请认真核对上述信息！" />
+	<view>
+		<view class="appadingleft">{{steps[3].text}}</view>
+		<!-- <van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="info-o" text="形成订单前，请认真核对上述信息！" />
 		<view class="margin2">
 			<van-cell-group custom-class="margin2">
 				<van-cell>
@@ -218,5 +182,5 @@
 			</van-cell-group>
 			<van-button plain type="primary" size="small" style="margin-left:100rpx" bindtap="backIndex">取消</van-button>
 			<van-button type="primary" size="small" style=" margin-left:250rpx" bindtap="backIndex">形成订单</van-button>
-		</view>
+		</view> -->
 	</view>

@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <!-- 顶部导航 -->
-<view>
+<!--<view>
   <view>
     <van-tabs active="{{ active }}" sticky color="#8A2BE2" class="tabw">
       <van-tab title="待补选服务人">
@@ -159,4 +159,64 @@
 </view>
 <view class="page__hd" style="position:fixed; bottom:200rpx; right:100rpx;width: 50rpx;">
   <van-icon name="add" size="120rpx" color="#8A2BE2" bind:click="onclick"/>
+</view>-->
+<view>
+  <view class="margin1">
+    <van-icon name="bell" color="#8A2BE2" />
+    <text style="color:#8A2BE2;font-size:small;margin-left:1rem">已提交的新需求</text>
+  </view>
+  <view>
+    <van-cell-group>
+      <van-cell clickable="true" url="/pages/todo/todo">
+        <van-row>
+          <van-col span="4">
+            <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+            <view class="display-center"><text>李阿姨</text></view>
+          </van-col>
+          <van-col span="7">
+            <van-tag plain type="danger" size="medium" round>待服务人处理</van-tag>
+          </van-col>
+          <van-col span="13">
+            <van-tag plain type="primary" size="medium">家庭保洁</van-tag>
+            <view class="display-center">
+              <text class="textsmall">7月8日，8:00-10:00</text>
+            </view>
+            <view class="divLine"></view>
+            <view class="display-center">
+              <text class="textsmall">共10次/间隔七天</text>
+            </view>
+          </van-col>
+        </van-row>
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <view class="divLine"></view>
+  <view>
+    <van-cell-group>
+      <van-cell clickable="true" url="/pages/todo/todo">
+        <van-row>
+          <van-col span="4">
+            <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+            <view class="display-center"><text>李阿姨</text></view>
+          </van-col>
+          <van-col span="7">
+            <van-tag plain type="danger" size="medium" round>待服务人处理</van-tag>
+          </van-col>
+          <van-col span="13">
+            <van-tag plain type="primary" size="medium">钟点工</van-tag>
+            <view class="display-center">
+              <text class="textsmall">7月8日，8:00-10:00</text>
+            </view>
+            <view class="divLine"></view>
+            <view class="display-center">
+              <text class="textsmall">共1次</text>
+            </view>
+          </van-col>
+        </van-row>
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <view class="page__hd" style="position:fixed; bottom:200rpx; right:100rpx;width: 50rpx;">
+  <van-icon name="add" size="120rpx" color="#8A2BE2" bind:click="onclick"/>
+  </view>
 </view>
