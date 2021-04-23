@@ -1,5 +1,4 @@
-
-	<view class="appading">
+<view class="appading">
 		<view class="top">
 			<text>{{steps[0].text}}</text>
 			<van-button plain type="primary" size="small" style="margin-left:150px" hairline round wx:if="{{showServiceKind}}" bindtap="change1">修改</van-button>
@@ -35,47 +34,6 @@
 			</van-cell-group>
 		</view>
 	</view>
-	<!-- <view class="appadingleft">{{steps[1].text}}
-    <van-button plain type="primary" size="small" style="margin-left:150px" hairline round wx:if="{{showCustomer}}" bindtap="change2">修改</van-button>
-		<view class="margin2,whitebackground,top" wx:if="{{!showCustomer}}" >
-			<form>
-				<van-field name="name" value="{{ user[0].name }}" placeholder="请输入用户名" label="客户姓名" border="{{ false }}" bind:change="onChange">
-					<van-button slot="button" size="small" type="primary">选择</van-button>
-				</van-field>
-				<van-field name="tel" value="{{ user[1].tel }}" placeholder="请输入电话" label="客户电话" border="{{ false }}" bind:change="onChange" />
-
-				<van-field name="location" value="{{ user[2].location }}" placeholder="请输入地址" label="地址" border="{{ false }}" bind:change="onChange">
-					<van-button slot="button" size="small" type="primary">定位</van-button>
-				</van-field>
-				<van-field name="number" value="{{ user[3].number }}" placeholder="请输入门牌号" label="门牌号" border="{{ false }}" bind:change="onChange" />
-			</form>
-      <van-button plain type="primary" size="small" style="margin-left:100rpx">暂存</van-button>
-		<van-button type="primary" size="small" style=" margin-left:250rpx" bindtap="show2">下一步</van-button>
-		</view>
-		
-		<view wx:if="{{showCustomer}}">
-			<van-cell-group custom-class="margin2">
-				<van-cell>
-					<van-row>
-						<van-col span="8">
-							<view>客户姓名：</view>
-							<view>联系电话：</view>
-							<view>服务位置：</view>
-							<view>门牌号：</view>
-						</van-col>
-						<van-col>
-							<view>{{user[0].name}}</view>
-							<view>{{user[1].tel}}</view>
-							<view>{{user[2].location}}</view>
-							<view>{{user[3].number}}</view>
-						</van-col>
-					</van-row>
-
-				</van-cell>
-
-			</van-cell-group>
-		</view>
-	</view> -->
 
 	<!-- 3=============== -->
 	<view class="appadingleft">{{steps[1].text}}
@@ -157,8 +115,9 @@
 				</van-cell>
 			</van-cell-group>
 		</view>
+		<van-button plain type="primary" size="small" style="margin-left:100rpx">暂存</van-button>
+		<van-button type="primary" size="small" style="margin-left:250rpx" bindtap="show4">下一步</van-button>
 	</view>
-
 	<!-- 5================== -->
 	<view>
 		<view class="appadingleft">{{steps[3].text}}</view>

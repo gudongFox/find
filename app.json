@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/nav/nav",
     "pages/indexs/indexs",
     "pages/login/login",
@@ -16,7 +15,8 @@
     "pages/todoService/todoService",
     "pages/togetService/togetService",
     "pages/topayService/topayService",
-    "pages/toRecieve/index"
+    "pages/toRecieve/index",
+    "pages/add/chooseCustomer/chooseCustomer"
     
   ],
   "window": {
