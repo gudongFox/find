@@ -1,81 +1,47 @@
 package com.service.findservice.entity;
 
-import java.util.Date;
-
 public class Order {
-    private Integer id;
-
     private Integer orderId;
 
-    private Date ordTime;
+    private String orderTime;
+
+    private String clientId;
+
+    private String mandatorId;
 
     private String serviceProject;
 
-    private Integer clientId;
+    private String startTime;
 
-    private Date serviceStartTime;
-
-    private Date serviceEndTime;
+    private String endTime;
 
     private Float price;
 
-    private Byte frequency;
+    private Short times;
 
-    private Boolean paymentMethod;
+    private Short intervalDays;
 
-    private Float managementFee;
+    private String orderComment;
 
-    private Float serviceFee;
+    private Integer isSubstitue;
 
-    private String ordProvince;
-
-    private String ordCity;
-
-    private String ordDistrict;
-
-    private String ordStreet;
-
-    private String ordCommunity;
-
-    private String ordHouseNum;
-
-    private Date createTime;
-
-    private Date updateTime;
-
-    public Order(Integer id, Integer orderId, Date ordTime, String serviceProject, Integer clientId, Date serviceStartTime, Date serviceEndTime, Float price, Byte frequency, Boolean paymentMethod, Float managementFee, Float serviceFee, String ordProvince, String ordCity, String ordDistrict, String ordStreet, String ordCommunity, String ordHouseNum, Date createTime, Date updateTime) {
-        this.id = id;
+    public Order(Integer orderId, String orderTime, String clientId, String mandatorId, String serviceProject, String startTime, String endTime, Float price, Short times, Short intervalDays, String orderComment, Integer isSubstitue) {
         this.orderId = orderId;
-        this.ordTime = ordTime;
-        this.serviceProject = serviceProject;
+        this.orderTime = orderTime;
         this.clientId = clientId;
-        this.serviceStartTime = serviceStartTime;
-        this.serviceEndTime = serviceEndTime;
+        this.mandatorId = mandatorId;
+        this.serviceProject = serviceProject;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.price = price;
-        this.frequency = frequency;
-        this.paymentMethod = paymentMethod;
-        this.managementFee = managementFee;
-        this.serviceFee = serviceFee;
-        this.ordProvince = ordProvince;
-        this.ordCity = ordCity;
-        this.ordDistrict = ordDistrict;
-        this.ordStreet = ordStreet;
-        this.ordCommunity = ordCommunity;
-        this.ordHouseNum = ordHouseNum;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
+        this.times = times;
+        this.intervalDays = intervalDays;
+        this.orderComment = orderComment;
+        this.isSubstitue = isSubstitue;
     }
 
     public Order() {
         super();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Integer getOrderId() {
@@ -86,12 +52,28 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Date getOrdTime() {
-        return ordTime;
+    public String getOrderTime() {
+        return orderTime;
     }
 
-    public void setOrdTime(Date ordTime) {
-        this.ordTime = ordTime;
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime == null ? null : orderTime.trim();
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId == null ? null : clientId.trim();
+    }
+
+    public String getMandatorId() {
+        return mandatorId;
+    }
+
+    public void setMandatorId(String mandatorId) {
+        this.mandatorId = mandatorId == null ? null : mandatorId.trim();
     }
 
     public String getServiceProject() {
@@ -102,28 +84,20 @@ public class Order {
         this.serviceProject = serviceProject == null ? null : serviceProject.trim();
     }
 
-    public Integer getClientId() {
-        return clientId;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime == null ? null : startTime.trim();
     }
 
-    public Date getServiceStartTime() {
-        return serviceStartTime;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setServiceStartTime(Date serviceStartTime) {
-        this.serviceStartTime = serviceStartTime;
-    }
-
-    public Date getServiceEndTime() {
-        return serviceEndTime;
-    }
-
-    public void setServiceEndTime(Date serviceEndTime) {
-        this.serviceEndTime = serviceEndTime;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime == null ? null : endTime.trim();
     }
 
     public Float getPrice() {
@@ -134,99 +108,35 @@ public class Order {
         this.price = price;
     }
 
-    public Byte getFrequency() {
-        return frequency;
+    public Short getTimes() {
+        return times;
     }
 
-    public void setFrequency(Byte frequency) {
-        this.frequency = frequency;
+    public void setTimes(Short times) {
+        this.times = times;
     }
 
-    public Boolean getPaymentMethod() {
-        return paymentMethod;
+    public Short getIntervalDays() {
+        return intervalDays;
     }
 
-    public void setPaymentMethod(Boolean paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setIntervalDays(Short intervalDays) {
+        this.intervalDays = intervalDays;
     }
 
-    public Float getManagementFee() {
-        return managementFee;
+    public String getOrderComment() {
+        return orderComment;
     }
 
-    public void setManagementFee(Float managementFee) {
-        this.managementFee = managementFee;
+    public void setOrderComment(String orderComment) {
+        this.orderComment = orderComment == null ? null : orderComment.trim();
     }
 
-    public Float getServiceFee() {
-        return serviceFee;
+    public Integer getIsSubstitue() {
+        return isSubstitue;
     }
 
-    public void setServiceFee(Float serviceFee) {
-        this.serviceFee = serviceFee;
-    }
-
-    public String getOrdProvince() {
-        return ordProvince;
-    }
-
-    public void setOrdProvince(String ordProvince) {
-        this.ordProvince = ordProvince == null ? null : ordProvince.trim();
-    }
-
-    public String getOrdCity() {
-        return ordCity;
-    }
-
-    public void setOrdCity(String ordCity) {
-        this.ordCity = ordCity == null ? null : ordCity.trim();
-    }
-
-    public String getOrdDistrict() {
-        return ordDistrict;
-    }
-
-    public void setOrdDistrict(String ordDistrict) {
-        this.ordDistrict = ordDistrict == null ? null : ordDistrict.trim();
-    }
-
-    public String getOrdStreet() {
-        return ordStreet;
-    }
-
-    public void setOrdStreet(String ordStreet) {
-        this.ordStreet = ordStreet == null ? null : ordStreet.trim();
-    }
-
-    public String getOrdCommunity() {
-        return ordCommunity;
-    }
-
-    public void setOrdCommunity(String ordCommunity) {
-        this.ordCommunity = ordCommunity == null ? null : ordCommunity.trim();
-    }
-
-    public String getOrdHouseNum() {
-        return ordHouseNum;
-    }
-
-    public void setOrdHouseNum(String ordHouseNum) {
-        this.ordHouseNum = ordHouseNum == null ? null : ordHouseNum.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setIsSubstitue(Integer isSubstitue) {
+        this.isSubstitue = isSubstitue;
     }
 }

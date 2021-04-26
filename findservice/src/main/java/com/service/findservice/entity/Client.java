@@ -1,89 +1,87 @@
 package com.service.findservice.entity;
 
-import java.util.Date;
-
 public class Client {
-    private Integer id;
+    private String clientId;
 
-    private Integer clientId;
+    private String clientSessionKey;
 
-    private String clName;
+    private String clientName;
 
-    private String clGender;
+    private Integer clientGender;
 
-    private String clTel;
+    private Integer clientAge;
 
-    private Date createTime;
+    private String clientTel;
 
-    private Date updateTime;
+    private String clientLocation;
 
-    public Client(Integer id, Integer clientId, String clName, String clGender, String clTel, Date createTime, Date updateTime) {
-        this.id = id;
+    public Client(String clientId, String clientSessionKey, String clientName, Integer clientGender, Integer clientAge, String clientTel, String clientLocation) {
         this.clientId = clientId;
-        this.clName = clName;
-        this.clGender = clGender;
-        this.clTel = clTel;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
+        this.clientSessionKey = clientSessionKey;
+        this.clientName = clientName;
+        this.clientGender = clientGender;
+        this.clientAge = clientAge;
+        this.clientTel = clientTel;
+        this.clientLocation = clientLocation;
     }
 
     public Client() {
         super();
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getClientId() {
+    public String getClientId() {
         return clientId;
     }
 
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
+    public void setClientId(String clientId) {
+        this.clientId = clientId == null ? null : clientId.trim();
     }
 
-    public String getClName() {
-        return clName;
+    public String getClientSessionKey() {
+        return clientSessionKey;
     }
 
-    public void setClName(String clName) {
-        this.clName = clName == null ? null : clName.trim();
+    public void setClientSessionKey(String clientSessionKey) {
+        this.clientSessionKey = clientSessionKey == null ? null : clientSessionKey.trim();
     }
 
-    public String getClGender() {
-        return clGender;
+    public String getClientName() {
+        return clientName;
     }
 
-    public void setClGender(String clGender) {
-        this.clGender = clGender == null ? null : clGender.trim();
+    public void setClientName(String clientName) {
+        this.clientName = clientName == null ? null : clientName.trim();
     }
 
-    public String getClTel() {
-        return clTel;
+    public Integer getClientGender() {
+        return clientGender;
     }
 
-    public void setClTel(String clTel) {
-        this.clTel = clTel == null ? null : clTel.trim();
+    public void setClientGender(Integer clientGender) {
+        this.clientGender = clientGender;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Integer getClientAge() {
+        return clientAge;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setClientAge(Integer clientAge) {
+        this.clientAge = clientAge;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public String getClientTel() {
+        return clientTel;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setClientTel(String clientTel) {
+        this.clientTel = clientTel == null ? null : clientTel.trim();
+    }
+
+    public String getClientLocation() {
+        return clientLocation;
+    }
+
+    public void setClientLocation(String clientLocation) {
+        this.clientLocation = clientLocation == null ? null : clientLocation.trim();
     }
 }

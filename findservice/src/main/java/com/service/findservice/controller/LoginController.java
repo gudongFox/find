@@ -11,11 +11,13 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/login")
 public class LoginController {
+
+
     @Autowired
     LoginService loginService;
 
     @RequestMapping("/save")
-    public Server save(int id, String name){
+    public Server save(String id, String name) {
         Server s = loginService.save(id, name);
         return s;
     }

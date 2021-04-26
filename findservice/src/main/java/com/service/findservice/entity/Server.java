@@ -1,188 +1,87 @@
 package com.service.findservice.entity;
 
-import java.util.Date;
-
 public class Server {
-    private Integer id;
+    private String serverId;
 
-    private Integer serverId;
+    private String serverSessionKey;
 
-    private String seName;
+    private String serverName;
 
-    private String seGender;
+    private Integer serverGender;
 
-    private String seTel;
+    private Integer serverAge;
 
-    private Integer seRemainingPoints;
+    private String serverTel;
 
-    private Integer seFrozenPoints;
+    private String serverLocation;
 
-    private String seProvince;
-
-    private String seCity;
-
-    private String seDistrict;
-
-    private String seStreet;
-
-    private String seCommunity;
-
-    private String seHouseNum;
-
-    private Integer seAdministratorId;
-
-    private Date createTime;
-
-    private Date updateTime;
-
-    public Server(Integer id, Integer serverId, String seName, String seGender, String seTel, Integer seRemainingPoints, Integer seFrozenPoints, String seProvince, String seCity, String seDistrict, String seStreet, String seCommunity, String seHouseNum, Integer seAdministratorId, Date createTime, Date updateTime) {
-        this.id = id;
+    public Server(String serverId, String serverSessionKey, String serverName, Integer serverGender, Integer serverAge, String serverTel, String serverLocation) {
         this.serverId = serverId;
-        this.seName = seName;
-        this.seGender = seGender;
-        this.seTel = seTel;
-        this.seRemainingPoints = seRemainingPoints;
-        this.seFrozenPoints = seFrozenPoints;
-        this.seProvince = seProvince;
-        this.seCity = seCity;
-        this.seDistrict = seDistrict;
-        this.seStreet = seStreet;
-        this.seCommunity = seCommunity;
-        this.seHouseNum = seHouseNum;
-        this.seAdministratorId = seAdministratorId;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
+        this.serverSessionKey = serverSessionKey;
+        this.serverName = serverName;
+        this.serverGender = serverGender;
+        this.serverAge = serverAge;
+        this.serverTel = serverTel;
+        this.serverLocation = serverLocation;
     }
 
     public Server() {
         super();
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getServerId() {
+    public String getServerId() {
         return serverId;
     }
 
-    public void setServerId(Integer serverId) {
-        this.serverId = serverId;
+    public void setServerId(String serverId) {
+        this.serverId = serverId == null ? null : serverId.trim();
     }
 
-    public String getSeName() {
-        return seName;
+    public String getServerSessionKey() {
+        return serverSessionKey;
     }
 
-    public void setSeName(String seName) {
-        this.seName = seName == null ? null : seName.trim();
+    public void setServerSessionKey(String serverSessionKey) {
+        this.serverSessionKey = serverSessionKey == null ? null : serverSessionKey.trim();
     }
 
-    public String getSeGender() {
-        return seGender;
+    public String getServerName() {
+        return serverName;
     }
 
-    public void setSeGender(String seGender) {
-        this.seGender = seGender == null ? null : seGender.trim();
+    public void setServerName(String serverName) {
+        this.serverName = serverName == null ? null : serverName.trim();
     }
 
-    public String getSeTel() {
-        return seTel;
+    public Integer getServerGender() {
+        return serverGender;
     }
 
-    public void setSeTel(String seTel) {
-        this.seTel = seTel == null ? null : seTel.trim();
+    public void setServerGender(Integer serverGender) {
+        this.serverGender = serverGender;
     }
 
-    public Integer getSeRemainingPoints() {
-        return seRemainingPoints;
+    public Integer getServerAge() {
+        return serverAge;
     }
 
-    public void setSeRemainingPoints(Integer seRemainingPoints) {
-        this.seRemainingPoints = seRemainingPoints;
+    public void setServerAge(Integer serverAge) {
+        this.serverAge = serverAge;
     }
 
-    public Integer getSeFrozenPoints() {
-        return seFrozenPoints;
+    public String getServerTel() {
+        return serverTel;
     }
 
-    public void setSeFrozenPoints(Integer seFrozenPoints) {
-        this.seFrozenPoints = seFrozenPoints;
+    public void setServerTel(String serverTel) {
+        this.serverTel = serverTel == null ? null : serverTel.trim();
     }
 
-    public String getSeProvince() {
-        return seProvince;
+    public String getServerLocation() {
+        return serverLocation;
     }
 
-    public void setSeProvince(String seProvince) {
-        this.seProvince = seProvince == null ? null : seProvince.trim();
-    }
-
-    public String getSeCity() {
-        return seCity;
-    }
-
-    public void setSeCity(String seCity) {
-        this.seCity = seCity == null ? null : seCity.trim();
-    }
-
-    public String getSeDistrict() {
-        return seDistrict;
-    }
-
-    public void setSeDistrict(String seDistrict) {
-        this.seDistrict = seDistrict == null ? null : seDistrict.trim();
-    }
-
-    public String getSeStreet() {
-        return seStreet;
-    }
-
-    public void setSeStreet(String seStreet) {
-        this.seStreet = seStreet == null ? null : seStreet.trim();
-    }
-
-    public String getSeCommunity() {
-        return seCommunity;
-    }
-
-    public void setSeCommunity(String seCommunity) {
-        this.seCommunity = seCommunity == null ? null : seCommunity.trim();
-    }
-
-    public String getSeHouseNum() {
-        return seHouseNum;
-    }
-
-    public void setSeHouseNum(String seHouseNum) {
-        this.seHouseNum = seHouseNum == null ? null : seHouseNum.trim();
-    }
-
-    public Integer getSeAdministratorId() {
-        return seAdministratorId;
-    }
-
-    public void setSeAdministratorId(Integer seAdministratorId) {
-        this.seAdministratorId = seAdministratorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setServerLocation(String serverLocation) {
+        this.serverLocation = serverLocation == null ? null : serverLocation.trim();
     }
 }

@@ -13,8 +13,19 @@ public class OrderService {
     @Autowired
     private OrderMapper orderMapper;
 
-    public Order findOrderByOId(int order_id){ return orderMapper.selectByOId(order_id); }
+    public List<Order> selectOrderBySId(String server_id){
+        return orderMapper.selectOrderBySId(server_id);
+    }
 
-    public List<Order> findOrderBySid(int server_id){ return orderMapper.selectBySId(server_id); }
+    public List<Order> selectOrderByCId(String client_id){
+        return orderMapper.selectOrderByCId(client_id);
+    }
 
+    public int selectFin(int order_id){
+        return orderMapper.selectFin(order_id);
+    }
+
+    public int insert(Order record){
+        return orderMapper.insert(record);
+    }
 }

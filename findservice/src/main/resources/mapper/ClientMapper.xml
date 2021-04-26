@@ -3,126 +3,126 @@
 <mapper namespace="com.service.findservice.dao.ClientMapper">
   <resultMap id="BaseResultMap" type="com.service.findservice.entity.Client">
     <constructor>
-      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="client_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="cl_name" javaType="java.lang.String" jdbcType="CHAR" />
-      <arg column="cl_gender" javaType="java.lang.String" jdbcType="CHAR" />
-      <arg column="cl_tel" javaType="java.lang.String" jdbcType="CHAR" />
-      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <idArg column="client_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="client_session_key" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="client_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="client_gender" javaType="java.lang.Integer" jdbcType="TINYINT" />
+      <arg column="client_age" javaType="java.lang.Integer" jdbcType="TINYINT" />
+      <arg column="client_tel" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="client_location" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, client_id, cl_name, cl_gender, cl_tel, create_time, update_time
+    client_id, client_session_key, client_name, client_gender, client_age, client_tel, 
+    client_location
   </sql>
 
-  <select id="selectClientByCId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByClientName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from client_info
-    where client_id = #{client_id,jdbcType=INTEGER}
+    where client_name = #{client_name,jdbcType=VARCHAR}
   </select>
 
-
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from client_info
-    where id = #{id,jdbcType=INTEGER}
+    where client_id = #{clientId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from client_info
-    where id = #{id,jdbcType=INTEGER}
+    where client_id = #{clientId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.service.findservice.entity.Client">
-    insert into client_info (id, client_id, cl_name, 
-      cl_gender, cl_tel, create_time, 
-      update_time)
-    values (#{id,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, #{clName,jdbcType=CHAR}, 
-      #{clGender,jdbcType=CHAR}, #{clTel,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+    insert into client_info (client_id, client_session_key, client_name, 
+      client_gender, client_age, client_tel, 
+      client_location)
+    values (#{clientId,jdbcType=VARCHAR}, #{clientSessionKey,jdbcType=VARCHAR}, #{clientName,jdbcType=VARCHAR}, 
+      #{clientGender,jdbcType=TINYINT}, #{clientAge,jdbcType=TINYINT}, #{clientTel,jdbcType=CHAR}, 
+      #{clientLocation,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.service.findservice.entity.Client">
     insert into client_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="clientId != null">
         client_id,
       </if>
-      <if test="clName != null">
-        cl_name,
+      <if test="clientSessionKey != null">
+        client_session_key,
       </if>
-      <if test="clGender != null">
-        cl_gender,
+      <if test="clientName != null">
+        client_name,
       </if>
-      <if test="clTel != null">
-        cl_tel,
+      <if test="clientGender != null">
+        client_gender,
       </if>
-      <if test="createTime != null">
-        create_time,
+      <if test="clientAge != null">
+        client_age,
       </if>
-      <if test="updateTime != null">
-        update_time,
+      <if test="clientTel != null">
+        client_tel,
+      </if>
+      <if test="clientLocation != null">
+        client_location,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="clientId != null">
-        #{clientId,jdbcType=INTEGER},
+        #{clientId,jdbcType=VARCHAR},
       </if>
-      <if test="clName != null">
-        #{clName,jdbcType=CHAR},
+      <if test="clientSessionKey != null">
+        #{clientSessionKey,jdbcType=VARCHAR},
       </if>
-      <if test="clGender != null">
-        #{clGender,jdbcType=CHAR},
+      <if test="clientName != null">
+        #{clientName,jdbcType=VARCHAR},
       </if>
-      <if test="clTel != null">
-        #{clTel,jdbcType=CHAR},
+      <if test="clientGender != null">
+        #{clientGender,jdbcType=TINYINT},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="clientAge != null">
+        #{clientAge,jdbcType=TINYINT},
       </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="clientTel != null">
+        #{clientTel,jdbcType=CHAR},
+      </if>
+      <if test="clientLocation != null">
+        #{clientLocation,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.Client">
     update client_info
     <set>
-      <if test="clientId != null">
-        client_id = #{clientId,jdbcType=INTEGER},
+      <if test="clientSessionKey != null">
+        client_session_key = #{clientSessionKey,jdbcType=VARCHAR},
       </if>
-      <if test="clName != null">
-        cl_name = #{clName,jdbcType=CHAR},
+      <if test="clientName != null">
+        client_name = #{clientName,jdbcType=VARCHAR},
       </if>
-      <if test="clGender != null">
-        cl_gender = #{clGender,jdbcType=CHAR},
+      <if test="clientGender != null">
+        client_gender = #{clientGender,jdbcType=TINYINT},
       </if>
-      <if test="clTel != null">
-        cl_tel = #{clTel,jdbcType=CHAR},
+      <if test="clientAge != null">
+        client_age = #{clientAge,jdbcType=TINYINT},
       </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="clientTel != null">
+        client_tel = #{clientTel,jdbcType=CHAR},
       </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="clientLocation != null">
+        client_location = #{clientLocation,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where client_id = #{clientId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.Client">
     update client_info
-    set client_id = #{clientId,jdbcType=INTEGER},
-      cl_name = #{clName,jdbcType=CHAR},
-      cl_gender = #{clGender,jdbcType=CHAR},
-      cl_tel = #{clTel,jdbcType=CHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    set client_session_key = #{clientSessionKey,jdbcType=VARCHAR},
+      client_name = #{clientName,jdbcType=VARCHAR},
+      client_gender = #{clientGender,jdbcType=TINYINT},
+      client_age = #{clientAge,jdbcType=TINYINT},
+      client_tel = #{clientTel,jdbcType=CHAR},
+      client_location = #{clientLocation,jdbcType=VARCHAR}
+    where client_id = #{clientId,jdbcType=VARCHAR}
   </update>
 </mapper>
