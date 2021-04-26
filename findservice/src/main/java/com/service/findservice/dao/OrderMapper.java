@@ -7,20 +7,21 @@ import java.util.List;
 
 @Mapper
 public interface OrderMapper {
-
-    Order selectByOId(int order_id);
-
-    List<Order> selectBySId(int server_id);
-
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer orderId);
 
     int insert(Order record);
 
     int insertSelective(Order record);
 
-    Order selectByPrimaryKey(Integer id);
+    Order selectByPrimaryKey(Integer orderId);
 
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    List<Order> selectOrderBySId(String server_id);
+
+    List<Order> selectOrderByCId(String client_id);
+
+    int selectFin(int order_id);
 }
