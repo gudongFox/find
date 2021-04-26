@@ -90,7 +90,7 @@
 	<view class="appadingleft">{{steps[2].text}}
 		<view class="margin2">
 			<van-cell-group>
-				<van-cell clickable="true">
+				<van-cell clickable="true" bindtap="chooseServer">
 					<van-row>
 						<van-col span="5">
 							<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
@@ -115,8 +115,6 @@
 				</van-cell>
 			</van-cell-group>
 		</view>
-		<van-button plain type="primary" size="small" style="margin-left:100rpx">暂存</van-button>
-		<van-button type="primary" size="small" style="margin-left:250rpx" bindtap="show4">下一步</van-button>
 	</view>
 	<!-- 5================== -->
 	<view>

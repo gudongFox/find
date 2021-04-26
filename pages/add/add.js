@@ -112,9 +112,9 @@ Page({
       url: '../index/index',
     })
   },
-  chooseCustomer:function(){
+  chooseServer:function(){
     wx.navigateTo({
-      url: '../add/chooseCustomer/chooseCustomer',
+      url: '../add/chooseServer/chooseServer',
       success:function(res){
         console.log("选择客户");
       },

@@ -9,7 +9,7 @@ Page({
   },
   jump:function(){
     wx.switchTab({
-      url: '../index/index',
+      url: '../record/record',
     })
    },
    jump1:function(){

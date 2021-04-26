@@ -1,0 +1,11 @@
+/* pages/add/chooseCustomer/chooseCustomer.wxss */
+.whitebackground{
+  background-color: white !important;
+}
+.footer{
+  background-color: white;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+}

@@ -45,7 +45,11 @@
       </van-row>
     </view>
   </view>
-  <view bindtap="click">
+  <view>
+    <van-cell is-link title="注册成为服务人" link-type="navigateTo" url="/pages/mine/register/register">
+    </van-cell>
+  </view>
+  <view bindtap="click" style="margin-top:10px">
     <van-button plain hairline type="default" block><text class="textred" >退出登录</text></van-button>
   </view>
 </view>

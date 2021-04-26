@@ -20,6 +20,8 @@ Page({
       { context: "其他",total:18, select: 5},
       
       ],
+      list: ['家庭保洁', '商业保洁', '钟点工','护工'],
+      result: ['家庭保洁', '钟点工'],
       show: false,
       minDate: new Date(2010, 0, 1).getTime(),
       maxDate: new Date(2010, 0, 31).getTime(),
@@ -56,62 +58,6 @@ Page({
         date: this.formatDate(event.detail),
       });
     },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   onShow: function(){
     this.getTabBar().init();
   },
@@ -120,10 +66,31 @@ Page({
       value: e.detail,
     });
   },
-  onSearch() {
-    Toast('搜索' + this.data.value);
+  showPopup() {
+    this.setData({ show: true });
   },
-  onClick() {
-    Toast('搜索' + this.data.value);
+
+  onClose() {
+    this.setData({ show: false });
   },
+
+  onChange1(event) {
+    this.setData({
+      result: event.detail
+    });
+  },
+  toggle(event) {
+    const { index } = event.currentTarget.dataset;
+    const checkbox = this.selectComponent(`.checkboxes-${index}`);
+    checkbox.toggle();
+  },
+
+  noop() {},
+
+  //跳转到服务人详情页
+  toServerInfo:function(){
+    wx.navigateTo({
+      url: '/pages/record/serverInfo/serverInfo',
+    })
+  }
 })

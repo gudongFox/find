@@ -16,8 +16,9 @@
     "pages/togetService/togetService",
     "pages/topayService/topayService",
     "pages/toRecieve/index",
-    "pages/add/chooseCustomer/chooseCustomer"
-    
+    "pages/add/chooseServer/chooseServer",
+    "pages/record/serverInfo/serverInfo",
+    "pages/mine/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -64,6 +65,11 @@
     "van-search": "@vant/weapp/search/index",
     "van-button": "@vant/weapp/button/index",
     "van-calendar": "@vant/weapp/calendar/index",
-    "van-notice-bar": "@vant/weapp/notice-bar/index"
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-field": "@vant/weapp/field/index"
   }
 }

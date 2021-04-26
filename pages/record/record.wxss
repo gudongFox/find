@@ -2,3 +2,6 @@
 .calendar {
   --calendar-height: 300px;
 }
+.value-class {
+  flex: none !important;
+}
