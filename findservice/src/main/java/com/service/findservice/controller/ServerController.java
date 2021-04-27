@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -39,27 +40,27 @@ public class ServerController {
 
     @RequestMapping("/getOrderWeek/{server_id}")
     public List<Order> getOrderWeek(@PathVariable String server_id){
-        Date date = new Date();
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-        String str = df.format(date);
-        int now_time = Integer.parseInt(str.substring(0,8));
-
-        List<Order> orders = orderService.selectOrderBySId(server_id);
-        if(orders != null){
-            for(int i = orders.size() - 1; i >= 0 ; i--){
-                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
-                if(start_time < now_time || start_time > now_time + 6){
-                    orders.remove(orders.get(i));
-                }
-            }
-//            for(Order order : orders){
-//                int start_time = Integer.parseInt(order.getStartTime().substring(0,8));
+        return orderService.selectWeekOrderByDate(server_id, new Date());
+//        Date date = new Date();
+//        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+//        String str = df.format(date);
+//        int now_time = Integer.parseInt(str.substring(0,8));
+//
+//        List<Order> orders = orderService.selectOrderBySId(server_id);
+//        if(orders != null){
+//            for(int i = orders.size() - 1; i >= 0 ; i--){
+//                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
 //                if(start_time < now_time || start_time > now_time + 6){
-//                    orders.remove(order);
+//                    orders.remove(orders.get(i));
 //                }
 //            }
-        }
-        return orders;
+////            for(Order order : orders){
+////                int start_time = Integer.parseInt(order.getStartTime().substring(0,8));
+////                if(start_time < now_time || start_time > now_time + 6){
+////                    orders.remove(order);
+////                }
+////            }
+//        }
     }
 
     @RequestMapping("/getAllOrder/{server_id}")
@@ -69,38 +70,39 @@ public class ServerController {
 
     @RequestMapping("/getOrderToday/{server_id}")
     public List<Order> getOrderToday(@PathVariable String server_id) {
-        Date date = new Date();
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-        String str = df.format(date);
-        int now_time = Integer.parseInt(str.substring(0,8));
-
-        List<Order> orders = orderService.selectOrderBySId(server_id);
-        if(orders != null){
-            for(int i = orders.size() - 1; i >= 0 ; i--){
-                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
-                if(start_time != now_time ){
-                    orders.remove(orders.get(i));
-                }
-            }
-        }
-        return orders;
+        return orderService.selectOrderByDate(server_id, new Date());
+//        String str = df.format(date);
+//        int now_time = Integer.parseInt(str.substring(0,8));
+//
+//        List<Order> orders = orderService.selectOrderBySId(server_id);
+//        if(orders != null){
+//            for(int i = orders.size() - 1; i >= 0 ; i--){
+//                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
+//                if(start_time != now_time ){
+//                    orders.remove(orders.get(i));
+//                }
+//            }
+//        }
+//        return orders;
     }
 
     @RequestMapping("/getOrderByDate/{server_id}/{date}")
-    public List<Order> getOrderByDate(@PathVariable String server_id ,@PathVariable int date) {
-        List<Order> orders = orderService.selectOrderBySId(server_id);
-        if(orders != null){
-            for(int i = orders.size() - 1; i >= 0 ; i--){
-                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
-                if(start_time != date ){
-                    orders.remove(orders.get(i));
-                }
-            }
-        }
-        return orders;
+    public List<Order> getOrderByDate(@PathVariable String server_id ,@PathVariable String date) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return orderService.selectOrderByDate(server_id,  simpleDateFormat.parse(date));
+//        List<Order> orders = orderService.selectOrderBySId(server_id);
+//        if(orders != null){
+//            for(int i = orders.size() - 1; i >= 0 ; i--){
+//                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
+//                if(start_time != date ){
+//                    orders.remove(orders.get(i));
+//                }
+//            }
+//        }
     }
 
-    @RequestMapping("/getUnFinOrder/{server_id}")//查询未完成订单
+    //查询未完成订单
+    @RequestMapping("/getUnFinOrder/{server_id}")
     public List<Order> getUnFinOrder(@PathVariable String server_id){
         List<Order> orders = orderService.selectOrderBySId(server_id);
         if(orders != null){
@@ -115,6 +117,17 @@ public class ServerController {
         return orders;
     }
 
+    //结算订单
+    @RequestMapping("/finishOrder/{server_id}/{order_id}")
+    public int finishOrder(@PathVariable String server_id, @PathVariable int order_id){
+        return orderService.updateFinish(server_id, order_id);
+    }
+
+    //中止订单
+    @RequestMapping("/endOrder/{order_id}")
+    public int endOrder( @PathVariable int order_id){
+        return orderService.deleteOrderServer(order_id);
+    }
 
     @RequestMapping("/getOrderByCName/{server_id}/{client_name}")
     public List<Order> getOrderByCName(@PathVariable String server_id ,@PathVariable String client_name) {
@@ -167,9 +180,7 @@ public class ServerController {
     public int receiveOrder(@PathVariable String server_id, @PathVariable int demand_id, Order order){
         Demand demand = demandService.selectDemandByDId(demand_id);
         Date date = new Date();
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-        String str = df.format(date);
-        order.setOrderTime(str);
+        order.setOrderTime(date);
         order.setClientId(demand.getClientId());
         order.setMandatorId("0");
         order.setServiceProject(demand.getServiceProject());
@@ -189,10 +200,7 @@ public class ServerController {
     @RequestMapping("/giveOrder/{mandator_id}/{server_id}/{demand_id}")
     public int giveOrder(@PathVariable String mandator_id,@PathVariable String server_id, @PathVariable int demand_id, Order order){
         Demand demand = demandService.selectDemandByDId(demand_id);
-        Date date = new Date();
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-        String str = df.format(date);
-        order.setOrderTime(str);
+        order.setOrderTime(new Date());
         order.setClientId(demand.getClientId());
         order.setMandatorId(mandator_id);
         order.setServiceProject(demand.getServiceProject());
@@ -207,16 +215,40 @@ public class ServerController {
         return 0;
     }
 
+    //直接客户名单
+    @RequestMapping("/getClient/{server_id}")
+    public List<Client> getClient(@PathVariable String server_id){
+        return clientService.selectCBySId(server_id);
+    }
+
+    //替客户下单,并自己接单
+    @RequestMapping("/makeOrderByS/{server_id}/{client_id}")
+    public int makeOrderByS(@PathVariable String server_id, @PathVariable String client_id, Order order){
+        order.setOrderTime(new Date());
+        order.setClientId(client_id);
+        order.setMandatorId("0");
+        order.setIsSubstitue(1);
+        if(orderService.insert(order) != 0 ){
+            return serverService.insertOrderServers(order.getOrderId(), server_id, 2);
+        }
+        return 0;
+    }
+
+    //替客户下单,委托伙伴
+    @RequestMapping("/makeOrderByM/{mandator_id}/{server_id}/{client_id}")
+    public int makeOrderByS(@PathVariable String mandator_id,@PathVariable String server_id, @PathVariable String client_id, Order order){
+        order.setOrderTime(new Date());
+        order.setClientId(client_id);
+        order.setMandatorId(mandator_id);
+        order.setIsSubstitue(1);
+        if(orderService.insert(order) != 0 ){
+            return serverService.insertOrderServers(order.getOrderId(), server_id, 2);
+        }
+        return 0;
+    }
 
     @RequestMapping("/test")
     public int test(){
-        Date date = new Date();
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-        String str = df.format(date);
-        Order order = new Order();
-        order.setOrderTime(str);
-        order.setIsSubstitue(0);
-        orderService.insert(order);
-        return order.getOrderId();
+        return 0;
     }
 }

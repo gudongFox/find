@@ -1,7 +1,6 @@
 package com.service.findservice.dao;
 
 import com.service.findservice.entity.Client;
-import com.service.findservice.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -20,4 +19,6 @@ public interface ClientMapper {
     int updateByPrimaryKey(Client record);
 
     List<Client> selectByClientName(String client_name);
+
+    List<Client> selectCBySId(String server_id);
 }

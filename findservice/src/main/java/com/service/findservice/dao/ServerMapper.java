@@ -1,5 +1,6 @@
 package com.service.findservice.dao;
 
+import com.service.findservice.entity.Client;
 import com.service.findservice.entity.Server;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -31,4 +32,6 @@ public interface ServerMapper {
     List<String> selectCIdBySid(String server_id);
 
     int insertOrderServers(int order_id, String server_id, int is_finish);
+
+
 }

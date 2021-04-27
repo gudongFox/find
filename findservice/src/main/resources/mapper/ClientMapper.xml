@@ -17,6 +17,14 @@
     client_location
   </sql>
 
+  <select id="selectCBySId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from client_info
+    where client_id in (select client_id from client_server
+    where server_id = #{server_id,jdbcType=VARCHAR})
+  </select>
+
   <select id="selectByClientName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
