@@ -1,8 +1,17 @@
-// pages/mine/register/register.js
-Page({
-
+// pages/component/schedule/schedule.js
+Component({
   /**
-   * 页面的初始数据
+   * 组件的属性列表
+   */
+  properties: {
+    
+  },
+/* 开启全局样式设置 */
+options: {
+  addGlobalClass: true,
+},
+  /**
+   * 组件的初始数据
    */
   data: {
     listData:[
@@ -21,15 +30,13 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 组件的方法列表
    */
-  onLoad: function () {
-    console.log('onLoad') 
-    },
-
+  methods: {
     onChange(event) {
       this.setData({
         checked: event.detail,
       });
     },
+  }
 })

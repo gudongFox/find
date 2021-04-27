@@ -1,4 +1,4 @@
-/* pages/mine/register/register.wxss */
+/* pages/component/schedule/schedule.wxss */
 .table {
   border: 0px solid white;
  }
@@ -32,4 +32,8 @@
  .choosed{
    background-color: sandybrown;
  }
+ .display-center{
+  display: flex;
+  justify-content: center; 
+}
  

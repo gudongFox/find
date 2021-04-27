@@ -35,6 +35,9 @@
   <text style="color:#8A2BE2;font-size:small;margin-left:1rem">服务人一周工作日程</text>
 </view>
 <view class="margin2,whitebackground,top">
+    <componet_schedule/>
+  </view>
+<view class="margin2,whitebackground,top">
   <van-cell-group>
   <van-field name="fee"  label="收费标准" title-width="30%" border="{{ false }}" value="45元/小时" readonly/>
   </van-cell-group>
