@@ -52,13 +52,13 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!-- tableName是数据库中的表名，domainObjectName是生成的JAVA模型名，后面的参数不用改，要生成更多的表就在下面继续加table标签 -->
-        <table tableName="order_detail" domainObjectName="Order"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            <columnOverride column="is_substitue" javaType="java.lang.Integer"/>
-        </table>
-        <table tableName="demand" domainObjectName="Demand"
+<!--        <table tableName="order_detail" domainObjectName="Order"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false">-->
+<!--            <columnOverride column="is_substitue" javaType="java.lang.Integer"/>-->
+<!--        </table>-->
+        <table tableName="server_service" domainObjectName="Server_service"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

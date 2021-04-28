@@ -45,4 +45,8 @@ public class OrderService {
     public  List<Order> selectWeekOrderByDate(String server_id, Date date){
         return orderMapper.selectWeekOrderByDate(server_id, date);
     }
+
+    public  List<Order> selectMonOrderBySId(String server_id, String date){
+        return orderMapper.selectMonOrderBySId(server_id, date);
+    }
 }

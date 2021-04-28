@@ -1,9 +1,6 @@
 package com.service.findservice.controller;
 
-import com.service.findservice.entity.Client;
-import com.service.findservice.entity.Demand;
-import com.service.findservice.entity.Order;
-import com.service.findservice.entity.Server;
+import com.service.findservice.entity.*;
 import com.service.findservice.server.ClientService;
 import com.service.findservice.server.DemandService;
 import com.service.findservice.server.OrderService;
@@ -41,6 +38,32 @@ public class ServerController {
     @RequestMapping("/getOrderWeek/{server_id}")
     public List<Order> getOrderWeek(@PathVariable String server_id){
         return orderService.selectWeekOrderByDate(server_id, new Date());
+//        Date date = new Date();
+//        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+//        String str = df.format(date);
+//        int now_time = Integer.parseInt(str.substring(0,8));
+//
+//        List<Order> orders = orderService.selectOrderBySId(server_id);
+//        if(orders != null){
+//            for(int i = orders.size() - 1; i >= 0 ; i--){
+//                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
+//                if(start_time < now_time || start_time > now_time + 6){
+//                    orders.remove(orders.get(i));
+//                }
+//            }
+////            for(Order order : orders){
+////                int start_time = Integer.parseInt(order.getStartTime().substring(0,8));
+////                if(start_time < now_time || start_time > now_time + 6){
+////                    orders.remove(order);
+////                }
+////            }
+//        }
+    }
+
+    //得到某个月的订单
+    @RequestMapping("/getOrderMonth/{server_id}/{year_month}")
+    public List<Order> getOrderMonth(@PathVariable String server_id, @PathVariable String year_month) throws ParseException {
+        return orderService.selectMonOrderBySId(server_id,  year_month);
 //        Date date = new Date();
 //        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
 //        String str = df.format(date);
@@ -247,8 +270,34 @@ public class ServerController {
         return 0;
     }
 
+    //得到基本信息
+    @RequestMapping("/getServerInfo/{server_id}")
+    public Server getServerInfo(@PathVariable String server_id){
+        return serverService.selectServerBySId(server_id);
+    }
+
+    //修改基本信息
+    @RequestMapping("/updateServerInfo/{server_id}")
+    public int  updateServerInfo(@PathVariable String server_id, Server server){
+        serverService.selectServerBySId(server_id).setServerName(server.getServerName());
+        serverService.selectServerBySId(server_id).setServerGender(server.getServerGender());
+        serverService.selectServerBySId(server_id).setServerTel(server.getServerTel());
+        serverService.selectServerBySId(server_id).setServerLocation(server.getServerLocation());
+        return serverService.updateServerInfo(serverService.selectServerBySId(server_id));
+    }
+
+    //设置项目和价格
+    @RequestMapping("/updateService/{server_id}")
+    public int  updateService(@PathVariable String server_id, Server_service service){
+        serverService.selectServiceBySId(server_id).setServiceProject(service.getServiceProject());
+        serverService.selectServiceBySId(server_id).setPrice(service.getPrice());
+        return serverService.updateServerService(serverService.selectServiceBySId(server_id));
+    }
+
     @RequestMapping("/test")
-    public int test(){
-        return 0;
+    public String test() throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM");
+
+       return simpleDateFormat.format( simpleDateFormat.parse("2020-04"));
     }
 }

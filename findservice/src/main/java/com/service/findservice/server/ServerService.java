@@ -1,8 +1,10 @@
 package com.service.findservice.server;
 
 import com.service.findservice.dao.ServerMapper;
+import com.service.findservice.dao.Server_serviceMapper;
 import com.service.findservice.entity.Client;
 import com.service.findservice.entity.Server;
+import com.service.findservice.entity.Server_service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class ServerService {
 
     @Autowired
     private ServerMapper serverMapper;
+
+    @Autowired
+    private Server_serviceMapper serviceMapper;
 
     public int updateSeverWorkTime(String server_id, int work_day, int work_hour){
         return serverMapper.updateSeverWorkTime(server_id, work_day, work_hour);
@@ -39,5 +44,20 @@ public class ServerService {
         return serverMapper.insertOrderServers(order_id, server_id, is_finish);
     }
 
+    public Server selectServerBySId(String server_id){
+        return serverMapper.selectByPrimaryKey(server_id);
+    }
+
+    public int updateServerInfo(Server server){
+        return serverMapper.updateByPrimaryKeySelective(server);
+    }
+
+    public Server_service selectServiceBySId(String server_id){
+        return serviceMapper.selectServiceBySId(server_id);
+    }
+
+    public int updateServerService(Server_service service){
+        return serviceMapper.updateByPrimaryKey(service);
+    }
 
 }
