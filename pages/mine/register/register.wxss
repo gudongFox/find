@@ -1,35 +1,28 @@
-/* pages/mine/register/register.wxss */
-.table {
-  border: 0px solid white;
- }
- .tr {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  height: 1rem;
-  align-items: center;
- }
- .td {
-  width:40%;
-  justify-content: center;
-  text-align: center;
- }
- .bg-w{
-  background: white;
- }
- .bg-g{
-  background: #fff;
- }
- .th {
-  width: 40%;
-  justify-content: center;
-  background: white;
-  color: black;
-  display: flex;
-  height: 1rem;
-  align-items: center;
- }
- .choosed{
-   background-color: sandybrown;
- }
- 
+.whitebackground{
+  background-color: white !important;
+}
+
+.value-class {
+  flex: none !important;
+}
+
+.footer{
+  background-color: #ffffff;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+}
+
+.title{
+  background: oldlace;
+  padding-top: 2px;
+  padding-bottom: 1px;
+  margin-bottom: 2px;
+}
+
+.register{
+  display: center;
+  margin: 2px;
+  padding: 10px;
+}

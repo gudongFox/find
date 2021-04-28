@@ -5,19 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    listData:[
-      {"code":"上午","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
-      {"code":"8:00","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
-      {"code":"","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
-      {"code":"中午","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
-      {"code":"12:00","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
-      {"code":"","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
-      {"code":"","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
-      {"code":"","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
-      {"code":"下午","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
-      {"code":"6:00","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
-      ],
-      checked: true,
+    list: ['家庭保洁', '商业保洁', '钟点工','护工'],
+    result: ['家庭保洁', '护工'],
+    sure: "0",
   },
 
   /**
@@ -28,8 +18,33 @@ Page({
     },
 
     onChange(event) {
-      this.setData({
-        checked: event.detail,
-      });
-    },
+    this.setData({
+      radio: event.detail,
+    });
+  },
+
+  chooseGender(event) {
+    this.setData({
+      radio: event.detail,
+    });
+  },
+
+  chooseType(event) {
+    this.setData({
+      result: event.detail
+    });
+  },
+
+  toggle(event) {
+    const { index } = event.currentTarget.dataset;
+    const checkbox = this.selectComponent(`.checkboxes-${index}`);
+    checkbox.toggle();
+  },
+  noop() {},
+
+  sureRegister(event){
+    this.setData({
+      sure: "1",
+    });
+  }
 })

@@ -1,35 +1,44 @@
-<view class="table,textsmall">
- <view class="tr bg-w">
-  <view class="th "></view>
- <view class="th">周一</view>
- <view class="th">周二</view>
- <view class="th ">周三</view>
- <view class="th ">周四</view>
- <view class="th ">周五</view>
- <view class="th ">周六</view>
- <view class="th ">周日</view>
- 
- </view>
- <block wx:for="{{listData}}" wx:key="{[code]}">
- <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
- <view class="td">{{item.code}}</view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- </view>
- <view class="tr" wx:else>
-  <view class="td">{{item.code}}</view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- </view>
- </block>
+<view class="margin2,whitebackground,top">
+  <form>
+  <view class="title">1-服务人基本信息</view>
+    <van-cell-group>
+      <van-field name="name" placeholder="2" label="我的称呼：" title-width="30%" border="{{ false }}"
+        bind:change="onChange">
+      </van-field>
+    </van-cell-group>
+    <van-cell-group>
+      <van-field name="gender" label="性别：" title-width="30%" border="{{ false }}" bind:change="onChange">
+        <!-- <van-radio-group value="{{ radio }}" bind:change="chooseGender" direction="horizontal">
+          <van-radio name="man">男</van-radio>
+          <van-radio name="woman">女</van-radio>
+        </van-radio-group> -->
+      </van-field>
+    </van-cell-group>
+    <van-cell-group>
+      <van-field name="tel" label="绑定手机：" title-width="30%" border="{{ false }}" bind:change="onChange" />
+    </van-cell-group>
+    <van-cell-group>
+      <van-field name="location" label="出发位置：" title-width="30%" border="{{ false }}" bind:change="onChange" />
+    </van-cell-group>
+    <view class="title">2-选择可服务项目</view>
+    <van-checkbox-group value="{{ result }}" bind:change="chooseType">
+      <van-cell-group>
+        <van-cell wx:for="{{ list }}" wx:key="index" title=" {{ item }}" value-class="value-class" clickable
+          data-index="{{ index }}" bind:click="toggle">
+          <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item }}" />
+        </van-cell>
+      </van-cell-group>
+    </van-checkbox-group>
+    <view class="title">3-完成服务人初步注册</view>
+    <view class="register">
+      <van-radio-group value="{{ sure }}" bind:change="sureRegister">
+      <van-radio name="1">我已阅读并同意《找服务-用户服务协议》</van-radio>
+    </van-radio-group>
+    </view>
+    
+  </form>
+</view>
+<view class="footer,button-appading">
+  <van-button plain type="primary" size="normal" style="margin-left:100rpx" bindtap="backAdd">取消</van-button>
+  <van-button type="primary" size="normal" style=" margin-left:230rpx" bindtap="backIndex">注册为服务人</van-button>
 </view>
