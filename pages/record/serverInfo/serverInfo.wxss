@@ -1,0 +1,4 @@
+/* pages/record/serverInfo/serverInfo.wxss */
+.whitebackground{
+  background-color: white !important;
+}

@@ -23,14 +23,14 @@
 </view>
 <view class="center,display-center">
 	<view class="block5" bindtap="jump">
-		<text style="margin:20rpx" class="textwhite">我是下单人</text>
+		<text style="margin:20rpx" class="textwhite">我是客户</text>
 	</view>
 	<view>
 		<view class="block6,margin1">
-			<text style="margin:20rpx" class="textwhite">我是客户</text>
+			<text style="margin:20rpx" class="textwhite"></text>
 		</view>
 		<view class="block7,margin1">
-			<text style="margin:20rpx" class="textwhite">版本转换</text>
+			<text style="margin:20rpx" class="textwhite"></text>
 		</view>
 	</view>
 </view>

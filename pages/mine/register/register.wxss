@@ -1,0 +1,35 @@
+/* pages/mine/register/register.wxss */
+.table {
+  border: 0px solid white;
+ }
+ .tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 1rem;
+  align-items: center;
+ }
+ .td {
+  width:40%;
+  justify-content: center;
+  text-align: center;
+ }
+ .bg-w{
+  background: white;
+ }
+ .bg-g{
+  background: #fff;
+ }
+ .th {
+  width: 40%;
+  justify-content: center;
+  background: white;
+  color: black;
+  display: flex;
+  height: 1rem;
+  align-items: center;
+ }
+ .choosed{
+   background-color: sandybrown;
+ }
+ 

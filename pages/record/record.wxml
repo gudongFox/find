@@ -2,49 +2,45 @@
 <view>
   <view>
     <van-tabs active="{{ active }}" sticky color="#8A2BE2" class="tabw">
-      <van-tab title="客户记录">
-        <van-search value="{{ value }}" placeholder="客户姓名" use-action-slot bind:change="onChange" bind:search="onSearch"
-          background="#f0f0f0" shape="round">
-          <view slot="action" bind:tap="onClick">
-            <van-button plain type="primary" size="small">搜索</van-button>
-          </view>
-        </van-search>
-        <block wx:for="{{serviceList}}" class="button-display">
-          <van-button type="{{item.select==yearShow?'primary':'info'}}" shape="round" size="small" plain
-            data-texe="{{item.context}}" data-select='{{item.select}}' bindtap='serviceList' class="button-margin">
-            {{item.context}}({{item.total}})
-          </van-button>
-        </block>
+      <van-tab title="平台推荐">
         <view class="margin1">
           <van-icon name="bell" color="#8A2BE2" />
-          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">家庭保洁</text>
+          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">为你推荐的服务人</text>
+          <van-button plain type="primary" size="small" style="margin-left:300rpx" bind:click="showPopup">设置
+          </van-button>
+          <van-popup show="{{ show }}" bind:close="onClose" position="top">
+            <view>
+              <van-checkbox-group value="{{ result }}" bind:change="onChange1">
+                <van-cell-group>
+                  <van-cell wx:for="{{ list }}" wx:key="index" title="{{ item }}" value-class="value-class"
+                    clickable data-index="{{ index }}" bind:click="toggle">
+                    <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item }}" />
+                  </van-cell>
+                </van-cell-group>
+              </van-checkbox-group>
+            </view>
+          </van-popup>
         </view>
-        <view>
+        <view bindtap="toServerInfo">
           <van-cell-group>
             <van-cell clickable="true">
               <van-row>
                 <van-col span="5">
-                  <view class="display-center">
-                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
-                  </view>
-                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
-                </van-col>
-                <van-col span="5">
-                  <view><text class="textbig,textblack">王老师</text></view>
+                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
                 </van-col>
                 <van-col span="10">
-
+                  <view class="display-center"><text class="textbig,textblack">李阿姨 </text></view>
                   <view class="display-center">
                     <text class="textsmall">虎溪花园，4栋3-3-1</text>
                   </view>
+                </van-col>
+                <van-col span="3">
                   <view class="display-center">
-                    <text class="textsmall">服务：2次</text>
+                    <van-tag color="red" round size="medium">荐</van-tag>
                   </view>
                 </van-col>
-                <van-col span="4">
-                  <view class="display-center">
-                    <text class="textsmall">家有宠物</text>
-                  </view>
+                <van-col span="6">
+                  <van-tag color="blue" plain size="medium">家庭保洁</van-tag>
                 </van-col>
               </van-row>
 
@@ -54,24 +50,13 @@
         </view>
         <view class="divLine"></view>
       </van-tab>
-      <van-tab title="服务人记录">
-        <van-search value="{{ value }}" placeholder="服务人姓名" use-action-slot bind:change="onChange"
-          bind:search="onSearch" background="##f0f0f0" shape="round">
-          <view slot="action" bind:tap="onClick">
-            <van-button plain type="primary" size="small">搜索</van-button>
-          </view>
-        </van-search>
-        <block wx:for="{{serviceList}}" class="button-display">
-          <van-button type="{{item.select==yearShow?'primary':'info'}}" shape="round" size="small" plain
-            data-texe="{{item.context}}" data-select='{{item.select}}' bindtap='serviceList' class="button-margin">
-            {{item.context}}({{item.total}})
-          </van-button>
-        </block>
+      <van-tab title="可信服务人">
         <view class="margin1">
           <van-icon name="bell" color="#8A2BE2" />
-          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">家庭保洁</text>
+          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">我信任的服务人</text>
+          <van-button plain type="primary" size="small" style="margin-left:320rpx">添加</van-button>
         </view>
-        <view>
+        <view bindtap="toServerInfo">
           <van-cell-group>
             <van-cell clickable="true">
               <van-row>
@@ -79,19 +64,18 @@
                   <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
                 </van-col>
                 <van-col span="10">
-                  <view class="display-center"><text class="textbig,textblack">李阿姨</text></view>
+                  <view class="display-center"><text class="textbig,textblack">李阿姨 </text></view>
                   <view class="display-center">
                     <text class="textsmall">虎溪花园，4栋3-3-1</text>
                   </view>
                 </van-col>
-                <van-col span="5">
+                <van-col span="3">
                   <view class="display-center">
-                    <text class="textsmall">接单17次</text>
+                    <van-tag color="red" round size="medium">荐</van-tag>
                   </view>
-
                 </van-col>
-                <van-col span="4">
-                  <van-tag color="#9999FF">口碑4.0</van-tag>
+                <van-col span="6">
+                  <van-tag color="blue" plain size="medium">家庭保洁</van-tag>
                 </van-col>
               </van-row>
 
@@ -102,54 +86,6 @@
         <view class="divLine"></view>
 
 
-      </van-tab>
-      <van-tab title="订单记录">
-        <van-search value="{{ value }}" placeholder="客户/下单人称呼" use-action-slot bind:change="onChange"
-          bind:search="onSearch" background="#f0f0f0" shape="round">
-          <view slot="action" bind:tap="onClick">
-            <van-button plain type="primary" size="small">搜索</van-button>
-          </view>
-        </van-search>
-        <van-cell title="选择单个日期" value="{{ date }}" bind:click="onDisplay" />
-        <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top" />
-        <view class="margin1">
-          <van-icon name="bell" color="#8A2BE2" />
-          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">{{ date }}</text>
-        </view>
-        <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <van-row>
-                <van-col span="5">
-                  <view class="display-center">
-                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
-                  </view>
-                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
-                </van-col>
-                <van-col span="5">
-                  <view><text class="textbig,textblack">王老师</text></view>
-                </van-col>
-                <van-col span="10">
-                  <view class="display-center">
-                    <text class="textsmall">7月8日，8:00-10:00</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">多次</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
-                  </view>
-                </van-col>
-                <van-col span="4">
-                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                  <text>李阿姨</text>
-                </van-col>
-              </van-row>
-
-            </van-cell>
-
-          </van-cell-group>
-        </view>
       </van-tab>
     </van-tabs>
   </view>

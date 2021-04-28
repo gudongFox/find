@@ -1,0 +1,48 @@
+<view class="margin1">
+  <van-icon name="bell" color="#8A2BE2" />
+  <text style="color:#8A2BE2;font-size:small;margin-left:1rem">服务人基本资料</text>
+</view>
+<view class="margin2,whitebackground,top">
+  <van-cell-group>
+    <van-field name="name" type="number" label="服务人" title-width="30%" border="{{ false }}" value="{{server.name}}"
+      bind:change="onChange" readonly>
+      <van-button slot="button" size="small" type="primary">
+      联络
+      </van-button>
+    </van-field>
+  </van-cell-group>
+  <van-cell-group>
+    <van-field name="gender"  label="性别" title-width="30%" border="{{ false }}" value="{{server.gender}}" readonly/>
+  </van-cell-group>
+  <van-cell-group>
+    <van-field name="age"  label="年龄" title-width="30%" border="{{ false }}" value="{{server.age}}" readonly/>
+  </van-cell-group>
+  <van-cell-group>
+    <van-field name="servertype"  label="服务项目" title-width="30%" border="{{ false }}" value="{{server.servertype}}" readonly/>
+  </van-cell-group>
+  <van-cell-group>
+    <van-field name="location"  label="出发位置" title-width="30%" border="{{ false }}" value="{{server.location}}" readonly/>
+  </van-cell-group>
+    <van-cell-group>
+    <van-field name="times"  label="为我服务" title-width="30%" border="{{ false }}" value="{{server.times}}次" readonly/>
+    </van-cell-group>
+    <van-cell-group>
+    <van-field name="remark"  label="我的备注" title-width="30%" border="{{ false }}" value="{{server.remark}}" readonly/>
+    </van-cell-group>
+</view>
+<view class="margin1">
+  <van-icon name="bell" color="#8A2BE2" />
+  <text style="color:#8A2BE2;font-size:small;margin-left:1rem">服务人一周工作日程</text>
+</view>
+<view class="margin2,whitebackground,top">
+    <componet_schedule/>
+  </view>
+<view class="margin2,whitebackground,top">
+  <van-cell-group>
+  <van-field name="fee"  label="收费标准" title-width="30%" border="{{ false }}" value="45元/小时" readonly/>
+  </van-cell-group>
+</view>
+<view class="footer,button-appading">
+  <van-button plain type="primary" size="normal" style="margin-left:100rpx" bindtap="backAdd">取消</van-button>
+  <van-button type="primary" size="normal" style=" margin-left:230rpx" bindtap="backIndex">提交服务需求</van-button>
+</view>

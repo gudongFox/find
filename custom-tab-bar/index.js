@@ -1,20 +1,21 @@
 Component({
   data: {
     active: null,
-    list: [{
+    list: [
+      {
+        "url": "/pages/record/record",
+        "icon": "friends-o",
+        "text": "服务人"
+      },
+      {
         "url": "/pages/index/index",
         "icon": "wap-nav",
-        "text": "下订单"
+        "text": "新需求"
       },
       {
         "url": "/pages/manage/manage",
         "icon": "other-pay",
-        "text": "订单管理"
-      },
-      {
-        "url": "/pages/record/record",
-        "icon": "friends-o",
-        "text": "服务记录"
+        "text": "订单记录"
       },
       {
         "url": "/pages/mine/mine",

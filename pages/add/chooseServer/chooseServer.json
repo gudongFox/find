@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "componet_schedule": "/pages/component/schedule/schedule"
+  }
+}

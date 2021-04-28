@@ -1,0 +1,33 @@
+<view class="margin1">
+  <van-icon name="bell" color="#8A2BE2" />
+  <text style="color:#8A2BE2;font-size:small;margin-left:1rem">服务人基本资料</text>
+</view>
+<view class="margin2,whitebackground,top">
+  <van-cell-group>
+    <van-field name="name" type="number" label="服务人" title-width="30%" border="{{ false }}" value="{{server.name}}"
+      bind:change="onChange" readonly>
+      <van-button slot="button" size="small" type="primary">
+      联络
+      </van-button>
+    </van-field>
+  </van-cell-group>
+  <van-cell-group>
+    <van-field name="gender"  label="性别" title-width="30%" border="{{ false }}" value="{{server.gender}}" readonly/>
+  </van-cell-group>
+  <van-cell-group>
+    <van-field name="age"  label="年龄" title-width="30%" border="{{ false }}" value="{{server.age}}" readonly/>
+  </van-cell-group>
+  <van-cell-group>
+    <van-field name="servertype"  label="服务项目" title-width="30%" border="{{ false }}" value="{{server.servertype}}" readonly/>
+  </van-cell-group>
+  <van-cell-group>
+    <van-field name="location"  label="出发位置" title-width="30%" border="{{ false }}" value="{{server.location}}" readonly/>
+  </van-cell-group>
+    <van-cell-group>
+    <van-field name="times"  label="直接客户数" title-width="30%" border="{{ false }}" value="{{server.times}}人" readonly/>
+    </van-cell-group>
+    <van-cell-group>
+    <van-field name="remark"  label="推荐理由" title-width="30%" border="{{ false }}" value="{{server.remark}}" readonly/>
+    </van-cell-group>
+</view>
+<van-button slot="button" size="small" type="primary" style="margin-left:500rpx">查看日程</van-button>

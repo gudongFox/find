@@ -15,26 +15,6 @@
       <van-tag color="#9999FF" round>实名认证</van-tag>
     </van-col>
   </van-row>
-
-<van-row>
-  <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{num}}</view>
-    <view class="textsmall,text_align" style="color:#888888">团队人数
-    </view>
-  </van-col>
-  <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{total}}</view>
-    <view class="textsmall,text_align" style="color:#888888">订单总数</view>
-  </van-col>
-  <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{success}}</view>
-    <view class="textsmall,text_align" style="color:#888888">订单完成率</view>
-  </van-col>
-  <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{score}}</view>
-    <view class="textsmall,text_align" style="color:#888888">大众口碑</view>
-  </van-col>
-</van-row>
 </view>
 <view>
   <view class="divLine"></view>
@@ -55,51 +35,9 @@
           <view class="textsmall,text_align">我的积分
           </view>
         </van-col>
-      </van-row>
-    </view>
-  </view>
-  <view class="view-white,appading">
-    
-    <view>
-      <van-row>
-        <van-col span="6">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="friends-o" size="70rpx" color="#8A2BE2" />
-          </view>
-          <view class="textsmall,text_align">团队信息
-          </view>
-        </van-col>
-        <van-col span="6">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="cluster-o" size="70rpx" color="#8A2BE2" />
-          </view>
-          <view class="textsmall,text_align">团队成员
-          </view>
-        </van-col>
-        <van-col span="6" offset="6">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="notes-o" size="70rpx" color="#8A2BE2" />
-          </view>
-          <view class="textsmall,text_align">业务统计
-          </view>
-        </van-col>
-      </van-row>
-    </view>
-  </view>
-  <view class="view-white,appading">
-    
-    <view>
-      <van-row>
         <van-col span="6">
           <view class="text_align" style="margin-top:10rpx">
             <van-icon name="label-o" size="70rpx" color="#8A2BE2" />
-          </view>
-          <view class="textsmall,text_align">问题反映
-          </view>
-        </van-col>
-        <van-col span="6" offset="12">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="records" size="70rpx" color="#8A2BE2" />
           </view>
           <view class="textsmall,text_align">使用帮助
           </view>
@@ -107,7 +45,11 @@
       </van-row>
     </view>
   </view>
-  <view bindtap="click">
+  <view>
+    <van-cell is-link title="注册成为服务人" link-type="navigateTo" url="/pages/mine/register/register">
+    </van-cell>
+  </view>
+  <view bindtap="click" style="margin-top:10px">
     <van-button plain hairline type="default" block><text class="textred" >退出登录</text></van-button>
   </view>
 </view>

@@ -15,23 +15,21 @@ Page({
         text: '1 -选择服务类型',
       },
       {
-        text: '2 -录入客户信息',
+        text: '2 -填写订单内容',
+        
       },
       {
-        text: '3 -确定上门时间',
+        text: '3 -选择服务人',
+        
       },
       {
-        text: '4 -选服务候选人',
-      },
-      {
-        text: '5 -形成订单',
-      },
+        text: '4 -服务人形成订单',
+        
+      }
     ],
     kinds: [
       {text: '家庭保洁'},
       {text: '商业保洁'},
-      {text: '钟点工'},
-      {text: '护工'},
     ],
     user: [
       {id: null},
@@ -125,9 +123,9 @@ Page({
       url: '../index/index',
     })
   },
-  chooseCustomer:function(){
+  chooseServer:function(){
     wx.navigateTo({
-      url: '../add/chooseCustomer/chooseCustomer',
+      url: '../add/chooseServer/chooseServer',
       success:function(res){
         console.log("选择客户");
       },
