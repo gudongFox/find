@@ -22,6 +22,41 @@
     price, times, interval_days, order_comment, is_substitue
   </sql>
 
+  <select id="selectOrdersByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_detail
+    where client_id = #{clientId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectOrdersByClientAndMandatorId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_detail
+    where client_id = #{clientId, jdbcType=VARCHAR} and mandator_id = #{mandatorId, jdbcType=VARCHAR}
+  </select>
+  <select id="selectOrdersByClientAndServerId" resultMap="BaseResultMap">
+    select *
+    from order_detail, order_servers
+    where client_id = #{clientId, jdbcType=VARCHAR} and order_detail.order_id = order_servers.order_id and server_id = #{serverId, jdbcType=VARCHAR}
+  </select>
+  <select id="selectOrdersByClientIdAndDate" resultMap="BaseResultMap">
+    select *
+    from order_detail
+    where client_id = #{clientId, jdbcType=VARCHAR} and date_format(start_time, '%Y-%m-%d') = #{date, jdbcType=VARCHAR}
+    order by start_time
+  </select>
+  <select id="selectExecutingOrders" resultMap="BaseResultMap">
+    select *
+    from order_detail
+    where client_id = #{clientId, jdbcType=VARCHAR} and date_format(end_time, '%Y-%m-%d %H:%i:%s') &lt;= #{time, jdbcType=VARCHAR}
+    order by end_time
+  </select>
+  <select id="selectOrdersCountByDate" resultType="java.lang.Integer">
+    select count(*)
+    from order_detail
+    where client_id = #{clientId, jdbcType=VARCHAR} and date_format(start_time, '%Y-%m-%d') = #{date, jdbcType=VARCHAR}
+  </select>
+
   <update id="updateFinish">
     update order_servers set is_finish = 1
     where server_id = #{server_id,jdbcType=VARCHAR} and order_id = #{order_id,jdbcType=INTEGER}

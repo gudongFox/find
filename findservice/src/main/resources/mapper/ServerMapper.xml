@@ -17,6 +17,18 @@
     server_location
   </sql>
 
+  <select id="selectByServerId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from server_info
+    where server_id = #{serverId, jdbcType=VARCHAR}
+  </select>
+  <select id="selectServersByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select distinct *
+    from server_info, client_server
+    where client_id = #{clientId, jdbcType=VARCHAR} and server_info.server_id = client_server.server_id
+  </select>
+
   <update id="updateSeverWorkTime">
     update server_work_time set work_day = #{work_day,jdbcType=TINYINT} , work_hour = #{work_hour,jdbcType=TINYINT}
     where server_id = #{server_id,jdbcType=VARCHAR}

@@ -13,6 +13,12 @@
   <sql id="Base_Column_List">
     client_server_id, client_id, server_id, client_comment, server_comment
   </sql>
+  <select id="selectServersByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from client_server
+    where client_id = #{clientId, jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

@@ -21,5 +21,5 @@ public interface DemandMapper {
 
     List<Demand> selectDemandBySID(String server_id);
 
-
+    List<Demand> selectDemandsByClientId(String clientId);
 }

@@ -20,4 +20,8 @@ public class ClientService {
     public List<Client> selectCBySId(String server_id){
         return clientMapper.selectCBySId(server_id);
     }
+
+    public Client findClientById(String clientId){
+        return clientMapper.selectByClientId(clientId);
+    }
 }

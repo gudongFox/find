@@ -4,16 +4,61 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="全部生成" />
+    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="全部生成">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/findservice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientServerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/DemandController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/OrderServerMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/Orders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/ClientServerInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/DemandInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/OrderDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientServerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderServerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ServerServiceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientServerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientServerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/DemandMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/DemandMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/OderServerMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ServerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ServerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Demand.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Demand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/OderServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/OrderServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/DemandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/DemandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ServerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ClientMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ClientMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ClientServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ClientServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/DemandMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/DemandMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OderServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ServerMapper.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="feature/server" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,12 +85,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/findservice" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15517241" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.FindserviceApplication">
     <configuration name="FindserviceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.service.findservice.FindserviceApplication" />
       <module name="findservice" />
@@ -55,6 +100,24 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FindserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="findservice" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.service.findservice.FindserviceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -83,6 +146,9 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/find.iml" filepath="$PROJECT_DIR$/.idea/find.iml" />
-      <module fileurl="file://$PROJECT_DIR$/findservice/findservice.iml" filepath="$PROJECT_DIR$/findservice/findservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/findservice.iml" filepath="$PROJECT_DIR$/.idea/findservice.iml" />
     </modules>
   </component>
 </project>

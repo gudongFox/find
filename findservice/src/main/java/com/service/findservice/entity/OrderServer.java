@@ -1,6 +1,6 @@
 package com.service.findservice.entity;
 
-public class OderServer {
+public class OrderServer {
     private Integer orderServerId;
 
     private Integer orderId;
@@ -9,14 +9,14 @@ public class OderServer {
 
     private Byte isFinish;
 
-    public OderServer(Integer orderServerId, Integer orderId, String serverId, Byte isFinish) {
+    public OrderServer(Integer orderServerId, Integer orderId, String serverId, Byte isFinish) {
         this.orderServerId = orderServerId;
         this.orderId = orderId;
         this.serverId = serverId;
         this.isFinish = isFinish;
     }
 
-    public OderServer() {
+    public OrderServer() {
         super();
     }
 

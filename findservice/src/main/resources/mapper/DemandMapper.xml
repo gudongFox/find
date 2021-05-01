@@ -20,6 +20,13 @@
     times, interval_days, demand_comment
   </sql>
 
+  <select id="selectDemandsByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from demand
+    where client_id = #{clientId, jdbcType=VARCHAR}
+  </select>
+
   <select id="selectDemandBySID" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

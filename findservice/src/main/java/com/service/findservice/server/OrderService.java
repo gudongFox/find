@@ -5,6 +5,10 @@ import com.service.findservice.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -48,5 +52,53 @@ public class OrderService {
 
     public  List<Order> selectMonOrderBySId(String server_id, String date){
         return orderMapper.selectMonOrderBySId(server_id, date);
+    }
+
+    public List<Order> findOrdersByClientId(String clientId) {
+        return orderMapper.selectOrdersByClientId(clientId);
+    }
+
+    public List<Order> findMandatorCountById(String clientId, String mandatorId) {
+        return orderMapper.selectOrdersByClientAndMandatorId(clientId, mandatorId);
+    }
+
+    public List<Order> findDirectCountById(String clientId, String serverId) {
+        return orderMapper.selectOrdersByClientAndServerId(clientId, serverId);
+    }
+
+    public List<Order> findOrdersByClientId(String clientId, Integer month) {
+        return orderMapper.selectOrdersByClientId(clientId, month);
+    }
+
+    public List<Order> findOrdersByClientIdAndDate(String clientId, String date) {
+        return orderMapper.selectOrdersByClientIdAndDate(clientId, date);
+    }
+
+    public List<Order> findExecutingOrders(String clientId, String time) {
+        return orderMapper.selectExecutingOrders(clientId, time);
+    }
+
+    public List<Boolean> findMonthlyOrders(String clientId, String month) {
+        List<Boolean> monthlyOrders = new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+        int daysOfMonth = 0;
+        try {
+            calendar.setTime(format.parse(month));
+            daysOfMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 1; i < daysOfMonth + 1; i++) {
+            String date = month + "-" + (i<10?"0"+i:i);
+            if (orderMapper.selectOrdersCountByDate(clientId, date) > 0) {
+                monthlyOrders.add(Boolean.TRUE);
+            }
+            else {
+                monthlyOrders.add(Boolean.FALSE);
+            }
+        }
+        return monthlyOrders;
     }
 }

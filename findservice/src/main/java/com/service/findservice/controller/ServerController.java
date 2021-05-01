@@ -1,17 +1,17 @@
 package com.service.findservice.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.service.findservice.entity.*;
 import com.service.findservice.server.ClientService;
 import com.service.findservice.server.DemandService;
 import com.service.findservice.server.OrderService;
+import com.service.findservice.server.ServerServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,6 +31,9 @@ public class ServerController {
 
     @Autowired
     private DemandService demandService;
+
+    @Autowired
+    private ServerServiceService serverServiceService;
 
     @Autowired
     private com.service.findservice.server.ServerService serverService;
@@ -166,7 +169,7 @@ public class ServerController {
     //获取伙伴名单
     @RequestMapping(value = "/getPartner/{server_id}")
     public List<Server> getPartner(@PathVariable String server_id){
-        return serverService.selectPartnerBySId(server_id);
+        return serverServiceService.selectPartnerBySId(server_id);
     }
 
     @RequestMapping(value = "/getDemand/{server_id}")
@@ -176,25 +179,25 @@ public class ServerController {
 
     @RequestMapping(value = "/updateWorkTime/{server_id}/{work_day}/{work_hour}")
     public int updateWorkTime(@PathVariable String server_id, @PathVariable int work_day, @PathVariable int work_hour) {
-        return serverService.updateSeverWorkTime(server_id, work_day, work_hour);
+        return serverServiceService.updateSeverWorkTime(server_id, work_day, work_hour);
     }
 
     @RequestMapping(value = "/updateServerParameter/{server_id}/{max_distance}/{max_interval_distance}/{min_service_time}/{min_interval_time}")
     public int updateServerParameter(@PathVariable String server_id, @PathVariable float max_distance, @PathVariable float max_interval_distance
             , @PathVariable float min_service_time, @PathVariable float min_interval_time) {
-        return serverService.updateServerParameter(server_id, max_distance, max_interval_distance, min_service_time, min_interval_time);
+        return serverServiceService.updateServerParameter(server_id, max_distance, max_interval_distance, min_service_time, min_interval_time);
     }
 
     //添加伙伴
     @RequestMapping(value = "/addPartner/{server_id}/{partner_id}")
     public int addPartner(@PathVariable String server_id, @PathVariable String partner_id){
-        List<String> s_cl = serverService.selectCIdBySid(server_id);
-        List<String> p_cl = serverService.selectCIdBySid(partner_id);
+        List<String> s_cl = serverServiceService.selectCIdBySid(server_id);
+        List<String> p_cl = serverServiceService.selectCIdBySid(partner_id);
         s_cl.retainAll(p_cl);
         if(s_cl.size() != 0){
             return 0;
         }else {
-            return serverService.addPartner(server_id, partner_id);
+            return serverServiceService.addPartner(server_id, partner_id);
         }
     }
 
@@ -212,7 +215,7 @@ public class ServerController {
         order.setEndTime(demand.getEndTime());
         order.setIsSubstitue(0);
         if(orderService.insert(order) != 0 ){
-            if(serverService.insertOrderServers(order.getOrderId(), server_id, 0) != 0){
+            if(serverServiceService.insertOrderServers(order.getOrderId(), server_id, 0) != 0){
                 return demandService.deleteByPrimaryKey(demand_id);
             }
         }
@@ -232,7 +235,7 @@ public class ServerController {
         order.setEndTime(demand.getEndTime());
         order.setIsSubstitue(0);
         if(orderService.insert(order) != 0 ){
-            if(serverService.insertOrderServers(order.getOrderId(), server_id, 2) != 0){
+            if(serverServiceService.insertOrderServers(order.getOrderId(), server_id, 2) != 0){
                 return demandService.deleteByPrimaryKey(demand_id);
             }
         }
@@ -253,7 +256,7 @@ public class ServerController {
         order.setMandatorId("0");
         order.setIsSubstitue(1);
         if(orderService.insert(order) != 0 ){
-            return serverService.insertOrderServers(order.getOrderId(), server_id, 2);
+            return serverServiceService.insertOrderServers(order.getOrderId(), server_id, 2);
         }
         return 0;
     }
@@ -266,7 +269,7 @@ public class ServerController {
         order.setMandatorId(mandator_id);
         order.setIsSubstitue(1);
         if(orderService.insert(order) != 0 ){
-            return serverService.insertOrderServers(order.getOrderId(), server_id, 2);
+            return serverServiceService.insertOrderServers(order.getOrderId(), server_id, 2);
         }
         return 0;
     }
@@ -275,25 +278,25 @@ public class ServerController {
     //得到基本信息
     @RequestMapping(value = "/getServerInfo/{server_id}")
     public Server getServerInfo(@PathVariable String server_id){
-        return serverService.selectServerBySId(server_id);
+        return serverServiceService.selectServerBySId(server_id);
     }
 
     //修改基本信息
     @RequestMapping(value = "/updateServerInfo/{server_id}")
     public int  updateServerInfo(@PathVariable String server_id, Server server){
-        serverService.selectServerBySId(server_id).setServerName(server.getServerName());
-        serverService.selectServerBySId(server_id).setServerGender(server.getServerGender());
-        serverService.selectServerBySId(server_id).setServerTel(server.getServerTel());
-        serverService.selectServerBySId(server_id).setServerLocation(server.getServerLocation());
-        return serverService.updateServerInfo(serverService.selectServerBySId(server_id));
+        serverServiceService.selectServerBySId(server_id).setServerName(server.getServerName());
+        serverServiceService.selectServerBySId(server_id).setServerGender(server.getServerGender());
+        serverServiceService.selectServerBySId(server_id).setServerTel(server.getServerTel());
+        serverServiceService.selectServerBySId(server_id).setServerLocation(server.getServerLocation());
+        return serverServiceService.updateServerInfo(serverServiceService.selectServerBySId(server_id));
     }
 
     //设置项目和价格
     @RequestMapping(value = "/updateService/{server_id}")
     public int  updateService(@PathVariable String server_id, ServerService service){
-        serverService.selectServiceBySId(server_id).setServiceProject(service.getServiceProject());
-        serverService.selectServiceBySId(server_id).setPrice(service.getPrice());
-        return serverService.updateServerService(serverService.selectServiceBySId(server_id));
+        serverServiceService.selectServiceBySId(server_id).setServiceProject(service.getServiceProject());
+        serverServiceService.selectServiceBySId(server_id).setPrice(service.getPrice());
+        return serverServiceService.updateServerService(serverServiceService.selectServiceBySId(server_id));
     }
 
     @RequestMapping("/test")
@@ -301,5 +304,25 @@ public class ServerController {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM");
 
        return simpleDateFormat.format( simpleDateFormat.parse("2020-04"));
+    }
+
+    @ResponseBody
+    @GetMapping(path = "/ServerInfo", produces = "application/json")
+    public String getServerInfoByServerId(String server_id){
+        JSONObject json = new JSONObject();
+        return json.toJSONString();
+    }
+
+    @PostMapping(path = "/ServerInfo")
+    public String addServerInfo(String server_id, String server_name, Integer server_gender, Integer server_age, String server_tel, String server_location){
+        String serverSessionKey  = "";
+        return JSON.toJSONString(serverService.addServer(
+                new Server(server_id,
+                        serverSessionKey,
+                        server_name,
+                        server_gender,
+                        server_age,
+                        server_tel,
+                        server_location)));
     }
 }

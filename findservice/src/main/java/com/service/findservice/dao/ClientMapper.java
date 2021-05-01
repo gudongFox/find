@@ -21,4 +21,6 @@ public interface ClientMapper {
     List<Client> selectByClientName(String client_name);
 
     List<Client> selectCBySId(String server_id);
+
+    Client selectByClientId(String clientId);
 }

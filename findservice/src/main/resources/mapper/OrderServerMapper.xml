@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.service.findservice.dao.OderServerMapper">
-  <resultMap id="BaseResultMap" type="com.service.findservice.entity.OderServer">
+<mapper namespace="com.service.findservice.dao.OrderServerMapper">
+  <resultMap id="BaseResultMap" type="com.service.findservice.entity.OrderServer">
     <constructor>
       <idArg column="order_server_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="order_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -12,6 +12,14 @@
   <sql id="Base_Column_List">
     order_server_id, order_id, server_id, is_finish
   </sql>
+
+  <select id="selectByOrderId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_servers
+    where order_id = #{orderId, jdbcType=INTEGER}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -22,13 +30,13 @@
     delete from order_servers
     where order_server_id = #{orderServerId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.service.findservice.entity.OderServer">
+  <insert id="insert" parameterType="com.service.findservice.entity.OrderServer">
     insert into order_servers (order_server_id, order_id, server_id, 
       is_finish)
     values (#{orderServerId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{serverId,jdbcType=VARCHAR}, 
       #{isFinish,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.service.findservice.entity.OderServer">
+  <insert id="insertSelective" parameterType="com.service.findservice.entity.OrderServer">
     insert into order_servers
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="orderServerId != null">
@@ -59,7 +67,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.OderServer">
+  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.OrderServer">
     update order_servers
     <set>
       <if test="orderId != null">
@@ -74,7 +82,7 @@
     </set>
     where order_server_id = #{orderServerId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.OderServer">
+  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.OrderServer">
     update order_servers
     set order_id = #{orderId,jdbcType=INTEGER},
       server_id = #{serverId,jdbcType=VARCHAR},

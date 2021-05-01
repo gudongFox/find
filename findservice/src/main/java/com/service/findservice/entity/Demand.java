@@ -11,7 +11,11 @@ public class Demand {
 
     private String mandatorId;
 
+    private String mandatorName;
+
     private String serverId;
+
+    private String serverName;
 
     private Date startTime;
 
@@ -118,5 +122,21 @@ public class Demand {
 
     public void setDemandComment(String demandComment) {
         this.demandComment = demandComment == null ? null : demandComment.trim();
+    }
+
+    public String getMandatorName() {
+        return mandatorName;
+    }
+
+    public void setMandatorName(String mandatorName) {
+        this.mandatorName = mandatorName;
+    }
+
+    public String getServerName() {
+        return serverName;
+    }
+
+    public void setServerName(String serverName) {
+        this.serverName = serverName;
     }
 }

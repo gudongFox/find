@@ -33,5 +33,7 @@ public interface ServerMapper {
 
     int insertOrderServers(int order_id, String server_id, int is_finish);
 
+    Server selectByServerId(String serverId);
 
+    List<Server> selectServersByClientId(String clientId);
 }

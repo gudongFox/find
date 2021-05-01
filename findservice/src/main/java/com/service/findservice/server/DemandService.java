@@ -24,4 +24,8 @@ public class DemandService {
     public int deleteByPrimaryKey(Integer demandId){
         return demandMapper.deleteByPrimaryKey(demandId);
     }
+
+    public List<Demand> findDemandByClientId(String client_id){
+        return demandMapper.selectDemandsByClientId(client_id);
+    }
 }
