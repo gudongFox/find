@@ -4,7 +4,7 @@ import com.service.findservice.entity.ServerService;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface Server_serviceMapper {
+public interface ServerServiceMapper {
     int deleteByPrimaryKey(Integer serverServiceId);
 
     int insert(ServerService record);
