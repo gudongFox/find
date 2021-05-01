@@ -4,7 +4,6 @@ import com.service.findservice.entity.*;
 import com.service.findservice.server.ClientService;
 import com.service.findservice.server.DemandService;
 import com.service.findservice.server.OrderService;
-import com.service.findservice.server.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -34,9 +33,9 @@ public class ServerController {
     private DemandService demandService;
 
     @Autowired
-    private ServerService serverService;
+    private com.service.findservice.server.ServerService serverService;
 
-    @RequestMapping(value = "/getOrderWeek/{server_id}", method = RequestMethod.POST )
+    @RequestMapping(value = "/getOrderWeek/{server_id}" )
     public List<Order> getOrderWeek(@PathVariable String server_id){
         return orderService.selectWeekOrderByDate(server_id, new Date());
 //        Date date = new Date();
@@ -62,7 +61,7 @@ public class ServerController {
     }
 
     //得到某个月的订单
-    @RequestMapping(value = "/getOrderMonth/{server_id}/{year_month}", method = RequestMethod.POST )
+    @RequestMapping(value = "/getOrderMonth/{server_id}/{year_month}")
     public List<Order> getOrderMonth(@PathVariable String server_id, @PathVariable String year_month) throws ParseException {
         return orderService.selectMonOrderBySId(server_id,  year_month);
 //        Date date = new Date();
@@ -87,12 +86,12 @@ public class ServerController {
 //        }
     }
 
-    @RequestMapping(value = "/getAllOrder/{server_id}", method = RequestMethod.POST )
+    @RequestMapping(value = "/getAllOrder/{server_id}")
     public List<Order> getAllOrder(@PathVariable String server_id){
         return orderService.selectOrderBySId(server_id);
     }
 
-    @RequestMapping(value = "/getOrderToday/{server_id}", method = RequestMethod.POST )
+    @RequestMapping(value = "/getOrderToday/{server_id}" )
     public List<Order> getOrderToday(@PathVariable String server_id) {
         return orderService.selectOrderByDate(server_id, new Date());
 //        String str = df.format(date);
@@ -110,7 +109,7 @@ public class ServerController {
 //        return orders;
     }
 
-    @RequestMapping(value = "/getOrderByDate/{server_id}/{date}", method = RequestMethod.POST )
+    @RequestMapping(value = "/getOrderByDate/{server_id}/{date}")
     public List<Order> getOrderByDate(@PathVariable String server_id ,@PathVariable String date) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return orderService.selectOrderByDate(server_id,  simpleDateFormat.parse(date));
@@ -126,7 +125,7 @@ public class ServerController {
     }
 
     //查询未完成订单
-    @RequestMapping(value = "/getUnFinOrder/{server_id}", method = RequestMethod.POST )
+    @RequestMapping(value = "/getUnFinOrder/{server_id}" )
     public List<Order> getUnFinOrder(@PathVariable String server_id){
         List<Order> orders = orderService.selectOrderBySId(server_id);
         if(orders != null){
@@ -142,19 +141,19 @@ public class ServerController {
     }
 
     //结算订单
-    @RequestMapping(value = "/finishOrder/{server_id}/{order_id}", method = RequestMethod.GET )
+    @RequestMapping(value = "/finishOrder/{server_id}/{order_id}" )
     public int finishOrder(@PathVariable String server_id, @PathVariable int order_id){
         return orderService.updateFinish(server_id, order_id);
     }
 
     //中止订单
-    @RequestMapping(value = "/endOrder/{order_id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/endOrder/{order_id}")
     public int endOrder( @PathVariable int order_id){
         return orderService.deleteOrderServer(order_id);
     }
 
     //更具客户名获取订单
-    @RequestMapping(value = "/getOrderByCName/{server_id}/{client_name}", method = RequestMethod.POST)
+    @RequestMapping(value = "/getOrderByCName/{server_id}/{client_name}")
     public List<Order> getOrderByCName(@PathVariable String server_id ,@PathVariable String client_name) {
         List<Client> clients = clientService.selectByClientName(client_name);
         List<Order> orders = new LinkedList<>();
@@ -165,29 +164,29 @@ public class ServerController {
     }
 
     //获取伙伴名单
-    @RequestMapping(value = "/getPartner/{server_id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/getPartner/{server_id}")
     public List<Server> getPartner(@PathVariable String server_id){
         return serverService.selectPartnerBySId(server_id);
     }
 
-    @RequestMapping(value = "/getDemand/{server_id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/getDemand/{server_id}")
     public List<Demand> getDemand(@PathVariable String server_id) {
         return demandService.selectDemandBySID(server_id);
     }
 
-    @RequestMapping(value = "/updateWorkTime/{server_id}/{work_day}/{work_hour}", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateWorkTime/{server_id}/{work_day}/{work_hour}")
     public int updateWorkTime(@PathVariable String server_id, @PathVariable int work_day, @PathVariable int work_hour) {
         return serverService.updateSeverWorkTime(server_id, work_day, work_hour);
     }
 
-    @RequestMapping(value = "/updateServerParameter/{server_id}/{max_distance}/{max_interval_distance}/{min_service_time}/{min_interval_time}", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateServerParameter/{server_id}/{max_distance}/{max_interval_distance}/{min_service_time}/{min_interval_time}")
     public int updateServerParameter(@PathVariable String server_id, @PathVariable float max_distance, @PathVariable float max_interval_distance
             , @PathVariable float min_service_time, @PathVariable float min_interval_time) {
         return serverService.updateServerParameter(server_id, max_distance, max_interval_distance, min_service_time, min_interval_time);
     }
 
     //添加伙伴
-    @RequestMapping(value = "/addPartner/{server_id}/{partner_id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/addPartner/{server_id}/{partner_id}")
     public int addPartner(@PathVariable String server_id, @PathVariable String partner_id){
         List<String> s_cl = serverService.selectCIdBySid(server_id);
         List<String> p_cl = serverService.selectCIdBySid(partner_id);
@@ -241,13 +240,13 @@ public class ServerController {
     }
 
     //直接客户名单
-    @RequestMapping(value = "/getClient/{server_id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/getClient/{server_id}")
     public List<Client> getClient(@PathVariable String server_id){
         return clientService.selectCBySId(server_id);
     }
 
     //替客户下单,并自己接单
-    @RequestMapping(value = "/makeOrderByS/{server_id}/{client_id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/makeOrderByS/{server_id}/{client_id}")
     public int makeOrderByS(@PathVariable String server_id, @PathVariable String client_id, Order order){
         order.setOrderTime(new Date());
         order.setClientId(client_id);
@@ -260,7 +259,7 @@ public class ServerController {
     }
 
     //替客户下单,委托伙伴
-    @RequestMapping(value = "/makeOrderByM/{mandator_id}/{server_id}/{client_id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/makeOrderByM/{mandator_id}/{server_id}/{client_id}")
     public int makeOrderByS(@PathVariable String mandator_id,@PathVariable String server_id, @PathVariable String client_id, Order order){
         order.setOrderTime(new Date());
         order.setClientId(client_id);
@@ -274,13 +273,13 @@ public class ServerController {
 
     //sss
     //得到基本信息
-    @RequestMapping(value = "/getServerInfo/{server_id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/getServerInfo/{server_id}")
     public Server getServerInfo(@PathVariable String server_id){
         return serverService.selectServerBySId(server_id);
     }
 
     //修改基本信息
-    @RequestMapping(value = "/updateServerInfo/{server_id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateServerInfo/{server_id}")
     public int  updateServerInfo(@PathVariable String server_id, Server server){
         serverService.selectServerBySId(server_id).setServerName(server.getServerName());
         serverService.selectServerBySId(server_id).setServerGender(server.getServerGender());
@@ -290,8 +289,8 @@ public class ServerController {
     }
 
     //设置项目和价格
-    @RequestMapping(value = "/updateService/{server_id}", method = RequestMethod.GET)
-    public int  updateService(@PathVariable String server_id, Server_service service){
+    @RequestMapping(value = "/updateService/{server_id}")
+    public int  updateService(@PathVariable String server_id, ServerService service){
         serverService.selectServiceBySId(server_id).setServiceProject(service.getServiceProject());
         serverService.selectServiceBySId(server_id).setPrice(service.getPrice());
         return serverService.updateServerService(serverService.selectServiceBySId(server_id));

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.service.findservice.dao.Server_serviceMapper">
-  <resultMap id="BaseResultMap" type="com.service.findservice.entity.Server_service">
+  <resultMap id="BaseResultMap" type="com.service.findservice.entity.ServerService">
     <constructor>
       <idArg column="server_service_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -30,13 +30,13 @@
     delete from server_service
     where server_service_id = #{serverServiceId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.service.findservice.entity.Server_service">
+  <insert id="insert" parameterType="com.service.findservice.entity.ServerService">
     insert into server_service (server_service_id, server_id, service_project, 
       price)
     values (#{serverServiceId,jdbcType=INTEGER}, #{serverId,jdbcType=VARCHAR}, #{serviceProject,jdbcType=CHAR}, 
       #{price,jdbcType=REAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.service.findservice.entity.Server_service">
+  <insert id="insertSelective" parameterType="com.service.findservice.entity.ServerService">
     insert into server_service
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="serverServiceId != null">
@@ -67,7 +67,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.Server_service">
+  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.ServerService">
     update server_service
     <set>
       <if test="serverId != null">
@@ -82,7 +82,7 @@
     </set>
     where server_service_id = #{serverServiceId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.Server_service">
+  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.ServerService">
     update server_service
     set server_id = #{serverId,jdbcType=VARCHAR},
       service_project = #{serviceProject,jdbcType=CHAR},

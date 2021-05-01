@@ -1,6 +1,6 @@
 package com.service.findservice.entity;
 
-public class Server_service {
+public class ServerService {
     private Integer serverServiceId;
 
     private String serverId;
@@ -9,14 +9,14 @@ public class Server_service {
 
     private Float price;
 
-    public Server_service(Integer serverServiceId, String serverId, String serviceProject, Float price) {
+    public ServerService(Integer serverServiceId, String serverId, String serviceProject, Float price) {
         this.serverServiceId = serverServiceId;
         this.serverId = serverId;
         this.serviceProject = serviceProject;
         this.price = price;
     }
 
-    public Server_service() {
+    public ServerService() {
         super();
     }
 

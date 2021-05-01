@@ -1,21 +1,21 @@
 package com.service.findservice.dao;
 
-import com.service.findservice.entity.Server_service;
+import com.service.findservice.entity.ServerService;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface Server_serviceMapper {
     int deleteByPrimaryKey(Integer serverServiceId);
 
-    int insert(Server_service record);
+    int insert(ServerService record);
 
-    int insertSelective(Server_service record);
+    int insertSelective(ServerService record);
 
-    Server_service selectByPrimaryKey(Integer serverServiceId);
+    ServerService selectByPrimaryKey(Integer serverServiceId);
 
-    int updateByPrimaryKeySelective(Server_service record);
+    int updateByPrimaryKeySelective(ServerService record);
 
-    int updateByPrimaryKey(Server_service record);
+    int updateByPrimaryKey(ServerService record);
 
-    Server_service selectServiceBySId(String server_id);
+    ServerService selectServiceBySId(String server_id);
 }

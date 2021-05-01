@@ -58,10 +58,33 @@
 <!--               selectByExampleQueryId="false">-->
 <!--            <columnOverride column="is_substitue" javaType="java.lang.Integer"/>-->
 <!--        </table>-->
-        <table tableName="server_service" domainObjectName="Server_service"
+        <table tableName="client_server" domainObjectName="ClientServer"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
+        </table>
+        <table tableName="order_servers" domainObjectName="OderServer"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <columnOverride column="is_substitue" javaType="java.lang.Boolean"/>
+        </table>
+        <table tableName="server_parameter" domainObjectName="ServerParameter"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="server_partner" domainObjectName="ServerPartner"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="server_work_time" domainObjectName="ServerWorkTime"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <columnOverride column="work_day" javaType="java.lang.Integer"/>
+            <columnOverride column="work_hour" javaType="java.lang.Integer"/>
         </table>
     </context>
 </generatorConfiguration>

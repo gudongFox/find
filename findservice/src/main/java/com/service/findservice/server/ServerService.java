@@ -2,9 +2,7 @@ package com.service.findservice.server;
 
 import com.service.findservice.dao.ServerMapper;
 import com.service.findservice.dao.Server_serviceMapper;
-import com.service.findservice.entity.Client;
 import com.service.findservice.entity.Server;
-import com.service.findservice.entity.Server_service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,11 +50,11 @@ public class ServerService {
         return serverMapper.updateByPrimaryKeySelective(server);
     }
 
-    public Server_service selectServiceBySId(String server_id){
+    public com.service.findservice.entity.ServerService selectServiceBySId(String server_id){
         return serviceMapper.selectServiceBySId(server_id);
     }
 
-    public int updateServerService(Server_service service){
+    public int updateServerService(com.service.findservice.entity.ServerService service){
         return serviceMapper.updateByPrimaryKey(service);
     }
 
