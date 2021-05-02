@@ -51,7 +51,7 @@ public class DemandController {
     }
 
     private Client getClientInfo(String clientId) {
-        return clientService.findClientById(clientId);
+        return clientService.selectClientById(clientId);
     }
 
     private String getServerInfo(String serverId) {

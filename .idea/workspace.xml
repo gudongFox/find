@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="Client相关接口，包括Controller和Service">
+    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="删除无用注释，修改Orders的包名">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/ClientInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/result/ResultBody.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/result/ResultCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ClientMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ClientMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +25,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -48,6 +56,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -58,6 +67,11 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.service.findservice.entity" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.FindserviceApplication">
     <configuration name="FindserviceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -107,7 +121,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619791667875</updated>
-      <workItem from="1619957366333" duration="326000" />
+      <workItem from="1619957366333" duration="3475000" />
     </task>
     <task id="LOCAL-00001" summary="全部生成">
       <created>1619848877414</created>
@@ -123,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619878257919</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="删除无用注释，修改Orders的包名">
+      <created>1619957767240</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1619957767240</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +166,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="全部生成" />
     <MESSAGE value="Client相关接口，包括Controller和Service" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client相关接口，包括Controller和Service" />
+    <MESSAGE value="删除无用注释，修改Orders的包名" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除无用注释，修改Orders的包名" />
   </component>
 </project>

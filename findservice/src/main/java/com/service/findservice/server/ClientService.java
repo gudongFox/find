@@ -13,15 +13,19 @@ public class ClientService {
     @Autowired
     private ClientMapper clientMapper;
 
-    public List<Client> selectByClientName(String client_name){
-        return clientMapper.selectByClientName(client_name);
+    public List<Client> selectByClientName(String clientName){
+        return clientMapper.selectByClientName(clientName);
     }
 
-    public List<Client> selectCBySId(String server_id){
-        return clientMapper.selectCBySId(server_id);
+    public List<Client> selectCByServerId(String serverId){
+        return clientMapper.selectClientByServerId(serverId);
     }
 
-    public Client findClientById(String clientId){
+    public Client selectClientById(String clientId){
         return clientMapper.selectByClientId(clientId);
+    }
+
+    public int updateClientInfo(Client client){
+        return clientMapper.updateByPrimaryKey(client);
     }
 }

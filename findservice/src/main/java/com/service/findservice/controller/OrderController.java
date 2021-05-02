@@ -41,7 +41,7 @@ public class OrderController {
                             @RequestParam(name = "month", required = false) String month) {
         Orders orders = new Orders();
         if (null != clientId) {
-            orders.setClientInfo(clientService.findClientById(clientId));
+            orders.setClientInfo(clientService.selectClientById(clientId));
         } else {
             orders.setClientInfo(new Client());
         }

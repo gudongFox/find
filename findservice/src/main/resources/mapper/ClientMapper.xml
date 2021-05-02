@@ -24,19 +24,19 @@
     where client_id = #{clientId, jdbcType=VARCHAR}
   </select>
 
-  <select id="selectCBySId" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectClientByServerId" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from client_info
     where client_id in (select client_id from client_server
-    where server_id = #{server_id,jdbcType=VARCHAR})
+    where server_id = #{serverId,jdbcType=VARCHAR})
   </select>
 
   <select id="selectByClientName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from client_info
-    where client_name = #{client_name,jdbcType=VARCHAR}
+    where client_name = #{clientName,jdbcType=VARCHAR}
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">

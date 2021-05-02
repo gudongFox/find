@@ -18,9 +18,9 @@ public interface ClientMapper {
 
     int updateByPrimaryKey(Client record);
 
-    List<Client> selectByClientName(String client_name);
+    List<Client> selectByClientName(String clientName);
 
-    List<Client> selectCBySId(String server_id);
+    List<Client> selectClientByServerId(String serverId);
 
     Client selectByClientId(String clientId);
 }

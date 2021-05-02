@@ -1,18 +1,27 @@
 package com.service.findservice.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Client {
+    @JSONField(name = "client_id")
     private String clientId;
 
+    @JSONField(name = "client_session_key")
     private String clientSessionKey;
 
+    @JSONField(name = "client_name")
     private String clientName;
 
+    @JSONField(name = "client_gender")
     private Integer clientGender;
 
+    @JSONField(name = "client_age")
     private Integer clientAge;
 
+    @JSONField(name = "client_tel")
     private String clientTel;
 
+    @JSONField(name = "client_location")
     private String clientLocation;
 
     public Client(String clientId, String clientSessionKey, String clientName, Integer clientGender, Integer clientAge, String clientTel, String clientLocation) {

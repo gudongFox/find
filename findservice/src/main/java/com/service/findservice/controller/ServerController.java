@@ -183,7 +183,7 @@ public class ServerController {
     //直接客户名单
     @RequestMapping(value = "/getClient/{server_id}")
     public List<Client> getClient(@PathVariable String server_id){
-        return clientService.selectCBySId(server_id);
+        return clientService.selectCByServerId(server_id);
     }
 
     //替客户下单,并自己接单
