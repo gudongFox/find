@@ -28,9 +28,9 @@ public class DemandController {
     private ClientService clientService;
 
     @ResponseBody
-    @GetMapping(path = "/demands_info", produces = "application/json")
-    public String getDemandsByClientId(String client_id) {
-        List<Demand> demands = demandService.selectDemandsByClientId(client_id);
+    @GetMapping(path = "/detail", produces = "application/json")
+    public String getDemandsByClientId(@RequestParam(name = "clientId") String clientId) {
+        List<Demand> demands = demandService.selectDemandsByClientId(clientId);
         for (Demand demand : demands) {
             if (!demand.getServerId().equals("0")) {
                 demand.setServerName(getServerInfo(demand.getServerId()));
@@ -39,11 +39,11 @@ public class DemandController {
                 demand.setMandatorName(getServerInfo(demand.getMandatorId()));
             }
         }
-        return JSON.toJSONString(new ResultBody(ResultCode.SUCCESS, new DemandInfo(getClientInfo(client_id), demands)));
+        return JSON.toJSONString(new ResultBody(ResultCode.SUCCESS, new DemandInfo(getClientInfo(clientId), demands)));
     }
 
     @ResponseBody
-    @PostMapping(value = "/new_demand", produces = "application/json")
+    @PostMapping(value = "/detail", produces = "application/json")
     public String createDemand(@RequestBody Demand demand) {
         if (null == demand.getDemandId()) {
             return JSON.toJSONString(new ResultBody(ResultCode.FAIL));

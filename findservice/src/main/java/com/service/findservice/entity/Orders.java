@@ -7,16 +7,12 @@ import com.service.findservice.entity.Order;
 import java.util.List;
 
 public class Orders {
-    @JSONField(name = "client_info")
     private Client clientInfo;
 
-    @JSONField(name = "executing_orders")
     private List<Order> executingOrders;
 
-    @JSONField(name = "monthly_orders")
     private List<Boolean> monthlyOrders;
 
-    @JSONField(name = "daily_orders")
     private List<Order> dailyOrders;
 
     public Orders(Client clientInfo, List<Order> executingOrders, List<Boolean> monthlyOrders, List<Order> dailyOrders) {

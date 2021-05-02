@@ -12,23 +12,19 @@ public class ClientServerService {
     @Autowired
     private ClientServerMapper clientServerMapper;
 
-    public List<ClientServer> findServerByClientId(String clientId) {
-        return clientServerMapper.selectServersByClientId(clientId);
+    public List<ClientServer> selectClientServerInfoByClientId(String clientId) {
+        return clientServerMapper.selectClientServersByClientId(clientId);
     }
 
-    public int updateByClientAndServerSelective(String clientId, String serverId, String clientComment, String serverComment) {
-        ClientServer clientServer = new ClientServer();
-        clientServer.setClientId(clientId);
-        clientServer.setServerId(serverId);
-        clientServer.setClientComment(clientComment);
-        clientServer.setServerComment(serverComment);
-        return clientServerMapper.updateByClientAndServerSelective(clientServer);
+    public int updateByClientIdAndServerIdSelective(ClientServer record) {
+        return clientServerMapper.updateByClientIdAndServerIdSelective(record);
     }
 
-    public int deleteByClientAndServer(String clientId, String serverId) {
-        ClientServer clientServer = new ClientServer();
-        clientServer.setClientId(clientId);
-        clientServer.setServerId(serverId);
-        return clientServerMapper.deleteByClientAndServer(clientServer);
+    public int deleteByClientIdAndServerId(ClientServer record) {
+        return clientServerMapper.deleteByClientIdAndServerId(record);
+    }
+
+    public int insertByClientIdAndServerId(ClientServer record) {
+        return clientServerMapper.insertSelective(record);
     }
 }

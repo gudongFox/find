@@ -20,9 +20,9 @@ public interface ClientServerMapper {
 
     int updateByPrimaryKey(ClientServer record);
 
-    List<ClientServer> selectServersByClientId(String clientId);
+    List<ClientServer> selectClientServersByClientId(String clientId);
 
-    int updateByClientAndServerSelective(ClientServer record);
+    int updateByClientIdAndServerIdSelective(ClientServer record);
 
-    int deleteByClientAndServer(ClientServer clientServer);
+    int deleteByClientIdAndServerId(ClientServer clientServer);
 }

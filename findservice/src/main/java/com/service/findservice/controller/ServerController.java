@@ -20,7 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Server")
+@RequestMapping("/server")
 public class ServerController {
 
     @Autowired

@@ -19,6 +19,11 @@ public class ClientServer {
         this.serverComment = serverComment;
     }
 
+    public ClientServer(String clientId, String serverId) {
+        this.clientId = clientId;
+        this.serverId = serverId;
+    }
+
     public ClientServer() {
         super();
     }

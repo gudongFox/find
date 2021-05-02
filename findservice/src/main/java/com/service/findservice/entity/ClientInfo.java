@@ -1,9 +1,6 @@
 package com.service.findservice.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 public class ClientInfo {
-    @JSONField(name = "client")
     Client client;
 
     public ClientInfo(Client client) {

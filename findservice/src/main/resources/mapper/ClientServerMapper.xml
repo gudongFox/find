@@ -13,12 +13,36 @@
   <sql id="Base_Column_List">
     client_server_id, client_id, server_id, client_comment, server_comment
   </sql>
-  <select id="selectServersByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
+  
+  <select id="selectClientServersByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from client_server
     where client_id = #{clientId, jdbcType=VARCHAR}
   </select>
+
+  <delete id="deleteByClientIdAndServerId" parameterType="com.service.findservice.entity.ClientServer">
+    delete
+    from client_server
+    where client_id = {#clientId
+        , jdbcType= VARCHAR}
+      and server_id = {#serverId
+        , jdbcType= VARCHAR}
+  </delete>
+
+  <update id="updateByClientIdAndServerIdSelective" parameterType="com.service.findservice.entity.ClientServer">
+    update client_server
+    <set>
+      <if test="clientComment != null">
+        client_comment = #{clientComment,jdbcType=VARCHAR},
+      </if>
+      <if test="serverComment != null">
+        server_comment = #{serverComment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where client_id = #{clientId, jdbcType=VARCHAR} and server_id = #{serverId, jdbcType=VARCHAR}
+  </update>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

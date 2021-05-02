@@ -5,10 +5,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import java.util.List;
 
 public class DemandInfo {
-    @JSONField(name = "client_info")
     private Client clientInfo;
 
-    @JSONField(name = "demands_info")
     private List<Demand> demandsInfo;
 
     public DemandInfo() {

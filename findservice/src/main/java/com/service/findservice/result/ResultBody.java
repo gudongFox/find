@@ -6,13 +6,11 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 
 public class ResultBody {
 
-    @JSONField(name = "code")
     private String code;
 
-    @JSONField(name = "message")
     private String message;
 
-    @JSONField(name = "data", serialzeFeatures = {SerializerFeature.WriteMapNullValue})
+    @JSONField(serialzeFeatures = {SerializerFeature.WriteMapNullValue})
     private Object data;
 
     public String getCode() {

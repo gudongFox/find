@@ -22,8 +22,8 @@ public class ClientController {
      * @return client information
      */
     @ResponseBody
-    @GetMapping(path = "/client_info", produces = "application/json")
-    public String getClientInfo(@RequestParam(name = "client_id") String clientId) {
+    @GetMapping(path = "/info", produces = "application/json")
+    public String getClientInfo(@RequestParam(name = "clientId") String clientId) {
         return JSON.toJSONString(new ResultBody(ResultCode.SUCCESS, new ClientInfo(clientService.selectClientById(clientId))));
     }
 
@@ -34,7 +34,7 @@ public class ClientController {
      * @return success->200, fail->400
      */
     @ResponseBody
-    @PostMapping(path = "client_info", produces = "application/json")
+    @PatchMapping(path = "info", produces = "application/json")
     public String updateClientInfo(@RequestBody Client client) {
         if (null == client.getClientId()) {
             return JSON.toJSONString(new ResultBody(ResultCode.FAIL));
