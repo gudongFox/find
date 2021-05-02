@@ -1,4 +1,4 @@
-package com.service.findservice.dao;
+package com.service.findservice.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.service.findservice.entity.Client;

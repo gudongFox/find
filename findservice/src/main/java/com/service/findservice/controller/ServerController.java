@@ -41,52 +41,12 @@ public class ServerController {
     @RequestMapping(value = "/getOrderWeek/{server_id}" )
     public List<Order> getOrderWeek(@PathVariable String server_id){
         return orderService.selectWeekOrderByDate(server_id, new Date());
-//        Date date = new Date();
-//        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-//        String str = df.format(date);
-//        int now_time = Integer.parseInt(str.substring(0,8));
-//
-//        List<Order> orders = orderService.selectOrderBySId(server_id);
-//        if(orders != null){
-//            for(int i = orders.size() - 1; i >= 0 ; i--){
-//                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
-//                if(start_time < now_time || start_time > now_time + 6){
-//                    orders.remove(orders.get(i));
-//                }
-//            }
-////            for(Order order : orders){
-////                int start_time = Integer.parseInt(order.getStartTime().substring(0,8));
-////                if(start_time < now_time || start_time > now_time + 6){
-////                    orders.remove(order);
-////                }
-////            }
-//        }
     }
 
     //得到某个月的订单
     @RequestMapping(value = "/getOrderMonth/{server_id}/{year_month}")
     public List<Order> getOrderMonth(@PathVariable String server_id, @PathVariable String year_month) throws ParseException {
         return orderService.selectMonOrderBySId(server_id,  year_month);
-//        Date date = new Date();
-//        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-//        String str = df.format(date);
-//        int now_time = Integer.parseInt(str.substring(0,8));
-//
-//        List<Order> orders = orderService.selectOrderBySId(server_id);
-//        if(orders != null){
-//            for(int i = orders.size() - 1; i >= 0 ; i--){
-//                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
-//                if(start_time < now_time || start_time > now_time + 6){
-//                    orders.remove(orders.get(i));
-//                }
-//            }
-////            for(Order order : orders){
-////                int start_time = Integer.parseInt(order.getStartTime().substring(0,8));
-////                if(start_time < now_time || start_time > now_time + 6){
-////                    orders.remove(order);
-////                }
-////            }
-//        }
     }
 
     @RequestMapping(value = "/getAllOrder/{server_id}")
@@ -97,34 +57,12 @@ public class ServerController {
     @RequestMapping(value = "/getOrderToday/{server_id}" )
     public List<Order> getOrderToday(@PathVariable String server_id) {
         return orderService.selectOrderByDate(server_id, new Date());
-//        String str = df.format(date);
-//        int now_time = Integer.parseInt(str.substring(0,8));
-//
-//        List<Order> orders = orderService.selectOrderBySId(server_id);
-//        if(orders != null){
-//            for(int i = orders.size() - 1; i >= 0 ; i--){
-//                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
-//                if(start_time != now_time ){
-//                    orders.remove(orders.get(i));
-//                }
-//            }
-//        }
-//        return orders;
     }
 
     @RequestMapping(value = "/getOrderByDate/{server_id}/{date}")
     public List<Order> getOrderByDate(@PathVariable String server_id ,@PathVariable String date) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return orderService.selectOrderByDate(server_id,  simpleDateFormat.parse(date));
-//        List<Order> orders = orderService.selectOrderBySId(server_id);
-//        if(orders != null){
-//            for(int i = orders.size() - 1; i >= 0 ; i--){
-//                int start_time = Integer.parseInt(orders.get(i).getStartTime().substring(0,8));
-//                if(start_time != date ){
-//                    orders.remove(orders.get(i));
-//                }
-//            }
-//        }
     }
 
     //查询未完成订单

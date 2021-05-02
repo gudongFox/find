@@ -1,7 +1,7 @@
 package com.service.findservice.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.service.findservice.dao.Orders;
+import com.service.findservice.entity.Orders;
 import com.service.findservice.entity.Client;
 import com.service.findservice.entity.Order;
 import com.service.findservice.entity.OrderDetail;
