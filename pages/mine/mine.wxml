@@ -2,7 +2,9 @@
   <van-row gutter="20" custom-class="happading">
     <van-col span="6" offset="1">
       <text>\n\n</text>
-      <van-image width="80" round height="80" src="https://thirdwx.qlogo.cn/mmopen/vi_32/sHPrgfrTWlUuMveposfYmp2l1suPricsaxuP5OX3WnX8vye9QqcbMfwBZbibg18NkRJ247UPgWtH0l5icOwicyXQHA/132" />
+      <van-image width="80" round lazy-load height="80" src="{{myImage}}" use-error-slot>
+        <text slot="error">加载失败</text>
+      </van-image>
     </van-col>
     <van-col span="11">
       <view style="display:flex;flex-direction: column;">

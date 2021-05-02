@@ -1,4 +1,5 @@
 // pages/mine/mine.js
+var image_scr = ''
 Page({
 
   /**
@@ -8,7 +9,8 @@ Page({
     num:65,
     total:207,
     success:95.4+'%',
-    score:3.5
+    score:3.5,
+    myImage: ""
   },
   click:function(){
     wx.redirectTo({
@@ -19,7 +21,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    image_scr = wx.getStorageSync('avatarUrl')
+    that.setData({
+      "myImage": image_scr
+    })
+    console.log(that.data.myImage)
   },
 
   /**

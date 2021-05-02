@@ -21,21 +21,21 @@
             </view>
           </van-popup>
         </view>
-        <view bindtap="toServerInfo">
+        <view bindtap="toServerInfo" wx:for="{{platServerList}}" wx:key="id" data-id = "{{item.id}}">
           <van-cell-group>
             <van-cell clickable="true">
               <van-row>
                 <van-col span="5">
-                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                  <van-image round width="50" height="50" src="{{item.imageUrl}}" />
                 </van-col>
                 <van-col span="10">
-                  <view class="display-center"><text class="textbig,textblack">李阿姨 </text></view>
+                  <view class="display-center"><text class="textbig,textblack">{{item.name}} </text></view>
                   <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                    <text class="textsmall">{{item.location}}</text>
                   </view>
                 </van-col>
                 <van-col span="3">
-                  <view class="display-center">
+                  <view class="display-center" wx:if="{{item.recommand}}">
                     <van-tag color="red" round size="medium">荐</van-tag>
                   </view>
                 </van-col>
@@ -56,17 +56,17 @@
           <text style="color:#8A2BE2;font-size:small;margin-left:1rem">我信任的服务人</text>
           <van-button plain type="primary" size="small" style="margin-left:320rpx">添加</van-button>
         </view>
-        <view bindtap="toServerInfo">
+        <view bindtap="toServerInfo" wx:for="{{believeServerList}}" wx:key="id" data-id="{{item.id}}">
           <van-cell-group>
             <van-cell clickable="true">
               <van-row>
                 <van-col span="5">
-                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                  <van-image round width="50" height="50" src="{{item.imageUrl}}" />
                 </van-col>
                 <van-col span="10">
-                  <view class="display-center"><text class="textbig,textblack">李阿姨 </text></view>
+                  <view class="display-center"><text class="textbig,textblack">{{item.name}} </text></view>
                   <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                    <text class="textsmall">{{item.location}}</text>
                   </view>
                 </van-col>
                 <van-col span="3">

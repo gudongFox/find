@@ -23,16 +23,14 @@ Page({
         var code = res.code;
         console.log(code);
         wx.request({
-          url: 'https://api.wexin.qq.com/sns/jscode2session',
+          url: 'http://localhost:8080/login/login',
           method: 'GET',
           data: {
-            appid: 'wx3d2c71c080e41cf9',
-            secret: '1ed37421758b2a94c83c30e52f3d8e5d',
-            js_code: code
+            code: code
           },
           success: function (res) {
             var openid = ''
-            openid = res.data.openid;
+            openid = res.data;
             console.log(openid)
           },
           fail: function (res) {

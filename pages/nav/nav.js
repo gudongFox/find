@@ -25,15 +25,19 @@ Page({
   // 判断用户是否授权登录
     wx.getSetting({
       success: function (res) {
+        console.log(1)
+        console.log(res)
         // 判断是否授权
         if (res.authSetting['scope.userInfo']) {
            //获取用户信息
           wx.getUserInfo({
             success: function (res) {
+              console.log(2)
               //用户已经授权过，添加用户信息
-              // var that = this
-              //wx.setStorageSync('nickName', res.userInfo.nickName)
-              //wx.setStorageSync('avatarUrl', res.userInfo.avatarUrl)
+              var that = this
+              wx.setStorageSync('nickName', res.userInfo.nickName)
+              wx.setStorageSync('avatarUrl', res.userInfo.avatarUrl)
+              console.log(wx.getStorageSync('avatarUrl'))
             }
           });
         }else{

@@ -5,6 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    platServerList:[
+      {id:0,name:"李阿姨",type:"家庭保洁",location:"虎溪花园，4栋3-3-1",recommand:true,imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'},
+      {id:1,name:"李阿姨",type:"家庭保洁",location:"虎溪花园，4栋3-3-1",recommand:true,imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'}
+    ],
+    believeServerList:[
+      {id:3,name:"李阿姨",type:"家庭保洁",location:"虎溪花园，4栋3-3-1",recommand:true,imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'},
+      {id:4,name:"李阿姨",type:"家庭保洁",location:"虎溪花园，4栋3-3-1",recommand:true,imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'}
+    ],
     active:0,
     value:'',
     serviceList:[
@@ -88,9 +96,12 @@ Page({
   noop() {},
 
   //跳转到服务人详情页
-  toServerInfo:function(){
+  toServerInfo:function(e){
+    console.log(e)
+    var id = e.currentTarget.dataset.id
+    console.log(id)
     wx.navigateTo({
-      url: '/pages/record/serverInfo/serverInfo',
+      url: '/pages/record/serverInfo/serverInfo?id='+id,
     })
   }
 })
