@@ -1,30 +1,44 @@
 package com.service.findservice.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 public class Demand {
+    @JSONField(name = "demand_id")
     private Integer demandId;
 
+    @JSONField(name = "client_id")
     private String clientId;
 
+    @JSONField(name = "service_project")
     private String serviceProject;
 
+    @JSONField(name = "mandator_id")
     private String mandatorId;
 
+    @JSONField(name = "mandator_name")
     private String mandatorName;
 
+    @JSONField(name = "server_id")
     private String serverId;
 
+    @JSONField(name = "server_name")
     private String serverName;
 
+    @JSONField(name = "start_time")
     private Date startTime;
 
+    @JSONField(name = "end_time")
     private Date endTime;
 
+    @JSONField(name = "times")
     private Short times;
 
+    @JSONField(name = "interval_days")
     private Short intervalDays;
 
+    @JSONField(name = "demand_comment")
     private String demandComment;
 
     public Demand(Integer demandId, String clientId, String serviceProject, String mandatorId, String serverId, Date startTime, Date endTime, Short times, Short intervalDays, String demandComment) {

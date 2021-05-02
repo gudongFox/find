@@ -112,7 +112,7 @@ public class ServerController {
 
     @RequestMapping(value = "/getDemand/{server_id}")
     public List<Demand> getDemand(@PathVariable String server_id) {
-        return demandService.selectDemandBySID(server_id);
+        return demandService.selectDemandByServerId(server_id);
     }
 
     @RequestMapping(value = "/updateWorkTime/{server_id}/{work_day}/{work_hour}")
@@ -143,7 +143,7 @@ public class ServerController {
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
     @RequestMapping("/receiveOrder/{server_id}/{demand_id}")
     public int receiveOrder(@PathVariable String server_id, @PathVariable int demand_id, Order order){
-        Demand demand = demandService.selectDemandByDId(demand_id);
+        Demand demand = demandService.selectDemandByDemandId(demand_id);
         Date date = new Date();
         order.setOrderTime(date);
         order.setClientId(demand.getClientId());
@@ -154,7 +154,7 @@ public class ServerController {
         order.setIsSubstitue(0);
         if(orderService.insert(order) != 0 ){
             if(serverServiceService.insertOrderServers(order.getOrderId(), server_id, 0) != 0){
-                return demandService.deleteByPrimaryKey(demand_id);
+                return demandService.deleteByDemandId(demand_id);
             }
         }
         return 0;
@@ -164,7 +164,7 @@ public class ServerController {
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
     @RequestMapping("/giveOrder/{mandator_id}/{server_id}/{demand_id}")
     public int giveOrder(@PathVariable String mandator_id,@PathVariable String server_id, @PathVariable int demand_id, Order order){
-        Demand demand = demandService.selectDemandByDId(demand_id);
+        Demand demand = demandService.selectDemandByDemandId(demand_id);
         order.setOrderTime(new Date());
         order.setClientId(demand.getClientId());
         order.setMandatorId(mandator_id);
@@ -174,7 +174,7 @@ public class ServerController {
         order.setIsSubstitue(0);
         if(orderService.insert(order) != 0 ){
             if(serverServiceService.insertOrderServers(order.getOrderId(), server_id, 2) != 0){
-                return demandService.deleteByPrimaryKey(demand_id);
+                return demandService.deleteByDemandId(demand_id);
             }
         }
         return 0;

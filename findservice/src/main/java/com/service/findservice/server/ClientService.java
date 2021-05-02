@@ -26,6 +26,6 @@ public class ClientService {
     }
 
     public int updateClientInfo(Client client){
-        return clientMapper.updateByPrimaryKey(client);
+        return clientMapper.updateByPrimaryKeySelective(client);
     }
 }

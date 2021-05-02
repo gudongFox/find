@@ -13,19 +13,23 @@ public class DemandService {
     @Autowired
     private DemandMapper demandMapper;
 
-    public List<Demand> selectDemandBySID(String server_id){
-       return demandMapper.selectDemandBySID(server_id);
+    public List<Demand> selectDemandByServerId(String serverId) {
+        return demandMapper.selectDemandByServerId(serverId);
     }
 
-    public Demand selectDemandByDId(int demand_id){
-        return demandMapper.selectByPrimaryKey(demand_id);
+    public Demand selectDemandByDemandId(int demandId) {
+        return demandMapper.selectByPrimaryKey(demandId);
     }
 
-    public int deleteByPrimaryKey(Integer demandId){
+    public int deleteByDemandId(Integer demandId) {
         return demandMapper.deleteByPrimaryKey(demandId);
     }
 
-    public List<Demand> findDemandByClientId(String client_id){
-        return demandMapper.selectDemandsByClientId(client_id);
+    public List<Demand> selectDemandsByClientId(String clientId) {
+        return demandMapper.selectDemandsByClientId(clientId);
+    }
+
+    public int insertDemand(Demand demand) {
+        return demandMapper.insertSelective(demand);
     }
 }

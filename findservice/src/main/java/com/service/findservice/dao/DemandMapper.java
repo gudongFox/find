@@ -19,7 +19,7 @@ public interface DemandMapper {
 
     int updateByPrimaryKey(Demand record);
 
-    List<Demand> selectDemandBySID(String server_id);
+    List<Demand> selectDemandByServerId(String serverId);
 
     List<Demand> selectDemandsByClientId(String clientId);
 }

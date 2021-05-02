@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.service.findservice.entity.Client;
 import com.service.findservice.entity.Demand;
 import com.service.findservice.entity.DemandInfo;
+import com.service.findservice.result.ResultBody;
+import com.service.findservice.result.ResultCode;
 import com.service.findservice.server.ClientService;
 import com.service.findservice.server.DemandService;
 import com.service.findservice.server.ServerService;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Demand")
+@RequestMapping("/demand")
 public class DemandController {
 
     @Autowired
@@ -26,28 +28,28 @@ public class DemandController {
     private ClientService clientService;
 
     @ResponseBody
-    @GetMapping(path = "/getDemand", produces = "application/json")
-    public String getDemandByClientId(String client_id) {
-        List<Demand> demands = demandService.findDemandByClientId(client_id);
+    @GetMapping(path = "/demands_info", produces = "application/json")
+    public String getDemandsByClientId(String client_id) {
+        List<Demand> demands = demandService.selectDemandsByClientId(client_id);
         for (Demand demand : demands) {
             if (!demand.getServerId().equals("0")) {
                 demand.setServerName(getServerInfo(demand.getServerId()));
-            } else {
-                demand.setServerName("待确定");
             }
             if (!demand.getMandatorId().equals("0")) {
                 demand.setMandatorName(getServerInfo(demand.getMandatorId()));
-            } else {
-                demand.setMandatorName("");
             }
         }
-        return JSON.toJSONString(new DemandInfo(getClientInfo(client_id), demands));
+        return JSON.toJSONString(new ResultBody(ResultCode.SUCCESS, new DemandInfo(getClientInfo(client_id), demands)));
     }
 
     @ResponseBody
-    @PostMapping(value = "/newDemand", produces = "application/json")
-    public void newDemand() {
-
+    @PostMapping(value = "/new_demand", produces = "application/json")
+    public String createDemand(@RequestBody Demand demand) {
+        if (null == demand.getDemandId()) {
+            return JSON.toJSONString(new ResultBody(ResultCode.FAIL));
+        }
+        int res = demandService.insertDemand(demand);
+        return res > 0 ? JSON.toJSONString(new ResultBody(ResultCode.SUCCESS)) : JSON.toJSONString(new ResultBody(ResultCode.FAIL));
     }
 
     private Client getClientInfo(String clientId) {

@@ -24,7 +24,7 @@ public class ClientController {
     @ResponseBody
     @GetMapping(path = "/client_info", produces = "application/json")
     public String getClientInfo(@RequestParam(name = "client_id") String clientId) {
-        return JSON.toJSONString(new ClientInfo(clientService.selectClientById(clientId)));
+        return JSON.toJSONString(new ResultBody(ResultCode.SUCCESS, new ClientInfo(clientService.selectClientById(clientId))));
     }
 
     /**
