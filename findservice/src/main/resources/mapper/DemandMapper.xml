@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.service.findservice.dao.DemandMapper">
+  <resultMap id="BaseResultMap" type="com.service.findservice.entity.Demand">
+    <constructor>
+      <idArg column="demand_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="client_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="service_project" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="mandator_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="start_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="end_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="times" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="interval_days" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="demand_comment" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    demand_id, client_id, service_project, mandator_id, server_id, start_time, end_time,
+    times, interval_days, demand_comment
+  </sql>
+
+  <select id="selectDemandsByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from demand
+    where client_id = #{clientId, jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectDemandByServerId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from demand
+    where server_id = #{serverId,jdbcType=VARCHAR} or mandator_id = #{serverId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from demand
+    where demand_id = #{demandId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from demand
+    where demand_id = #{demandId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.service.findservice.entity.Demand">
+    insert into demand (demand_id, client_id, service_project,
+      mandator_id, server_id, start_time,
+      end_time, times, interval_days,
+      demand_comment)
+    values (#{demandId,jdbcType=INTEGER}, #{clientId,jdbcType=VARCHAR}, #{serviceProject,jdbcType=CHAR},
+      #{mandatorId,jdbcType=VARCHAR}, #{serverId,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP},
+      #{endTime,jdbcType=TIMESTAMP}, #{times,jdbcType=SMALLINT}, #{intervalDays,jdbcType=SMALLINT},
+      #{demandComment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.service.findservice.entity.Demand">
+    insert into demand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="demandId != null">
+        demand_id,
+      </if>
+      <if test="clientId != null">
+        client_id,
+      </if>
+      <if test="serviceProject != null">
+        service_project,
+      </if>
+      <if test="mandatorId != null">
+        mandator_id,
+      </if>
+      <if test="serverId != null">
+        server_id,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="times != null">
+        times,
+      </if>
+      <if test="intervalDays != null">
+        interval_days,
+      </if>
+      <if test="demandComment != null">
+        demand_comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="demandId != null">
+        #{demandId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null">
+        #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceProject != null">
+        #{serviceProject,jdbcType=CHAR},
+      </if>
+      <if test="mandatorId != null">
+        #{mandatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="serverId != null">
+        #{serverId,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="times != null">
+        #{times,jdbcType=SMALLINT},
+      </if>
+      <if test="intervalDays != null">
+        #{intervalDays,jdbcType=SMALLINT},
+      </if>
+      <if test="demandComment != null">
+        #{demandComment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.Demand">
+    update demand
+    <set>
+      <if test="clientId != null">
+        client_id = #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceProject != null">
+        service_project = #{serviceProject,jdbcType=CHAR},
+      </if>
+      <if test="mandatorId != null">
+        mandator_id = #{mandatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="serverId != null">
+        server_id = #{serverId,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="times != null">
+        times = #{times,jdbcType=SMALLINT},
+      </if>
+      <if test="intervalDays != null">
+        interval_days = #{intervalDays,jdbcType=SMALLINT},
+      </if>
+      <if test="demandComment != null">
+        demand_comment = #{demandComment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where demand_id = #{demandId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.Demand">
+    update demand
+    set client_id = #{clientId,jdbcType=VARCHAR},
+      service_project = #{serviceProject,jdbcType=CHAR},
+      mandator_id = #{mandatorId,jdbcType=VARCHAR},
+      server_id = #{serverId,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      times = #{times,jdbcType=SMALLINT},
+      interval_days = #{intervalDays,jdbcType=SMALLINT},
+      demand_comment = #{demandComment,jdbcType=VARCHAR}
+    where demand_id = #{demandId,jdbcType=INTEGER}
+  </update>
+</mapper>
