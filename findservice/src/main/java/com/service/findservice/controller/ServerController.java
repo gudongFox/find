@@ -245,6 +245,11 @@ public class ServerController {
         return simpleDateFormat.format(simpleDateFormat.parse("2020-04"));
     }
 
+    /**
+     * 通过server id得到server的信息
+     * @param serverId server id
+     * @return
+     */
     @GetMapping(path = "/info")
     public ResultBody getServerInfoByServerId(String serverId) {
         if (null == serverId) {
@@ -254,6 +259,11 @@ public class ServerController {
         return null == server ? new ResultBody(ResultCode.FAIL) : new ResultBody(ResultCode.SUCCESS, server);
     }
 
+    /**
+     * 新建server信息
+     * @param server Server对象
+     * @return 200->success 400->fail
+     */
     @PostMapping(path = "/info")
     public ResultBody createServer(@RequestBody Server server) {
         if (null == server.getServerId() || null != serverService.findServerById(server.getServerId())) {

@@ -14,8 +14,10 @@ import com.service.findservice.server.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -36,17 +38,20 @@ public class OrderController {
 
     /**
      * 通过客户获得订单信息
-     * @param clientId 客户的id
-     * @param day 指定某一天的订单，优先级高于isExecuting；不要求一定传值；
+     *
+     * @param clientId    客户的id
+     * @param day         指定某一天的订单，优先级高于isExecuting；不要求一定传值；
      * @param isExecuting true 表示正在执行的订单；不要求一定传值；
-     * @param month 传值为某个月，格式为yyyy-MM；不要求一定传值；返回的内容为List<Boolean>, true表示该天有订单
+     * @param month       传值为某个月，格式为yyyy-MM；不要求一定传值；返回的内容为List<Boolean>, true表示该天有订单
+     * @param week        传值为某一天，格式为yyyy-MM-dd；不要求一定传值；返回内容为List<List<Boolean>>
      * @return Orders
      */
     @GetMapping(path = "/detail")
     public ResultBody getOrders(@RequestParam(name = "clientId") String clientId,
-                            @RequestParam(name = "day", required = false) String day,
-                            @RequestParam(name = "isExecuting", required = false) Boolean isExecuting,
-                            @RequestParam(name = "month", required = false) String month) {
+                                @RequestParam(name = "day", required = false) String day,
+                                @RequestParam(name = "isExecuting", required = false) Boolean isExecuting,
+                                @RequestParam(name = "month", required = false) String month,
+                                @RequestParam(name = "week", required = false) String week) {
         Orders orders = new Orders();
         if (null != clientId) {
             orders.setClientInfo(clientService.selectClientById(clientId));
@@ -68,7 +73,33 @@ public class OrderController {
         } else {
             orders.setMonthlyOrders(new ArrayList<>());
         }
+        if (null != week) {
+            orders.setWeeklyOrders(getWeeklyOrders(clientId, week));
+        } else {
+            orders.setWeeklyOrders(new ArrayList<>());
+        }
         return new ResultBody(ResultCode.SUCCESS, orders);
+    }
+
+    private List<List<Boolean>> getWeeklyOrders(String clientId, String week) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        List<List<Boolean>> weeklyOrders = new ArrayList<>();
+        Date beginDate = null;
+        try {
+            beginDate = format.parse(week);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (null != beginDate) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(beginDate);
+            for (int i = 0; i < 7; i++) {
+                calendar.add(Calendar.DATE, i);
+                String day = format.format(calendar.getTime());
+                weeklyOrders.add(getDailyWorkTime(clientId, day));
+            }
+        }
+        return weeklyOrders;
     }
 
     private List<Boolean> getMonthlyOrders(String clientId, String month) {
@@ -122,5 +153,22 @@ public class OrderController {
                 server.getServerName(),
                 mandatorName,
                 isFinished);
+    }
+
+    private List<Boolean> getDailyWorkTime(String clientId, String date) {
+        List<Order> orders = orderService.selectOrdersByClientIdAndDate(clientId, date);
+        List<Boolean> dailyWorkTime = new ArrayList<>(10);
+        if (orders == null) {
+            return dailyWorkTime;
+        }
+        for (Order order : orders) {
+            int begin = order.getStartTime().getHours() - 8;
+            int end = order.getEndTime().getHours() - 8;
+            while (begin < end) {
+                dailyWorkTime.set(begin, true);
+                begin++;
+            }
+        }
+        return dailyWorkTime;
     }
 }

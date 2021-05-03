@@ -1,9 +1,5 @@
 package com.service.findservice.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.service.findservice.entity.Client;
-import com.service.findservice.entity.Order;
-
 import java.util.List;
 
 public class Orders {
@@ -15,14 +11,17 @@ public class Orders {
 
     private List<Order> dailyOrders;
 
-    public Orders(Client clientInfo, List<Order> executingOrders, List<Boolean> monthlyOrders, List<Order> dailyOrders) {
+    private List<List<Boolean>> weeklyOrders;
+
+    public Orders(Client clientInfo, List<Order> executingOrders, List<Boolean> monthlyOrders, List<Order> dailyOrders, List<List<Boolean>> weeklyOrders) {
         this.clientInfo = clientInfo;
         this.executingOrders = executingOrders;
         this.monthlyOrders = monthlyOrders;
         this.dailyOrders = dailyOrders;
+        this.weeklyOrders = weeklyOrders;
     }
 
-    public Orders(){
+    public Orders() {
         super();
     }
 
@@ -56,5 +55,13 @@ public class Orders {
 
     public void setDailyOrders(List<Order> dailyOrders) {
         this.dailyOrders = dailyOrders;
+    }
+
+    public List<List<Boolean>> getWeeklyOrders() {
+        return weeklyOrders;
+    }
+
+    public void setWeeklyOrders(List<List<Boolean>> weeklyOrders) {
+        this.weeklyOrders = weeklyOrders;
     }
 }
