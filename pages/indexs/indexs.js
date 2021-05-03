@@ -2,7 +2,8 @@ let app = getApp()
 
 Page({
   data: {
-    currentTab: 0,
+    currentTab:0,
+    active:0,
     items: [
       {
         "iconPath": "/pages/img/all.png",
@@ -24,24 +25,16 @@ Page({
         "selectedIconPath": "/pages/img/bussiness-man (1).png",
         "text": "我的"
       }
-    ]
+    ],
+    
   },
-  swichNav: function (e) {
-    let that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      that.setData({
-        currentTab: e.target.dataset.current
-      })
-    }
+
+  onChange(event){
+    this.setData({active:event.detail});
+    this.setData({currentTab:event.detail});
   },
+
   onLoad: function (option) {
 
   },
-  onShow:function(){
-    wx.hideHomeButton({
-      success: (res) => {},
-    })
-  }
 })

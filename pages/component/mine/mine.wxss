@@ -55,3 +55,30 @@
   width: 100%;
   height: 1em;
 }
+
+
+
+.flexStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.specialBlock {
+  width: 100rpx;
+  height: 10rpx;
+}

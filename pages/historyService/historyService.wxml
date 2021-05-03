@@ -3,9 +3,6 @@
     <van-icon name="clock" color="#00AA00" />
     <text style="color:#00AA00;font-size:small;margin-left:15rpx">订单详情</text>
   </view>
-  <view>
-    <button size="mini" type="primary" plain="true">修改</button>
-  </view>
 </view>
 
 <view>

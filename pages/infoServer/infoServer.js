@@ -5,17 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderId:"2020101102800001",
-    orderTime:"2020年07月07日08:47",
-    clientName:"马先生",
-    clientPhoneNum:"13000000001",
-    clientLocation:"成都市锦江文化中心",
-    clientHouseNum:"虎溪花园,4栋5-1",
-    serviceObj:"家庭保洁",
-    serviceTime:"2020年07月08日8:00～10:00",
-    period:"第5次，共10次，间隔7天",
-    rates:"45.00元/小时",
-    comment:"有宠物",
+    name:"李玲",
+    phoneNum:"13000000001",
+    location:"成都市锦江文化中心",
+    houseNum:"虎溪花园，4栋5-1"
 
   },
 

@@ -26,10 +26,86 @@
   
   border-radius:50px !important;
   }
-.divLine{
+/* .divLine{
   background: #E0E3DA;
   width: 100%;
   height: 5rpx;
+} */
+
+.specialLine{
+  width: 750rpx;
+  height: 15rpx;
+}
+
+.specialBlock {
+  width: 15rpx;
+  height: 10rpx;
+}
+
+.flexStart {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5em;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexIcon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.divLine{
+  background: #D1D1D1;
+  width: 750rpx;
+  height: 5rpx;
+}
+
+.textmedium{
+  font-size: medium;
+  align-self: center;
+}
+.textsmall{
+  font-size: small;
+}
+.textbig{
+  font-size: large;
+}
+.textblack{
+  color: #000;
+}
+.textgreen{
+  color: green;
+}
+.tabw{
+  display: inline !important;
+}
+.textred{
+  color: red;
+}
+.textwhite{
+  color: white;
+}
+
+.calendar {
+  --calendar-height: 500rpx;
 }
 
 
