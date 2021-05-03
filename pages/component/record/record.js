@@ -17,6 +17,36 @@ Component({
 
   /* 组件的初始数据 */
   data: {
+    substituteClickUrl:"/pages/unfinishedService/unfinishedService",
+    substituteList:[
+      {
+        substitutedClientProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
+        substitutedClientName:"王阿姨",
+        substitutedUnfinishedTimes:"未结算(2)",
+        substitutedClientLocation:"成都市锦兴路",
+        serviceTimes:"服务(13)",
+        substituteTimes:"委托(7)",
+      },
+      {
+        substitutedClientProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
+        substitutedClientName:"张阿姨",
+        substitutedUnfinishedTimes:"未结算(1)",
+        substitutedClientLocation:"成都市锦兴路",
+        serviceTimes:"服务(3)",
+        substituteTimes:"委托(5)",
+      },
+    ],
+
+    partnerClickUrl:"/pages/infoPartner/infoPartner",
+    partnerList:[
+      {
+        partnerProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
+        partnerName:"王阿姨",partnerLocation:"成都市锦兴路",
+        partnerServiceTimes:"服务(13)",
+        partnerSubstituteTimes:"委托(7)",
+      },
+    ],
+
     active:0,
     value:'',
     serviceList:[

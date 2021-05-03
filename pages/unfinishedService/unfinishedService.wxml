@@ -3,9 +3,6 @@
     <van-icon name="clock" color="#00AA00" />
     <text style="color:#00AA00;font-size:small;margin-left:15rpx">订单详情</text>
   </view>
-  <view>
-    <button size="mini" type="primary" plain="true">修改</button>
-  </view>
 </view>
 
 <view>
@@ -40,11 +37,24 @@
         <view class="textblack" space="emsp">{{clientHouseNum}}</view>
       </view>
     </van-cell>
+
     <van-divider contentPosition="center"></van-divider>
+
+    <van-cell>
+      <view class="flexCell">
+        <view>服务人</view>
+        <text style="color:black">{{serverName}}</text>
+        <van-image round width="50" height="50" src="{{serverProfile}}" />
+        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button>
+      </view>
+    </van-cell>
+    
+    <van-divider contentPosition="center"></van-divider>
+
     <van-cell>
       <view class="flexCell">
         <view>服务类型</view>
-        <view class="textblack">{{serviceObj}}</view>
+        <view class="textblack">{{serviceProject}}</view>
       </view>
       <view class="flexCell">
         <view>上门时间</view>
@@ -52,19 +62,26 @@
       </view>
       <view class="flexCell">
         <view>次数/周期</view>
-        <view class="textblack">{{period}}</view>
+        <view class="textblack">{{servicePeriod}}</view>
       </view>
       <view class="flexCell">
         <view>收费标准</view>
-        <view class="textblack" space="emsp">{{rates}}</view>
+        <view class="textblack" space="emsp">{{serviceRate}}</view>
       </view>
       <view class="flexCell">
         <view>备注</view>
-        <view class="textblack" space="emsp">{{comment}}</view>
+        <view class="textblack" space="emsp">{{serviceComment}}</view>
       </view>
     </van-cell>
 
-    <van-divider contentPosition="center">已经到底啦</van-divider>
-
   </van-cell-group>
 </view>
+
+<van-divider></van-divider>
+
+<view class="flexRow">
+  <van-button round plain type="danger" custom-style="width:250rpx;height:80rpx">中止订单</van-button>
+  <van-button round type="primary" color="#00AA00" custom-style="width:250rpx;height:80rpx;">结算</van-button>
+</view>
+
+<van-divider contentPosition="center">已经到底啦</van-divider>

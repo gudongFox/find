@@ -1,73 +1,62 @@
-<view class="headview">
-  <van-row gutter="20" custom-class="happading">
-    <van-col span="6" offset="1">
-      <text>\n\n</text>
-      <van-image width="80" round height="80" src="https://thirdwx.qlogo.cn/mmopen/vi_32/sHPrgfrTWlUuMveposfYmp2l1suPricsaxuP5OX3WnX8vye9QqcbMfwBZbibg18NkRJ247UPgWtH0l5icOwicyXQHA/132" />
-    </van-col>
-    <van-col span="11">
-      <view style="display:flex;flex-direction: column;">
-        <text class="alignandappading">\n\n李玲</text>
-        <text class="textsmall" style="color:#888888">成都市杜甫草堂</text>
+<van-cell-group>
+  <van-cell>
+    <view class="flexCol">
+      <view class="flexRow">
+        <van-image width="80" round height="80"
+        src="{{serverProfile}}" />
+        <view class="flexStart">
+          <text style="font-size:40rpx;color:black">{{serverName}}</text>
+          <text style="text-align:left">{{serverLocation}}</text>
+        </view> 
+        <view class="specialBlock"></view> 
+        <van-icon name="qr" size="90rpx" color="#00AA00" />
       </view>
-    </van-col>
-    <van-col span="6">
-      <text>\n</text>
-      <!-- <van-tag color="#9999FF" round>实名认证</van-tag> -->
-      <van-icon name="qr" size="90rpx" color="#00AA00" />
-    </van-col>
-  </van-row>
-
-<van-row>
-  <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{numClient}}</view>
-    <view class="textsmall,text_align" style="color:#888888">客户数
+      <view class="flexRow" style="justify-content:space-around;">
+        <view style="display:flex;flex-direction:column;align-items:center">
+          <text>{{numClient}}</text>
+          <text style="font-size:25rpx">客户数</text>
+        </view>
+        <view style="display:flex;flex-direction:column;align-items:center">
+          <text>{{numPartner}}</text>
+          <text style="font-size:25rpx">伙伴数</text>
+        </view>
+        <view style="display:flex;flex-direction:column;align-items:center">
+          <text>{{numOrder}}</text>
+          <text style="font-size:25rpx">订单数</text>
+        </view>
+        <view style="display:flex;flex-direction:column;align-items:center">
+          <text>{{numDelegation}}</text>
+          <text style="font-size:25rpx">委托单数</text>
+        </view>
+      </view>
     </view>
-  </van-col>
-  <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{numPartner}}</view>
-    <view class="textsmall,text_align" style="color:#888888">伙伴数</view>
-  </van-col>
-  <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{numOrder}}</view>
-    <view class="textsmall,text_align" style="color:#888888">订单率</view>
-  </van-col>
-  <van-col span="6">
-    <view class="textsmall,text_align" style="color:#888888">{{numDelegation}}</view>
-    <view class="textsmall,text_align" style="color:#888888">委托单数</view>
-  </van-col>
-</van-row>
-</view>
-<view>
-  <view class="divLine"></view>
-  <view class="view-white,appading">
-    <view>
-      <van-row>
-        <van-col span="6">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="notes-o" size="70rpx" color="#00AA00" />
-          </view>
-          <view class="textsmall,text_align">个人信息
-          </view>
-        </van-col>
-        <van-col span="6">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="vip-card-o" size="70rpx" color="#00AA00" />
-          </view>
-          <view class="textsmall,text_align">会员情况
-          </view>
-        </van-col>
-        <van-col span="6" offset="6">
-          <view class="text_align" style="margin-top:10rpx">
-            <van-icon name="question-o" size="70rpx" color="#00AA00" />
-          </view>
-          <view class="textsmall,text_align">使用帮助
-          </view>
-        </van-col>
-      </van-row>
-    </view>
-  </view>
+  </van-cell>
 
-  <view bindtap="click">
-    <van-button plain hairline type="default" block><text class="textred" >退出登录</text></van-button>
-  </view>
-</view>
+  <van-divider></van-divider>
+
+  <van-cell>
+    <view class="flexRow">
+      <view class="flexCol" bindtap="clickInfo">
+        <van-icon name="notes-o" size="70rpx" color="#00AA00" />
+        <text style="color:black">个人信息</text>
+      </view>
+      <view class="flexCol">
+        <van-icon name="vip-card-o" size="70rpx" color="#00AA00" />
+        <text style="color:black">会员情况</text>
+      </view>
+      <view class="flexCol">
+        <van-icon name="" size="70rpx" color="#00AA00" />
+        <text style="color:black"></text>
+      </view>
+      <view class="flexCol">
+        <van-icon name="question-o" size="70rpx" color="#00AA00" />
+        <text style="color:black">使用帮助</text>
+      </view>
+    </view>
+  </van-cell>
+
+</van-cell-group>
+
+<van-divider></van-divider>
+
+<van-button plain hairline type="danger" size="large" url="/pages/nav/nav">退出登录</van-button>

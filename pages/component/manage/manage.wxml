@@ -1,124 +1,78 @@
 <!--pages/manage/manage.wxml-->
 <view>
-<van-tabs active="{{ active }}" color="#00AA00" class="tabw">
+<van-tabs active="{{ active }}" color="#00AA00" bind:change="onChange">
 		<van-tab title="客户新需求">
       <view>
-				
-				<view class="specialLine"></view>
-        <view class="flexStart">
-          <view class="specialBlock"></view>
-          <van-icon name="clock" color="#00AA00" />
-          <text style="color:#00AA00;font-size:small;margin-left:15rpx">待处理的客户需求</text>
+
+        <view class="flexRow">
+          <view class="flexStart">
+            <van-icon name="clock" color="#00AA00" />
+            <text style="color:#00AA00;font-size:small;margin-left:15rpx">待处理待客户需求</text>
+          </view>
         </view>
-        <view class="specialLine"></view>
 				
 				<view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
+          <van-cell-group wx:for="{{demandList}}" wx:index="index">
+            <van-cell clickable="true" url="{{clickUrl}}">
+              <view class="flexIcon">
 								<view class="flexCol">
-									<van-icon name="wap-home-o" size="50rpx" color="#66BB6A"></van-icon>
-									<text style="font-size:10;color:#66BB6A">家庭保洁</text>
+									<van-icon name="{{item.iconName}}" size="50rpx" color="#66BB6A"></van-icon>
+									<text style="font-size:10;color:#66BB6A">{{item.servicePeoject}}</text>
 								</view>
-								<view class="flexCol" style="align-items:flex-start">
-									<view class="flexRow">
-										<text class="textbig,textblack">马先生</text>
+								<view class="flexCol" style="width:450rpx">
+									<view class="flexIcon">
+										<text style="font-size:large;color:black">{{item.clientName}}</text>
 										<view class="specialBlock"></view>
-										<text>上门时间：未定</text>
+										<text>{{item.serviceTime}}</text>
 										<view class="specialBlock"></view>
-										<van-tag round type="primary">多次</van-tag>
+										<van-tag round type="primary">{{item.isMulti}}</van-tag>
 									</view>
-									<text>虎溪花园，4栋3-3-1</text>
+									<text style="text-align:left;">{{item.clientLocation}}</text>
 								</view>
-								<van-tag plain type="warning" size="medium">待处理</van-tag>
+								<van-tag plain type="warning" size="medium">{{item.serviceStatus}}</van-tag>
 							</view>
             </van-cell>
+            <view class="divLine"></view>
           </van-cell-group>
         </view>
-				
-				<view class="divLine"></view>
-				
-				<view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
-								<view class="flexCol">
-									<van-icon name="wap-home-o" size="50rpx" color="#66BB6A"></van-icon>
-									<text style="font-size:10;color:#66BB6A">家庭保洁</text>
-								</view>
-								<view class="flexCol" style="align-items:flex-start">
-									<view class="flexRow">
-										<text class="textbig,textblack">马先生</text>
-										<view class="specialBlock"></view>
-										<text>上门时间：未定</text>
-										<view class="specialBlock"></view>
-										<van-tag round type="primary">多次</van-tag>
-									</view>
-									<text>虎溪花园，4栋3-3-1</text>
-								</view>
-								<van-tag plain type="warning" size="medium">待处理</van-tag>
-							</view>
-            </van-cell>
-          </van-cell-group>
-        </view>
+
       </view>
 		</van-tab>
 
 		<van-tab title="代客户下单">
       <view>
 				
-				<view class="specialLine"></view>
-        <view class="flexStart">
-          <view class="specialBlock"></view>
-          <van-icon name="clock" color="#00AA00" />
-          <text style="color:#00AA00;font-size:small;margin-left:15rpx">我的直接客户</text>
+				<!-- <view class="specialLine"></view> -->
+        <view class="flexRow">
+          <view class="flexStart">
+            <!-- <view class="specialBlock"></view> -->
+            <van-icon name="clock" color="#00AA00" />
+            <text style="color:#00AA00;font-size:small;margin-left:15rpx">我的直接客户</text>
+          </view>
         </view>
-        <view class="specialLine"></view>
+        <!-- <view class="specialLine"></view> -->
 				
 				<view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
-                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                <view style="display:flex;flex-direction:column">
-                  <view class="flexRow">
-                    <text class="textbig,textblack">王阿姨</text>
-                    <van-tag type="primary" plain>家庭保洁</van-tag>
+          <van-cell-group wx:for="{{substituteList}}" wx:key="index">
+            <van-cell clickable="true" url="{{substituteClickUrl}}">
+              <view class="flexIcon">
+                <van-image round width="50" height="50" src="{{item.substitutedClientProfile}}" />
+                <view style="display:flex;flex-direction:column;width:400rpx">
+                  <view class="flexIcon">
+                    <text style="font-size:large;color:black;">{{item.substitutedClientName}}</text>
+                    <van-tag type="primary" plain>{{item.substitutedServiceObj}}</van-tag>
                   </view>
-                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
+                  <text style="text-align:left;">{{item.substitutedClientLocation}}</text>
                 </view>
                 <view style="display:flex;flex-direction:column">
-                  <van-tag mark>服务(13)</van-tag>
-                  <van-tag mark>委托(5)</van-tag>
+                  <van-tag mark>{{item.serviceTimes}}</van-tag>
+                  <van-tag mark>{{item.substituteTimes}}</van-tag>
                 </view>
               </view>
             </van-cell>
+            <view class="divLine"></view>
           </van-cell-group>
         </view>
-
-        <view class="divLine"></view>
-
-        <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
-                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                <view style="display:flex;flex-direction:column">
-                  <view class="flexRow">
-                    <text class="textbig,textblack">何老师</text>
-                    <van-tag type="primary" plain>钟点工</van-tag>
-                  </view>
-                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
-                </view>
-                <view style="display:flex;flex-direction:column">
-                  <van-tag mark>服务(3)</van-tag>
-                  <van-tag mark>委托(5)</van-tag>
-                </view>
-              </view>
-            </van-cell>
-          </van-cell-group>
-				</view>
-				
 
       </view>
 		</van-tab>
@@ -127,18 +81,18 @@
 
 		<van-tab title="设置">
 			
-			<view class="specialLine"></view>
+				<!-- <view class="specialLine"></view> -->
         <view class="flexRow">
           <view class="flexStart">
-            <view class="specialBlock"></view>
-            <van-icon name="clock" color="#00AA00" />
+            <!-- <view class="specialBlock"></view> -->
+            <van-icon name="setting-o" color="#00AA00" />
             <text style="color:#00AA00;font-size:small;margin-left:15rpx">可接单时段</text>
           </view>
           <view>
 						<button size="mini" type="primary" plain="true">修改</button>
           </view>
         </view>
-        <view class="specialLine"></view>
+        <!-- <view class="specialLine"></view> -->
 				
 				<!-- <van-grid column-num="8" square>
 					<van-grid-item text="上午(时)" />
@@ -161,35 +115,30 @@
 					</view>
 				</van-grid> -->
 
-				<view class="specialLine"></view>
+
         <view class="flexRow">
           <view class="flexStart">
-            <view class="specialBlock"></view>
-            <van-icon name="clock" color="#00AA00" />
+            <van-icon name="setting-o" color="#00AA00" />
             <text style="color:#00AA00;font-size:small;margin-left:15rpx">接单参数设置</text>
           </view>
-          <!-- <view>
-						<button size="mini" type="primary" plain="true">修改</button>
-          </view> -->
         </view>
-				<view class="specialLine"></view>
 				
 				<view class="flexCol">
 					<view class="flexRow">
-						<view><text>出发上门最大距离（公里）</text></view>
-						<van-stepper value="{{ 1 }}" bind:change="onChange" />
+						<text>出发上门最大距离（公里）</text>
+						<van-stepper value="{{maxDistance}}" bind:change="onChange" />
 					</view>
 					<view class="flexRow">
-						<view><text>两单间隔最大距离（公里）</text></view>
-						<van-stepper value="{{ 1 }}" bind:change="onChange" />
+						<text>两单间隔最大距离（公里）</text>
+						<van-stepper value="{{maxInterDistance}}" bind:change="onChange" />
 					</view>
 					<view class="flexRow">
-						<view><text>最小服务时长（小时）</text></view>
-						<van-stepper value="{{ 1 }}" step="0.5" decimal-length="{{1}}" />
+						<text>最小服务时长（小时）</text>
+						<van-stepper value="{{minServicLength}}" step="0.5" decimal-length="{{1}}" />
 					</view>
 					<view class="flexRow">
-						<view><text>两单间隔最大时间</text></view>
-						<van-stepper value="{{ 1 }}" step="0.5" decimal-length="{{1}}" />
+						<text>两单间隔最大时间</text>
+						<van-stepper value="{{maxInterLength}}" step="0.5" decimal-length="{{1}}" />
 					</view>
 				</view>
 				

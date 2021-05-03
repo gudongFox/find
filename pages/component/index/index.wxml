@@ -5,10 +5,8 @@
     <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
       <van-tab title="一周日程表">
 
-        <view class="specialLine"></view>
         <view class="flexRow">
           <view class="flexStart">
-            <view class="specialBlock"></view>
             <van-icon name="clock" color="#00AA00" />
             <text style="color:#00AA00;font-size:small;margin-left:15rpx">一周订单日程表</text>
           </view>
@@ -16,65 +14,34 @@
 						<button size="mini" type="primary" plain="true">修改日程</button>
           </view>
         </view>
-        <view class="specialLine"></view>
 
-        <view class="specialLine"></view>
         <view class="flexRow">
           <view class="flexStart">
-            <view class="specialBlock"></view>
             <van-icon name="clock" color="#00AA00" />
             <text style="color:#00AA00;font-size:small;margin-left:15rpx">今日待执行订单</text>
           </view>
         </view>
-        <view class="specialLine"></view>
 
         <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
+          <van-cell-group wx:for="{{itemList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+            <van-cell clickable="true" url="{{clickUrl}}">
+              <view class="flexIcon">
 								<view class="flexCol">
-									<van-icon name="wap-home-o" size="50rpx" color="#66BB6A"></van-icon>
-									<text style="font-size:10;color:#66BB6A">家庭保洁</text>
+									<van-icon name="{{item.iconName}}" size="50rpx" color="#66BB6A"></van-icon>
+									<text style="font-size:10;color:#66BB6A">{{item.serviceProject}}</text>
 								</view>
 								<view class="flexCol" style="align-items:flex-start">
-									<view class="flexRow">
-										<text class="textbig,textblack">马先生</text>
-										<view class="specialBlock"></view>
-										<text>七月8日 8:00～10:00</text>
-										<view class="specialBlock"></view>
-										<van-tag round type="primary">多次</van-tag>
+									<view class="flexIcon" style="width:450rpx;">
+										<text style="font-size:large;color:black;">{{item.clientName}}</text>
+										<text>{{item.serviceDate}}</text>
+										<van-tag round type="primary">{{item.isMulti}}</van-tag>
 									</view>
-									<text>虎溪花园，4栋3-3-1</text>
+									<text>{{item.clientLocation}}</text>
 								</view>
-								<van-image round width="50" height="50" src="" />
+								<van-image round width="50" height="50" src="{{item.clientProfile}}" />
 							</view>
             </van-cell>
-          </van-cell-group>
-        </view>
-				
-				<view class="divLine"></view>
-        
-        <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
-								<view class="flexCol">
-									<van-icon name="wap-home-o" size="50rpx" color="#66BB6A"></van-icon>
-									<text style="font-size:10;color:#66BB6A">家庭保洁</text>
-								</view>
-								<view class="flexCol" style="align-items:flex-start">
-									<view class="flexRow">
-										<text class="textbig,textblack">柯女士</text>
-										<view class="specialBlock"></view>
-										<text>7月8日 14:00～16:00</text>
-										<view class="specialBlock"></view>
-										<van-tag round type="primary">1次</van-tag>
-									</view>
-									<text>虎溪花园，4栋3-3-1</text>
-								</view>
-								<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-							</view>
-            </van-cell>
+            <view class="divLine"></view>
           </van-cell-group>
         </view>
 
@@ -96,63 +63,35 @@
         color="#66BB6A"
         class="calendar"/>
 
-        <view class="specialLine"></view>
         <view class="flexRow">
           <view class="flexStart">
-            <view class="specialBlock"></view>
             <van-icon name="clock" color="#00AA00" />
-            <text style="color:#00AA00;font-size:small;margin-left:15rpx">2020/07/08</text>
+            <text style="color:#00AA00;font-size:small;margin-left:15rpx">{{historyOrderDate}}</text>
           </view>
         </view>
-        <view class="specialLine"></view>
 
         <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
+          <van-cell-group wx:for="{{historyItemList}}" wx:key="index">
+            <van-cell clickable="true" url="{{historyClickUrl}}">
+              <view class="flexIcon">
 								<view class="flexCol">
-									<van-icon name="wap-home-o" size="50rpx" color="#66BB6A"></van-icon>
-									<text style="font-size:10;color:#66BB6A">家庭保洁</text>
+									<van-icon name="{{item.historyOrderIconName}}" size="50rpx" color="#66BB6A"></van-icon>
+									<text style="font-size:10;color:#66BB6A">{{item.historyOrderServiceProject}}</text>
 								</view>
-								<view class="flexCol" style="align-items:flex-start">
-									<view class="flexRow">
-										<text class="textbig,textblack">马先生</text>
+								<view class="flexCol" style="align-items:flex-start;width:460rpx;">
+									<view class="flexIcon">
+										<text style="font-size:large;color:black;">{{item.historyOrderClientName}}</text>
 										<view class="specialBlock"></view>
-										<text>七月8日 8:00～10:00</text>
+										<text>{{item.historyOrderServiceTime}}</text>
 										<view class="specialBlock"></view>
-										<van-tag round type="primary">多次</van-tag>
+										<van-tag round type="primary">{{item.historyOrderIsMulti}}</van-tag>
 									</view>
-									<text>虎溪花园，4栋3-3-1</text>
+									<text style="text-align:left;">{{item.historyOrderClientLocation}}</text>
 								</view>
-								<van-image round width="50" height="50" src="" />
+								<van-image round width="50" height="50" src="{{item.clientProfile}}" />
 							</view>
             </van-cell>
-          </van-cell-group>
-        </view>
-				
-				<view class="divLine"></view>
-        
-        <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
-								<view class="flexCol">
-									<van-icon name="wap-home-o" size="50rpx" color="#66BB6A"></van-icon>
-									<text style="font-size:10;color:#66BB6A">家庭保洁</text>
-								</view>
-								<view class="flexCol" style="align-items:flex-start">
-									<view class="flexRow">
-										<text class="textbig,textblack">柯女士</text>
-										<view class="specialBlock"></view>
-										<text>7月8日 14:00～16:00</text>
-										<view class="specialBlock"></view>
-										<van-tag round type="primary">1次</van-tag>
-									</view>
-									<text>虎溪花园，4栋3-3-1</text>
-								</view>
-								<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-							</view>
-            </van-cell>
+            <view class="divLine"></view>
           </van-cell-group>
         </view>
 

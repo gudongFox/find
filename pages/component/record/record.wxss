@@ -7,7 +7,7 @@
   text-align: left;
 }
 
-.flexRow {
+.flexIcon {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,6 +25,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5em;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
 }
 
 .specialLine{

@@ -16,8 +16,13 @@
     "pages/togetService/togetService",
     "pages/topayService/topayService",
     "pages/toRecieve/index",
-    "pages/add/chooseCustomer/chooseCustomer"
-    
+    "pages/add/chooseCustomer/chooseCustomer",
+    "pages/newDemandServer/newDemandServer",
+    "pages/serverSubstitute/serverSubstitute",
+    "pages/historyService/historyService",
+    "pages/unfinishedService/unfinishedService",
+    "pages/infoPartner/infoPartner",
+    "pages/infoServer/infoServer"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -67,6 +72,10 @@
     "van-notice-bar": "@vant/weapp/notice-bar/index",
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
-    "van-stepper": "@vant/weapp/stepper/index"
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index"
   }
 }

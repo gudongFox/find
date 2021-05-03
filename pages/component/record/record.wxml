@@ -4,66 +4,40 @@
     <van-tabs active="{{ active }}" color="#00AA00" class="tabw">
       <van-tab title="未结算委托">
 
-        <view class="specialLine"></view>
-        <view class="flexStart">
-          <view class="specialBlock"></view>
-          <van-icon name="clock" color="#00AA00" />
-          <text style="color:#00AA00;font-size:small;margin-left:15rpx">与伙伴间的未结算委托订单</text>
+        <view class="flexRow">
+          <view class="flexStart">
+            <van-icon name="clock" color="#00AA00" />
+            <text style="color:#00AA00;font-size:small;margin-left:15rpx">与伙伴间的未结算委托订单</text>
+          </view>
         </view>
-        <view class="specialLine"></view>
 
         <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
-                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                <view style="display:flex;flex-direction:column">
-                  <view class="flexRow">
-                    <text class="textbig,textblack">王阿姨</text>
-                    <van-tag type="warning" plain>未结算(2)</van-tag>
+          <van-cell-group wx:for="{{substituteList}}" wx:key="index">
+            <van-cell clickable="true" url="{{substituteClickUrl}}">
+              <view class="flexIcon">
+                <van-image round width="50" height="50" src="{{item.substitutedClientProfile}}" />
+                <view style="display:flex;flex-direction:column;width:400rpx">
+                  <view class="flexIcon">
+                    <text style="font-size:large;color:black;">{{item.substitutedClientName}}</text>
+                    <van-tag type="warning" plain>{{item.substitutedUnfinishedTimes}}</van-tag>
                   </view>
-                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
+                  <text style="text-align:left;">{{item.substitutedClientLocation}}</text>
                 </view>
                 <view style="display:flex;flex-direction:column">
-                  <van-tag mark>委托(7)</van-tag>
-                  <van-tag mark>接单(3)</van-tag>
+                  <van-tag mark>{{item.serviceTimes}}</van-tag>
+                  <van-tag mark>{{item.substituteTimes}}</van-tag>
                 </view>
               </view>
             </van-cell>
+            <view class="divLine"></view>
           </van-cell-group>
         </view>
-
-        <view class="divLine"></view>
-
-        <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
-                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                <view style="display:flex;flex-direction:column">
-                  <view class="flexRow">
-                    <text class="textbig,textblack">张阿姨</text>
-                    <van-tag type="warning" plain>未结算(1)</van-tag>
-                  </view>
-                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
-                </view>
-                <view style="display:flex;flex-direction:column">
-                  <van-tag mark>委托(3)</van-tag>
-                  <van-tag mark>接单(5)</van-tag>
-                </view>
-              </view>
-            </van-cell>
-          </van-cell-group>
-        </view>
-
       </van-tab>
 
       <van-tab title="伙伴名单">
 
-        <view class="specialLine"></view>
         <view class="flexRow">
           <view class="flexStart">
-            <view class="specialBlock"></view>
             <van-icon name="clock" color="#00AA00" />
             <text style="color:#00AA00;font-size:small;margin-left:15rpx">我的信任伙伴名单</text>
           </view>
@@ -71,50 +45,26 @@
             <button size="mini" type="primary">+ 添加</button>
           </view>
         </view>
-        <view class="specialLine"></view>
 
         <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
-                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                <view class="flexCol">
-                  <text class="textbig,textblack">王阿姨</text>
-                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
+          <van-cell-group wx:for="{{partnerList}}" wx:key="index">
+            <van-cell clickable="true" url="{{partnerClickUrl}}">
+              <view class="flexIcon">
+                <van-image round width="50" height="50" src="{{item.partnerProfile}}" />
+                <view class="flexCol" style="width:400rpx">
+                  <text style="font-size:large;color:black;">{{item.partnerName}}</text>
+                  <text>{{item.partnerLocation}}</text>
                 </view>
-                <view style="display:flex;flex-direction:column">
-                  <van-tag mark>委托(7)</van-tag>
-                  <van-tag mark>接单(3)</van-tag>
+                <view style="display:flex;flex-direction:column;">
+                  <van-tag mark>{{item.partnerServiceTimes}}</van-tag>
+                  <van-tag mark>{{item.partnerSubstituteTimes}}</van-tag>
                 </view>
               </view>
             </van-cell>
+            <view class="divLine"></view>
           </van-cell-group>
         </view>
-
-        <view class="divLine"></view>
-
-        <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <view class="flexRow">
-                <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                <view class="flexCol">
-                  <text class="textbig,textblack">张阿姨</text>
-                  <text class="textsmall">成都市锦兴路锦江文化中心大门</text>
-                </view>
-                <view style="display:flex;flex-direction:column">
-                  <van-tag mark>委托(3)</van-tag>
-                  <van-tag mark>接单(5)</van-tag>
-                </view>
-              </view>
-            </van-cell>
-          </van-cell-group>
-        </view>
-
       </van-tab>
-
-      <!-- <van-tab disabled></van-tab>
-      <van-tab disabled></van-tab> -->
       
     </van-tabs>
   </view>
