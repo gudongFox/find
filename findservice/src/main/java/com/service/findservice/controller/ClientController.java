@@ -1,6 +1,5 @@
 package com.service.findservice.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.service.findservice.entity.Client;
 import com.service.findservice.entity.ClientInfo;
 import com.service.findservice.result.ResultBody;
@@ -21,10 +20,9 @@ public class ClientController {
      * @param clientId client_id
      * @return client information
      */
-    @ResponseBody
     @GetMapping(path = "/info", produces = "application/json")
-    public String getClientInfo(@RequestParam(name = "clientId") String clientId) {
-        return JSON.toJSONString(new ResultBody(ResultCode.SUCCESS, new ClientInfo(clientService.selectClientById(clientId))));
+    public ResultBody getClientInfo(@RequestParam(name = "clientId") String clientId) {
+        return new ResultBody(ResultCode.SUCCESS, new ClientInfo(clientService.selectClientById(clientId)));
     }
 
     /**
@@ -35,11 +33,11 @@ public class ClientController {
      */
     @ResponseBody
     @PatchMapping(path = "info", produces = "application/json")
-    public String updateClientInfo(@RequestBody Client client) {
+    public ResultBody updateClientInfo(@RequestBody Client client) {
         if (null == client.getClientId()) {
-            return JSON.toJSONString(new ResultBody(ResultCode.FAIL));
+            return new ResultBody(ResultCode.FAIL);
         }
         int res = clientService.updateClientInfo(client);
-        return res > 0 ? JSON.toJSONString(new ResultBody(ResultCode.SUCCESS)) : JSON.toJSONString(new ResultBody(ResultCode.FAIL));
+        return res > 0 ? new ResultBody(ResultCode.SUCCESS) : new ResultBody(ResultCode.FAIL);
     }
 }

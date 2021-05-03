@@ -82,7 +82,7 @@
     (select order_id from order_servers where server_id = #{server_id,jdbcType=VARCHAR})
   </select>
 
-  <select id="selectMonOrderBySId" resultMap="BaseResultMap">
+  <select id="selectMonthlyOrdersByServerId" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from order_detail

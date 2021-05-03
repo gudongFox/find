@@ -27,9 +27,8 @@ public class DemandController {
     @Autowired
     private ClientService clientService;
 
-    @ResponseBody
     @GetMapping(path = "/detail", produces = "application/json")
-    public String getDemandsByClientId(@RequestParam(name = "clientId") String clientId) {
+    public ResultBody getDemandsByClientId(@RequestParam(name = "clientId") String clientId) {
         List<Demand> demands = demandService.selectDemandsByClientId(clientId);
         for (Demand demand : demands) {
             if (!demand.getServerId().equals("0")) {
@@ -39,17 +38,16 @@ public class DemandController {
                 demand.setMandatorName(getServerInfo(demand.getMandatorId()));
             }
         }
-        return JSON.toJSONString(new ResultBody(ResultCode.SUCCESS, new DemandInfo(getClientInfo(clientId), demands)));
+        return new ResultBody(ResultCode.SUCCESS, new DemandInfo(getClientInfo(clientId), demands));
     }
 
-    @ResponseBody
     @PostMapping(value = "/detail", produces = "application/json")
-    public String createDemand(@RequestBody Demand demand) {
+    public ResultBody createDemand(@RequestBody Demand demand) {
         if (null == demand.getDemandId()) {
-            return JSON.toJSONString(new ResultBody(ResultCode.FAIL));
+            return new ResultBody(ResultCode.FAIL);
         }
         int res = demandService.insertDemand(demand);
-        return res > 0 ? JSON.toJSONString(new ResultBody(ResultCode.SUCCESS)) : JSON.toJSONString(new ResultBody(ResultCode.FAIL));
+        return res > 0 ? new ResultBody(ResultCode.SUCCESS) : new ResultBody(ResultCode.FAIL);
     }
 
     private Client getClientInfo(String clientId) {

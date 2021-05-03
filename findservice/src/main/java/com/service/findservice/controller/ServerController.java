@@ -46,7 +46,7 @@ public class ServerController {
     //得到某个月的订单
     @RequestMapping(value = "/getOrderMonth/{server_id}/{year_month}")
     public List<Order> getOrderMonth(@PathVariable String server_id, @PathVariable String year_month) throws ParseException {
-        return orderService.selectMonOrderBySId(server_id,  year_month);
+        return orderService.selectMonthlyOrdersByServerId(server_id,  year_month);
     }
 
     @RequestMapping(value = "/getAllOrder/{server_id}")

@@ -1,11 +1,12 @@
 package com.service.findservice.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.service.findservice.entity.Orders;
 import com.service.findservice.entity.Client;
 import com.service.findservice.entity.Order;
 import com.service.findservice.entity.OrderDetail;
 import com.service.findservice.entity.Server;
+import com.service.findservice.result.ResultBody;
+import com.service.findservice.result.ResultCode;
 import com.service.findservice.server.ClientService;
 import com.service.findservice.server.OrderServerService;
 import com.service.findservice.server.OrderService;
@@ -19,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Order")
+@RequestMapping("/order")
 public class OrderController {
     @Autowired
     private OrderService orderService;
@@ -33,11 +34,10 @@ public class OrderController {
     @Autowired
     private OrderServerService orderServersService;
 
-    @ResponseBody
-    @GetMapping(path = "/getOrder", produces = "application/json")
-    public String getOrders(@RequestParam(name = "client_id") String clientId,
+    @GetMapping(path = "/detail", produces = "application/json")
+    public ResultBody getOrders(@RequestParam(name = "clientId") String clientId,
                             @RequestParam(name = "day", required = false) String day,
-                            @RequestParam(name = "is_executing", required = false) Boolean isExecuting,
+                            @RequestParam(name = "isExecuting", required = false) Boolean isExecuting,
                             @RequestParam(name = "month", required = false) String month) {
         Orders orders = new Orders();
         if (null != clientId) {
@@ -60,20 +60,20 @@ public class OrderController {
         } else {
             orders.setMonthlyOrders(new ArrayList<>());
         }
-        return JSON.toJSONString(orders);
+        return new ResultBody(ResultCode.SUCCESS, orders);
     }
 
     private List<Boolean> getMonthlyOrders(String clientId, String month) {
-        return orderService.findMonthlyOrders(clientId, month);
+        return orderService.selectMonthlyOrders(clientId, month);
     }
 
     private List<Order> getExecutingOrders(String clientId) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time = format.format(new Date(System.currentTimeMillis()));
-        List<Order> orders = orderService.findExecutingOrders(clientId, time);
+        List<Order> orders = orderService.selectExecutingOrders(clientId, time);
         List<Order> executingOrders = new ArrayList<>();
         for (Order order : orders) {
-            String mandatorName = "";
+            String mandatorName = null;
             Server server = serverService.findServerById(orderServersService.findOrderServersByOrderId(order.getOrderId()).getServerId());
             if (!order.getMandatorId().equals("0")) {
                 mandatorName = serverService.findServerById(order.getMandatorId()).getServerName();
@@ -84,10 +84,10 @@ public class OrderController {
     }
 
     private List<Order> getSingleDayOrders(String clientId, String date) {
-        List<Order> orders = orderService.findOrdersByClientIdAndDate(clientId, date);
+        List<Order> orders = orderService.selectOrdersByClientIdAndDate(clientId, date);
         List<Order> ordersDetail = new ArrayList<>();
         for (Order order : orders) {
-            String mandatorName = "";
+            String mandatorName = null;
             Server server = serverService.findServerById(orderServersService.findOrderServersByOrderId(order.getOrderId()).getServerId());
             if (!order.getMandatorId().equals("0")) {
                 mandatorName = serverService.findServerById(order.getMandatorId()).getServerName();

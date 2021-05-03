@@ -4,23 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="对返回数据进行封装；&#10;封装Client get接口的返回信息；&#10;修改demand接口的部分方法，新增post接口；&#10;新增Demand实体类的序列化信息。">
+    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="删除序列化信息；&#10;更改接口信息；&#10;增加ClientServer接口；">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientServerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/DemandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/DemandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientServerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientServerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/ClientInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/ClientInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/ClientServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/ClientServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Demand.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Demand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/DemandInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/DemandInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/OrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/Orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/result/ResultBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/result/ResultBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientServerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ClientServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ClientServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,19 +84,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FindserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="findservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.service.findservice.FindserviceApplication" />
@@ -126,7 +105,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619791667875</updated>
-      <workItem from="1619957366333" duration="8732000" />
+      <workItem from="1619957366333" duration="11672000" />
     </task>
     <task id="LOCAL-00001" summary="全部生成">
       <created>1619848877414</created>
@@ -163,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619962674103</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="删除序列化信息；&#10;更改接口信息；&#10;增加ClientServer接口；">
+      <created>1619966311955</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619966311955</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +174,7 @@
     <MESSAGE value="删除无用注释，修改Orders的包名" />
     <MESSAGE value="对返回数据进行封装；&#10;修改Client的post接口的实现方式以及部分函数名；&#10;增加Client类的序列化；&#10;增加ClientInfo类，包含客户的各种信息。" />
     <MESSAGE value="对返回数据进行封装；&#10;封装Client get接口的返回信息；&#10;修改demand接口的部分方法，新增post接口；&#10;新增Demand实体类的序列化信息。" />
-    <option name="LAST_COMMIT_MESSAGE" value="对返回数据进行封装；&#10;封装Client get接口的返回信息；&#10;修改demand接口的部分方法，新增post接口；&#10;新增Demand实体类的序列化信息。" />
+    <MESSAGE value="删除序列化信息；&#10;更改接口信息；&#10;增加ClientServer接口；" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除序列化信息；&#10;更改接口信息；&#10;增加ClientServer接口；" />
   </component>
 </project>
