@@ -90,13 +90,14 @@ public class OrderService {
             e.printStackTrace();
         }
 
-        for (int i = 1; i < daysOfMonth + 1; i++) {
-            String date = month + "-" + (i < 10 ? "0" + i : i);
+        for (int i = 0; i < daysOfMonth; i++) {
+            String date = format.format(calendar.getTime());
             if (orderMapper.selectOrdersCountByDate(clientId, date) > 0) {
                 monthlyOrders.add(Boolean.TRUE);
             } else {
                 monthlyOrders.add(Boolean.FALSE);
             }
+            calendar.add(Calendar.DATE, 1);
         }
         return monthlyOrders;
     }

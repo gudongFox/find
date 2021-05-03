@@ -94,9 +94,9 @@ public class OrderController {
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(beginDate);
             for (int i = 0; i < 7; i++) {
-                calendar.add(Calendar.DATE, i);
                 String day = format.format(calendar.getTime());
                 weeklyOrders.add(getDailyWorkTime(clientId, day));
+                calendar.add(Calendar.DATE, 1);
             }
         }
         return weeklyOrders;

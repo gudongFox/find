@@ -1,7 +1,5 @@
 package com.service.findservice.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.List;
 
 public class DemandInfo {

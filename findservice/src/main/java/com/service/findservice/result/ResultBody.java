@@ -1,8 +1,6 @@
 package com.service.findservice.result;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 
 public class ResultBody {
 
@@ -10,7 +8,6 @@ public class ResultBody {
 
     private String message;
 
-    @JSONField(serialzeFeatures = {SerializerFeature.WriteMapNullValue})
     private Object data;
 
     public String getCode() {
