@@ -34,6 +34,46 @@ Page({
       minDate: new Date(2010, 0, 1).getTime(),
       maxDate: new Date(2010, 0, 31).getTime(),
   },
+  onLoad: function () {
+    wx.login({
+      success: function(res) {
+        console.log('进入login方法')
+        var code = res.code;
+        console.log(code);
+        wx.request({
+          url: 'http://localhost:8080/login/login',
+          method: 'GET',
+          data: {
+            code: code
+          },
+          success: function (res) {
+            var openid = res.data
+            console.log(openid)
+            wx.request({
+              url: 'http://localhost:8080/Client/clientInfo',
+              header: {
+                'content-type': 'application/json' // 默认值
+              },
+              method: 'GET',
+              data:{
+                clinetId: openid
+              },
+              success:function(res){
+                console.log(res)
+              }
+            })
+            console.log(openid)
+          },
+          fail: function (res) {
+                console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res);
+              }
+        });
+      },
+      fail: function(){
+        console.log('调用失败')
+      }
+    });
+  },
   serviceList:function(e){
     var that = this
     
