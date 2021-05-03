@@ -28,4 +28,8 @@ public class ClientService {
     public int updateClientInfo(Client client){
         return clientMapper.updateByPrimaryKeySelective(client);
     }
+
+    public int createClientInfo(Client client) {
+        return clientMapper.insertSelective(client);
+    }
 }

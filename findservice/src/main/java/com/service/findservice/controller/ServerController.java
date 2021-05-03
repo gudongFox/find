@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/server")
@@ -247,15 +245,21 @@ public class ServerController {
     /**
      * 通过server id得到server的信息
      * @param serverId server id
+     * @param week 某周的起始日期，格式为yyyy-MM-dd，不要求一定传值
      * @return
      */
     @GetMapping(path = "/info")
-    public ResultBody getServerInfoByServerId(String serverId) {
+    public ResultBody getServerInfoByServerId(@RequestParam(name = "serverId") String serverId,
+                                              @RequestParam(name = "week", required = false) String week) {
         if (null == serverId) {
             return new ResultBody(ResultCode.FAIL);
         }
-        Server server = serverService.findServerById(serverId);
-        return null == server ? new ResultBody(ResultCode.FAIL) : new ResultBody(ResultCode.SUCCESS, server);
+        ServerInfo serverInfo = new ServerInfo();
+        serverInfo.setServerInfo(serverService.findServerById(serverId));
+        if (null != week){
+            serverInfo.setWeeklyWorkTime(getWeeklyOrders(serverId, week));
+        }
+        return new ResultBody(ResultCode.SUCCESS, serverInfo);
     }
 
     /**
@@ -270,5 +274,43 @@ public class ServerController {
         }
         int res = serverService.addServer(server);
         return res > 0 ? new ResultBody(ResultCode.SUCCESS) : new ResultBody(ResultCode.FAIL);
+    }
+
+    private List<List<Boolean>> getWeeklyOrders(String serverId, String week) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        List<List<Boolean>> weeklyOrders = new ArrayList<>();
+        Date beginDate = null;
+        try {
+            beginDate = format.parse(week);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (null != beginDate) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(beginDate);
+            for (int i = 0; i < 7; i++) {
+                String day = format.format(calendar.getTime());
+                weeklyOrders.add(getDailyWorkTime(serverId, day));
+                calendar.add(Calendar.DATE, 1);
+            }
+        }
+        return weeklyOrders;
+    }
+
+    private List<Boolean> getDailyWorkTime(String serverId, String date) {
+        List<Order> orders = orderService.selectOrdersByClientIdAndDate(serverId, date);
+        List<Boolean> dailyWorkTime = new ArrayList<>(10);
+        if (orders == null) {
+            return dailyWorkTime;
+        }
+        for (Order order : orders) {
+            int begin = order.getStartTime().getHours() - 8;
+            int end = order.getEndTime().getHours() - 8;
+            while (begin < end) {
+                dailyWorkTime.set(begin, true);
+                begin++;
+            }
+        }
+        return dailyWorkTime;
     }
 }

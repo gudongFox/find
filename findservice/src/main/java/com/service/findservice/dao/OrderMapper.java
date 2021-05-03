@@ -37,15 +37,13 @@ public interface OrderMapper {
 
     int deleteOrderServer(int order_id);
 
-    List<Order> selectOrdersByClientId(String clientId);
-
-    List<Order> selectOrdersByClientId(String clientId, Integer month);
-
     List<Order> selectOrdersByClientAndMandatorId(String clientId, String mandatorId);
 
     List<Order> selectOrdersByClientAndServerId(String clientId, String serverId);
 
     List<Order> selectOrdersByClientIdAndDate(String clientId, String date);
+
+    List<Order> selectOrdersByServerIdAndDate(String serverId, String date);
 
     List<Order> selectExecutingOrders(String clientId, String time);
 

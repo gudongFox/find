@@ -34,10 +34,24 @@ public class ClientController {
      */
     @PatchMapping(path = "info")
     public ResultBody updateClientInfo(@RequestBody Client client) {
-        if (null == client.getClientId()) {
+        if (null == client || null == client.getClientId()) {
             return new ResultBody(ResultCode.FAIL);
         }
         int res = clientService.updateClientInfo(client);
+        return res > 0 ? new ResultBody(ResultCode.SUCCESS) : new ResultBody(ResultCode.FAIL);
+    }
+
+    /**
+     * 新建客户信息
+     * @param client information
+     * @return
+     */
+    @PostMapping(path = "/info")
+    public ResultBody createClientInfo(@RequestBody Client client) {
+        if (null == client || null == client.getClientId()) {
+            return new ResultBody(ResultCode.FAIL);
+        }
+        int res = clientService.createClientInfo(client);
         return res > 0 ? new ResultBody(ResultCode.SUCCESS) : new ResultBody(ResultCode.FAIL);
     }
 }

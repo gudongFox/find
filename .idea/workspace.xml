@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="新增查询服务人员一周的工作时间表；&#10;新增ServerController两个方法的注释">
+    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="修改日期加减的bug">
+      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/ServerInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/DemandInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/DemandInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/OrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/result/ResultBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/result/ResultBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +55,10 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -83,17 +89,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FindserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="findservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.service.findservice.FindserviceApplication" />
@@ -116,7 +111,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619791667875</updated>
       <workItem from="1619957366333" duration="11672000" />
-      <workItem from="1620014859796" duration="9569000" />
+      <workItem from="1620014859796" duration="17389000" />
     </task>
     <task id="LOCAL-00001" summary="全部生成">
       <created>1619848877414</created>
@@ -181,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620020372984</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="修改日期加减的bug">
+      <created>1620027345392</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1620027345392</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +212,7 @@
     <MESSAGE value="修改部分Order部分接口信息" />
     <MESSAGE value="更新接口信息" />
     <MESSAGE value="新增查询服务人员一周的工作时间表；&#10;新增ServerController两个方法的注释" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增查询服务人员一周的工作时间表；&#10;新增ServerController两个方法的注释" />
+    <MESSAGE value="修改日期加减的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改日期加减的bug" />
   </component>
 </project>

@@ -54,10 +54,6 @@ public class OrderService {
         return orderMapper.selectMonOrderBySId(server_id, date);
     }
 
-    public List<Order> findOrdersByClientId(String clientId) {
-        return orderMapper.selectOrdersByClientId(clientId);
-    }
-
     public List<Order> findMandatorCountById(String clientId, String mandatorId) {
         return orderMapper.selectOrdersByClientAndMandatorId(clientId, mandatorId);
     }
@@ -66,12 +62,12 @@ public class OrderService {
         return orderMapper.selectOrdersByClientAndServerId(clientId, serverId);
     }
 
-    public List<Order> findOrdersByClientId(String clientId, Integer month) {
-        return orderMapper.selectOrdersByClientId(clientId, month);
-    }
-
     public List<Order> selectOrdersByClientIdAndDate(String clientId, String date) {
         return orderMapper.selectOrdersByClientIdAndDate(clientId, date);
+    }
+
+    public List<Order> selectOrdersByServerIdAndDate(String serverId, String date) {
+        return orderMapper.selectOrdersByServerIdAndDate(serverId, date);
     }
 
     public List<Order> selectExecutingOrders(String clientId, String time) {

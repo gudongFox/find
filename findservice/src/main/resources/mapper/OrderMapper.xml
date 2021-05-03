@@ -45,6 +45,13 @@
     where client_id = #{clientId, jdbcType=VARCHAR} and date_format(start_time, '%Y-%m-%d') = #{date, jdbcType=VARCHAR}
     order by start_time
   </select>
+
+  <select id="selectOrdersByServerIdAndDate" resultMap="BaseResultMap">
+    select *
+    from order_detail
+    where server_id = #{serverId, jdbcType=VARCHAR} and date_format(start_time, '%Y-%m-%d') = #{date, jdbcType=VARCHAR}
+    order by start_time
+  </select>
   <select id="selectExecutingOrders" resultMap="BaseResultMap">
     select *
     from order_detail
