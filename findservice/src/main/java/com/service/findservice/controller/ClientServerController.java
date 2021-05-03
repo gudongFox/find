@@ -26,9 +26,17 @@ public class ClientServerController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping(path = "/info", produces = "application/json")
-    public ResultBody getTrustServerByClientId(@RequestParam(name = "client_id") String clientId) {
+    /**
+     * 通过client id得到信赖的服务人员信息
+     * @param clientId client id
+     * @return List<ClientServer>
+     */
+    @GetMapping(path = "/info")
+    public ResultBody getTrustServerByClientId(@RequestParam(name = "clientId") String clientId) {
         List<ClientServer> clientServers = clientServerService.selectClientServerInfoByClientId(clientId);
+        if (null == clientServers) {
+            return new ResultBody(ResultCode.FAIL);
+        }
         List<ClientServerInfo> clientServerInfos = new ArrayList<>();
         for (ClientServer clientServer : clientServers) {
             Server server = serverService.findServerById(clientServer.getServerId());
@@ -39,7 +47,12 @@ public class ClientServerController {
         return new ResultBody(ResultCode.SUCCESS, clientServerInfos);
     }
 
-    @PatchMapping(path = "/info", produces = "application/json")
+    /**
+     * 更新ClientServer的部分信息
+     * @param record ClientServer information
+     * @return 200->success 400->fail
+     */
+    @PatchMapping(path = "/info")
     public ResultBody updateClientServerInfo(@RequestBody ClientServer record) {
         if (null == record.getClientId() || null == record.getServerId()) {
             return new ResultBody(ResultCode.FAIL);
@@ -48,7 +61,13 @@ public class ClientServerController {
         return res > 0 ? new ResultBody(ResultCode.SUCCESS) : new ResultBody(ResultCode.FAIL);
     }
 
-    @DeleteMapping(path = "/info", produces = "application/json")
+    /**
+     * 删除ClientServer的信息
+     * @param clientId client id
+     * @param serverId server id
+     * @return 200->success 400->fail
+     */
+    @DeleteMapping(path = "/info")
     public ResultBody deleteClientServerInfo(@RequestParam(name = "clientId") String clientId,
                                              @RequestParam(name = "serverId") String serverId) {
         if (null == clientId || null == serverId) {
@@ -58,7 +77,12 @@ public class ClientServerController {
         return res > 0 ? new ResultBody(ResultCode.SUCCESS) : new ResultBody(ResultCode.FAIL);
     }
 
-    @PostMapping(path = "/info", produces = "application/json")
+    /**
+     * 新建ClientServer信息
+     * @param record ClientServer
+     * @return 200->success 400->fail
+     */
+    @PostMapping(path = "/info")
     public ResultBody createClientServerInfo(@RequestBody ClientServer record) {
         if (null == record.getClientId() || null == record.getServerId()) {
             return new ResultBody(ResultCode.FAIL);

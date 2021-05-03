@@ -1,6 +1,5 @@
 package com.service.findservice.dao;
 
-import com.service.findservice.entity.Client;
 import com.service.findservice.entity.Server;
 import org.apache.ibatis.annotations.Mapper;
 

@@ -34,7 +34,15 @@ public class OrderController {
     @Autowired
     private OrderServerService orderServersService;
 
-    @GetMapping(path = "/detail", produces = "application/json")
+    /**
+     * 通过客户获得订单信息
+     * @param clientId 客户的id
+     * @param day 指定某一天的订单，优先级高于isExecuting；不要求一定传值；
+     * @param isExecuting true 表示正在执行的订单；不要求一定传值；
+     * @param month 传值为某个月，格式为yyyy-MM；不要求一定传值；返回的内容为List<Boolean>, true表示该天有订单
+     * @return Orders
+     */
+    @GetMapping(path = "/detail")
     public ResultBody getOrders(@RequestParam(name = "clientId") String clientId,
                             @RequestParam(name = "day", required = false) String day,
                             @RequestParam(name = "isExecuting", required = false) Boolean isExecuting,

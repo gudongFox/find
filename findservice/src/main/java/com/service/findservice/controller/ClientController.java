@@ -20,9 +20,10 @@ public class ClientController {
      * @param clientId client_id
      * @return client information
      */
-    @GetMapping(path = "/info", produces = "application/json")
+    @GetMapping(path = "/info")
     public ResultBody getClientInfo(@RequestParam(name = "clientId") String clientId) {
-        return new ResultBody(ResultCode.SUCCESS, new ClientInfo(clientService.selectClientById(clientId)));
+        Client client = clientService.selectClientById(clientId);
+        return null == client ? new ResultBody(ResultCode.FAIL) : new ResultBody(ResultCode.SUCCESS, new ClientInfo(client));
     }
 
     /**
@@ -31,8 +32,7 @@ public class ClientController {
      * @param client information
      * @return success->200, fail->400
      */
-    @ResponseBody
-    @PatchMapping(path = "info", produces = "application/json")
+    @PatchMapping(path = "info")
     public ResultBody updateClientInfo(@RequestBody Client client) {
         if (null == client.getClientId()) {
             return new ResultBody(ResultCode.FAIL);

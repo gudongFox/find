@@ -1,6 +1,5 @@
 package com.service.findservice.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.service.findservice.entity.Client;
 import com.service.findservice.entity.Demand;
 import com.service.findservice.entity.DemandInfo;
@@ -27,9 +26,17 @@ public class DemandController {
     @Autowired
     private ClientService clientService;
 
-    @GetMapping(path = "/detail", produces = "application/json")
+    /**
+     * 通过client id得到需求
+     * @param clientId client id
+     * @return List<Demand>
+     */
+    @GetMapping(path = "/detail")
     public ResultBody getDemandsByClientId(@RequestParam(name = "clientId") String clientId) {
         List<Demand> demands = demandService.selectDemandsByClientId(clientId);
+        if (null == demands) {
+            return new ResultBody(ResultCode.FAIL);
+        }
         for (Demand demand : demands) {
             if (!demand.getServerId().equals("0")) {
                 demand.setServerName(getServerInfo(demand.getServerId()));
@@ -41,7 +48,12 @@ public class DemandController {
         return new ResultBody(ResultCode.SUCCESS, new DemandInfo(getClientInfo(clientId), demands));
     }
 
-    @PostMapping(value = "/detail", produces = "application/json")
+    /**
+     * 创建新的订单
+     * @param demand demand id 必须为 null，其他字段可选
+     * @return 200->success 400->fail
+     */
+    @PostMapping(value = "/detail")
     public ResultBody createDemand(@RequestBody Demand demand) {
         if (null == demand.getDemandId()) {
             return new ResultBody(ResultCode.FAIL);
