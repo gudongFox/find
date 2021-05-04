@@ -54,7 +54,7 @@ public class ClientServerController {
      */
     @PatchMapping(path = "/info")
     public ResultBody updateClientServerInfo(@RequestBody ClientServer record) {
-        if (null == record.getClientId() || null == record.getServerId()) {
+        if (null == record || (null == record.getClientId() || null == record.getServerId())) {
             return new ResultBody(ResultCode.FAIL);
         }
         int res = clientServerService.updateByClientIdAndServerIdSelective(record);
@@ -84,7 +84,7 @@ public class ClientServerController {
      */
     @PostMapping(path = "/info")
     public ResultBody createClientServerInfo(@RequestBody ClientServer record) {
-        if (null == record.getClientId() || null == record.getServerId()) {
+        if (null == record || (null == record.getClientId() || null == record.getServerId())) {
             return new ResultBody(ResultCode.FAIL);
         }
         int res = clientServerService.insertByClientIdAndServerId(record);

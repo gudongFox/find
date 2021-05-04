@@ -53,9 +53,9 @@ public class DemandController {
      * @param demand demand id 必须为 null，其他字段可选
      * @return 200->success 400->fail
      */
-    @PostMapping(value = "/detail")
+    @PostMapping(path = "/detail")
     public ResultBody createDemand(@RequestBody Demand demand) {
-        if (null == demand.getDemandId()) {
+        if (null == demand) {
             return new ResultBody(ResultCode.FAIL);
         }
         int res = demandService.insertDemand(demand);

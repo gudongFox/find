@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="修改日期加减的bug">
-      <change afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/entity/ServerInfo.java" afterDir="false" />
+    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="新增SererInfo数据类;&#10;修改Server工作日程的查询方式和bug;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ClientServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/DemandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/DemandController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/OrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +107,7 @@
       <updated>1619791667875</updated>
       <workItem from="1619957366333" duration="11672000" />
       <workItem from="1620014859796" duration="17389000" />
+      <workItem from="1620035452512" duration="146000" />
     </task>
     <task id="LOCAL-00001" summary="全部生成">
       <created>1619848877414</created>
@@ -183,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620027345392</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="新增SererInfo数据类;&#10;修改Server工作日程的查询方式和bug;">
+      <created>1620035537335</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1620035537335</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +216,7 @@
     <MESSAGE value="更新接口信息" />
     <MESSAGE value="新增查询服务人员一周的工作时间表；&#10;新增ServerController两个方法的注释" />
     <MESSAGE value="修改日期加减的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改日期加减的bug" />
+    <MESSAGE value="新增SererInfo数据类;&#10;修改Server工作日程的查询方式和bug;" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增SererInfo数据类;&#10;修改Server工作日程的查询方式和bug;" />
   </component>
 </project>

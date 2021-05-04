@@ -244,8 +244,9 @@ public class ServerController {
 
     /**
      * 通过server id得到server的信息
+     *
      * @param serverId server id
-     * @param week 某周的起始日期，格式为yyyy-MM-dd，不要求一定传值
+     * @param week     某周的起始日期，格式为yyyy-MM-dd，不要求一定传值
      * @return
      */
     @GetMapping(path = "/info")
@@ -256,7 +257,7 @@ public class ServerController {
         }
         ServerInfo serverInfo = new ServerInfo();
         serverInfo.setServerInfo(serverService.findServerById(serverId));
-        if (null != week){
+        if (null != week) {
             serverInfo.setWeeklyWorkTime(getWeeklyOrders(serverId, week));
         }
         return new ResultBody(ResultCode.SUCCESS, serverInfo);
@@ -264,12 +265,13 @@ public class ServerController {
 
     /**
      * 新建server信息
+     *
      * @param server Server对象
      * @return 200->success 400->fail
      */
     @PostMapping(path = "/info")
     public ResultBody createServer(@RequestBody Server server) {
-        if (null == server.getServerId() || null != serverService.findServerById(server.getServerId())) {
+        if (null == server || (null == server.getServerId() || null != serverService.findServerById(server.getServerId()))) {
             return new ResultBody(ResultCode.FAIL);
         }
         int res = serverService.addServer(server);
