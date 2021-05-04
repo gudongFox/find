@@ -32,4 +32,8 @@ public class DemandService {
     public int insertDemand(Demand demand) {
         return demandMapper.insertSelective(demand);
     }
+
+    public int updateDemand(Demand demand) {
+        return demandMapper.updateByPrimaryKeySelective(demand);
+    }
 }

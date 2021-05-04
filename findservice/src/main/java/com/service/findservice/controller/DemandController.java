@@ -62,6 +62,20 @@ public class DemandController {
         return res > 0 ? new ResultBody(ResultCode.SUCCESS) : new ResultBody(ResultCode.FAIL);
     }
 
+    /**
+     * 更新订单
+     * @param demand 更新现有的需求，demand id 不能为null
+     * @return 200->success 400->fail
+     */
+    @PatchMapping(path = "/detail")
+    public ResultBody updateDemand(@RequestBody Demand demand) {
+        if (null == demand || null == demand.getDemandId()) {
+            return new ResultBody(ResultCode.FAIL);
+        }
+        int res = demandService.updateDemand(demand);
+        return res > 0 ? new ResultBody(ResultCode.SUCCESS) : new ResultBody(ResultCode.FAIL);
+    }
+
     private Client getClientInfo(String clientId) {
         return clientService.selectClientById(clientId);
     }
