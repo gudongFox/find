@@ -1,28 +1,20 @@
 package com.service.findservice.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class Demand {
 
     private Integer demandId;
 
-
     private String clientId;
-
 
     private String serviceProject;
 
-
     private String mandatorId;
-
 
     private String mandatorName;
 
-
     private String serverId;
-
 
     private String serverName;
 

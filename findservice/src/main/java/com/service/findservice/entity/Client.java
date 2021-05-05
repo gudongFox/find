@@ -3,23 +3,30 @@ package com.service.findservice.entity;
 public class Client {
     private String clientId;
 
-
     private String clientSessionKey;
-
 
     private String clientName;
 
-
     private Integer clientGender;
-
 
     private Integer clientAge;
 
-
     private String clientTel;
 
-
     private String clientLocation;
+
+    private String clientProfile;
+
+    public Client(String clientId, String clientSessionKey, String clientName, Integer clientGender, Integer clientAge, String clientTel, String clientLocation, String clientProfile) {
+        this.clientId = clientId;
+        this.clientSessionKey = clientSessionKey;
+        this.clientName = clientName;
+        this.clientGender = clientGender;
+        this.clientAge = clientAge;
+        this.clientTel = clientTel;
+        this.clientLocation = clientLocation;
+        this.clientProfile = clientProfile;
+    }
 
     public Client(String clientId, String clientSessionKey, String clientName, Integer clientGender, Integer clientAge, String clientTel, String clientLocation) {
         this.clientId = clientId;
@@ -89,5 +96,13 @@ public class Client {
 
     public void setClientLocation(String clientLocation) {
         this.clientLocation = clientLocation == null ? null : clientLocation.trim();
+    }
+
+    public String getClientProfile() {
+        return clientProfile;
+    }
+
+    public void setClientProfile(String clientProfile) {
+        this.clientProfile = clientProfile;
     }
 }

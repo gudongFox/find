@@ -12,7 +12,7 @@ public class ServerInfo {
         this.weeklyWorkTime = weeklyWorkTime;
     }
 
-    public ServerInfo(){
+    public ServerInfo() {
         super();
     }
 

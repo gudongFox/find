@@ -23,11 +23,11 @@ public interface OrderMapper {
 
     List<Order> selectOrderBySId(String server_id);
 
-    List<Order> selectOrderByDate(@Param("server_id") String server_id,@Param("date") Date date);
+    List<Order> selectOrderByDate(@Param("server_id") String server_id, @Param("date") Date date);
 
-    List<Order> selectWeekOrderByDate(@Param("server_id") String server_id,@Param("date") Date date);
+    List<Order> selectWeekOrderByDate(@Param("server_id") String server_id, @Param("date") Date date);
 
-    List<Order> selectMonOrderBySId(@Param("server_id") String server_id,@Param("date") String date);
+    List<Order> selectMonOrderBySId(@Param("server_id") String server_id, @Param("date") String date);
 
     List<Order> selectOrderByCId(String client_id);
 
@@ -52,7 +52,6 @@ public interface OrderMapper {
     List<String> selectUnFinOrderByMId(String mandator_id);
 
     List<Order> selectUnFinOrderBySId(String server_id);
-
 
 
 }

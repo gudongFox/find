@@ -21,13 +21,14 @@ public class LoginService {
 
     @Autowired
     ServerMapper serverMapper;
-    public String login(){
+
+    public String login() {
         return "登陆成功";
     }
 
-    public Server save(String id, String name){
+    public Server save(String id, String name) {
         //如果数据库已存在用户信息，则不保存
-        if (serverMapper.selectByPrimaryKey(id) != null){
+        if (serverMapper.selectByPrimaryKey(id) != null) {
             return serverMapper.selectByPrimaryKey(id);
         }
         Server server = new Server();

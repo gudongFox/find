@@ -17,7 +17,7 @@ public class ClientServerInfo {
         this.mandatorServeTimes = mandatorServeTimes;
     }
 
-    public ClientServerInfo(){
+    public ClientServerInfo() {
         super();
     }
 

@@ -28,6 +28,7 @@ public class ClientServerController {
 
     /**
      * 通过client id得到信赖的服务人员信息
+     *
      * @param clientId client id
      * @return List<ClientServer>
      */
@@ -49,6 +50,7 @@ public class ClientServerController {
 
     /**
      * 更新ClientServer的部分信息
+     *
      * @param record ClientServer information
      * @return 200->success 400->fail
      */
@@ -63,6 +65,7 @@ public class ClientServerController {
 
     /**
      * 删除ClientServer的信息
+     *
      * @param clientId client id
      * @param serverId server id
      * @return 200->success 400->fail
@@ -79,6 +82,7 @@ public class ClientServerController {
 
     /**
      * 新建ClientServer信息
+     *
      * @param record ClientServer
      * @return 200->success 400->fail
      */

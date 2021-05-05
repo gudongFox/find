@@ -14,31 +14,31 @@ public class ServerService {
     @Autowired
     private ServerMapper serverMapper;
 
-    public Server findServerById(String serverId){
+    public Server findServerById(String serverId) {
         return serverMapper.selectByServerId(serverId);
     }
 
-    public List<Server> findServersByClientId(String clientId){
+    public List<Server> findServersByClientId(String clientId) {
         return serverMapper.selectServersByClientId(clientId);
     }
 
-    public int addServer(Server server){
+    public int addServer(Server server) {
         return serverMapper.insert(server);
     }
 
-    public int selectManOrderNum(String server_id){
+    public int selectManOrderNum(String server_id) {
         return serverMapper.selectManOrderNum(server_id);
     }
 
-    public int selectOrderNum(String server_id){
+    public int selectOrderNum(String server_id) {
         return serverMapper.selectOrderNum(server_id);
     }
 
-    public int selectUnFinOrderNum(String server_id){
+    public int selectUnFinOrderNum(String server_id) {
         return serverMapper.selectUnFinOrderNum(server_id);
     }
 
-    public Server selectServerByOId(int order_id){
+    public Server selectServerByOId(int order_id) {
         return serverMapper.selectServerByOId(order_id);
     }
 }

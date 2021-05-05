@@ -47,6 +47,7 @@ public class ResultBody {
 
     /**
      * 成功或者失败,无数据
+     *
      * @param resultCode 状态码
      */
     public ResultBody(ResultCode resultCode) {
@@ -56,8 +57,9 @@ public class ResultBody {
 
     /**
      * 枚举结果以及获取数据
+     *
      * @param resultCode 状态码
-     * @param message 信息
+     * @param message    信息
      */
     public ResultBody(ResultCode resultCode, String message) {
         this.code = resultCode.getCode();
@@ -66,8 +68,9 @@ public class ResultBody {
 
     /**
      * 枚举结果以及获取数据
+     *
      * @param resultCode 状态码
-     * @param data 数据
+     * @param data       数据
      */
     public ResultBody(ResultCode resultCode, Object data) {
         this.code = resultCode.getCode();

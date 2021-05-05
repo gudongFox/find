@@ -66,21 +66,21 @@ public class ServerController {
 
     //查询未结算信息
     @RequestMapping(value = "/getUnFinOrderInfo/{mandator_id}")
-    public List getUnFinOrderInfo(@PathVariable String mandator_id){
-        List<Map<String, Object>> infoList  = new ArrayList<>();
+    public List getUnFinOrderInfo(@PathVariable String mandator_id) {
+        List<Map<String, Object>> infoList = new ArrayList<>();
         List<String> serverList = orderService.selectUnFinOrderByMId(mandator_id);
-        if(serverList != null){
-            for(String server_id : serverList){
+        if (serverList != null) {
+            for (String server_id : serverList) {
                 Map<String, Object> info = new HashMap<>();
                 //伙伴
                 Server server = serverService.findServerById(server_id);
                 info.put("server", server);
                 //委托数
-                info.put("manOrderNum",serverService.selectManOrderNum(server.getServerId()));
+                info.put("manOrderNum", serverService.selectManOrderNum(server.getServerId()));
                 //接单数
-                info.put("orderNum",serverService.selectOrderNum(server.getServerId()));
+                info.put("orderNum", serverService.selectOrderNum(server.getServerId()));
                 //未结算数量
-                info.put("UnFinOrderNum",serverService.selectUnFinOrderNum(server.getServerId()));
+                info.put("UnFinOrderNum", serverService.selectUnFinOrderNum(server.getServerId()));
                 infoList.add(info);
             }
         }
@@ -99,17 +99,17 @@ public class ServerController {
     public List getClient(@PathVariable String server_id) {
         List<Map<String, Object>> infoList = new ArrayList<>();
         List<Client> clientList = clientService.selectCByServerId(server_id);
-        if(clientList != null){
-            for(Client client : clientList){
+        if (clientList != null) {
+            for (Client client : clientList) {
                 Map<String, Object> info = new HashMap<>();
                 //客户信息
                 info.put("clientInfo", client);
                 //最多的服务项目
-                info.put("mostProject",clientService.selectMostProj(client.getClientId()));
+                info.put("mostProject", clientService.selectMostProj(client.getClientId()));
                 //服务数量
-                info.put("orderNum",clientService.selectOrderNum(client.getClientId()));
+                info.put("orderNum", clientService.selectOrderNum(client.getClientId()));
                 //委托数
-                info.put("ManOrderNum",clientService.selectManOrderNum(client.getClientId()));
+                info.put("ManOrderNum", clientService.selectManOrderNum(client.getClientId()));
                 infoList.add(info);
             }
         }
@@ -121,8 +121,8 @@ public class ServerController {
     public List getDemand(@PathVariable String server_id) {
         List<Map<String, Object>> infoList = new ArrayList<>();
         List<Demand> demandList = demandService.selectDemandByServerId(server_id);
-        if(demandList != null){
-            for(Demand demand : demandList){
+        if (demandList != null) {
+            for (Demand demand : demandList) {
                 Map<String, Object> info = new HashMap<>();
                 //用户信息
                 info.put("client", clientService.selectClientById(demand.getClientId()));
@@ -162,7 +162,6 @@ public class ServerController {
     public List<Server> getPartner(@PathVariable String server_id) {
         return serverServiceService.selectPartnerBySId(server_id);
     }
-
 
 
     @RequestMapping(value = "/updateWorkTime/{server_id}/{work_day}/{work_hour}")
@@ -231,7 +230,6 @@ public class ServerController {
     }
 
 
-
     //替客户下单,并自己接单
     @RequestMapping(value = "/makeOrderByS/{server_id}/{client_id}")
     public int makeOrderByS(@PathVariable String server_id, @PathVariable String client_id, Order order) {
@@ -287,7 +285,6 @@ public class ServerController {
     public String test() throws ParseException {
         return clientService.selectMostProj("zhanglaoshi");
     }
-
 
 
     /**
