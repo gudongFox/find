@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="删除序列化信息；&#10;更改接口信息；&#10;增加ClientServer接口；">
+    <list default="true" id="74e550ed-2f52-4813-812f-533d8199d6ea" name="Default Changelist" comment="增加更新Demand接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/ServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientServerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ClientServerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/OrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ServerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/dao/ServerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/server/ServerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ClientMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ClientMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ServerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/resources/mapper/ServerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/DemandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/findservice/src/main/java/com/service/findservice/controller/DemandController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620099242005</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="增加更新Demand接口">
+      <created>1620100377234</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1620100377234</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +231,7 @@
     <MESSAGE value="修改日期加减的bug" />
     <MESSAGE value="新增SererInfo数据类;&#10;修改Server工作日程的查询方式和bug;" />
     <MESSAGE value="修复创建需求和服务人信息的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复创建需求和服务人信息的bug" />
+    <MESSAGE value="增加更新Demand接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加更新Demand接口" />
   </component>
 </project>
