@@ -15,9 +15,10 @@
         </commentGenerator>
         <!--jdbc的数据库连接 wg_insert 为数据库名字-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://129.211.68.243:3306/service_v5?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Hongkong" userId="developer"
+                        connectionURL="jdbc:mysql://129.211.68.243:3306/service_v5?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Hongkong"
+                        userId="developer"
                         password="dev123456">
-            <property name="nullCatalogMeansCurrent" value="true" />
+            <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
         <!--非必须，类型处理器，在数据库类型和java类型之间的转换控制-->
         <javaTypeResolver>
@@ -52,12 +53,12 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!-- tableName是数据库中的表名，domainObjectName是生成的JAVA模型名，后面的参数不用改，要生成更多的表就在下面继续加table标签 -->
-<!--        <table tableName="order_detail" domainObjectName="Order"-->
-<!--               enableCountByExample="false" enableUpdateByExample="false"-->
-<!--               enableDeleteByExample="false" enableSelectByExample="false"-->
-<!--               selectByExampleQueryId="false">-->
-<!--            <columnOverride column="is_substitue" javaType="java.lang.Integer"/>-->
-<!--        </table>-->
+        <!--        <table tableName="order_detail" domainObjectName="Order"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false">-->
+        <!--            <columnOverride column="is_substitue" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
         <table tableName="order_servers" domainObjectName="OrderServer"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"

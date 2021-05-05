@@ -1,199 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.service.findservice.dao.ServerMapper">
-  <resultMap id="BaseResultMap" type="com.service.findservice.entity.Server">
-    <constructor>
-      <idArg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="server_session_key" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="server_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="server_gender" javaType="java.lang.Integer" jdbcType="TINYINT" />
-      <arg column="server_age" javaType="java.lang.Integer" jdbcType="TINYINT" />
-      <arg column="server_tel" javaType="java.lang.String" jdbcType="CHAR" />
-      <arg column="server_location" javaType="java.lang.String" jdbcType="VARCHAR" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List">
-    server_id, server_session_key, server_name, server_gender, server_age, server_tel, 
-    server_location
-  </sql>
+    <resultMap id="BaseResultMap" type="com.service.findservice.entity.Server">
+        <constructor>
+            <idArg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="server_session_key" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="server_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="server_gender" javaType="java.lang.Integer" jdbcType="TINYINT"/>
+            <arg column="server_age" javaType="java.lang.Integer" jdbcType="TINYINT"/>
+            <arg column="server_tel" javaType="java.lang.String" jdbcType="CHAR"/>
+            <arg column="server_location" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="server_profile" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        server_id
+        , server_session_key, server_name, server_gender, server_age, server_tel,
+    server_location, server_profile
+    </sql>
 
-  <select id="selectUnFinOrderNum" parameterType="java.lang.String" resultType="int">
-    select
-    count(order_id)
-    from order_servers where server_id = #{serverId, jdbcType=VARCHAR} and is_finish = 2
+    <select id="selectUnFinOrderNum" parameterType="java.lang.String" resultType="int">
+        select count(order_id)
+        from order_servers
+        where server_id = #{serverId, jdbcType=VARCHAR}
+          and is_finish = 2
 
 
-  </select>
+    </select>
 
-  <select id="selectServerByOId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from server_info where server_id = (select server_id from order_servers where order_id = #{order_id} )
-  </select>
+    <select id="selectServerByOId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from server_info where server_id = (select server_id from order_servers where order_id = #{order_id} )
+    </select>
 
-  <select id="selectManOrderNum" parameterType="java.lang.String" resultType="int">
-    select
-    count(order_id)
-    from order_detail where order_id in
-    (select order_id from order_servers where server_id = #{serverId, jdbcType=VARCHAR})
-    and mandator_id != '0'
-  </select>
+    <select id="selectManOrderNum" parameterType="java.lang.String" resultType="int">
+        select count(order_id)
+        from order_detail
+        where order_id in
+              (select order_id from order_servers where server_id = #{serverId, jdbcType=VARCHAR})
+          and mandator_id != '0'
+    </select>
 
-  <select id="selectOrderNum" parameterType="java.lang.String" resultType="int">
-    select
-    count(order_id)
-    from order_detail where order_id in
-    (select order_id from order_servers where server_id = #{serverId, jdbcType=VARCHAR})
-    and mandator_id = '0'
-  </select>
+    <select id="selectOrderNum" parameterType="java.lang.String" resultType="int">
+        select count(order_id)
+        from order_detail
+        where order_id in
+              (select order_id from order_servers where server_id = #{serverId, jdbcType=VARCHAR})
+          and mandator_id = '0'
+    </select>
 
-  <select id="selectByServerId" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from server_info
-    where server_id = #{serverId, jdbcType=VARCHAR}
-  </select>
-  <select id="selectServersByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select distinct *
-    from server_info, client_server
-    where client_id = #{clientId, jdbcType=VARCHAR} and server_info.server_id = client_server.server_id
-  </select>
+    <select id="selectByServerId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from server_info
+        where server_id = #{serverId, jdbcType=VARCHAR}
+    </select>
+    <select id="selectServersByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select distinct *
+        from server_info,
+             client_server
+        where client_id = #{clientId, jdbcType=VARCHAR}
+          and server_info.server_id = client_server.server_id
+    </select>
 
-  <update id="updateSeverWorkTime">
-    update server_work_time set work_day = #{work_day,jdbcType=TINYINT} , work_hour = #{work_hour,jdbcType=TINYINT}
-    where server_id = #{server_id,jdbcType=VARCHAR}
-  </update>
+    <update id="updateSeverWorkTime">
+        update server_work_time
+        set work_day  = #{work_day,jdbcType=TINYINT},
+            work_hour = #{work_hour,jdbcType=TINYINT}
+        where server_id = #{server_id,jdbcType=VARCHAR}
+    </update>
 
-  <update id="updateServerParameter">
-    update server_parameter set max_distance = #{max_distance,jdbcType=FLOAT} , max_interval_distance = #{max_interval_distance,jdbcType=FLOAT}
-    , min_service_time = #{min_service_time,jdbcType=FLOAT}, min_interval_time = #{min_interval_time,jdbcType=FLOAT}
-    where server_id = #{server_id,jdbcType=VARCHAR}
-  </update>
+    <update id="updateServerParameter">
+        update server_parameter
+        set max_distance          = #{max_distance,jdbcType=FLOAT}
+          , max_interval_distance = #{max_interval_distance,jdbcType=FLOAT}
+          , min_service_time      = #{min_service_time,jdbcType=FLOAT}
+          , min_interval_time     = #{min_interval_time,jdbcType=FLOAT}
+        where server_id = #{server_id,jdbcType=VARCHAR}
+    </update>
 
-  <select id="selectPartnerBySId" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from server_info
-    where server_id in (select partner_id from server_partner
-    where server_id = #{serverId,jdbcType=VARCHAR})
-  </select>
+    <select id="selectPartnerBySId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from server_info
+        where server_id in (select partner_id from server_partner
+        where server_id = #{serverId,jdbcType=VARCHAR})
+    </select>
 
-  <insert id="addPartner" >
-    insert into server_partner (server_id, partner_id)
-    values (#{server_id,jdbcType=VARCHAR}, #{partner_id,jdbcType=VARCHAR})
-  </insert>
+    <insert id="addPartner">
+        insert into server_partner (server_id, partner_id)
+        values (#{server_id,jdbcType=VARCHAR}, #{partner_id,jdbcType=VARCHAR})
+    </insert>
 
-  <insert id="insertOrderServers" >
-    insert into order_servers (order_id, server_id, is_finish)
-    values (#{order_id,jdbcType=INTEGER}, #{server_id,jdbcType=VARCHAR}, #{is_finish,jdbcType=TINYINT})
-  </insert>
+    <insert id="insertOrderServers">
+        insert into order_servers (order_id, server_id, is_finish)
+        values (#{order_id,jdbcType=INTEGER}, #{server_id,jdbcType=VARCHAR}, #{is_finish,jdbcType=TINYINT})
+    </insert>
 
-  <select id="selectCIdBySid" parameterType="java.lang.String" resultType="string">
-    select
-    client_id
-    from client_server
-    where server_id  = #{serverId,jdbcType=VARCHAR}
-  </select>
+    <select id="selectCIdBySid" parameterType="java.lang.String" resultType="string">
+        select client_id
+        from client_server
+        where server_id = #{serverId,jdbcType=VARCHAR}
+    </select>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from server_info
-    where server_id = #{serverId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from server_info
-    where server_id = #{serverId,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.service.findservice.entity.Server">
-    insert into server_info (server_id, server_session_key, server_name,
-      server_gender, server_age, server_tel, 
-      server_location)
-    values (#{serverId,jdbcType=VARCHAR}, #{serverSessionKey,jdbcType=VARCHAR}, #{serverName,jdbcType=VARCHAR}, 
-      #{serverGender,jdbcType=TINYINT}, #{serverAge,jdbcType=TINYINT}, #{serverTel,jdbcType=CHAR}, 
-      #{serverLocation,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.service.findservice.entity.Server">
-    insert into server_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="serverId != null">
-        server_id,
-      </if>
-      <if test="serverSessionKey != null">
-        server_session_key,
-      </if>
-      <if test="serverName != null">
-        server_name,
-      </if>
-      <if test="serverGender != null">
-        server_gender,
-      </if>
-      <if test="serverAge != null">
-        server_age,
-      </if>
-      <if test="serverTel != null">
-        server_tel,
-      </if>
-      <if test="serverLocation != null">
-        server_location,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="serverId != null">
-        #{serverId,jdbcType=VARCHAR},
-      </if>
-      <if test="serverSessionKey != null">
-        #{serverSessionKey,jdbcType=VARCHAR},
-      </if>
-      <if test="serverName != null">
-        #{serverName,jdbcType=VARCHAR},
-      </if>
-      <if test="serverGender != null">
-        #{serverGender,jdbcType=TINYINT},
-      </if>
-      <if test="serverAge != null">
-        #{serverAge,jdbcType=TINYINT},
-      </if>
-      <if test="serverTel != null">
-        #{serverTel,jdbcType=CHAR},
-      </if>
-      <if test="serverLocation != null">
-        #{serverLocation,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.Server">
-    update server_info
-    <set>
-      <if test="serverSessionKey != null">
-        server_session_key = #{serverSessionKey,jdbcType=VARCHAR},
-      </if>
-      <if test="serverName != null">
-        server_name = #{serverName,jdbcType=VARCHAR},
-      </if>
-      <if test="serverGender != null">
-        server_gender = #{serverGender,jdbcType=TINYINT},
-      </if>
-      <if test="serverAge != null">
-        server_age = #{serverAge,jdbcType=TINYINT},
-      </if>
-      <if test="serverTel != null">
-        server_tel = #{serverTel,jdbcType=CHAR},
-      </if>
-      <if test="serverLocation != null">
-        server_location = #{serverLocation,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where server_id = #{serverId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.Server">
-    update server_info
-    set server_session_key = #{serverSessionKey,jdbcType=VARCHAR},
-      server_name = #{serverName,jdbcType=VARCHAR},
-      server_gender = #{serverGender,jdbcType=TINYINT},
-      server_age = #{serverAge,jdbcType=TINYINT},
-      server_tel = #{serverTel,jdbcType=CHAR},
-      server_location = #{serverLocation,jdbcType=VARCHAR}
-    where server_id = #{serverId,jdbcType=VARCHAR}
-  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from server_info
+        where server_id = #{serverId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from server_info
+        where server_id = #{serverId,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.service.findservice.entity.Server">
+        insert into server_info (server_id, server_session_key, server_name,
+                                 server_gender, server_age, server_tel,
+                                 server_location, server_profile)
+        values (#{serverId,jdbcType=VARCHAR}, #{serverSessionKey,jdbcType=VARCHAR}, #{serverName,jdbcType=VARCHAR},
+                #{serverGender,jdbcType=TINYINT}, #{serverAge,jdbcType=TINYINT}, #{serverTel,jdbcType=CHAR},
+                #{serverLocation,jdbcType=VARCHAR}, #{serverProfile,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.service.findservice.entity.Server">
+        insert into server_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="serverId != null">
+                server_id,
+            </if>
+            <if test="serverSessionKey != null">
+                server_session_key,
+            </if>
+            <if test="serverName != null">
+                server_name,
+            </if>
+            <if test="serverGender != null">
+                server_gender,
+            </if>
+            <if test="serverAge != null">
+                server_age,
+            </if>
+            <if test="serverTel != null">
+                server_tel,
+            </if>
+            <if test="serverLocation != null">
+                server_location,
+            </if>
+            <if test="serverProfile != null">
+                server_profile,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="serverId != null">
+                #{serverId,jdbcType=VARCHAR},
+            </if>
+            <if test="serverSessionKey != null">
+                #{serverSessionKey,jdbcType=VARCHAR},
+            </if>
+            <if test="serverName != null">
+                #{serverName,jdbcType=VARCHAR},
+            </if>
+            <if test="serverGender != null">
+                #{serverGender,jdbcType=TINYINT},
+            </if>
+            <if test="serverAge != null">
+                #{serverAge,jdbcType=TINYINT},
+            </if>
+            <if test="serverTel != null">
+                #{serverTel,jdbcType=CHAR},
+            </if>
+            <if test="serverLocation != null">
+                #{serverLocation,jdbcType=VARCHAR},
+            </if>
+            <if test="serverProfile != null">
+                #{serverProfile,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.Server">
+        update server_info
+        <set>
+            <if test="serverSessionKey != null">
+                server_session_key = #{serverSessionKey,jdbcType=VARCHAR},
+            </if>
+            <if test="serverName != null">
+                server_name = #{serverName,jdbcType=VARCHAR},
+            </if>
+            <if test="serverGender != null">
+                server_gender = #{serverGender,jdbcType=TINYINT},
+            </if>
+            <if test="serverAge != null">
+                server_age = #{serverAge,jdbcType=TINYINT},
+            </if>
+            <if test="serverTel != null">
+                server_tel = #{serverTel,jdbcType=CHAR},
+            </if>
+            <if test="serverLocation != null">
+                server_location = #{serverLocation,jdbcType=VARCHAR},
+            </if>
+            <if test="serverProfile != null">
+                server_profile = #{serverProfile,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where server_id = #{serverId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.Server">
+        update server_info
+        set server_session_key = #{serverSessionKey,jdbcType=VARCHAR},
+            server_name        = #{serverName,jdbcType=VARCHAR},
+            server_gender      = #{serverGender,jdbcType=TINYINT},
+            server_age         = #{serverAge,jdbcType=TINYINT},
+            server_tel         = #{serverTel,jdbcType=CHAR},
+            server_location    = #{serverLocation,jdbcType=VARCHAR},
+            server_profile     = #{serverProfile,jdbcType=VARCHAR}
+        where server_id = #{serverId,jdbcType=VARCHAR}
+    </update>
 </mapper>

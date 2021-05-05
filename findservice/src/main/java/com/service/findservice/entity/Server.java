@@ -15,6 +15,19 @@ public class Server {
 
     private String serverLocation;
 
+    private String serverProfile;
+
+    public Server(String serverId, String serverSessionKey, String serverName, Integer serverGender, Integer serverAge, String serverTel, String serverLocation, String serverProfile) {
+        this.serverId = serverId;
+        this.serverSessionKey = serverSessionKey;
+        this.serverName = serverName;
+        this.serverGender = serverGender;
+        this.serverAge = serverAge;
+        this.serverTel = serverTel;
+        this.serverLocation = serverLocation;
+        this.serverProfile = serverProfile;
+    }
+
     public Server(String serverId, String serverSessionKey, String serverName, Integer serverGender, Integer serverAge, String serverTel, String serverLocation) {
         this.serverId = serverId;
         this.serverSessionKey = serverSessionKey;
@@ -83,5 +96,13 @@ public class Server {
 
     public void setServerLocation(String serverLocation) {
         this.serverLocation = serverLocation == null ? null : serverLocation.trim();
+    }
+
+    public String getServerProfile() {
+        return serverProfile;
+    }
+
+    public void setServerProfile(String serverProfile) {
+        this.serverProfile = serverProfile;
     }
 }

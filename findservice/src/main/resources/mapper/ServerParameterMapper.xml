@@ -1,95 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.service.findservice.dao.ServerParameterMapper">
-  <resultMap id="BaseResultMap" type="com.service.findservice.entity.ServerParameter">
-    <constructor>
-      <idArg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="max_distance" javaType="java.lang.Float" jdbcType="REAL" />
-      <arg column="max_interval_distance" javaType="java.lang.Float" jdbcType="REAL" />
-      <arg column="min_service_time" javaType="java.lang.Float" jdbcType="REAL" />
-      <arg column="min_interval_time" javaType="java.lang.Float" jdbcType="REAL" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List">
-    server_id, max_distance, max_interval_distance, min_service_time, min_interval_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from server_parameter
-    where server_id = #{serverId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from server_parameter
-    where server_id = #{serverId,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.service.findservice.entity.ServerParameter">
-    insert into server_parameter (server_id, max_distance, max_interval_distance, 
-      min_service_time, min_interval_time)
-    values (#{serverId,jdbcType=VARCHAR}, #{maxDistance,jdbcType=REAL}, #{maxIntervalDistance,jdbcType=REAL}, 
-      #{minServiceTime,jdbcType=REAL}, #{minIntervalTime,jdbcType=REAL})
-  </insert>
-  <insert id="insertSelective" parameterType="com.service.findservice.entity.ServerParameter">
-    insert into server_parameter
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="serverId != null">
-        server_id,
-      </if>
-      <if test="maxDistance != null">
-        max_distance,
-      </if>
-      <if test="maxIntervalDistance != null">
-        max_interval_distance,
-      </if>
-      <if test="minServiceTime != null">
-        min_service_time,
-      </if>
-      <if test="minIntervalTime != null">
-        min_interval_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="serverId != null">
-        #{serverId,jdbcType=VARCHAR},
-      </if>
-      <if test="maxDistance != null">
-        #{maxDistance,jdbcType=REAL},
-      </if>
-      <if test="maxIntervalDistance != null">
-        #{maxIntervalDistance,jdbcType=REAL},
-      </if>
-      <if test="minServiceTime != null">
-        #{minServiceTime,jdbcType=REAL},
-      </if>
-      <if test="minIntervalTime != null">
-        #{minIntervalTime,jdbcType=REAL},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.ServerParameter">
-    update server_parameter
-    <set>
-      <if test="maxDistance != null">
-        max_distance = #{maxDistance,jdbcType=REAL},
-      </if>
-      <if test="maxIntervalDistance != null">
-        max_interval_distance = #{maxIntervalDistance,jdbcType=REAL},
-      </if>
-      <if test="minServiceTime != null">
-        min_service_time = #{minServiceTime,jdbcType=REAL},
-      </if>
-      <if test="minIntervalTime != null">
-        min_interval_time = #{minIntervalTime,jdbcType=REAL},
-      </if>
-    </set>
-    where server_id = #{serverId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.ServerParameter">
-    update server_parameter
-    set max_distance = #{maxDistance,jdbcType=REAL},
-      max_interval_distance = #{maxIntervalDistance,jdbcType=REAL},
-      min_service_time = #{minServiceTime,jdbcType=REAL},
-      min_interval_time = #{minIntervalTime,jdbcType=REAL}
-    where server_id = #{serverId,jdbcType=VARCHAR}
-  </update>
+    <resultMap id="BaseResultMap" type="com.service.findservice.entity.ServerParameter">
+        <constructor>
+            <idArg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="max_distance" javaType="java.lang.Float" jdbcType="REAL"/>
+            <arg column="max_interval_distance" javaType="java.lang.Float" jdbcType="REAL"/>
+            <arg column="min_service_time" javaType="java.lang.Float" jdbcType="REAL"/>
+            <arg column="min_interval_time" javaType="java.lang.Float" jdbcType="REAL"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        server_id
+        , max_distance, max_interval_distance, min_service_time, min_interval_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from server_parameter
+        where server_id = #{serverId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from server_parameter
+        where server_id = #{serverId,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.service.findservice.entity.ServerParameter">
+        insert into server_parameter (server_id, max_distance, max_interval_distance,
+                                      min_service_time, min_interval_time)
+        values (#{serverId,jdbcType=VARCHAR}, #{maxDistance,jdbcType=REAL}, #{maxIntervalDistance,jdbcType=REAL},
+                #{minServiceTime,jdbcType=REAL}, #{minIntervalTime,jdbcType=REAL})
+    </insert>
+    <insert id="insertSelective" parameterType="com.service.findservice.entity.ServerParameter">
+        insert into server_parameter
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="serverId != null">
+                server_id,
+            </if>
+            <if test="maxDistance != null">
+                max_distance,
+            </if>
+            <if test="maxIntervalDistance != null">
+                max_interval_distance,
+            </if>
+            <if test="minServiceTime != null">
+                min_service_time,
+            </if>
+            <if test="minIntervalTime != null">
+                min_interval_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="serverId != null">
+                #{serverId,jdbcType=VARCHAR},
+            </if>
+            <if test="maxDistance != null">
+                #{maxDistance,jdbcType=REAL},
+            </if>
+            <if test="maxIntervalDistance != null">
+                #{maxIntervalDistance,jdbcType=REAL},
+            </if>
+            <if test="minServiceTime != null">
+                #{minServiceTime,jdbcType=REAL},
+            </if>
+            <if test="minIntervalTime != null">
+                #{minIntervalTime,jdbcType=REAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.ServerParameter">
+        update server_parameter
+        <set>
+            <if test="maxDistance != null">
+                max_distance = #{maxDistance,jdbcType=REAL},
+            </if>
+            <if test="maxIntervalDistance != null">
+                max_interval_distance = #{maxIntervalDistance,jdbcType=REAL},
+            </if>
+            <if test="minServiceTime != null">
+                min_service_time = #{minServiceTime,jdbcType=REAL},
+            </if>
+            <if test="minIntervalTime != null">
+                min_interval_time = #{minIntervalTime,jdbcType=REAL},
+            </if>
+        </set>
+        where server_id = #{serverId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.ServerParameter">
+        update server_parameter
+        set max_distance          = #{maxDistance,jdbcType=REAL},
+            max_interval_distance = #{maxIntervalDistance,jdbcType=REAL},
+            min_service_time      = #{minServiceTime,jdbcType=REAL},
+            min_interval_time     = #{minIntervalTime,jdbcType=REAL}
+        where server_id = #{serverId,jdbcType=VARCHAR}
+    </update>
 </mapper>

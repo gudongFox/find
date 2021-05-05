@@ -1,92 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.service.findservice.dao.OrderServerMapper">
-  <resultMap id="BaseResultMap" type="com.service.findservice.entity.OrderServer">
-    <constructor>
-      <idArg column="order_server_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="order_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="is_finish" javaType="java.lang.Byte" jdbcType="TINYINT" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List">
-    order_server_id, order_id, server_id, is_finish
-  </sql>
+    <resultMap id="BaseResultMap" type="com.service.findservice.entity.OrderServer">
+        <constructor>
+            <idArg column="order_server_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="order_id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="is_finish" javaType="java.lang.Byte" jdbcType="TINYINT"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        order_server_id
+        , order_id, server_id, is_finish
+    </sql>
 
-  <select id="selectByOrderId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from order_servers
-    where order_id = #{orderId, jdbcType=INTEGER}
-  </select>
+    <select id="selectByOrderId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from order_servers
+        where order_id = #{orderId, jdbcType=INTEGER}
+    </select>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from order_servers
-    where order_server_id = #{orderServerId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from order_servers
-    where order_server_id = #{orderServerId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.service.findservice.entity.OrderServer">
-    insert into order_servers (order_server_id, order_id, server_id, 
-      is_finish)
-    values (#{orderServerId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{serverId,jdbcType=VARCHAR}, 
-      #{isFinish,jdbcType=TINYINT})
-  </insert>
-  <insert id="insertSelective" parameterType="com.service.findservice.entity.OrderServer">
-    insert into order_servers
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderServerId != null">
-        order_server_id,
-      </if>
-      <if test="orderId != null">
-        order_id,
-      </if>
-      <if test="serverId != null">
-        server_id,
-      </if>
-      <if test="isFinish != null">
-        is_finish,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderServerId != null">
-        #{orderServerId,jdbcType=INTEGER},
-      </if>
-      <if test="orderId != null">
-        #{orderId,jdbcType=INTEGER},
-      </if>
-      <if test="serverId != null">
-        #{serverId,jdbcType=VARCHAR},
-      </if>
-      <if test="isFinish != null">
-        #{isFinish,jdbcType=TINYINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.OrderServer">
-    update order_servers
-    <set>
-      <if test="orderId != null">
-        order_id = #{orderId,jdbcType=INTEGER},
-      </if>
-      <if test="serverId != null">
-        server_id = #{serverId,jdbcType=VARCHAR},
-      </if>
-      <if test="isFinish != null">
-        is_finish = #{isFinish,jdbcType=TINYINT},
-      </if>
-    </set>
-    where order_server_id = #{orderServerId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.OrderServer">
-    update order_servers
-    set order_id = #{orderId,jdbcType=INTEGER},
-      server_id = #{serverId,jdbcType=VARCHAR},
-      is_finish = #{isFinish,jdbcType=TINYINT}
-    where order_server_id = #{orderServerId,jdbcType=INTEGER}
-  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from order_servers
+        where order_server_id = #{orderServerId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from order_servers
+        where order_server_id = #{orderServerId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.service.findservice.entity.OrderServer">
+        insert into order_servers (order_server_id, order_id, server_id,
+                                   is_finish)
+        values (#{orderServerId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{serverId,jdbcType=VARCHAR},
+                #{isFinish,jdbcType=TINYINT})
+    </insert>
+    <insert id="insertSelective" parameterType="com.service.findservice.entity.OrderServer">
+        insert into order_servers
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderServerId != null">
+                order_server_id,
+            </if>
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="serverId != null">
+                server_id,
+            </if>
+            <if test="isFinish != null">
+                is_finish,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderServerId != null">
+                #{orderServerId,jdbcType=INTEGER},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=INTEGER},
+            </if>
+            <if test="serverId != null">
+                #{serverId,jdbcType=VARCHAR},
+            </if>
+            <if test="isFinish != null">
+                #{isFinish,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.OrderServer">
+        update order_servers
+        <set>
+            <if test="orderId != null">
+                order_id = #{orderId,jdbcType=INTEGER},
+            </if>
+            <if test="serverId != null">
+                server_id = #{serverId,jdbcType=VARCHAR},
+            </if>
+            <if test="isFinish != null">
+                is_finish = #{isFinish,jdbcType=TINYINT},
+            </if>
+        </set>
+        where order_server_id = #{orderServerId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.OrderServer">
+        update order_servers
+        set order_id  = #{orderId,jdbcType=INTEGER},
+            server_id = #{serverId,jdbcType=VARCHAR},
+            is_finish = #{isFinish,jdbcType=TINYINT}
+        where order_server_id = #{orderServerId,jdbcType=INTEGER}
+    </update>
 </mapper>
