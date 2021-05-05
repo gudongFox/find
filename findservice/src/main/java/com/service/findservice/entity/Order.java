@@ -27,6 +27,24 @@ public class Order {
 
     private Integer isSubstitue;
 
+    private Short numTimes;
+
+    public Order(Integer orderId, Date orderTime, String clientId, String mandatorId, String serviceProject, Date startTime, Date endTime, Float price, Short times, Short intervalDays, String orderComment, Integer isSubstitue, Short numTimes) {
+        this.orderId = orderId;
+        this.orderTime = orderTime;
+        this.clientId = clientId;
+        this.mandatorId = mandatorId;
+        this.serviceProject = serviceProject;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.price = price;
+        this.times = times;
+        this.intervalDays = intervalDays;
+        this.orderComment = orderComment;
+        this.isSubstitue = isSubstitue;
+        this.numTimes = numTimes;
+    }
+
     public Order(Integer orderId, Date orderTime, String clientId, String mandatorId, String serviceProject, Date startTime, Date endTime, Float price, Short times, Short intervalDays, String orderComment, Integer isSubstitue) {
         this.orderId = orderId;
         this.orderTime = orderTime;
@@ -140,5 +158,13 @@ public class Order {
 
     public void setIsSubstitue(Integer isSubstitue) {
         this.isSubstitue = isSubstitue;
+    }
+
+    public Short getNumTimes() {
+        return numTimes;
+    }
+
+    public void setNumTimes(Short numTimes) {
+        this.numTimes = numTimes;
     }
 }

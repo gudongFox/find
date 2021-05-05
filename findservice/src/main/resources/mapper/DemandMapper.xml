@@ -13,12 +13,14 @@
             <arg column="times" javaType="java.lang.Short" jdbcType="SMALLINT"/>
             <arg column="interval_days" javaType="java.lang.Short" jdbcType="SMALLINT"/>
             <arg column="demand_comment" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="num_times" javaType="java.lang.Short" jdbcType="SMALLINT"/>
+            <arg column="price" javaType="java.lang.Float" jdbcType="REAL"/>
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">
         demand_id
         , client_id, service_project, mandator_id, server_id, start_time, end_time,
-    times, interval_days, demand_comment
+    times, interval_days, demand_comment, num_times, price
     </sql>
 
     <select id="selectDemandsByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -50,11 +52,11 @@
         insert into demand (demand_id, client_id, service_project,
                             mandator_id, server_id, start_time,
                             end_time, times, interval_days,
-                            demand_comment)
+                            demand_comment, num_times, price)
         values (#{demandId,jdbcType=INTEGER}, #{clientId,jdbcType=VARCHAR}, #{serviceProject,jdbcType=CHAR},
                 #{mandatorId,jdbcType=VARCHAR}, #{serverId,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP},
                 #{endTime,jdbcType=TIMESTAMP}, #{times,jdbcType=SMALLINT}, #{intervalDays,jdbcType=SMALLINT},
-                #{demandComment,jdbcType=VARCHAR})
+                #{demandComment,jdbcType=VARCHAR}, #{numTimes,jdbcType=SMALLINT}, #{price,jdbcType=REAL})
     </insert>
     <insert id="insertSelective" parameterType="com.service.findservice.entity.Demand">
         insert into demand
@@ -89,6 +91,12 @@
             <if test="demandComment != null">
                 demand_comment,
             </if>
+            <if test="numTimes != null">
+                num_times,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="demandId != null">
@@ -120,6 +128,12 @@
             </if>
             <if test="demandComment != null">
                 #{demandComment,jdbcType=VARCHAR},
+            </if>
+            <if test="numTimes != null">
+                #{numTimes,jdbcType=SMALLINT},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=REAL},
             </if>
         </trim>
     </insert>
@@ -153,6 +167,12 @@
             <if test="demandComment != null">
                 demand_comment = #{demandComment,jdbcType=VARCHAR},
             </if>
+            <if test="numTimes != null">
+                num_times = #{numTimes,jdbcType=SMALLINT},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=REAL},
+            </if>
         </set>
         where demand_id = #{demandId,jdbcType=INTEGER}
     </update>
@@ -166,7 +186,9 @@
             end_time        = #{endTime,jdbcType=TIMESTAMP},
             times           = #{times,jdbcType=SMALLINT},
             interval_days   = #{intervalDays,jdbcType=SMALLINT},
-            demand_comment  = #{demandComment,jdbcType=VARCHAR}
+            demand_comment  = #{demandComment,jdbcType=VARCHAR},
+            num_times       = #{numTimes,jdbcType=SMALLINT},
+            price           = #{price,jdbcType=REAL}
         where demand_id = #{demandId,jdbcType=INTEGER}
     </update>
 </mapper>
