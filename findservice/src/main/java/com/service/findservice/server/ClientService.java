@@ -32,4 +32,16 @@ public class ClientService {
     public int createClientInfo(Client client) {
         return clientMapper.insertSelective(client);
     }
+
+    public String selectMostProj(String client_id){
+        return clientMapper.selectMostProj(client_id);
+    }
+
+    public int selectManOrderNum(String client_id){
+        return clientMapper.selectManOrderNum(client_id);
+    }
+
+    public int selectOrderNum(String client_id){
+        return clientMapper.selectOrderNum(client_id);
+    }
 }

@@ -1,5 +1,6 @@
 package com.service.findservice.dao;
 
+import com.service.findservice.entity.Order;
 import com.service.findservice.entity.Server;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -35,4 +36,13 @@ public interface ServerMapper {
     Server selectByServerId(String serverId);
 
     List<Server> selectServersByClientId(String clientId);
+
+    int selectManOrderNum(String server_id);
+
+    int selectOrderNum(String server_id);
+
+    int selectUnFinOrderNum(String server_id);
+
+    Server selectServerByOId(int order_id);
+
 }

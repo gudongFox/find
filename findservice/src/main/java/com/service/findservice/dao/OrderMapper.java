@@ -48,4 +48,11 @@ public interface OrderMapper {
     List<Order> selectExecutingOrders(String clientId, String time);
 
     Integer selectOrdersCountByDate(String clientId, String date);
+
+    List<String> selectUnFinOrderByMId(String mandator_id);
+
+    List<Order> selectUnFinOrderBySId(String server_id);
+
+
+
 }

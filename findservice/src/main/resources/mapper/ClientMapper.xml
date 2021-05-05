@@ -17,6 +17,28 @@
     client_location
   </sql>
 
+  <select id="selectManOrderNum" parameterType="java.lang.String" resultType="int">
+    select
+    count(order_id)
+    from order_detail where client_id = #{client_id, jdbcType=VARCHAR}
+    and mandator_id != '0'
+  </select>
+
+  <select id="selectOrderNum" parameterType="java.lang.String" resultType="int">
+    select
+    count(order_id)
+    from order_detail where client_id = #{client_id, jdbcType=VARCHAR}
+    and mandator_id = '0'
+  </select>
+
+  <select id="selectMostProj" parameterType="java.lang.String" resultType="string">
+    SELECT service_project
+    FROM order_detail  where client_id = #{client_id, jdbcType=VARCHAR}
+    GROUP BY service_project
+    order by count(1) desc
+    limit 1
+  </select>
+
   <select id="selectByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

@@ -97,4 +97,12 @@ public class OrderService {
         }
         return monthlyOrders;
     }
+
+    public List<String> selectUnFinOrderByMId(String mandator_id){
+        return orderMapper.selectUnFinOrderByMId(mandator_id);
+    }
+
+    public List<Order> selectUnFinOrderBySId(String server_id){
+        return orderMapper.selectUnFinOrderBySId(server_id);
+    }
 }

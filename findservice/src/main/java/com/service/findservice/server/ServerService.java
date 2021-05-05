@@ -1,6 +1,7 @@
 package com.service.findservice.server;
 
 import com.service.findservice.dao.ServerMapper;
+import com.service.findservice.entity.Order;
 import com.service.findservice.entity.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,21 @@ public class ServerService {
 
     public int addServer(Server server){
         return serverMapper.insert(server);
+    }
+
+    public int selectManOrderNum(String server_id){
+        return serverMapper.selectManOrderNum(server_id);
+    }
+
+    public int selectOrderNum(String server_id){
+        return serverMapper.selectOrderNum(server_id);
+    }
+
+    public int selectUnFinOrderNum(String server_id){
+        return serverMapper.selectUnFinOrderNum(server_id);
+    }
+
+    public Server selectServerByOId(int order_id){
+        return serverMapper.selectServerByOId(order_id);
     }
 }

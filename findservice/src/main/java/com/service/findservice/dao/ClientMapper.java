@@ -23,4 +23,10 @@ public interface ClientMapper {
     List<Client> selectClientByServerId(String serverId);
 
     Client selectByClientId(String clientId);
+
+    String selectMostProj(String client_id);
+
+    int selectOrderNum(String client_id);
+
+    int selectManOrderNum(String client_id);
 }

@@ -22,6 +22,20 @@
     price, times, interval_days, order_comment, is_substitue
   </sql>
 
+  <select id="selectUnFinOrderByMId" parameterType="java.lang.String" resultType="string">
+    select distinct server_id from order_servers where order_id in
+    (select order_id from order_detail where mandator_id = #{mandatorId, jdbcType=VARCHAR})
+  </select>
+
+  <select id="selectUnFinOrderBySId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_detail
+    where order_id in
+    (select order_id from order_servers
+    where is_finish = 2 and server_id = #{server_id, jdbcType=VARCHAR} )
+  </select>
+
   <select id="selectOrdersByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

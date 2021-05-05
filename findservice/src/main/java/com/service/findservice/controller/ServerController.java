@@ -63,20 +63,75 @@ public class ServerController {
         return orderService.selectOrderByDate(server_id, simpleDateFormat.parse(date));
     }
 
-    //查询未完成订单
-    @RequestMapping(value = "/getUnFinOrder/{server_id}")
-    public List<Order> getUnFinOrder(@PathVariable String server_id) {
-        List<Order> orders = orderService.selectOrderBySId(server_id);
-        if (orders != null) {
-            for (int i = orders.size() - 1; i >= 0; i--) {
-                int order_id = orders.get(i).getOrderId();
-                int is_finish = orderService.selectFin(order_id);
-                if (is_finish != 2) {
-                    orders.remove(orders.get(i));
-                }
+
+    //查询未结算信息
+    @RequestMapping(value = "/getUnFinOrderInfo/{mandator_id}")
+    public List getUnFinOrderInfo(@PathVariable String mandator_id){
+        List<Map<String, Object>> infoList  = new ArrayList<>();
+        List<String> serverList = orderService.selectUnFinOrderByMId(mandator_id);
+        if(serverList != null){
+            for(String server_id : serverList){
+                Map<String, Object> info = new HashMap<>();
+                //伙伴
+                Server server = serverService.findServerById(server_id);
+                info.put("server", server);
+                //委托数
+                info.put("manOrderNum",serverService.selectManOrderNum(server.getServerId()));
+                //接单数
+                info.put("orderNum",serverService.selectOrderNum(server.getServerId()));
+                //未结算数量
+                info.put("UnFinOrderNum",serverService.selectUnFinOrderNum(server.getServerId()));
+                infoList.add(info);
             }
         }
-        return orders;
+        return infoList;
+    }
+
+    //查询未结算订单详情
+    @RequestMapping(value = "/getUnFinOrder/{server_id}")
+    public List<Order> getUnFinOrder(@PathVariable String server_id) {
+        return orderService.selectUnFinOrderBySId(server_id);
+    }
+
+
+    //直接客户名单
+    @RequestMapping(value = "/getClient/{server_id}")
+    public List getClient(@PathVariable String server_id) {
+        List<Map<String, Object>> infoList = new ArrayList<>();
+        List<Client> clientList = clientService.selectCByServerId(server_id);
+        if(clientList != null){
+            for(Client client : clientList){
+                Map<String, Object> info = new HashMap<>();
+                //客户信息
+                info.put("clientInfo", client);
+                //最多的服务项目
+                info.put("mostProject",clientService.selectMostProj(client.getClientId()));
+                //服务数量
+                info.put("orderNum",clientService.selectOrderNum(client.getClientId()));
+                //委托数
+                info.put("ManOrderNum",clientService.selectManOrderNum(client.getClientId()));
+                infoList.add(info);
+            }
+        }
+        return infoList;
+    }
+
+    //获取客户新需求
+    @RequestMapping(value = "/getDemand/{server_id}")
+    public List getDemand(@PathVariable String server_id) {
+        List<Map<String, Object>> infoList = new ArrayList<>();
+        List<Demand> demandList = demandService.selectDemandByServerId(server_id);
+        if(demandList != null){
+            for(Demand demand : demandList){
+                Map<String, Object> info = new HashMap<>();
+                //用户信息
+                info.put("client", clientService.selectClientById(demand.getClientId()));
+                //
+                info.put("demand", demand);
+                infoList.add(info);
+            }
+        }
+        return infoList;
     }
 
     //结算订单
@@ -108,10 +163,7 @@ public class ServerController {
         return serverServiceService.selectPartnerBySId(server_id);
     }
 
-    @RequestMapping(value = "/getDemand/{server_id}")
-    public List<Demand> getDemand(@PathVariable String server_id) {
-        return demandService.selectDemandByServerId(server_id);
-    }
+
 
     @RequestMapping(value = "/updateWorkTime/{server_id}/{work_day}/{work_hour}")
     public int updateWorkTime(@PathVariable String server_id, @PathVariable int work_day, @PathVariable int work_hour) {
@@ -178,11 +230,7 @@ public class ServerController {
         return 0;
     }
 
-    //直接客户名单
-    @RequestMapping(value = "/getClient/{server_id}")
-    public List<Client> getClient(@PathVariable String server_id) {
-        return clientService.selectCByServerId(server_id);
-    }
+
 
     //替客户下单,并自己接单
     @RequestMapping(value = "/makeOrderByS/{server_id}/{client_id}")
@@ -237,10 +285,10 @@ public class ServerController {
 
     @RequestMapping("/test")
     public String test() throws ParseException {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM");
-
-        return simpleDateFormat.format(simpleDateFormat.parse("2020-04"));
+        return clientService.selectMostProj("zhanglaoshi");
     }
+
+
 
     /**
      * 通过server id得到server的信息
