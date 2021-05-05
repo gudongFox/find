@@ -4,7 +4,7 @@
 	<text> 《成都》服务中心</text>
 </view>
 <view class="center,display-center">
-	<view class="block1">
+	<view class="block1"> 
 		<text style="margin:20rpx" class="textwhite">平台特色</text>
 	</view>
 	<view>

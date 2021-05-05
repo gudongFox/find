@@ -4,6 +4,12 @@ const app = getApp()
 
 Page({
   data: {
+    demandList:[{
+      demandId:3,clientId:"zhanglaoshi",serviceProject:"家庭保洁",mandatorId:"0",mandatorName:"",serverId:"liling",serverName:"李玲",startTime:"2020-07-08T00:00:00",endTime:"2020-07-08T02:00:00",times:10,intervalDays:7,demandComment:""
+    },
+    {
+      demandId:4,clientId:"zhanglaoshi",serviceProject:"钟点工",mandatorId:"0",mandatorName:"",serverId:"liling",serverName:"李玲",startTime:"2020-07-08T00:00:00",endTime:"2020-07-08T02:00:00",times:10,intervalDays:7,demandComment:""
+    }],
     active: 0,
     userInfo: {},
     hasUserInfo: false,
@@ -17,31 +23,28 @@ Page({
   },
 
   onLoad: function () {
-    wx.login({
-      success: function(res) {
-        console.log('进入login方法')
-        var code = res.code;
-        console.log(code);
-        wx.request({
-          url: 'http://localhost:8080/login/login',
-          method: 'GET',
-          data: {
-            code: code
-          },
-          success: function (res) {
-            var openid = ''
-            openid = res.data;
-            console.log(openid)
-          },
-          fail: function (res) {
-                console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res);
-              }
-        });
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8080/demand/detail',
+      method:"GET",
+      data:{
+        clientId:wx.getStorageSync('openid')
       },
-      fail: function(){
-        console.log('调用失败')
+      success:function(res){
+        var list = res.data.data.demandsInfo
+        for(let i = 0; i < list.length; i++){
+          var s = list[i].startTime;
+          if(s != null){
+            s = s.substring(0,10)
+            console.log(s)
+            list[i].startTime = s
+          }
+        }
+          that.setData({
+            demandList:list
+          })
       }
-    });
+    })
   },
   //事件处理函数
   bindViewTap: function () {
@@ -57,6 +60,15 @@ Page({
   onclick: function () {
     wx.navigateTo({
       url: '/pages/add/add',
+    })
+  },
+  //跳转到订单详情页
+  toServiceInfo:function(e){
+    console.log(e)
+    var id = e.currentTarget.dataset.id
+    console.log(id)
+    wx.navigateTo({
+      url: '/pages/todo/todo?id='+id,
     })
   }
 })

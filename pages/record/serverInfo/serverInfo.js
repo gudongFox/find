@@ -6,14 +6,33 @@ Page({
    */
   data: {
     server: {
-      id: 0,
-      name: "张老师",
+      serverId: 0,
+      serverName: "张老师",
       gender: "女",
-      age: "48",
+      serverAge: "48",
       servertype: "家庭保洁/钟点工",
-      location: "虎溪花园，4栋3-3-1",
+      serverLocation: "虎溪花园，4栋3-3-1",
       times: "7",
       remark: "服务质量不错"
       }
   },
+  onLoad:function(e){
+    var that = this
+    var serverId = e.id
+    wx.request({
+      url: 'http://localhost:8080/server/getServerInfo/'+serverId,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      method: 'GET',
+      success:function(res){
+        console.log(res)
+        var list = res.data
+        console.log(list)
+        that.setData({
+          server:list
+        })
+      }
+    })
+  }
 })

@@ -25,7 +25,8 @@
     "pages/historyService/historyService",
     "pages/unfinishedService/unfinishedService",
     "pages/infoPartner/infoPartner",
-    "pages/infoServer/infoServer"
+    "pages/infoServer/infoServer",
+    "pages/record/addServer/addServer"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -8,75 +8,32 @@
           <van-icon name="bell" color="#8A2BE2" />
           <text style="color:#8A2BE2;font-size:small;margin-left:1rem">2021.01.11</text>
         </view>
-        <view>
-          <van-cell-group>
-            <van-cell clickable="true" url="/pages/todo/todo">
-              <van-row>
-                <van-col span="5">
-                  <view class="display-center">
-                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
-                  </view>
-                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
-                </van-col>
-                <van-col span="5">
-                  <view><text class="textbig,textblack">王老师</text></view>
-                </van-col>
-                <van-col span="10">
-                  <view class="display-center">
-                    <text class="textsmall">7月8日，8:00-10:00</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">多次，第5次/共10次</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
-                  </view>
-                </van-col>
-                <van-col span="4">
-                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                  <text>李阿姨</text>
-                </van-col>
-              </van-row>
-
-            </van-cell>
-
-          </van-cell-group>
-        </view>
-        <view class="divLine"></view>
-        <view>
-          <van-cell-group>
-            <van-cell clickable="true">
-              <van-row>
-                <van-col span="5">
-                  <view class="display-center">
-                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
-                  </view>
-                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
-                </van-col>
-                <van-col span="5">
-                  <view><text class="textbig,textblack">王老师</text></view>
-                </van-col>
-                <van-col span="10">
-                  <view class="display-center">
-                    <text class="textsmall">7月8日，8:00-10:00</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">多次，第5次/共10次</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
-                  </view>
-                </van-col>
-                <van-col span="4">
-                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                  <text>李阿姨</text>
-                </van-col>
-              </van-row>
-
-            </van-cell>
-
-          </van-cell-group>
-        </view>
+        <view wx:for="{{demandList}}" wx:key="demandId" data-id="{{item.demandId}}" bindtap="toServiceInfo">
+    <van-cell-group>
+      <van-cell>
+        <van-row>
+          <van-col span="4">
+            <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+            <view class="display-center"><text>{{item.serverName}}</text></view>
+          </van-col>
+          <van-col span="7">
+            <van-tag plain type="danger" size="medium" round>待服务人执行</van-tag>
+          </van-col>
+          <van-col span="13">
+            <van-tag plain type="primary" size="medium">{{item.serviceProject}}</van-tag>
+            <view class="display-center">
+              <text class="textsmall">{{item.startTime}}</text>
+            </view>
+            <view class="divLine"></view>
+            <view class="display-center">
+              <text class="textsmall">共{{item.times}}次/间隔{{item.intervalDays}}天</text>
+            </view>
+          </van-col>
+        </van-row>
+      </van-cell>
+    </van-cell-group>
+  <view class="divLine"></view>
+  </view>
       </van-tab>
       <van-tab title="历史记录">
         <view style="margin-top:5px">
