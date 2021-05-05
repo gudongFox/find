@@ -11,6 +11,7 @@ import com.service.findservice.server.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -31,7 +32,7 @@ public class DemandController {
      *
      * @param clientId client id
      * @param demandId demand id，如果clientId和demandId都不为null，则直接返回该demandId的demand信息
-     * @return List<Demand>或Demand
+     * @return List<Demand>
      */
     @GetMapping(path = "/detail")
     public ResultBody getDemandsByClientId(@RequestParam(name = "clientId") String clientId,
@@ -39,33 +40,34 @@ public class DemandController {
         if (null == clientId) {
             return new ResultBody(ResultCode.FAIL);
         }
+        List<Demand> demands = new ArrayList<>();
         if (null == demandId) {
-            List<Demand> demands = demandService.selectDemandsByClientId(clientId);
+            demands = demandService.selectDemandsByClientId(clientId);
             if (null == demands) {
                 return new ResultBody(ResultCode.FAIL);
             }
             for (Demand demand : demands) {
-                if (!demand.getServerId().equals("0")) {
+                if (null != demand.getServerId() && !demand.getServerId().equals("0")) {
                     demand.setServerName(getServerInfo(demand.getServerId()));
                 }
-                if (!demand.getMandatorId().equals("0")) {
+                if (null != demand.getMandatorId() && !demand.getMandatorId().equals("0")) {
                     demand.setMandatorName(getServerInfo(demand.getMandatorId()));
                 }
             }
-            return new ResultBody(ResultCode.SUCCESS, new DemandInfo(getClientInfo(clientId), demands));
         } else {
             Demand demand = demandService.selectDemandByDemandId(demandId);
             if (null == demand) {
                 return new ResultBody(ResultCode.FAIL);
             }
-            if (!demand.getServerId().equals("0")) {
+            if (null != demand.getServerId() && !demand.getServerId().equals("0")) {
                 demand.setServerName(getServerInfo(demand.getServerId()));
             }
-            if (!demand.getMandatorId().equals("0")) {
+            if (null != demand.getMandatorId() && !demand.getMandatorId().equals("0")) {
                 demand.setMandatorName(getServerInfo(demand.getMandatorId()));
             }
-            return new ResultBody(ResultCode.SUCCESS, demand);
+            demands.add(demand);
         }
+        return new ResultBody(ResultCode.SUCCESS, new DemandInfo(getClientInfo(clientId), demands));
 
     }
 
