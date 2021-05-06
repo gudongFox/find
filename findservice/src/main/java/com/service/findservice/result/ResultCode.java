@@ -3,9 +3,9 @@ package com.service.findservice.result;
 public enum ResultCode {
 
     /* 成功 */
-    SUCCESS("200", "Success!"),
+    SUCCESS("200", "success"),
     /* 失败 */
-    FAIL("400", "Failure!");
+    FAIL("400", "fail");
 
     private String code;
     private String message;

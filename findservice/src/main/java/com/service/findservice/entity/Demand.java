@@ -32,23 +32,6 @@ public class Demand {
 
     private Float price;
 
-    public Demand(Integer demandId, String clientId, String serviceProject, String mandatorId, String mandatorName, String serverId, String serverName, Date startTime, Date endTime, Short times, Short intervalDays, String demandComment, Short numTimes, Float price) {
-        this.demandId = demandId;
-        this.clientId = clientId;
-        this.serviceProject = serviceProject;
-        this.mandatorId = mandatorId;
-        this.mandatorName = mandatorName;
-        this.serverId = serverId;
-        this.serverName = serverName;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.times = times;
-        this.intervalDays = intervalDays;
-        this.demandComment = demandComment;
-        this.numTimes = numTimes;
-        this.price = price;
-    }
-
     public Demand(Integer demandId, String clientId, String serviceProject, String mandatorId, String serverId, Date startTime, Date endTime, Short times, Short intervalDays, String demandComment) {
         this.demandId = demandId;
         this.clientId = clientId;
@@ -60,6 +43,12 @@ public class Demand {
         this.times = times;
         this.intervalDays = intervalDays;
         this.demandComment = demandComment;
+    }
+
+    public Demand(Integer demandId, String clientId, String serviceProject, String mandatorId, String serverId, Date startTime, Date endTime, Short times, Short intervalDays, String demandComment, Short numTimes, Float price) {
+        this(demandId, clientId, serviceProject, mandatorId, serverId, startTime, endTime, times, intervalDays, demandComment);
+        this.numTimes = numTimes;
+        this.price = price;
     }
 
     public Demand() {
