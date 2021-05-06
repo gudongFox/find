@@ -224,8 +224,8 @@ public class ServerController {
 
     //接单
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-    @RequestMapping("/receiveOrder/{server_id}/{demand_id}")
-    public int receiveOrder(@PathVariable String server_id, @PathVariable int demand_id, Order order) {
+    @PostMapping("/receiveOrder/{server_id}/{demand_id}")
+    public int receiveOrder(@PathVariable String server_id, @PathVariable int demand_id, @RequestBody Order order) {
         Demand demand = demandService.selectDemandByDemandId(demand_id);
         Date date = new Date();
         order.setOrderTime(date);
@@ -245,8 +245,8 @@ public class ServerController {
 
     //委托
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-    @RequestMapping("/giveOrder/{mandator_id}/{server_id}/{demand_id}")
-    public int giveOrder(@PathVariable String mandator_id, @PathVariable String server_id, @PathVariable int demand_id, Order order) {
+    @PostMapping("/giveOrder/{mandator_id}/{server_id}/{demand_id}")
+    public int giveOrder(@PathVariable String mandator_id, @PathVariable String server_id, @PathVariable int demand_id, @RequestBody Order order) {
         Demand demand = demandService.selectDemandByDemandId(demand_id);
         order.setOrderTime(new Date());
         order.setClientId(demand.getClientId());
@@ -265,8 +265,8 @@ public class ServerController {
 
 
     //替客户下单,并自己接单
-    @RequestMapping(value = "/makeOrderByS/{server_id}/{client_id}")
-    public int makeOrderByS(@PathVariable String server_id, @PathVariable String client_id, Order order) {
+    @PostMapping(value = "/makeOrderByS/{server_id}/{client_id}")
+    public int makeOrderByS(@PathVariable String server_id, @PathVariable String client_id, @RequestBody Order order) {
         order.setOrderTime(new Date());
         order.setClientId(client_id);
         order.setMandatorId("0");
@@ -278,8 +278,8 @@ public class ServerController {
     }
 
     //替客户下单,委托伙伴
-    @RequestMapping(value = "/makeOrderByM/{mandator_id}/{server_id}/{client_id}")
-    public int makeOrderByS(@PathVariable String mandator_id, @PathVariable String server_id, @PathVariable String client_id, Order order) {
+    @PostMapping(value = "/makeOrderByM/{mandator_id}/{server_id}/{client_id}")
+    public int makeOrderByS(@PathVariable String mandator_id, @PathVariable String server_id, @PathVariable String client_id, @RequestBody Order order) {
         order.setOrderTime(new Date());
         order.setClientId(client_id);
         order.setMandatorId(mandator_id);
