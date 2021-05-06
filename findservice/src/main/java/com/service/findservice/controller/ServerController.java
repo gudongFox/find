@@ -36,31 +36,42 @@ public class ServerController {
     @Autowired
     private com.service.findservice.server.ServerService serverService;
 
+    //一周的订单
     @RequestMapping(value = "/getOrderWeek/{server_id}")
-    public List<Order> getOrderWeek(@PathVariable String server_id) {
-        return orderService.selectWeekOrderByDate(server_id, new Date());
+    public List getOrderWeek(@PathVariable String server_id) {
+        List<Order> orderList = orderService.selectWeekOrderByDate(server_id, new Date());
+        return serverService.getOrderInfo(orderList);
     }
 
     //得到某个月的订单
+    //年月格式yyyy-mm
     @RequestMapping(value = "/getOrderMonth/{server_id}/{year_month}")
-    public List<Order> getOrderMonth(@PathVariable String server_id, @PathVariable String year_month) throws ParseException {
-        return orderService.selectMonthlyOrdersByServerId(server_id, year_month);
+    public List getOrderMonth(@PathVariable String server_id, @PathVariable String year_month) {
+        List<Order> orderList = orderService.selectMonthlyOrdersByServerId(server_id, year_month);
+        return serverService.getOrderInfo(orderList);
     }
 
+    //所有订单
     @RequestMapping(value = "/getAllOrder/{server_id}")
-    public List<Order> getAllOrder(@PathVariable String server_id) {
-        return orderService.selectOrderBySId(server_id);
+    public List getAllOrder(@PathVariable String server_id) {
+        List<Order> orderList = orderService.selectOrderBySId(server_id);
+        return serverService.getOrderInfo(orderList);
     }
 
+    //今日订单
     @RequestMapping(value = "/getOrderToday/{server_id}")
     public List<Order> getOrderToday(@PathVariable String server_id) {
-        return orderService.selectOrderByDate(server_id, new Date());
+        List<Order> orderList = orderService.selectOrderByDate(server_id, new Date());
+        return serverService.getOrderInfo(orderList);
     }
 
+    //根据日期查询订单
+    //年月日格式yyyy-mm-dd
     @RequestMapping(value = "/getOrderByDate/{server_id}/{date}")
     public List<Order> getOrderByDate(@PathVariable String server_id, @PathVariable String date) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return orderService.selectOrderByDate(server_id, simpleDateFormat.parse(date));
+        List<Order> orderList = orderService.selectOrderByDate(server_id, simpleDateFormat.parse(date));
+        return serverService.getOrderInfo(orderList);
     }
 
 
@@ -173,6 +184,29 @@ public class ServerController {
     public int updateServerParameter(@PathVariable String server_id, @PathVariable float max_distance, @PathVariable float max_interval_distance
             , @PathVariable float min_service_time, @PathVariable float min_interval_time) {
         return serverServiceService.updateServerParameter(server_id, max_distance, max_interval_distance, min_service_time, min_interval_time);
+    }
+
+    //得到接单时间
+    @RequestMapping(value = "/getWorkTime/{server_id}")
+    public Map getWorkTime(@PathVariable String server_id){
+        //服务师信息
+        Map<String, Object> info = new HashMap<>();
+        info.put("serverInfo", serverService.findServerById(server_id));
+        List<ServerWorkTime> timeList = serverService.getWorkTime(server_id);
+        Map<Integer, Integer> workTime = new HashMap<>();
+        if(timeList != null){
+            for(ServerWorkTime serverWorkTime : timeList){
+                workTime.put(serverWorkTime.getWorkDay(),serverWorkTime.getWorkHour());
+            }
+        }
+        info.put("workDay:workHour", workTime);
+        return info;
+    }
+
+    //得到接单参数
+    @RequestMapping(value = "/getServerParameter/{server_id}")
+    public ServerParameter getServerParameter(@PathVariable String server_id){
+        return serverService.getServerParameter(server_id);
     }
 
     //添加伙伴

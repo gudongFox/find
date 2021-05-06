@@ -113,11 +113,13 @@
         select
         <include refid="Base_Column_List"/>
         from order_detail
-        where DATEDIFF(start_time, #{date,jdbcType=DATE}) <![CDATA[<=]]> 6 and order_id in
+        where DATEDIFF(start_time, #{date,jdbcType=DATE}) <![CDATA[<=]]> 6
+        and DATEDIFF(start_time, #{date,jdbcType=DATE} ) <![CDATA[>=]]> 0
+        and order_id in
         (select order_id from order_servers where server_id = #{server_id,jdbcType=VARCHAR})
     </select>
 
-    <select id="selectMonthlyOrdersByServerId" resultMap="BaseResultMap">
+    <select id="selectMonOrderBySId" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from order_detail

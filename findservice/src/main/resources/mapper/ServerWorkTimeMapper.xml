@@ -13,6 +13,14 @@
         time_id
         , server_id, work_day, work_hour
     </sql>
+
+    <select id="getWorkTime" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from server_work_time
+        where server_id = #{server_id,jdbcType=VARCHAR}
+    </select>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

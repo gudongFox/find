@@ -1,6 +1,15 @@
 package com.service.findservice.entity;
 
+
+import com.service.findservice.server.ClientService;
+import com.service.findservice.server.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.*;
+
 public class ServerService {
+
+
     private Integer serverServiceId;
 
     private String serverId;
@@ -51,4 +60,7 @@ public class ServerService {
     public void setPrice(Float price) {
         this.price = price;
     }
+
+
+
 }

@@ -62,4 +62,6 @@ public class ServerParameter {
     public void setMinIntervalTime(Float minIntervalTime) {
         this.minIntervalTime = minIntervalTime;
     }
+
+
 }

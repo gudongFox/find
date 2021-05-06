@@ -1,5 +1,7 @@
 package com.service.findservice.entity;
 
+import java.util.List;
+
 public class ServerWorkTime {
     private Integer timeId;
 
@@ -51,4 +53,6 @@ public class ServerWorkTime {
     public void setWorkHour(Integer workHour) {
         this.workHour = workHour;
     }
+
+
 }
