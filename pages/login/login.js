@@ -17,7 +17,6 @@ Page({
       desc:'正在获取',//不写不弹提示框
     success:function(res){
       app.globalData.userInfo=res.userInfo //存储用户信息
-      console.log(res.userInfo);
       wx.request({
         url: 'http://localhost:8080/client/info',
         method: 'POST',

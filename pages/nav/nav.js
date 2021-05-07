@@ -36,7 +36,6 @@ Page({
           success: function (res) {
             var openid = res.data
             wx.setStorageSync('openid', openid)
-            console.log("openid")
             console.log(openid)
             wx.request({
               url: 'http://localhost:8080/client/info',

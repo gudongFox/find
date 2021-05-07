@@ -10,6 +10,12 @@
       </profile>
     </annotationProcessing>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <bytecodeTargetLevel>
+      <module name="findservice" target="1.8" />
+    </bytecodeTargetLevel>
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
 =======
     <bytecodeTargetLevel>
       <module name="findservice" target="1.8" />
