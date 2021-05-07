@@ -35,7 +35,7 @@ Page({
     var serverId = wx.getStorageSync('openid');
     // console.log("获取openid");
     // console.log(serverId);
-    serverId = "liling";
+    // serverId = "liling";
     wx.request({
       url: 'http://129.211.68.243:8080/server/makeOrderByS/' + serverId + "/" + this.data.clientId,
       method: "POST",
