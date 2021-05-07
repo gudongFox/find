@@ -56,7 +56,7 @@ Component({
               var orderTime = orderInfo.startTime;
               now = that.formatDate(now.getFullYear(), now.getMonth() + 1, now.getDate(), now.getHours(), now.getMinutes())
               orderTime = that.formatDate(Number(orderTime.split(" ")[0].split("-")[0]), Number(orderTime.split(" ")[0].split("-")[1]), Number(orderTime.split(" ")[0].split("-")[2]), Number(orderTime.split(" ")[1].split(":")[0]), Number(orderTime.split(" ")[1].split(":")[1]))
-              if (now > orderTime) {
+              if (now < orderTime) {
                 continue;
               }
               // if (now.getFullYear() < Number(orderTime.split(" ")[0].split("-")[0])) {
