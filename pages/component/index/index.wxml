@@ -2,7 +2,7 @@
 <!-- 顶部导航 -->
 <view>
   <view>
-    <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
+    <van-tabs sticky color="#00AA00" class="tabw" bind:click="clickTab" bind:change="changeTab">
       <van-tab title="一周日程表">
 
         <view class="flexRow">
@@ -24,7 +24,7 @@
 
         <view>
           <van-cell-group wx:for="{{itemList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
-            <van-cell clickable="true" url="{{clickUrl}}">
+            <van-cell clickable="true" url="{{item.clickUrl}}">
               <view class="flexIcon">
 								<view class="flexCol">
 									<van-icon name="{{item.iconName}}" size="50rpx" color="#66BB6A"></van-icon>
@@ -33,7 +33,7 @@
 								<view class="flexCol" style="align-items:flex-start">
 									<view class="flexIcon" style="width:450rpx;">
 										<text style="font-size:large;color:black;">{{item.clientName}}</text>
-										<text>{{item.serviceDate}}</text>
+										<text>{{item.serviceTime}}</text>
 										<van-tag round type="primary">{{item.isMulti}}</van-tag>
 									</view>
 									<text>{{item.clientLocation}}</text>
@@ -44,7 +44,7 @@
             <view class="divLine"></view>
           </van-cell-group>
         </view>
-
+        <van-divider content-position="center">已经到底了</van-divider>
       </van-tab>
 
       <van-tab disabled></van-tab>
@@ -66,13 +66,13 @@
         <view class="flexRow">
           <view class="flexStart">
             <van-icon name="clock" color="#00AA00" />
-            <text style="color:#00AA00;font-size:small;margin-left:15rpx">{{historyOrderDate}}</text>
+            <text style="color:#00AA00;font-size:small;margin-left:15rpx">历史订单</text>
           </view>
         </view>
 
         <view>
           <van-cell-group wx:for="{{historyItemList}}" wx:key="index">
-            <van-cell clickable="true" url="{{historyClickUrl}}">
+            <van-cell clickable="true" url="{{item.historyClickUrl}}">
               <view class="flexIcon">
 								<view class="flexCol">
 									<van-icon name="{{item.historyOrderIconName}}" size="50rpx" color="#66BB6A"></van-icon>
@@ -94,7 +94,7 @@
             <view class="divLine"></view>
           </van-cell-group>
         </view>
-
+        <van-divider content-position="center">已经到底了</van-divider>
       </van-tab>
     </van-tabs>
   </view>

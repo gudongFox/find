@@ -26,6 +26,8 @@
     "pages/unfinishedService/unfinishedService",
     "pages/infoPartner/infoPartner",
     "pages/infoServer/infoServer",
+    "pages/receiveOrderServer/receiveOrderServer",
+    "pages/receiveSubOrderServer/receiveSubOrderServer",
     "pages/record/addServer/addServer"
   ],
   "window": {

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.service.findservice.dao.ClientServerMapper">
+  <resultMap id="BaseResultMap" type="com.service.findservice.entity.ClientServer">
+    <constructor>
+      <idArg column="client_server_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="client_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="client_comment" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="server_comment" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    client_server_id, client_id, server_id, client_comment, server_comment
+  </sql>
+  
+  <select id="selectClientServersByClientId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from client_server
+    where client_id = #{clientId, jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByClientIdAndServerId" parameterType="com.service.findservice.entity.ClientServer">
+    delete
+    from client_server
+    where client_id = {#clientId
+        , jdbcType= VARCHAR}
+      and server_id = {#serverId
+        , jdbcType= VARCHAR}
+  </delete>
+
+  <update id="updateByClientIdAndServerIdSelective" parameterType="com.service.findservice.entity.ClientServer">
+    update client_server
+    <set>
+      <if test="clientComment != null">
+        client_comment = #{clientComment,jdbcType=VARCHAR},
+      </if>
+      <if test="serverComment != null">
+        server_comment = #{serverComment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where client_id = #{clientId, jdbcType=VARCHAR} and server_id = #{serverId, jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from client_server
+    where client_server_id = #{clientServerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from client_server
+    where client_server_id = #{clientServerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.service.findservice.entity.ClientServer">
+    insert into client_server (client_server_id, client_id, server_id, 
+      client_comment, server_comment)
+    values (#{clientServerId,jdbcType=INTEGER}, #{clientId,jdbcType=VARCHAR}, #{serverId,jdbcType=VARCHAR}, 
+      #{clientComment,jdbcType=VARCHAR}, #{serverComment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.service.findservice.entity.ClientServer">
+    insert into client_server
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clientServerId != null">
+        client_server_id,
+      </if>
+      <if test="clientId != null">
+        client_id,
+      </if>
+      <if test="serverId != null">
+        server_id,
+      </if>
+      <if test="clientComment != null">
+        client_comment,
+      </if>
+      <if test="serverComment != null">
+        server_comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clientServerId != null">
+        #{clientServerId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null">
+        #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="serverId != null">
+        #{serverId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientComment != null">
+        #{clientComment,jdbcType=VARCHAR},
+      </if>
+      <if test="serverComment != null">
+        #{serverComment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.ClientServer">
+    update client_server
+    <set>
+      <if test="clientId != null">
+        client_id = #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="serverId != null">
+        server_id = #{serverId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientComment != null">
+        client_comment = #{clientComment,jdbcType=VARCHAR},
+      </if>
+      <if test="serverComment != null">
+        server_comment = #{serverComment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where client_server_id = #{clientServerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.ClientServer">
+    update client_server
+    set client_id = #{clientId,jdbcType=VARCHAR},
+      server_id = #{serverId,jdbcType=VARCHAR},
+      client_comment = #{clientComment,jdbcType=VARCHAR},
+      server_comment = #{serverComment,jdbcType=VARCHAR}
+    where client_server_id = #{clientServerId,jdbcType=INTEGER}
+  </update>
+</mapper>

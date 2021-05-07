@@ -31,6 +31,19 @@ Page({
           "clientProfile":res.userInfo.avatarUrl
         }
       })
+      wx.request({
+        url: 'http://localhost:8080/server/info',
+        method: 'POST',
+        data:{
+          "serverId":wx.getStorageSync('openid'),
+          "serverSessionKey":"test",
+          "serverName":res.userInfo.nickName,
+          "serverGender":res.userInfo.gender,
+          "serverAge":18,
+          "serverTel":"13368227224",
+          "serverLocation":res.userInfo.province+" "+res.userInfo.city,
+        }
+      })
       console.log('获取成功: ',res)
       wx.showToast({
         title:'授权成功',

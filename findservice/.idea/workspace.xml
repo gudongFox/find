@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <list default="true" id="2761fa2e-2def-4178-a28b-a377c1123d0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    </list>
+=======
     <list default="true" id="a6c3b435-cb9f-4233-9455-ad66108225a6" name="Default Changelist" comment="" />
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+    <list default="true" id="a6c3b435-cb9f-4233-9455-ad66108225a6" name="Default Changelist" comment="" />
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -9,6 +20,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
@@ -70,12 +86,36 @@
       </file>
     </leaf>
   </component>
+<<<<<<< HEAD
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <option name="mavenHome" value="$USER_HOME$/maven/apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="826" />
+=======
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
         <option name="mavenHome" value="D:/apache-maven-3.5.4-bin/apache-maven-3.5.4" />
         <option name="userSettingsFile" value="D:\apache-maven-3.5.4-bin\apache-maven-3.5.4\conf\settings.xml" />
       </MavenGeneralSettings>
@@ -95,6 +135,10 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="815" />
     <option name="height" value="980" />
+<<<<<<< HEAD
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -102,6 +146,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <pane id="Scope" />
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -133,6 +184,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+              <item name="findservice" type="462c0819:PsiDirectoryNode" />
+=======
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
               <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -143,20 +200,40 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
             </path>
             <path>
               <item name="findservice" type="b2602c69:ProjectViewProjectNode" />
               <item name="findservice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+=======
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="findservice" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
             </path>
             <path>
               <item name="findservice" type="b2602c69:ProjectViewProjectNode" />
               <item name="findservice" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+=======
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -186,12 +263,25 @@
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="findservice" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1620041450715" />
+=======
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
       <pane id="Scope" />
     </panes>
   </component>
@@ -202,6 +292,10 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
+<<<<<<< HEAD
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -215,11 +309,52 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <module name="findservice" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <changelist id="2761fa2e-2def-4178-a28b-a377c1123d0f" name="Default Changelist" comment="" />
+      <created>1620041368050</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620041368050</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="826" extended-state="0" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
+=======
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
       <changelist id="a6c3b435-cb9f-4233-9455-ad66108225a6" name="Default Changelist" comment="" />
       <created>1620015628665</created>
       <option name="number" value="Default" />
@@ -252,6 +387,10 @@
       <window_info anchor="bottom" id="Java Enterprise" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
+<<<<<<< HEAD
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -259,6 +398,16 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+=======
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
       <window_info anchor="right" id="Maven" weight="0.3295302" />
       <window_info anchor="right" id="Palette" />
       <window_info anchor="right" id="leetcode" side_tool="true" />
@@ -266,11 +415,20 @@
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="right" id="Theme Preview" />
+<<<<<<< HEAD
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -321,10 +479,21 @@
       </provider>
     </entry>
   </component>
+<<<<<<< HEAD
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">
         <settings>
+<<<<<<< HEAD
+<<<<<<< HEAD
+          <last-edited>1.8</last-edited>
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
+=======
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
           <splitter-proportions>
             <option name="proportions">
               <list>

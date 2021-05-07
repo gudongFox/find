@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.service.findservice.dao.ServerPartnerMapper">
+  <resultMap id="BaseResultMap" type="com.service.findservice.entity.ServerPartner">
+    <constructor>
+      <idArg column="server_partner_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="partner_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="server_comment" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    server_partner_id, server_id, partner_id, server_comment
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from server_partner
+    where server_partner_id = #{serverPartnerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from server_partner
+    where server_partner_id = #{serverPartnerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.service.findservice.entity.ServerPartner">
+    insert into server_partner (server_partner_id, server_id, partner_id, 
+      server_comment)
+    values (#{serverPartnerId,jdbcType=INTEGER}, #{serverId,jdbcType=VARCHAR}, #{partnerId,jdbcType=VARCHAR}, 
+      #{serverComment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.service.findservice.entity.ServerPartner">
+    insert into server_partner
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serverPartnerId != null">
+        server_partner_id,
+      </if>
+      <if test="serverId != null">
+        server_id,
+      </if>
+      <if test="partnerId != null">
+        partner_id,
+      </if>
+      <if test="serverComment != null">
+        server_comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serverPartnerId != null">
+        #{serverPartnerId,jdbcType=INTEGER},
+      </if>
+      <if test="serverId != null">
+        #{serverId,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null">
+        #{partnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="serverComment != null">
+        #{serverComment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.ServerPartner">
+    update server_partner
+    <set>
+      <if test="serverId != null">
+        server_id = #{serverId,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null">
+        partner_id = #{partnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="serverComment != null">
+        server_comment = #{serverComment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where server_partner_id = #{serverPartnerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.ServerPartner">
+    update server_partner
+    set server_id = #{serverId,jdbcType=VARCHAR},
+      partner_id = #{partnerId,jdbcType=VARCHAR},
+      server_comment = #{serverComment,jdbcType=VARCHAR}
+    where server_partner_id = #{serverPartnerId,jdbcType=INTEGER}
+  </update>
+</mapper>

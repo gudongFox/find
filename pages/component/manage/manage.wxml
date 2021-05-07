@@ -1,6 +1,6 @@
 <!--pages/manage/manage.wxml-->
 <view>
-<van-tabs active="{{ active }}" color="#00AA00" bind:change="onChange">
+<van-tabs color="#00AA00" bind:change="changeTab" bind:click="clickTab">
 		<van-tab title="客户新需求">
       <view>
 
@@ -12,12 +12,12 @@
         </view>
 				
 				<view>
-          <van-cell-group wx:for="{{demandList}}" wx:index="index">
-            <van-cell clickable="true" url="{{clickUrl}}">
+          <van-cell-group wx:for="{{demandList}}" wx:key="index">
+            <van-cell clickable="true" url="{{item.clickUrl}}">
               <view class="flexIcon">
 								<view class="flexCol">
 									<van-icon name="{{item.iconName}}" size="50rpx" color="#66BB6A"></van-icon>
-									<text style="font-size:10;color:#66BB6A">{{item.servicePeoject}}</text>
+									<text style="font-size:10;color:#66BB6A">{{item.serviceProject}}</text>
 								</view>
 								<view class="flexCol" style="width:450rpx">
 									<view class="flexIcon">
@@ -54,7 +54,7 @@
 				
 				<view>
           <van-cell-group wx:for="{{substituteList}}" wx:key="index">
-            <van-cell clickable="true" url="{{substituteClickUrl}}">
+            <van-cell clickable="true" url="{{item.substituteClickUrl}}">
               <view class="flexIcon">
                 <van-image round width="50" height="50" src="{{item.substitutedClientProfile}}" />
                 <view style="display:flex;flex-direction:column;width:400rpx">
@@ -126,19 +126,19 @@
 				<view class="flexCol">
 					<view class="flexRow">
 						<text>出发上门最大距离（公里）</text>
-						<van-stepper value="{{maxDistance}}" bind:change="onChange" />
+						<van-stepper value="{{maxDistance}}" bind:change="changeMaxDis" />
 					</view>
 					<view class="flexRow">
 						<text>两单间隔最大距离（公里）</text>
-						<van-stepper value="{{maxInterDistance}}" bind:change="onChange" />
+						<van-stepper value="{{maxInterDistance}}" bind:change="changeMaxInterDis" />
 					</view>
 					<view class="flexRow">
 						<text>最小服务时长（小时）</text>
-						<van-stepper value="{{minServicLength}}" step="0.5" decimal-length="{{1}}" />
+						<van-stepper value="{{minServicLength}}" step="0.5" decimal-length="{{1}}" bind:change="changeMinServiceLen" />
 					</view>
 					<view class="flexRow">
 						<text>两单间隔最大时间</text>
-						<van-stepper value="{{maxInterLength}}" step="0.5" decimal-length="{{1}}" />
+						<van-stepper value="{{maxInterLength}}" step="0.5" decimal-length="{{1}}" bind:change="changeMaxInterLen" />
 					</view>
 				</view>
 				

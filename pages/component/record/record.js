@@ -9,68 +9,25 @@ Component({
 
   /* 组件的属性列表 */
   properties: {
-    name: {
-      type: String,
-      value: 'Car'
-    }
+
   },
 
   /* 组件的初始数据 */
   data: {
-    substituteClickUrl:"/pages/unfinishedService/unfinishedService",
-    substituteList:[
-      {
-        substitutedClientProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
-        substitutedClientName:"王阿姨",
-        substitutedUnfinishedTimes:"未结算(2)",
-        substitutedClientLocation:"成都市锦兴路",
-        serviceTimes:"服务(13)",
-        substituteTimes:"委托(7)",
-      },
-      {
-        substitutedClientProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
-        substitutedClientName:"张阿姨",
-        substitutedUnfinishedTimes:"未结算(1)",
-        substitutedClientLocation:"成都市锦兴路",
-        serviceTimes:"服务(3)",
-        substituteTimes:"委托(5)",
-      },
-    ],
+    activeTab:0,
+    substituteList:[],
+    partnerList:[],
 
-    partnerClickUrl:"/pages/infoPartner/infoPartner",
-    partnerList:[
-      {
-        partnerProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
-        partnerName:"王阿姨",partnerLocation:"成都市锦兴路",
-        partnerServiceTimes:"服务(13)",
-        partnerSubstituteTimes:"委托(7)",
-      },
-    ],
-
-    active:0,
-    value:'',
-    serviceList:[
-
-      { context: "家庭保洁",total:56, select: 1 },
-      
-      { context: "商业保洁",total:43, select: 2},
-      
-      { context: "钟点工",total:27, select: 3},
-      
-      { context: "护工",total:33, select: 4},
-      
-      { context: "其他",total:18, select: 5},
-      
-      ],
-      show: false,
-      minDate: new Date(2010, 0, 1).getTime(),
-      maxDate: new Date(2010, 0, 31).getTime(),
   },
 
   /* 组件声明周期函数 */
   lifetimes: {
+    ready: function(){
+      this.clickTab();
+    },
+
     attached: function () {
-   
+
     },
     moved: function () { 
 
@@ -82,49 +39,82 @@ Component({
 
   /* 组件的方法列表 */
   methods: {
-    serviceList:function(e){
-      var that = this
-      
-      var serviceList = that.data.serviceList
-      
-      that.setData({//更新到data里面
-      
-      yearShow: e.currentTarget.dataset.select,
-      
-      serviceList: that.data.serviceList
-      
+    changeTab: function(event){
+      this.setData({
+        activeTab: event.detail.name,
       })
-      
-      },
-  
-      // 日历
-      onDisplay() {
-        this.setData({ show: true });
-      },
-      onClose() {
-        this.setData({ show: false });
-      },
-      formatDate(date) {
-        date = new Date(date);
-        return `${date.getMonth() + 1}/${date.getDate()}`;
-      },
-      onConfirm(event) {
-        this.setData({
-          show: false,
-          date: this.formatDate(event.detail),
-        });
-      },
-      onChange(e) {
-        this.setData({
-          value: e.detail,
-        });
-      },
-      onSearch() {
-        Toast('搜索' + this.data.value);
-      },
-      onClick() {
-        Toast('搜索' + this.data.value);
-      },
+    },
+
+    clickTab: function(){
+      var that = this;
+      // 获取用户ID
+      var serverId = wx.getStorageSync('openid');
+      // console.log("获取openid");
+      // console.log(serverId);
+      var mandatorId = serverId;
+      mandatorId = "liling"
+      if(that.data.activeTab == 0){
+        // 查询未结算委托订单
+        var requestUrl = "http://129.211.68.243:8080/server/getUnFinOrderInfo/" + mandatorId;
+        wx.request({
+          url: requestUrl,
+          method:"GET",
+          header:{
+            'content-type': 'application/json' // GET方式
+          },
+          success(res){
+            // console.log("未结算委托订单");
+            // console.log(res);
+            var substituteList = [];
+            for(var i = 0; i < res.data.length; i++){
+              var tmp = {
+                substituteClickUrl:"/pages/unfinishedService/unfinishedService?serverId=" + res.data[i].server.serverId + "&serverName=" + res.data[i].server.serverName,
+                substitutedClientProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
+                substitutedClientName:res.data[i].server.serverName,
+                substitutedUnfinishedTimes:"未结算(" + res.data[i].UnFinOrderNum + ")",
+                substitutedClientLocation:res.data[i].server.serverLocation,
+                serviceTimes:"服务(" + res.data[i].manOrderNum + ")",
+                substituteTimes:"委托(" + res.data[i].orderNum + ")",
+              };
+              substituteList.push(tmp);
+            }
+            that.setData({
+              substituteList:substituteList,
+            }) 
+          }
+        })
+      }
+      else{
+        // 查询伙伴名单
+        var requestUrl = "http://129.211.68.243:8080/server/getPartner/" + mandatorId;
+        wx.request({
+          url: requestUrl,
+          method:"GET",
+          header:{
+            'content-type': 'application/json' // GET方式
+          },
+          success(res){
+            // console.log("伙伴名单");
+            // console.log(res);
+            var partnerList = [];
+            for(var i = 0; i < res.data.length; i++){
+              var tmp = {
+                partnerClickUrl:"/pages/infoPartner/infoPartner?partnerId=" + res.data[i].serverId,
+                partnerProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
+                partnerName:res.data[i].serverName,
+                partnerLocation:res.data[i].serverLocation,
+                partnerServiceTimes:"服务(0)",
+                partnerSubstituteTimes:"委托(0)",
+              };
+              partnerList.push(tmp);
+            }
+            that.setData({
+              partnerList:partnerList,
+            })
+          }
+        })
+      }
+    },
   }
   
 })
