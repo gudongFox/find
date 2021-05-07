@@ -231,9 +231,6 @@ public class ServerController {
         order.setOrderTime(date);
         order.setClientId(demand.getClientId());
         order.setMandatorId("0");
-        order.setServiceProject(demand.getServiceProject());
-        order.setStartTime(demand.getStartTime());
-        order.setEndTime(demand.getEndTime());
         order.setIsSubstitue(0);
         int i = orderService.insert(order);
         int Oid = order.getOrderId();
