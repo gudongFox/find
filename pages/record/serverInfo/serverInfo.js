@@ -20,7 +20,7 @@ Page({
     var that = this
     var serverId = e.id
     wx.request({
-      url: 'http://localhost:8080/server/getServerInfo/'+serverId,
+      url: 'http://129.211.68.243:8080/server/getServerInfo/'+serverId,
       header: {
         'content-type': 'application/json' // 默认值
       },

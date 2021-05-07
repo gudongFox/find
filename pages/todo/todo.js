@@ -22,7 +22,7 @@ Page({
     var that = this
     var demandId = e.demandId
     wx.request({
-      url: 'http://localhost:8080/demand/detail/',
+      url: 'http://129.211.68.243:8080/demand/detail/',
       header: {
         'content-type': 'application/json' // 默认值
       },

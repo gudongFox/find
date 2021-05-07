@@ -18,7 +18,7 @@ Page({
     success:function(res){
       app.globalData.userInfo=res.userInfo //存储用户信息
       wx.request({
-        url: 'http://localhost:8080/client/info',
+        url: 'http://129.211.68.243:8080/client/info',
         method: 'POST',
         data:{
           "clientId":wx.getStorageSync('openid'),

@@ -152,7 +152,7 @@ Page({
     var that = this
     var openid = wx.getStorageSync('openid')
     wx.request({
-      url: 'http://localhost:8080/client_server/info',
+      url: 'http://129.211.68.243:8080/client_server/info',
       header: {
         'content-type': 'application/json' // 默认值
       },

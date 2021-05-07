@@ -20,7 +20,7 @@ Page({
   onLoad: function () {
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/demand/detail',
+      url: 'http://129.211.68.243:8080/demand/detail',
       method:"GET",
       data:{
         clientId:wx.getStorageSync('openid'),

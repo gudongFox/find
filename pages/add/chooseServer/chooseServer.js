@@ -25,7 +25,7 @@ Page({
     var that = this
     var serverId = e.id
     wx.request({
-      url: 'http://localhost:8080/server/getServerInfo/'+serverId,
+      url: 'http://129.211.68.243:8080/server/getServerInfo/'+serverId,
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -50,7 +50,7 @@ Page({
     var server = that.data.server
     console.log(demand)
     wx.request({
-      url: 'http://localhost:8080/demand/detail',
+      url: 'http://129.211.68.243:8080/demand/detail',
       header: {'content-type': 'application/json'},
       method: 'POST',
       data:{
