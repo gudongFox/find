@@ -52,7 +52,7 @@ Component({
       // console.log("获取openid");
       // console.log(serverId);
       var mandatorId = serverId;
-      mandatorId = "liling"
+      // mandatorId = "liling"
       if(that.data.activeTab == 0){
         // 查询未结算委托订单
         var requestUrl = "http://129.211.68.243:8080/server/getUnFinOrderInfo/" + mandatorId;

@@ -70,7 +70,7 @@ Component({
       var serverId = wx.getStorageSync('openid');
       // console.log("获取openid");
       // console.log(serverId);
-      serverId = "liling";
+      // serverId = "liling";
       if (that.data.activeTab == 0) {
         // 查询客户新需求
         wx.request({
@@ -163,7 +163,7 @@ Component({
       var serverId = wx.getStorageSync('openid');
       // console.log("获取openid");
       // console.log(serverId);
-      serverId = "liling";
+      // serverId = "liling";
       var maxDistance = event.detail;
       var maxInterDistance = that.data.maxInterDistance;
       var minServicLength = that.data.minServicLength;
@@ -190,7 +190,7 @@ Component({
       var serverId = wx.getStorageSync('openid');
       // console.log("获取openid");
       // console.log(serverId);
-      serverId = "liling";
+      // serverId = "liling";
       var maxDistance = that.data.maxDistance;
       var maxInterDistance = event.detail;
       var minServicLength = that.data.minServicLength;
@@ -217,7 +217,7 @@ Component({
       var serverId = wx.getStorageSync('openid');
       // console.log("获取openid");
       // console.log(serverId);
-      serverId = "liling";
+      // serverId = "liling";
       var maxDistance = that.data.maxDistance;
       var maxInterDistance = that.data.maxInterDistance;
       var minServicLength = event.detail;
@@ -244,7 +244,7 @@ Component({
       var serverId = wx.getStorageSync('openid');
       // console.log("获取openid");
       // console.log(serverId);
-      serverId = "liling";
+      // serverId = "liling";
       var maxDistance = that.data.maxDistance;
       var maxInterDistance = that.data.maxInterDistance;
       var minServicLength = that.data.minServicLength;

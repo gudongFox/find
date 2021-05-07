@@ -33,7 +33,7 @@ Component({
       var serverId = wx.getStorageSync('openid');
       // console.log("获取openid");
       // console.log(serverId);
-      serverId = "liling";
+      // serverId = "liling";
       // 获取姓名、地址
       wx.request({
         url: "http://129.211.68.243:8080/server/getServerInfo/" + serverId,

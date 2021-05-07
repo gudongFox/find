@@ -35,7 +35,7 @@ Component({
       var serverId = wx.getStorageSync('openid');
       // console.log("获取openid");
       // console.log(serverId);
-      serverId = "liling";
+      // serverId = "liling";
       if (that.data.activeTab == 3) {
         // 查询历史订单
         wx.request({
@@ -135,7 +135,7 @@ Component({
       var serverId = wx.getStorageSync('openid');
       // console.log("获取openid");
       // console.log(serverId);
-      serverId = "liling"
+      // serverId = "liling"
       wx.request({
         url: 'http://129.211.68.243:8080/server/getOrderToday/' + serverId,
         method: "GET",
