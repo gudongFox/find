@@ -29,7 +29,7 @@ Page({
   onReady: function () {
     var that = this;
     var serverId = that.data.serverId;
-    var requestUrl = "http://localhost:8080/server/getServerInfo/" + serverId;
+    var requestUrl = "http://129.211.68.243:8080/server/getServerInfo/" + serverId;
     wx.request({
       url: requestUrl,
       method:"GET",

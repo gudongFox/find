@@ -39,7 +39,7 @@ Component({
       if (that.data.activeTab == 3) {
         // 查询历史订单
         wx.request({
-          url: "http://localhost:8080/server/getAllOrder/" + serverId,
+          url: "http://129.211.68.243:8080/server/getAllOrder/" + serverId,
           method: "GET",
           header: {
             'content-type': 'application/json' // GET方式
@@ -137,7 +137,7 @@ Component({
       // console.log(serverId);
       serverId = "liling"
       wx.request({
-        url: 'http://localhost:8080/server/getOrderToday/' + serverId,
+        url: 'http://129.211.68.243:8080/server/getOrderToday/' + serverId,
         method: "GET",
         header: {
           'content-type': 'application/json', // 默认值

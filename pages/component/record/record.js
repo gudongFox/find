@@ -55,7 +55,7 @@ Component({
       mandatorId = "liling"
       if(that.data.activeTab == 0){
         // 查询未结算委托订单
-        var requestUrl = "http://localhost:8080/server/getUnFinOrderInfo/" + mandatorId;
+        var requestUrl = "http://129.211.68.243:8080/server/getUnFinOrderInfo/" + mandatorId;
         wx.request({
           url: requestUrl,
           method:"GET",
@@ -86,7 +86,7 @@ Component({
       }
       else{
         // 查询伙伴名单
-        var requestUrl = "http://localhost:8080/server/getPartner/" + mandatorId;
+        var requestUrl = "http://129.211.68.243:8080/server/getPartner/" + mandatorId;
         wx.request({
           url: requestUrl,
           method:"GET",
