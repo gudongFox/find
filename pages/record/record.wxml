@@ -26,7 +26,7 @@
             <van-cell clickable="true">
               <van-row>
                 <van-col span="5">
-                  <van-image round width="50" height="50" src="{{item.serverInfo.imageUrl}}" />
+                  <van-image round width="50" height="50" src="{{item.serverInfo.serverProfile}}" />
                 </van-col>
                 <van-col span="10">
                   <view class="display-center"><text class="textbig,textblack">{{item.serverInfo.serverName}} </text></view>
@@ -61,7 +61,7 @@
             <van-cell clickable="true">
               <van-row>
                 <van-col span="5">
-                  <van-image round width="50" height="50" src="{{item.serverInfo.imageUrl}}" />
+                  <van-image round width="50" height="50" src="{{item.serverInfo.serverProfile}}" />
                 </van-col>
                 <van-col span="10">
                   <view class="display-center"><text class="textbig,textblack">{{item.serverInfo.serverName}} </text></view>

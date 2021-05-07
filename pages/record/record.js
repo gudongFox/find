@@ -6,10 +6,10 @@ Page({
    */
   data: {
     platServerList:[
-      {clientInfo:{},serverInfo:{serverAge:30,serverGender:1,serverId:"0",serverLocation:"",serverName:"",serverSessionKey:"",serverTel:"",imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'}},
+      {clientInfo:{},serverInfo:{serverAge:30,serverGender:1,serverId:"0",serverLocation:"",serverName:"",serverSessionKey:"",serverTel:"",serverProfile:"https://img.yzcdn.cn/vant/cat.jpeg"}},
     ],
     believeServerList:[
-      {clientInfo:{},serverInfo:{serverAge:30,serverGender:1,serverId:"0",serverLocation:"",serverName:"",serverSessionKey:"",serverTel:"",imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'}},
+      {clientInfo:{},serverInfo:{serverAge:30,serverGender:1,serverId:"0",serverLocation:"",serverName:"",serverSessionKey:"",serverTel:"",serverProfile:'https://img.yzcdn.cn/vant/cat.jpeg'}},
     ],
     active:0,
     value:'',

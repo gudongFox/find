@@ -10,27 +10,40 @@ Page({
     clientName: '马先生',
     tel: '13368227224',
     location: '重庆市南岸区花红路',
-    doorNumber: '城南家园五组团一栋一单元11-5',
+    doorNumber: '',
     serviceType: '家庭保洁',
     serverName: '王阿姨',
     beginTime: '2021-5-5 8:00',
+    times: 1,
     remark: ''
 
   },
   onLoad:function(e){
     var that = this
-    var demandId = e.id
+    var demandId = e.demandId
     wx.request({
-      url: 'http://localhost:8080/demand/detail/'+demandId,
+      url: 'http://localhost:8080/demand/detail/',
       header: {
         'content-type': 'application/json' // 默认值
       },
       method: 'GET',
+      data:{
+        demandId: demandId,
+        clientId: wx.getStorageSync('openid')
+      },
       success:function(res){
         console.log(res)
-        var list = res.data
-        console.log(list)
+        var clientInfo = res.data.data.clientInfo
+        var demandsInfo = res.data.data.demandsInfo
         that.setData({
+          clientName:clientInfo.clientName,
+          tel: clientInfo.clientTel,
+          location: clientInfo.clientLocation,
+          serviceType: demandsInfo[0].serviceProject,
+          serverName: demandsInfo[0].serverName,
+          beginTime: demandsInfo[0].startTime,
+          times: demandsInfo[0].times,
+          remark:demandsInfo[0].demandComment
         })
       }
     })

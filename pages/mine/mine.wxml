@@ -8,8 +8,7 @@
     </van-col>
     <van-col span="11">
       <view style="display:flex;flex-direction: column;">
-        <text class="alignandappading">\n\n李阿姨</text>
-        <text class="textsmall" style="color:#888888">团队：成都李阿姨</text>
+        <text class="alignandappading">\n\n{{name}}</text>
       </view>
     </van-col>
     <van-col span="6">

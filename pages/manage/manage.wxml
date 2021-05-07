@@ -43,7 +43,7 @@
           <van-icon name="bell" color="#8A2BE2" />
           <text style="color:#8A2BE2;font-size:small;margin-left:1rem">{{ date }}</text>
         </view>
-        <view>
+        <view wx:for="{{demandList}}" wx:key="demandId" data-id="{{item.demandId}}">
           <van-cell-group>
             <van-cell clickable="true">
               <van-row>
@@ -51,25 +51,25 @@
                   <view class="display-center">
                     <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
                   </view>
-                  <view class="display-center"><text style="color:#00BBFF">家庭保洁</text></view>
+                  <view class="display-center"><text style="color:#00BBFF">{{item.serviceProject}}</text></view>
                 </van-col>
                 <van-col span="5">
-                  <view><text class="textbig,textblack">王老师</text></view>
+                  <view><text class="textblack">{{clientName}}</text></view>
                 </van-col>
                 <van-col span="10">
                   <view class="display-center">
                     <text class="textsmall">7月8日，8:00-10:00</text>
                   </view>
                   <view class="display-center">
-                    <text class="textsmall">多次</text>
+                    <text class="textsmall">{{item.times}}次</text>
                   </view>
                   <view class="display-center">
-                    <text class="textsmall">虎溪花园，4栋3-3-1</text>
+                    <text class="textsmall">{{clientLocation}}</text>
                   </view>
                 </van-col>
                 <van-col span="4">
                   <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                  <text>李阿姨</text>
+                  <view class="display-center"><text>{{item.serverName}}</text></view>
                 </van-col>
               </van-row>
 

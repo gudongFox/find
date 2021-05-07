@@ -11,6 +11,8 @@ Page({
     {
       demandId:4,clientId:"zhanglaoshi",serviceProject:"钟点工",mandatorId:"0",mandatorName:"",serverId:"liling",serverName:"李玲",startTime:"2020-07-08T00:00:00",endTime:"2020-07-08T02:00:00",times:10,intervalDays:7,demandComment:""
     }],
+    clentName:'',
+    clientLocation:'',
     value: 0,
     active:0,
     show: false,
@@ -26,6 +28,7 @@ Page({
         clientId:wx.getStorageSync('openid')
       },
       success:function(res){
+        console.log(res.data.data.clientInfo)
         var list = res.data.data.demandsInfo
         for(let i = 0; i < list.length; i++){
           var s = list[i].startTime;
@@ -36,7 +39,9 @@ Page({
           }
         }
           that.setData({
-            demandList:list
+            demandList:list,
+            clientName: res.data.data.clientInfo.clientName,
+            clientLocation: res.data.data.clientInfo.clientLocation
           })
       }
     })

@@ -10,7 +10,8 @@ Page({
     total:207,
     success:95.4+'%',
     score:3.5,
-    myImage: ""
+    myImage: "https://img.yzcdn.cn/vant/cat.jpeg",
+    name:"咕咚"
   },
   click:function(){
     wx.redirectTo({
@@ -20,13 +21,23 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     var that = this
-    image_scr = wx.getStorageSync('avatarUrl')
-    that.setData({
-      "myImage": image_scr
+    wx.request({
+      url: 'http://localhost:8080/client/info',
+      method:"GET",
+      data:{
+        clientId:wx.getStorageSync('openid')
+      },
+      success:function(res){
+        var clientInfo = res.data.data
+        console.log(clientInfo.clientProfile)
+        that.setData({
+          myImage: clientInfo.clientProfile,
+          name: clientInfo.clientName
+        })
+      }
     })
-    console.log(that.data.myImage)
   },
 
   /**

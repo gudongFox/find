@@ -48,6 +48,7 @@ Page({
     var that = this;
     var demand = that.data.demand
     var server = that.data.server
+    console.log(demand)
     wx.request({
       url: 'http://localhost:8080/demand/detail',
       header: {'content-type': 'application/json'},
@@ -62,7 +63,7 @@ Page({
         "mandatorId": demand.mandatorId,
         "serverId": server.serverId,
         "serviceProject": demand.serviceProject,
-        "startTime": '',
+        "startTime": demand.startTime,
         "times": demand.times
       },
       success:function(res){

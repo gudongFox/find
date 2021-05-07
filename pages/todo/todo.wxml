@@ -40,7 +40,7 @@
     </van-field>
   </van-cell-group>
   <van-cell-group>
-    <van-field label="次数/周期" title-width="30%"  model:value="{{remark}}" readonly>
+    <van-field label="次数/周期" title-width="30%"  model:value="{{times}}" readonly>
     </van-field>
   </van-cell-group>
   <van-cell-group>

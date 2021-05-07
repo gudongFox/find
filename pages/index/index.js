@@ -14,11 +14,6 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    option1: [
-      { text: '全部商品', value: 0 },
-      { text: '新款商品', value: 1 },
-      { text: '活动商品', value: 2 },
-    ],
     value1: 0
   },
 
@@ -28,10 +23,11 @@ Page({
       url: 'http://localhost:8080/demand/detail',
       method:"GET",
       data:{
-        clientId:wx.getStorageSync('openid')
+        clientId:wx.getStorageSync('openid'),
       },
       success:function(res){
         var list = res.data.data.demandsInfo
+        console.log(res)
         for(let i = 0; i < list.length; i++){
           var s = list[i].startTime;
           if(s != null){
@@ -65,10 +61,10 @@ Page({
   //跳转到订单详情页
   toServiceInfo:function(e){
     console.log(e)
-    var id = e.currentTarget.dataset.id
-    console.log(id)
+    var demandId = e.currentTarget.dataset.id
+    var clientId = wx.getStorageSync('openid')
     wx.navigateTo({
-      url: '/pages/todo/todo?id='+id,
+      url: '/pages/todo/todo?demandId='+demandId,
     })
   }
 })

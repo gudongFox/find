@@ -27,7 +27,8 @@ Page({
           "clientGender":res.userInfo.gender,
           "clientAge":18,
           "clientTel":"13368227224",
-          "clientLocation":"北京市"
+          "clientLocation":"北京市",
+          "clientProfile":res.userInfo.avatarUrl
         }
       })
       console.log('获取成功: ',res)
