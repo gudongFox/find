@@ -5,95 +5,136 @@ Page({
    * 页面的初始数据
    */
   data: {
-    serviceObj:"家庭保洁",
-    serviceLength:1,
-    serviceDate:"2020/07/08",
-    serviceTime:"8:00",
-    serviceNumthTimes:1,
-    serviceTotalTimes:10,
-    serviceInterval:7,
-    serviceRate:45.00,
-    serviceComment:"有宠物",
+    URIClientInfo: "",
+    URIDemandInfo: "",
+    // URINewInfo: "",
+    demandId:"",
+    serviceProject: "家庭保洁",
+    projects: [{
+        text: "家庭保洁",
+        value: "家庭保洁",
+      },
+      {
+        text: "商业保洁",
+        value: "商业保洁",
+      },
+      {
+        text: "钟点工",
+        value: "钟点工",
+      },
+    ],
+    serviceLength: 0,
+    serviceDate: "",
+    serviceTime: "",
+    serviceNumthTimes: 0,
+    serviceTotalTimes: 0,
+    serviceInterval: 0,
+    servicePrice: 0,
+    serviceComment: "",
     // 上门日期选择器相关
-    isShowDateSelection:false,
-    currentDate:new Date().getTime(),
-    minDate:new Date().getTime(),
+    isShowDateSelection: false,
+    currentDate: new Date().getTime(),
+    minDate: new Date().getTime(),
     // 上门时间选择器相关
-    isShowTimeSelection:false,
-    currentTime:"12:00"
+    isShowTimeSelection: false,
+    currentTime: "12:00"
   },
-// 设置服务时长
-  setServiceLength:function(e){
+  // 设置服务时长
+  setServiceLength: function (e) {
     this.setData({
-      serviceLength:e.detail.value
+      serviceLength: e.detail.value
     })
   },
-// 设置上门日期
-  setServiceDate:function(){
+  // 设置上门日期
+  setServiceDate: function () {
     this.setData({
-      isShowDateSelection:true
+      isShowDateSelection: true
     })
   },
-  confirmDate:function(val){
+  confirmDate: function (val) {
     let dateObj = new Date(val.detail);
     let y = dateObj.getFullYear();
     let m = dateObj.getMonth() + 1;
-    let d = dateObj.getDate(); 
+    let d = dateObj.getDate();
     this.setData({
-      serviceDate:y + "/" + m + "/" + d,
-      isShowDateSelection:false
+      serviceDate: y + "/" + m + "/" + d,
+      isShowDateSelection: false
     })
   },
-  cancelDate:function(){
+  cancelDate: function () {
     this.setData({
-      isShowDateSelection:false
+      isShowDateSelection: false
     })
   },
-// 设置上门时间
-  setServiceTime:function(){
+  // 设置上门时间
+  setServiceTime: function () {
     this.setData({
-      isShowTimeSelection:true
+      isShowTimeSelection: true
     })
   },
-  confirmTime:function(val){
+  confirmTime: function (val) {
     this.setData({
-      serviceTime:val.detail,
-      isShowTimeSelection:false
+      serviceTime: val.detail,
+      isShowTimeSelection: false
     })
   },
-  cancelTime:function(){
+  cancelTime: function () {
     this.setData({
-      isShowTimeSelection:false
+      isShowTimeSelection: false
     })
   },
-// 设置当前次数
-  setServiceNumthTimes:function(e){
+  // 设置当前次数
+  setServiceNumthTimes: function (e) {
     this.setData({
-      serviceNumthTimes:e.detail.value
+      serviceNumthTimes: e.detail.value
     })
   },
-// 设置总次数
-  setServiceTotalTimes:function(e){
+  // 设置总次数
+  setServiceTotalTimes: function (e) {
     this.setData({
-      serviceTotalTimes:e.detail.value
+      serviceTotalTimes: e.detail.value
     })
   },
   // 设置周期
-  setServiceInterval:function(e){
+  setServiceInterval: function (e) {
     this.setData({
-      serviceInterval:e.detail.value
+      serviceInterval: e.detail.value
     })
   },
   // 设置收费标准
-  setServiceRate:function(e){
+  setServiceRate: function (e) {
     this.setData({
-      serviceRate:e.detail.value
+      servicePrice: e.detail.value
     })
   },
   // 设置备注
-  setServiceComment:function(e){
+  setServiceComment: function (e) {
     this.setData({
-      serviceComment:e.detail.value
+      serviceComment: e.detail.value
+    })
+  },
+
+  // 接单跳转到形成订单页面
+  clickReceive: function () {
+    // 将更新后到数据传递
+    var newInfo = {
+      demandId: this.data.demandId,
+      serviceProject: this.data.serviceProject,
+      serviceLength: this.data.serviceLength,
+      serviceDate: this.data.serviceDate,
+      serviceTime: this.data.serviceTime,
+      serviceNumthTimes: this.data.serviceNumthTimes,
+      serviceTotalTimes: this.data.serviceTotalTimes,
+      serviceInterval: this.data.serviceInterval,
+      servicePrice: this.data.servicePrice,
+      serviceComment: this.data.serviceComment,
+    }
+    var URINewInfo = encodeURIComponent(JSON.stringify(newInfo));
+    // this.setData({
+    //   URINewInfo: URINewInfo,
+    // })
+    wx.navigateTo({
+      url: '/pages/receiveOrderServer/receiveOrderServer?URIClientInfo=' + this.data.URIClientInfo + "&URINewInfo=" + URINewInfo,
     })
   },
 
@@ -101,7 +142,45 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      URIClientInfo: options.URIClientInfo,
+      URIDemandInfo: options.URIDemandInfo,
+    })
+    // 解码
+    var clientInfo = JSON.parse(decodeURIComponent(options.URIClientInfo));
+    var demandInfo = JSON.parse(decodeURIComponent(options.URIDemandInfo));
+    console.log(clientInfo);
+    console.log(demandInfo);
+    if (demandInfo.serviceProject == null) {
+      demandInfo.serviceProject = "家庭保洁";
+    }
+    // 判断开始时间或结束时间是否为空
+    var serviceLength = 0;
+    if (demandInfo.startTime != null && demandInfo.endTime != null) {
+      serviceLength = demandInfo.endTime.substring(11, 13) - demandInfo.startTime.substring(11, 13);
+    }
+    var serviceDate;
+    var serviceTime;
+    if (demandInfo.startTime != null) {
+      serviceDate = demandInfo.startTime.substring(0, 4) + "/" + demandInfo.startTime.substring(5, 7) + "/" + demandInfo.startTime.substring(8, 10);
+      serviceTime = demandInfo.startTime.substring(11, 16);
+    } else {
+      var today = new Date();
+      serviceDate = today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDay();
+      serviceTime = today.getHours() + ":" + today.getMinutes()
+    }
+    this.setData({
+      demandId: demandInfo.demandId,
+      serviceProject: demandInfo.serviceProject,
+      serviceLength: serviceLength,
+      serviceDate: serviceDate,
+      serviceTime: serviceTime,
+      serviceNumthTimes: demandInfo.numTimes,
+      serviceTotalTimes: demandInfo.times,
+      serviceInterval: demandInfo.intervalDays,
+      servicePrice: demandInfo.price,
+      serviceComment: demandInfo.demandComment,
+    })
   },
 
   /**

@@ -5,20 +5,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderId:"2020101102800001",
-    orderTime:"2020年07月07日08:47",
-    clientName:"马先生",
-    clientPhoneNum:"13000000001",
-    clientLocation:"成都市锦江文化中心",
-    clientHouseNum:"虎溪花园，4栋5-1",
+    orderId: "",
+    orderTime: "",
+    clientName: "",
+    clientGender: "",
+    clientPhoneNum: "",
+    clientLocation: "",
 
-    serverName:"王阿姨",
-    serverProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
-    serviceProject:"家庭保洁",
-    serviceTime:"2020年07月08日8:00～10:00",
-    servicePeriod:"第5次，共10次，间隔7天",
-    serviceRate:"45.00元/小时",
-    serviceComment:"有宠物"
+    serverName: "",
+    serverProfile: "https://img.yzcdn.cn/vant/cat.jpeg",
+    serviceProject: "",
+    serviceStartTime: "",
+    serviceEndTime: "",
+    servicePeriod: "",
+    serviceRate: "",
+    serviceComment: ""
 
   },
 
@@ -26,7 +27,66 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    var serverId = options.serverId;
+    var serverName = options.serverName;
+    console.log(serverName);
+    wx.request({
+      url: "http://localhost:8080/server/getUnFinOrder/" + serverId,
+      method: "GET",
+      header: {
+        'content-type': 'application/json' // GET方式
+      },
+      success(res) {
+        console.log(serverId + "的未完成订单");
+        console.log(res);
+        var orderData = res.data[0];
+        that.setData({
+            orderId: orderData.orderId,
+            orderTime: orderData.orderTime,
+            // clientName: "马先生",
+            // clientPhoneNum: "13000000001",
+            // clientLocation: "成都市锦江文化中心",
 
+            serverName: serverName,
+            serverProfile: "https://img.yzcdn.cn/vant/cat.jpeg",
+            serviceProject: orderData.serviceProject,
+            serviceStartTime: orderData.startTime,
+            serviceEndTime: orderData.endTime,
+            servicePeriod: "第" + orderData.numTimes + "次，共" + orderData.times + "次，间隔" + orderData.intervalDays + "天",
+            serviceRate: orderData.price + "元/小时",
+            serviceComment: orderData.orderComment,
+          }),
+          wx.request({
+            url: "http://localhost:8080/client/info/",
+            method: "GET",
+            data: {
+              clientId: orderData.clientId,
+            },
+            header: {
+              'content-type': 'application/json' // GET方式
+            },
+            success(res) {
+              console.log("客户信息");
+              console.log(res.data.data.client)
+              var clientData = res.data.data.client;
+              if (clientData.clientGender == 1) {
+                clientData.clientGender = "男";
+              } else if (clientData.clientGender == 2) {
+                clientData.clientGender = "女";
+              } else {
+                clientData.clientGender = "未知";
+              }
+              that.setData({
+                clientName: clientData.clientName,
+                clientGender: clientData.clientGender,
+                clientPhoneNum: clientData.clientTel,
+                clientLocation: clientData.clientLocation,
+              })
+            }
+          })
+      },
+    })
   },
 
   /**

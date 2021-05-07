@@ -1,7 +1,7 @@
 <!--pages/manage/manage.wxml-->
 <view>
   <view>
-    <van-tabs active="{{ active }}" color="#00AA00" class="tabw">
+    <van-tabs color="#00AA00" class="tabw" bind:change="changeTab" bind:click="clickTab">
       <van-tab title="未结算委托">
 
         <view class="flexRow">
@@ -13,7 +13,7 @@
 
         <view>
           <van-cell-group wx:for="{{substituteList}}" wx:key="index">
-            <van-cell clickable="true" url="{{substituteClickUrl}}">
+            <van-cell clickable="true" url="{{item.substituteClickUrl}}">
               <view class="flexIcon">
                 <van-image round width="50" height="50" src="{{item.substitutedClientProfile}}" />
                 <view style="display:flex;flex-direction:column;width:400rpx">
@@ -32,6 +32,7 @@
             <view class="divLine"></view>
           </van-cell-group>
         </view>
+        <van-divider contentPosition="center">已经到底了</van-divider>
       </van-tab>
 
       <van-tab title="伙伴名单">
@@ -48,7 +49,7 @@
 
         <view>
           <van-cell-group wx:for="{{partnerList}}" wx:key="index">
-            <van-cell clickable="true" url="{{partnerClickUrl}}">
+            <van-cell clickable="true" url="{{item.partnerClickUrl}}">
               <view class="flexIcon">
                 <van-image round width="50" height="50" src="{{item.partnerProfile}}" />
                 <view class="flexCol" style="width:400rpx">

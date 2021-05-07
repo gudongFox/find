@@ -59,4 +59,4 @@
 
 <van-divider></van-divider>
 
-<van-button plain hairline type="danger" size="large" url="/pages/nav/nav">退出登录</van-button>
+<van-button plain hairline type="danger" size="large" bind:click="logout">退出登录</van-button>

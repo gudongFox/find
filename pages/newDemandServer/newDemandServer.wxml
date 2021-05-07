@@ -24,7 +24,10 @@
     <van-cell>
       <view class="flexCell">
         <view>服务类型</view>
-        <view class="textblack">家庭保洁</view>
+        <van-dropdown-menu>
+          <van-dropdown-item value="{{serviceProject}}" options="{{projects}}" />
+        </van-dropdown-menu>
+        <!-- <view class="textblack">{{serviceProject}}</view> -->
       </view>
       <view class="flexCell">
         <view>预计服务时长</view>
@@ -72,7 +75,7 @@
       <view class="flexCell">
         <view>收费标准</view>
         <view class="flexCell">
-          <input style="border-radius:10rpx;width:150rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceRate}}" bindinput="setServiceRate" />
+          <input style="border-radius:10rpx;width:150rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{servicePrice}}" bindinput="setServiceRate" />
           <view class="textblack">元/小时</view>
         </view>
       </view>
@@ -88,7 +91,7 @@
 
   <view class="flexRow">
     <van-button round plain type="primary" color="#00AA00" custom-style="width:250rpx;height:80rpx">委托伙伴</van-button>
-    <van-button round type="primary" color="#00AA00" custom-style="width:250rpx;height:80rpx;">我来接单</van-button>
+    <van-button round type="primary" color="#00AA00" custom-style="width:250rpx;height:80rpx;" bind:click="clickReceive">我来接单</van-button>
   </view>
 
 </view>

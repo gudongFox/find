@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.service.findservice.dao.ServerWorkTimeMapper">
+  <resultMap id="BaseResultMap" type="com.service.findservice.entity.ServerWorkTime">
+    <constructor>
+      <idArg column="time_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="server_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="work_day" javaType="java.lang.Integer" jdbcType="TINYINT" />
+      <arg column="work_hour" javaType="java.lang.Integer" jdbcType="TINYINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    time_id, server_id, work_day, work_hour
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from server_work_time
+    where time_id = #{timeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from server_work_time
+    where time_id = #{timeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.service.findservice.entity.ServerWorkTime">
+    insert into server_work_time (time_id, server_id, work_day, 
+      work_hour)
+    values (#{timeId,jdbcType=INTEGER}, #{serverId,jdbcType=VARCHAR}, #{workDay,jdbcType=TINYINT}, 
+      #{workHour,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.service.findservice.entity.ServerWorkTime">
+    insert into server_work_time
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="timeId != null">
+        time_id,
+      </if>
+      <if test="serverId != null">
+        server_id,
+      </if>
+      <if test="workDay != null">
+        work_day,
+      </if>
+      <if test="workHour != null">
+        work_hour,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="timeId != null">
+        #{timeId,jdbcType=INTEGER},
+      </if>
+      <if test="serverId != null">
+        #{serverId,jdbcType=VARCHAR},
+      </if>
+      <if test="workDay != null">
+        #{workDay,jdbcType=TINYINT},
+      </if>
+      <if test="workHour != null">
+        #{workHour,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.service.findservice.entity.ServerWorkTime">
+    update server_work_time
+    <set>
+      <if test="serverId != null">
+        server_id = #{serverId,jdbcType=VARCHAR},
+      </if>
+      <if test="workDay != null">
+        work_day = #{workDay,jdbcType=TINYINT},
+      </if>
+      <if test="workHour != null">
+        work_hour = #{workHour,jdbcType=TINYINT},
+      </if>
+    </set>
+    where time_id = #{timeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.service.findservice.entity.ServerWorkTime">
+    update server_work_time
+    set server_id = #{serverId,jdbcType=VARCHAR},
+      work_day = #{workDay,jdbcType=TINYINT},
+      work_hour = #{workHour,jdbcType=TINYINT}
+    where time_id = #{timeId,jdbcType=INTEGER}
+  </update>
+</mapper>

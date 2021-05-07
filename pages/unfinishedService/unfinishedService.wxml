@@ -24,6 +24,10 @@
         <view class="textblack">{{clientName}}</view>
       </view>
       <view class="flexCell">
+        <view>客户性别</view>
+        <view class="textblack">{{clientGender}}</view>
+      </view>
+      <view class="flexCell">
         <view>联络电话</view>
         <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button>
         <view class="textblack">{{clientPhoneNum}}</view>
@@ -31,10 +35,6 @@
       <view class="flexCell">
         <view>服务位置</view>
         <view class="textblack">{{clientLocation}}</view>
-      </view>
-      <view class="flexCell">
-        <view>门牌号</view>
-        <view class="textblack" space="emsp">{{clientHouseNum}}</view>
       </view>
     </van-cell>
 
@@ -57,8 +57,12 @@
         <view class="textblack">{{serviceProject}}</view>
       </view>
       <view class="flexCell">
-        <view>上门时间</view>
-        <view class="textblack" space="emsp">{{serviceTime}}</view>
+        <view>开始时间</view>
+        <view class="textblack" space="emsp">{{serviceStartTime}}</view>
+      </view>
+      <view class="flexCell">
+        <view>结束时间</view>
+        <view class="textblack" space="emsp">{{serviceEndTime}}</view>
       </view>
       <view class="flexCell">
         <view>次数/周期</view>

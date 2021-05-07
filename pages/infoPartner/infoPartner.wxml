@@ -9,8 +9,16 @@
   <van-cell-group custom-class="margin2">
     <van-cell>
       <view class="flexCell">
-        <view>伙伴姓名</view>
+        <view>姓名</view>
         <view class="textblack">{{partnerName}}</view>
+      </view>
+      <view class="flexCell">
+        <view>性别</view>
+        <view class="textblack" space="emsp">{{partnerGender}}</view>
+      </view>
+      <view class="flexCell">
+        <view>年龄</view>
+        <view class="textblack" space="emsp">{{partnerAge}}</view>
       </view>
       <view class="flexCell">
         <view>联络电话</view>
@@ -18,12 +26,8 @@
         <view class="textblack">{{partnerPhoneNum}}</view>
       </view>
       <view class="flexCell">
-        <view>伙伴位置</view>
+        <view>位置</view>
         <view class="textblack">{{partnerLocation}}</view>
-      </view>
-      <view class="flexCell">
-        <view>门牌号</view>
-        <view class="textblack" space="emsp">虎溪花园4栋5-1</view>
       </view>
     </van-cell>
 
