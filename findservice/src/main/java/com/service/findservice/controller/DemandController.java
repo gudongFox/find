@@ -3,6 +3,7 @@ package com.service.findservice.controller;
 import com.service.findservice.entity.Client;
 import com.service.findservice.entity.Demand;
 import com.service.findservice.entity.DemandInfo;
+import com.service.findservice.entity.Server;
 import com.service.findservice.result.ResultBody;
 import com.service.findservice.result.ResultCode;
 import com.service.findservice.server.ClientService;
@@ -106,6 +107,7 @@ public class DemandController {
     }
 
     private String getServerInfo(String serverId) {
-        return serverService.findServerById(serverId).getServerName();
+        Server server = serverService.findServerById(serverId);
+        return null == server ? "" : server.getServerName();
     }
 }
