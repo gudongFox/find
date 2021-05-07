@@ -161,10 +161,8 @@
         from order_detail
         where order_id = #{orderId,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" parameterType="com.service.findservice.entity.Order">
-        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="orderId">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="orderId" parameterType="com.service.findservice.entity.Order">
+
         insert into order_detail (order_id, order_time, client_id,
         mandator_id, service_project, start_time,
         end_time, price, times,
@@ -177,15 +175,9 @@
         #{numTimes,jdbcType=SMALLINT}
         )
     </insert>
-    <insert id="insertSelective" parameterType="com.service.findservice.entity.Order">
-        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="orderId">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="orderId" parameterType="com.service.findservice.entity.Order">
         insert into order_detail
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="orderId != null">
-                order_id,
-            </if>
             <if test="orderTime != null">
                 order_time,
             </if>

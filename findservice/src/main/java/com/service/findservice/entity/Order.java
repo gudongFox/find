@@ -1,5 +1,7 @@
 package com.service.findservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class Order {
