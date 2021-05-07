@@ -178,6 +178,9 @@
         )
     </insert>
     <insert id="insertSelective" parameterType="com.service.findservice.entity.Order">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="orderId">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         insert into order_detail
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="orderId != null">

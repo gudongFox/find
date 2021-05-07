@@ -235,8 +235,9 @@ public class ServerController {
         order.setStartTime(demand.getStartTime());
         order.setEndTime(demand.getEndTime());
         order.setIsSubstitue(0);
-        if (orderService.insert(order) != 0) {
-            if (serverServiceService.insertOrderServers(order.getOrderId(), server_id, 0) != 0) {
+        int Oid = orderService.insert(order);
+        if (Oid != 0) {
+            if (serverServiceService.insertOrderServers(Oid, server_id, 0) != 0) {
                 return demandService.deleteByDemandId(demand_id);
             }
         }
@@ -255,8 +256,9 @@ public class ServerController {
         order.setStartTime(demand.getStartTime());
         order.setEndTime(demand.getEndTime());
         order.setIsSubstitue(0);
-        if (orderService.insert(order) != 0) {
-            if (serverServiceService.insertOrderServers(order.getOrderId(), server_id, 2) != 0) {
+        int Oid = orderService.insert(order);
+        if (Oid != 0) {
+            if (serverServiceService.insertOrderServers(Oid, server_id, 2) != 0) {
                 return demandService.deleteByDemandId(demand_id);
             }
         }
@@ -271,8 +273,9 @@ public class ServerController {
         order.setClientId(client_id);
         order.setMandatorId("0");
         order.setIsSubstitue(1);
-        if (orderService.insert(order) != 0) {
-            return serverServiceService.insertOrderServers(order.getOrderId(), server_id, 2);
+        int Oid = orderService.insert(order);
+        if (Oid != 0) {
+            return serverServiceService.insertOrderServers(Oid, server_id, 2);
         }
         return 0;
     }
@@ -284,8 +287,9 @@ public class ServerController {
         order.setClientId(client_id);
         order.setMandatorId(mandator_id);
         order.setIsSubstitue(1);
-        if (orderService.insert(order) != 0) {
-            return serverServiceService.insertOrderServers(order.getOrderId(), server_id, 2);
+        int Oid = orderService.insert(order);
+        if (Oid != 0) {
+            return serverServiceService.insertOrderServers(Oid, server_id, 2);
         }
         return 0;
     }
@@ -316,19 +320,19 @@ public class ServerController {
     }
 
     @RequestMapping("/test")
-    public int test() throws ParseException {
-        Order order = new Order();
-        order.setClientId("zhanglaoshi");
-        order.setOrderTime(new Date());
-        order.setMandatorId("0");
-        order.setServiceProject("钟点工");
-        order.setStartTime(new Date());
-        order.setEndTime(new Date());
-        order.setPrice(40.0f);
-        order.setTimes((short) 1);
-        order.setIntervalDays((short) 0);
-        order.setIsSubstitue(0);
-        order.setNumTimes((short) 1);
+    public int test(@RequestBody Order order) throws ParseException {
+//        Order order = new Order();
+//        order.setClientId("zhanglaoshi");
+//        order.setOrderTime(new Date());
+//        order.setMandatorId("0");
+//        order.setServiceProject("钟点工");
+//        order.setStartTime(new Date());
+//        order.setEndTime(new Date());
+//        order.setPrice(40.0f);
+//        order.setTimes((short) 1);
+//        order.setIntervalDays((short) 0);
+//        order.setIsSubstitue(0);
+//        order.setNumTimes((short) 1);
         return orderService.insert(order);
     }
 
