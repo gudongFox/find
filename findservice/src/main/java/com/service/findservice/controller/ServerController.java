@@ -75,7 +75,7 @@ public class ServerController {
     }
 
 
-    //查询未结算信息
+    //查询用户作为委托人的未结算信息
     @RequestMapping(value = "/getUnFinOrderInfo/{mandator_id}")
     public List getUnFinOrderInfo(@PathVariable String mandator_id) {
         List<Map<String, Object>> infoList = new ArrayList<>();
@@ -98,7 +98,7 @@ public class ServerController {
         return infoList;
     }
 
-    //查询未结算订单详情
+    //查询某一服务师未结算订单详情
     @RequestMapping(value = "/getUnFinOrder/{server_id}")
     public List<Order> getUnFinOrder(@PathVariable String server_id) {
         return orderService.selectUnFinOrderBySId(server_id);
@@ -316,8 +316,20 @@ public class ServerController {
     }
 
     @RequestMapping("/test")
-    public String test() throws ParseException {
-        return clientService.selectMostProj("zhanglaoshi");
+    public int test() throws ParseException {
+        Order order = new Order();
+        order.setClientId("zhanglaoshi");
+        order.setOrderTime(new Date());
+        order.setMandatorId("0");
+        order.setServiceProject("钟点工");
+        order.setStartTime(new Date());
+        order.setEndTime(new Date());
+        order.setPrice(40.0f);
+        order.setTimes((short) 1);
+        order.setIntervalDays((short) 0);
+        order.setIsSubstitue(0);
+        order.setNumTimes((short) 1);
+        return orderService.insert(order);
     }
 
 

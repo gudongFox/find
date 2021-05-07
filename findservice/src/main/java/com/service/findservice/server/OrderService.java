@@ -31,7 +31,7 @@ public class OrderService {
     }
 
     public int insert(Order record) {
-        return orderMapper.insert(record);
+        return orderMapper.insertSelective(record);
     }
 
     public int updateFinish(String server_id, int order_id) {
