@@ -12,9 +12,9 @@ Page({
     clientLocation: "",
     serviceProject: "",
     serviceTime: "",
-    serviceLength: "",
+    serviceLength: 0,
     servicePeriod: "",
-    rates: "",
+    rates: 0,
     serviceComment: "",
   },
 
@@ -31,35 +31,38 @@ Page({
     var serviceDate = this.data.serviceTime.split(" ")[0].replace(/\//g, "-");
     var startTime = serviceDate + " " + this.data.serviceTime.split(" ")[1] + ":00"
     var endTime = serviceDate + " " + (Number(this.data.serviceTime.split(" ")[1].split(":")[0]) + Number(this.data.serviceLength)) + ":" + this.data.serviceTime.split(" ")[1].split(":")[1] + ":00";
-    var orderData = {
-      order_time: now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds(),
-      client_id: this.data.clientId,
-      service_project: this.data.serviceProject,
-      start_time: startTime,
-      end_time: endTime,
-      price: this.data.rates,
-      times: Number(this.data.servicePeriod.substring(5, 7)),
-      interval_day: Number(this.data.servicePeriod.substring(11, 12)),
-      order_comment: this.data.serviceComment,
-      num_times: Number(this.data.servicePeriod.substring(1, 2)),
-    }
-    console.log(orderData);
-    var server_id = "liling";
-    var demand_id = this.data.demandId;
+    // 获取用户ID
+    var serverId = wx.getStorageSync('openid');
+    // console.log("获取openid");
+    // console.log(serverId);
+    serverId = "liling";
     wx.request({
-      url: 'http://localhost:8080/receiveOrder/' + server_id + "/" + demand_id,
+      url: 'http://localhost:8080/server/makeOrderByS/' + serverId + "/" + this.data.clientId,
       method: "POST",
-      data: {
-        order: orderData,
-      },
       header: {
-        // 'content-type': 'application/json', // 默认值
-        'content-type': 'application/x-www-form-urlencoded',//POST方式
+        'content-type': 'application/json', // 默认值
+        // "content-type": "application/x-www-form-urlencoded",//POST方式
+      },
+      data: {
+          "orderTime": now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds(),
+          "clientId": this.data.clientId,
+          "serviceProject": this.data.serviceProject,
+          "startTime": startTime,
+          "endTime": endTime,
+          "price": this.data.rates,
+          "times": Number(this.data.servicePeriod.split("共")[1].split("次")[0]),
+          "intervalDays": Number(this.data.servicePeriod.split("间隔")[1].split("天")[0]),
+          "orderComment": this.data.serviceComment,
+          "isSubstitue": 0,
+          "numTimes": Number(this.data.servicePeriod.split("第")[1].split("次")[0]),
       },
       success: function (res){
         wx.redirectTo({
           url: '/pages/indexs/indexs',
         })
+      },
+      fail: function(){
+        console.log("Insert Error")
       }
     })
   },
@@ -72,8 +75,8 @@ Page({
     var clientInfo = JSON.parse(decodeURIComponent(options.URIClientInfo));
     var newInfo = JSON.parse(decodeURIComponent(options.URINewInfo));
     clientInfo = clientInfo.clientInfo;
-    console.log(clientInfo);
-    console.log(newInfo);
+    // console.log(clientInfo);
+    // console.log(newInfo);
     // 解析性别
     if (clientInfo.clientGender == 1) {
       clientInfo.clientGender = "男";

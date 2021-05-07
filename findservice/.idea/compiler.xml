@@ -9,6 +9,12 @@
         <module name="findservice" />
       </profile>
     </annotationProcessing>
+<<<<<<< HEAD
+=======
+    <bytecodeTargetLevel>
+      <module name="findservice" target="1.8" />
+    </bytecodeTargetLevel>
+>>>>>>> b5326ef942f57cd11f06f5f132c7cdbaa11f8f25
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

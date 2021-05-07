@@ -10,7 +10,7 @@
 				</van-col>
 				<van-col span="17">
 					<view class="flex">
-						<van-button round plain type="primary" size="small" wx:for="{{kinds}}" class="button-appading" bindtap="show1">{{item.text}}
+						<van-button round plain type="primary" size="small" wx:for="{{serviceProject}}" wx:key="id" data-id="{{item.id}}" class="button-appading" bindtap="show1">{{item.text}}
 						</van-button>
 					</view>
 				</van-col>
@@ -24,7 +24,7 @@
 							<view>服务类型：</view>
 						</van-col>
 						<van-col>
-							<view>家庭保洁</view>
+							<view>{{demand.serviceProject}}</view>
 						</van-col>
 
 					</van-row>
@@ -41,20 +41,20 @@
 		<view class="margin2,whitebackground,top" wx:if="{{!showTime}}">
 			<form>
 				<van-cell-group>
-					<van-field name="name" type="number" placeholder="2" label="预计服务小时(单位：h)：" title-width="55%" border="{{ false }}" bind:change="onChange">
+					<van-field name="hour" type="number" placeholder="1" label="预计服务小时(h)：" title-width="55%" border="{{ false }}" bind:change="onChange" model:value="{{hour}}">
 					</van-field>
 				</van-cell-group>
 				<van-cell-group>
-					<van-field name="tel" placeholder="2020.07.08" label="期望上门日期：" title-width="55%" border="{{ false }}" bind:change="onChange" />
+					<van-field name="day" placeholder="2020.07.08" label="期望上门日期：" title-width="55%" border="{{ false }}" bindfocus="setServiceDate" model:value="{{day}}"/>
 				</van-cell-group>
 				<van-cell-group>
-					<van-field name="tel" placeholder="8:00" label="期望上门时间：" title-width="55%" border="{{ false }}" bind:change="onChange" />
+					<van-field name="time" placeholder="8:00" label="期望上门时间：" title-width="55%" border="{{ false }}" bindfocus="setServiceTime" model:value="{{time}}"/>
 				</van-cell-group>
 				<van-cell-group>
-					<van-field name="number" placeholder="请输入次数" label="次数/周次：" title-width="55%" border="{{ false }}" bind:change="onChange" />
+					<van-field name="times" placeholder="请输入次数" label="次数/周次：" title-width="55%" border="{{ false }}" bind:change="onChange" model:value="{{times}}"/>
 				</van-cell-group>
 				<van-cell-group>
-					<van-field name="remark" placeholder="备注" label="备注：" title-width="55%" border="{{ false }}" bind:change="onChange" />
+					<van-field name="demandComment" placeholder="备注" label="备注：" title-width="55%" border="{{ false }}" bind:change="onChange" model:value="{{demandComment}}"/>
 				</van-cell-group>
 			</form>
 		</view>
@@ -74,11 +74,11 @@
 							<view>备注：</view>
 						</van-col>
 						<van-col offset="2">
-							<view>2小时</view>
-							<view>2020.07.08</view>
-							<view>8:00</view>
-							<view>共1次</view>
-							<view>有宠物</view>
+							<view>{{hour}}小时</view>
+							<view>{{day}}</view>
+							<view>{{time}}</view>
+							<view>共{{times}}次</view>
+							<view>{{demandComment}}</view>
 						</van-col>
 					</van-row>
 				</van-cell>
@@ -87,17 +87,17 @@
 	</view>
 	<!-- 4=================== -->
 	<view class="appadingleft">{{steps[2].text}}
-		<view class="margin2">
+		<view class="margin2" wx:for="{{believeServerList}}" wx:key="id" data-id = "{{item.serverInfo.serverId}}" bindtap="chooseServicePerson">
 			<van-cell-group>
-				<van-cell clickable="true" bindtap="chooseServer">
+				<van-cell clickable="true">
 					<van-row>
 						<van-col span="5">
 							<van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
 						</van-col>
 						<van-col span="10">
-							<view class="display-center"><text class="textbig,textblack">李阿姨</text></view>
+							<view class="display-center"><text class="textbig,textblack">{{item.serverInfo.serverName}}</text></view>
 							<view class="display-center">
-								<text class="textsmall">虎溪花园，4栋3-3-1</text>
+								<text class="textsmall">{{item.serverInfo.serverLocation}}</text>
 							</view>
 						</van-col>
 						<van-col span="5">
@@ -140,3 +140,9 @@
 			<van-button type="primary" size="small" style=" margin-left:250rpx" bindtap="backIndex">形成订单</van-button>
 		</view> -->
 	</view>
+	<van-popup show="{{isShowDateSelection}}" round position="bottom">
+  <van-datetime-picker type="date" value="{{currentDate}}" min-date="{{minDate}}" title="请选择上门日期" bind:confirm="confirmDate" bind:cancel="cancelDate" />
+</van-popup>
+<van-popup show="{{isShowTimeSelection}}" round position="bottom">
+  <van-datetime-picker type="time" value="{{currentTime}}" title="请选择上门时间" bind:confirm="confirmTime" bind:cancel="cancelTime" />
+</van-popup>

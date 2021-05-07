@@ -5,6 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    demand:{demandId:"",clientId:"",serviceProject:"",mandatorId:"0",startTime:"",endTime:"",times:"",intervalDays:"0",demandComment:""},
+    believeServerList:[
+      {clientInfo:{},serverInfo:{serverAge:30,serverGender:1,serverId:"0",serverLocation:"",serverName:"",serverSessionKey:"",serverTel:"",imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'}},
+    ],
+    // 上门日期选择器相关
+    isShowDateSelection:false,
+    isShowTimeSelection: false,
     showServiceKind: false,
     showCustomer: false,
     showTime: false,
@@ -16,62 +23,84 @@ Page({
       },
       {
         text: '2 -填写订单内容',
-        
       },
       {
         text: '3 -选择服务人',
-        
       },
       {
         text: '4 -服务人形成订单',
-        
       }
     ],
-    kinds: [
-      {text: '家庭保洁'},
-      {text: '商业保洁'},
+    serviceProject: [
+      {id:0,text: '家庭保洁'},
+      {id:1,text: '商业保洁'},
     ],
-    user: [
-      {id: null},
-      {name: '李先生'},
-      {tel: '13368227224'},
-      {location: '成都市锦江文化中心'},
-      {number: '虎溪花园，4-5-6-1'}
-    ],
-    date: null,
+    hour: null,
+    day: null,
     time: null,
-    price: null,
     times: null,
-    remark: null
+    demandComment: null
+  },
+  // 设置上门日期
+  setServiceDate:function(){
+    this.setData({
+      isShowDateSelection:true
+    })
+  },
+  confirmDate:function(val){
+    let dateObj = new Date(val.detail);
+    let y = dateObj.getFullYear();
+    let m = dateObj.getMonth() + 1;
+    let d = dateObj.getDate(); 
+    this.setData({
+      day:y + "/" + m + "/" + d,
+      isShowDateSelection:false
+    })
+  },
+  cancelDate:function(){
+    this.setData({
+      isShowDateSelection:false
+    })
+  },
+  // 设置上门时间
+  setServiceTime:function(){
+    this.setData({
+      isShowTimeSelection:true
+    })
+  },
+  confirmTime:function(val){
+    this.setData({
+      time:val.detail,
+      isShowTimeSelection:false
+    })
+  },
+  cancelTime:function(){
+    this.setData({
+      isShowTimeSelection:false
+    })
   },
   onChange(event) {
     console.log(event.detail)
   },
-  chooseServicePerson:function(){
+  chooseServicePerson:function(e){
+    console.log(e)
+    var id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/serviceDetail/serviceDetail',
+      url: '/pages/add/chooseServer/chooseServer?id='+id,
       success:function(res){
-        console.log("选择客户");
+        console.log("选择服务人");
       },
       fail:function(res){
         console.log("跳转失败");
       }
     })
   },
-
-  formSubmit: function(e){
-    this.setData({
-      date: e.detail.value.date,
-      time: e.detail.value.time,
-      price: e.detail.value.price,
-      times: e.detail.value.times,
-      remark: e.detail.value.remark
-    })
-  },
   show1:function(e){
     var that = this;
+    var id = e.currentTarget.dataset.id
     that.setData({
-      showServiceKind: true
+      showServiceKind: true,
+      ['demand.serviceProject']: that.data.serviceProject[id].text
     })
   },
   change1:function(){
@@ -80,23 +109,19 @@ Page({
       showServiceKind: false
     })
   },
-  show2:function(e){
-    var that = this;
-    that.setData({
-      showCustomer: true
-    })
-  },
-  change2:function(){
-    var that = this;
-    that.setData({
-      showCustomer: false
-    })
-  },
   show3:function(e){
     var that = this;
+    var demand = that.data.demand
     that.setData({
-      showTime: true
-    })
+      showTime: true,
+      ['demand.clientId']: wx.getStorageSync('openid'),
+      ['demand.startTime']: that.data.day,
+      ['demand.endTime']: demand.startTime + that.data.time+that.data.hour,
+      ['demand.times']: that.data.times,
+      ['demand.demandComment']: that.data.demandComment
+    }),
+    console.log(demand)
+    wx.setStorageSync('demand', demand)
   },
   change3:function(){
     var that = this;
@@ -123,24 +148,29 @@ Page({
       url: '../index/index',
     })
   },
-  chooseServer:function(){
-    wx.navigateTo({
-      url: '../add/chooseServer/chooseServer',
-      success:function(res){
-        console.log("选择客户");
+  onLoad:function(option){
+    var that = this
+    var openid = wx.getStorageSync('openid')
+    wx.request({
+      url: 'http://localhost:8080/client_server/info',
+      header: {
+        'content-type': 'application/json' // 默认值
       },
-      fail:function(res){
-        console.log("跳转失败");
+      method: 'GET',
+      data:{
+        clientId: openid
+      },
+      success:function(res){
+        console.log(res)
+        var list = res.data.data
+        console.log(list)
+        that.setData({
+          believeServerList:list
+        })
       }
     })
   },
-
-  onLoad:function(option){
-    //获得客户信息
-    console.log(option)
-    this.setData({
-      'user[0].id': option.id
-    })
-    console.log(this.data.user[0].id)
+  onShow:function(option){
+    
   }
 })

@@ -29,7 +29,11 @@ Component({
   lifetimes: {
     ready: function () {
       var that = this;
-      var serverId = "liling";
+      // 获取用户ID
+      var serverId = wx.getStorageSync('openid');
+      // console.log("获取openid");
+      // console.log(serverId);
+      serverId = "liling";
       // 获取姓名、地址
       wx.request({
         url: "http://localhost:8080/server/getServerInfo/" + serverId,

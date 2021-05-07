@@ -4,105 +4,64 @@ Page({
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: "",
-    isHide: false,
+    isHide: true,
     id: '',
     name: ''
   },
 
   onLoad: function () {
-    var that = this;
-    wx.getSetting({
-      success: function (res) {
-        wx.login({
-            success: function(res) {
-              console.log('进入login方法')
-              var code = res.code;
-              console.log(code);
-              wx.request({
-                url: 'http://localhost:8081/service/login/login',
-                header: { 'Content-Type': 'application/json' },
-                data: {
-                  code: code
-                },
-                success: function (res) {
-                  var openid = ''
-                  openid = res.data;
-                  console.log(res.data)
-                  console.log(openid)
-                },
-                fail: function (res) {
-                      console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res);
-                    }
-              });
-            },
-            fail: function(){
-              console.log('调用失败')
-            }
-          });
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: function (res) {
-              console.log("userInfo：", res.userInfo);
-              that.setData({
-                userInfo: res.userInfo,
-              });
-              // 用户已经授权过,不需要显示授权页面,所以不需要改变 isHide 的值
-              // 根据自己的需求有其他操作再补充
-              wx.navigateBack(1) //返回前一页 返回前一页 返回前一页
-            }
-          });
-        } else {
-          // 用户没有授权
-          // 改变 isHide 的值，显示授权页面
-          that.setData({
-            isHide: true
-          });
-        }
-      }
-    });
   },
 
   bindGetUserInfo: function (e) {
-    if (e.detail.userInfo) {
-      //用户按了允许授权按钮
-      var that = this;
-      // 获取到用户的信息了，打印到控制台上看下
-      console.log("用户的信息如下：");
-      console.log(e.detail.userInfo);
-      //保存数据到后台
-      // wx.request({
-      //   url: 'http://localhost:8081/service/login/save?id=' + e.detail.userInfo.gender + '&name=' + e.detail.userInfo.nickName + 'allowPublicKeyRetrieval=true',
-      //   header: { 'Content-Type': 'application/json' },
-      //   method: 'POST',
-      //   success: function (res) {
-      //     console.log("成功");
-      //   },
-      //   fail: function () {
-      //     console.log("失败")
-      //   }
-      // })
-
-      //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
-      that.setData({
-        isHide: false,
-      });
-      wx.navigateTo({
-        url: "../nav/nav"
-      })
-    } else {
-      //用户按了拒绝按钮
-      wx.showModal({
-        title: '警告',
-        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
-        showCancel: false,
-        confirmText: '返回授权',
-        success: function (res) {
-          // 用户没有授权成功，不需要改变 isHide 的值
-          if (res.confirm) {
-            console.log('用户点击了“返回授权”');
-          }
+    wx.getUserProfile({
+      desc:'正在获取',//不写不弹提示框
+    success:function(res){
+      app.globalData.userInfo=res.userInfo //存储用户信息
+      console.log(res.userInfo);
+      wx.request({
+        url: 'http://localhost:8080/client/info',
+        method: 'POST',
+        data:{
+          "clientId":wx.getStorageSync('openid'),
+          "clientSessionKey":"test",
+          "clientName":res.userInfo.nickName,
+          "clientGender":res.userInfo.gender,
+          "clientAge":18,
+          "clientTel":"13368227224",
+          "clientLocation":"北京市"
         }
-      });
+      })
+      wx.request({
+        url: 'http://localhost:8080/server/info',
+        method: 'POST',
+        data:{
+          "serverId":wx.getStorageSync('openid'),
+          "serverSessionKey":"test",
+          "serverName":res.userInfo.nickName,
+          "serverGender":res.userInfo.gender,
+          "serverAge":18,
+          "serverTel":"13368227224",
+          "serverLocation":res.userInfo.province+" "+res.userInfo.city,
+        }
+      })
+      console.log('获取成功: ',res)
+      wx.showToast({
+        title:'授权成功',
+        mask:true
+      }),
+      setTimeout(res=>{
+        //跳转到上级界面
+        wx.redirectTo({
+          url: '../nav/nav',
+        })
+      }, 1500)
+    },
+    fail:function(err){
+      console.log("获取失败: ",err)
+      wx.redirectTo({
+        url: '../nav/nav',
+      })
     }
+  })
   }
 })

@@ -6,12 +6,10 @@ Page({
    */
   data: {
     platServerList:[
-      {id:0,name:"李阿姨",type:"家庭保洁",location:"虎溪花园，4栋3-3-1",recommand:true,imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'},
-      {id:1,name:"李阿姨",type:"家庭保洁",location:"虎溪花园，4栋3-3-1",recommand:true,imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'}
+      {clientInfo:{},serverInfo:{serverAge:30,serverGender:1,serverId:"0",serverLocation:"",serverName:"",serverSessionKey:"",serverTel:"",imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'}},
     ],
     believeServerList:[
-      {id:3,name:"李阿姨",type:"家庭保洁",location:"虎溪花园，4栋3-3-1",recommand:true,imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'},
-      {id:4,name:"李阿姨",type:"家庭保洁",location:"虎溪花园，4栋3-3-1",recommand:true,imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'}
+      {clientInfo:{},serverInfo:{serverAge:30,serverGender:1,serverId:"0",serverLocation:"",serverName:"",serverSessionKey:"",serverTel:"",imageUrl:'https://img.yzcdn.cn/vant/cat.jpeg'}},
     ],
     active:0,
     value:'',
@@ -35,6 +33,7 @@ Page({
       maxDate: new Date(2010, 0, 31).getTime(),
   },
   onLoad: function () {
+    var that = this
     wx.login({
       success: function(res) {
         console.log('进入login方法')
@@ -48,21 +47,27 @@ Page({
           },
           success: function (res) {
             var openid = res.data
+            wx.setStorageSync('openid', openid)
             console.log(openid)
             wx.request({
-              url: 'http://localhost:8080/Client/clientInfo',
+              url: 'http://localhost:8080/client_server/info',
               header: {
                 'content-type': 'application/json' // 默认值
               },
               method: 'GET',
               data:{
-                clinetId: openid
+                clientId: openid
               },
               success:function(res){
                 console.log(res)
+                var list = res.data.data
+                console.log(list)
+                that.setData({
+                  platServerList:list,
+                  believeServerList: list
+                })
               }
             })
-            console.log(openid)
           },
           fail: function (res) {
                 console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res);
@@ -142,6 +147,12 @@ Page({
     console.log(id)
     wx.navigateTo({
       url: '/pages/record/serverInfo/serverInfo?id='+id,
+    })
+  },
+  //跳转到服务人详情页
+  toAddServer:function(e){
+    wx.navigateTo({
+      url: '/pages/record/addServer/addServer',
     })
   }
 })

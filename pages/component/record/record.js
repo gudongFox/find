@@ -47,7 +47,12 @@ Component({
 
     clickTab: function(){
       var that = this;
-      var mandatorId = "wangayi";
+      // 获取用户ID
+      var serverId = wx.getStorageSync('openid');
+      // console.log("获取openid");
+      // console.log(serverId);
+      var mandatorId = serverId;
+      mandatorId = "liling"
       if(that.data.activeTab == 0){
         // 查询未结算委托订单
         var requestUrl = "http://localhost:8080/server/getUnFinOrderInfo/" + mandatorId;
@@ -58,8 +63,8 @@ Component({
             'content-type': 'application/json' // GET方式
           },
           success(res){
-            console.log("未结算委托订单");
-            console.log(res);
+            // console.log("未结算委托订单");
+            // console.log(res);
             var substituteList = [];
             for(var i = 0; i < res.data.length; i++){
               var tmp = {
@@ -89,8 +94,8 @@ Component({
             'content-type': 'application/json' // GET方式
           },
           success(res){
-            console.log("伙伴名单");
-            console.log(res);
+            // console.log("伙伴名单");
+            // console.log(res);
             var partnerList = [];
             for(var i = 0; i < res.data.length; i++){
               var tmp = {

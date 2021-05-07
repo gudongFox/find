@@ -12,10 +12,10 @@ Page({
     clientPhoneNum: "",
     clientLocation: "",
     serviceProject: "",
-    serviceTime: "",
-    serviceLength: "",
-    servicePeriod: "",
-    rates: "",
+    serviceTime: "2000-01-01 00:00:00",
+    serviceLength: 0,
+    servicePeriod: "第0次，共0次，间隔0天",
+    rates: 0,
     serviceComment: "",
   },
 
@@ -29,38 +29,39 @@ Page({
   // 确认订单按钮响应
   confirmOrder: function () {
     var now = new Date();
+    var orderTime = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
     var serviceDate = this.data.serviceTime.split(" ")[0].replace(/\//g, "-");
     var startTime = serviceDate + " " + this.data.serviceTime.split(" ")[1] + ":00"
     var endTime = serviceDate + " " + (Number(this.data.serviceTime.split(" ")[1].split(":")[0]) + Number(this.data.serviceLength)) + ":" + this.data.serviceTime.split(" ")[1].split(":")[1] + ":00";
-    var orderData = {
-      order_time: now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds(),
-      client_id: this.data.clientId,
-      mandator_id: "0",
-      service_project: this.data.serviceProject,
-      start_time: startTime,
-      end_time: endTime,
-      price: this.data.rates,
-      times: Number(this.data.servicePeriod.substring(5, 7)),
-      interval_day: Number(this.data.servicePeriod.substring(11, 12)),
-      order_comment: this.data.serviceComment,
-      is_substitue: 0,
-      num_times: Number(this.data.servicePeriod.substring(1, 2)),
-    }
-    console.log(orderData);
-    var server_id = "liling";
-    var demand_id = this.data.demandId;
+    // 获取用户ID
+    var serverId = wx.getStorageSync('openid');
+    // console.log("获取openid");
+    // console.log(serverId);
+    serverId = "liling";
+    var demandId = this.data.demandId;
     wx.request({
-      url: 'http://localhost:8080/server/receiveOrder/' + server_id + "/" + demand_id,
+      url: 'http://localhost:8080/server/receiveOrder/' + serverId + "/" + demandId,
       method: "POST",
       header: {
         'content-type': 'application/json', // 默认值
         // "content-type": "application/x-www-form-urlencoded",//POST方式
       },
       data: {
-        order: JSON.stringify(orderData),
+          "orderTime": orderTime,
+          "clientId": this.data.clientId,
+          "mandatorId": 0,
+          "serviceProject": this.data.serviceProject,
+          "startTime": startTime,
+          "endTime": endTime,
+          "price": this.data.rates,
+          "times": Number(this.data.servicePeriod.split("共")[1].split("次")[0]),
+          "intervalDays": Number(this.data.servicePeriod.split("间隔")[1].split("天")[0]),
+          "orderComment": this.data.serviceComment,
+          "isSubstitue": 0,
+          "numTimes": Number(this.data.servicePeriod.split("第")[1].split("次")[0]),
       },
       success: function (res){
-        console.log(res);
+        // console.log(res);
         wx.redirectTo({
           url: '/pages/indexs/indexs',
         })
@@ -75,8 +76,10 @@ Page({
     // 解码
     var clientInfo = JSON.parse(decodeURIComponent(options.URIClientInfo));
     var newInfo = JSON.parse(decodeURIComponent(options.URINewInfo));
-    console.log(clientInfo);
-    console.log(newInfo);
+    // console.log("客户信息");
+    // console.log(clientInfo);
+    // console.log("新需求信息");
+    // console.log(newInfo);
     // 解析性别
     if (clientInfo.clientGender == 1) {
       clientInfo.clientGender = "男";

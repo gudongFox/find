@@ -67,11 +67,14 @@ Component({
     clickTab: function () {
       var that = this;
       // 获取用户ID
-      var server_id = "liling";
+      var serverId = wx.getStorageSync('openid');
+      // console.log("获取openid");
+      // console.log(serverId);
+      serverId = "liling";
       if (that.data.activeTab == 0) {
         // 查询客户新需求
         wx.request({
-          url: "http://localhost:8080/server/getDemand/" + server_id,
+          url: "http://localhost:8080/server/getDemand/" + serverId,
           method: "GET",
           header: {
             'content-type': 'application/json' // GET方式
@@ -117,7 +120,7 @@ Component({
       } else if (that.data.activeTab == 1) {
         // 查询直接客户名单
         wx.request({
-          url: "http://localhost:8080/server/getClient/" + server_id,
+          url: "http://localhost:8080/server/getClient/" + serverId,
           method: "GET",
           header: {
             'content-type': 'application/json' // GET方式
@@ -156,12 +159,16 @@ Component({
     // 改变出发上门最大距离
     changeMaxDis: function (event) {
       var that = this;
-      var server_id = "liling";
+      // 获取用户ID
+      var serverId = wx.getStorageSync('openid');
+      // console.log("获取openid");
+      // console.log(serverId);
+      serverId = "liling";
       var maxDistance = event.detail;
       var maxInterDistance = that.data.maxInterDistance;
       var minServicLength = that.data.minServicLength;
       var maxInterLength = that.data.maxInterLength;
-      var requestUrl = "http://localhost:8080/server/updateServerParameter/" + server_id + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
+      var requestUrl = "http://localhost:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
       wx.request({
         url: requestUrl,
         method: "POST",
@@ -179,12 +186,16 @@ Component({
     // 改变两单间隔最大距离
     changeMaxInterDis: function (event) {
       var that = this;
-      var server_id = "liling";
+      // 获取用户ID
+      var serverId = wx.getStorageSync('openid');
+      // console.log("获取openid");
+      // console.log(serverId);
+      serverId = "liling";
       var maxDistance = that.data.maxDistance;
       var maxInterDistance = event.detail;
       var minServicLength = that.data.minServicLength;
       var maxInterLength = that.data.maxInterLength;
-      var requestUrl = "http://localhost:8080/server/updateServerParameter/" + server_id + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
+      var requestUrl = "http://localhost:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
       wx.request({
         url: requestUrl,
         method: "POST",
@@ -202,12 +213,16 @@ Component({
     // 改变最小服务时长
     changeMinServiceLen: function (event) {
       var that = this;
-      var server_id = "liling";
+      // 获取用户ID
+      var serverId = wx.getStorageSync('openid');
+      // console.log("获取openid");
+      // console.log(serverId);
+      serverId = "liling";
       var maxDistance = that.data.maxDistance;
       var maxInterDistance = that.data.maxInterDistance;
       var minServicLength = event.detail;
       var maxInterLength = that.data.maxInterLength;
-      var requestUrl = "http://localhost:8080/server/updateServerParameter/" + server_id + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
+      var requestUrl = "http://localhost:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
       wx.request({
         url: requestUrl,
         method: "POST",
@@ -225,12 +240,16 @@ Component({
     // 改变两单间隔最大时间
     changeMaxInterLen: function (event) {
       var that = this;
-      var server_id = "liling";
+      // 获取用户ID
+      var serverId = wx.getStorageSync('openid');
+      // console.log("获取openid");
+      // console.log(serverId);
+      serverId = "liling";
       var maxDistance = that.data.maxDistance;
       var maxInterDistance = that.data.maxInterDistance;
       var minServicLength = that.data.minServicLength;
       var maxInterLength = event.detail;
-      var requestUrl = "http://localhost:8080/server/updateServerParameter/" + server_id + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
+      var requestUrl = "http://localhost:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
       wx.request({
         url: requestUrl,
         method: "POST",

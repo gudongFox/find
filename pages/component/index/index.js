@@ -32,16 +32,20 @@ Component({
     clickTab: function () {
       var that = this;
       // 获取用户ID
-      var server_id = "liling";
+      var serverId = wx.getStorageSync('openid');
+      // console.log("获取openid");
+      // console.log(serverId);
+      serverId = "liling";
       if (that.data.activeTab == 3) {
         // 查询历史订单
         wx.request({
-          url: "http://localhost:8080/server/getAllOrder/" + server_id,
+          url: "http://localhost:8080/server/getAllOrder/" + serverId,
           method: "GET",
           header: {
             'content-type': 'application/json' // GET方式
           },
           success(res) {
+            // console.log("历史订单");
             // console.log(res);
             var historyItemList = [];
             for (var i = 0; i < res.data.length; i++) {
@@ -50,17 +54,22 @@ Component({
               // 判断是否为历史订单
               var now = new Date();
               var orderTime = orderInfo.startTime;
-              if (now.getFullYear() < orderTime.substring(0, 4)) {
-                continue;
-              } else if (now.getMonth() + 1 < orderTime.substring(5, 7)) {
-                continue;
-              } else if (now.getDate() < orderTime.substring(8, 10)) {
-                continue;
-              } else if (now.getHours() < orderTime.substring(11, 13)) {
-                continue;
-              } else if (now.getMinutes() < orderTime.substring(14, 16)) {
+              now = that.formatDate(now.getFullYear(), now.getMonth() + 1, now.getDate(), now.getHours(), now.getMinutes())
+              orderTime = that.formatDate(Number(orderTime.split(" ")[0].split("-")[0]), Number(orderTime.split(" ")[0].split("-")[1]), Number(orderTime.split(" ")[0].split("-")[2]), Number(orderTime.split(" ")[1].split(":")[0]), Number(orderTime.split(" ")[1].split(":")[1]))
+              if (now > orderTime) {
                 continue;
               }
+              // if (now.getFullYear() < Number(orderTime.split(" ")[0].split("-")[0])) {
+              //   continue;
+              // } else if (now.getMonth() + 1 < Number(orderTime.split(" ")[0].split("-")[1])) {
+              //   continue;
+              // } else if (now.getDate() < Number(orderTime.split(" ")[0].split("-")[2])) {
+              //   continue;
+              // } else if (now.getHours() < Number(orderTime.split(" ")[1].split(":")[0])) {
+              //   continue;
+              // } else if (now.getMinutes() < Number(orderTime.split(" ")[1].split(":")[1])) {
+              //   continue;
+              // }
               let iconName = "wap-home-o";
               if (orderInfo.serviceProject == "商业保洁") {
                 iconName = "hotel-o";
@@ -81,7 +90,7 @@ Component({
               var tmp = {
                 historyClickUrl: "/pages/historyService/historyService?URIClientInfo=" + URIClientInfo + "&URIOrderInfo=" + URIOrderInfo,
                 historyOrderIconName: iconName,
-                historyOrderDate: orderInfo.startTime.substring(0,4)+"年"+orderInfo.startTime.substring(5,7)+"月"+orderInfo.startTime.substring(8,10)+"日",
+                historyOrderDate: orderInfo.startTime.substring(0, 4) + "年" + orderInfo.startTime.substring(5, 7) + "月" + orderInfo.startTime.substring(8, 10) + "日",
                 historyOrderServiceProject: orderInfo.serviceProject,
                 historyOrderClientName: clientInfo.clientName,
                 historyOrderServiceTime: serviceTime,
@@ -99,6 +108,22 @@ Component({
       }
     },
 
+    formatDate: function (y, mon, d, h, min) {
+      if (mon < 10) {
+        mon = "0" + mon;
+      }
+      if (d < 10) {
+        d = "0" + d;
+      }
+      if (h < 10) {
+        h = "0" + h;
+      }
+      if (min < 10) {
+        min = "0" + min;
+      }
+      return y + mon + d + h + min;
+    },
+
   },
 
   /**
@@ -107,17 +132,20 @@ Component({
   lifetimes: {
     attached: function () {
       var that = this;
-      var server_id = "liling"
+      var serverId = wx.getStorageSync('openid');
+      // console.log("获取openid");
+      // console.log(serverId);
+      serverId = "liling"
       wx.request({
-        url: 'http://localhost:8080/server/getOrderToday/' + server_id,
+        url: 'http://localhost:8080/server/getOrderToday/' + serverId,
         method: "GET",
         header: {
           'content-type': 'application/json', // 默认值
           // 'content-type': 'application/x-www-form-urlencoded',//POST方式
         },
         success: function (res) {
-          console.log("一周日程表");
-          console.log(res);
+          // console.log("一周日程表");
+          // console.log(res);
           var itemList = [];
           for (var i = 0; i < res.data.length; i++) {
             let orderInfo = res.data[i].orderInfo;
@@ -126,25 +154,11 @@ Component({
             // 若今日日期大于订单日期，则为历史订单
             var now = new Date();
             var orderTime = orderInfo.startTime;
-            console.log(now)
-            console.log(orderTime)
-            console.log(now.getFullYear() > Number(orderTime.split(" ")[0].split("-")[0]))
-            console.log(now.getMonth() + 1 > Number(orderTime.split(" ")[0].split("-")[1]))
-            console.log(now.getDate() > Number(orderTime.split(" ")[0].split("-")[2]))
-            console.log(now.getHours() , Number(orderTime.split(" ")[1].split(":")[0]))
-            console.log(now.getMinutes() , Number(orderTime.split(" ")[1].split(":")[1]))
-            if (now.getFullYear() > Number(orderTime.split(" ")[0].split("-")[0])) {
-              continue;
-            } else if (now.getMonth() + 1 > Number(orderTime.split(" ")[0].split("-")[1])) {
-              continue;
-            } else if (now.getDate() > Number(orderTime.split(" ")[0].split("-")[2])) {
-              continue;
-            } else if (now.getHours() > Number(orderTime.split(" ")[1].split(":")[0])) {
-              continue;
-            } else if (now.getMinutes() > Number(orderTime.split(" ")[1].split(":")[1])) {
+            now = that.formatDate(now.getFullYear(), now.getMonth() + 1, now.getDate(), now.getHours(), now.getMinutes())
+            orderTime = that.formatDate(Number(orderTime.split(" ")[0].split("-")[0]), Number(orderTime.split(" ")[0].split("-")[1]), Number(orderTime.split(" ")[0].split("-")[2]), Number(orderTime.split(" ")[1].split(":")[0]), Number(orderTime.split(" ")[1].split(":")[1]))
+            if (now > orderTime) {
               continue;
             }
-            console.log("here")
             // 设置服务类型图标
             let iconName = "wap-home-o";
             if (orderInfo.serviceProject == "商业保洁") {

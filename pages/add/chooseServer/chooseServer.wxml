@@ -4,7 +4,7 @@
 </view>
 <view class="margin2,whitebackground,top">
   <van-cell-group>
-    <van-field name="name" type="number" label="服务人" title-width="30%" border="{{ false }}" value="{{server.name}}"
+    <van-field name="name" type="number" label="服务人" title-width="30%" border="{{ false }}" value="{{server.serverName}}"
       bind:change="onChange" readonly>
       <van-button slot="button" size="small" type="primary">
       联络
@@ -15,13 +15,13 @@
     <van-field name="gender"  label="性别" title-width="30%" border="{{ false }}" value="{{server.gender}}" readonly/>
   </van-cell-group>
   <van-cell-group>
-    <van-field name="age"  label="年龄" title-width="30%" border="{{ false }}" value="{{server.age}}" readonly/>
+    <van-field name="age"  label="年龄" title-width="30%" border="{{ false }}" value="{{server.serverAge}}" readonly/>
   </van-cell-group>
   <van-cell-group>
     <van-field name="servertype"  label="服务项目" title-width="30%" border="{{ false }}" value="{{server.servertype}}" readonly/>
   </van-cell-group>
   <van-cell-group>
-    <van-field name="location"  label="出发位置" title-width="30%" border="{{ false }}" value="{{server.location}}" readonly/>
+    <van-field name="location"  label="出发位置" title-width="30%" border="{{ false }}" value="{{server.serverLocation}}" readonly/>
   </van-cell-group>
     <van-cell-group>
     <van-field name="times"  label="为我服务" title-width="30%" border="{{ false }}" value="{{server.times}}次" readonly/>

@@ -26,8 +26,8 @@ Page({
     serviceLength: 0,
     serviceDate: "",
     serviceTime: "",
-    serviceNumthTimes: 0,
-    serviceTotalTimes: 0,
+    serviceNumthTimes: 1,
+    serviceTotalTimes: 1,
     serviceInterval: 0,
     servicePrice: 0,
     serviceComment: "",
@@ -149,8 +149,8 @@ Page({
     // 解码
     var clientInfo = JSON.parse(decodeURIComponent(options.URIClientInfo));
     var demandInfo = JSON.parse(decodeURIComponent(options.URIDemandInfo));
-    console.log(clientInfo);
-    console.log(demandInfo);
+    // console.log(clientInfo);
+    // console.log(demandInfo);
     if (demandInfo.serviceProject == null) {
       demandInfo.serviceProject = "家庭保洁";
     }
@@ -161,6 +161,7 @@ Page({
     }
     var serviceDate;
     var serviceTime;
+    //判断数据是否为空
     if (demandInfo.startTime != null) {
       serviceDate = demandInfo.startTime.substring(0, 4) + "/" + demandInfo.startTime.substring(5, 7) + "/" + demandInfo.startTime.substring(8, 10);
       serviceTime = demandInfo.startTime.substring(11, 16);

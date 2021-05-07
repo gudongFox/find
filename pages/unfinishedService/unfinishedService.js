@@ -30,7 +30,6 @@ Page({
     var that = this;
     var serverId = options.serverId;
     var serverName = options.serverName;
-    console.log(serverName);
     wx.request({
       url: "http://localhost:8080/server/getUnFinOrder/" + serverId,
       method: "GET",
@@ -38,8 +37,8 @@ Page({
         'content-type': 'application/json' // GET方式
       },
       success(res) {
-        console.log(serverId + "的未完成订单");
-        console.log(res);
+        // console.log(serverId + "的未完成订单");
+        // console.log(res);
         var orderData = res.data[0];
         that.setData({
             orderId: orderData.orderId,
@@ -67,8 +66,8 @@ Page({
               'content-type': 'application/json' // GET方式
             },
             success(res) {
-              console.log("客户信息");
-              console.log(res.data.data.client)
+              // console.log("客户信息");
+              // console.log(res.data.data.client)
               var clientData = res.data.data.client;
               if (clientData.clientGender == 1) {
                 clientData.clientGender = "男";
