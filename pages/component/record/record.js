@@ -54,7 +54,7 @@ Component({
       var mandatorId = serverId;
       // mandatorId = "liling"
       if(that.data.activeTab == 0){
-        // 查询未结算委托订单
+        // 查询与伙伴间的未结算委托订单
         var requestUrl = "http://129.211.68.243:8080/server/getUnFinOrderInfo/" + mandatorId;
         wx.request({
           url: requestUrl,
@@ -68,8 +68,8 @@ Component({
             var substituteList = [];
             for(var i = 0; i < res.data.length; i++){
               var tmp = {
-                substituteClickUrl:"/pages/unfinishedService/unfinishedService?serverId=" + res.data[i].server.serverId + "&serverName=" + res.data[i].server.serverName,
-                substitutedClientProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
+                substituteClickUrl:"/pages/unfinishedService/unfinishedService?serverId=" + res.data[i].server.serverId + "&serverName=" + res.data[i].server.serverName + "&serverProfile=" + res.data[i].server.serverProfile,
+                substitutedClientProfile: res.data[i].server.serverProfile,
                 substitutedClientName:res.data[i].server.serverName,
                 substitutedUnfinishedTimes:"未结算(" + res.data[i].UnFinOrderNum + ")",
                 substitutedClientLocation:res.data[i].server.serverLocation,
@@ -100,11 +100,11 @@ Component({
             for(var i = 0; i < res.data.length; i++){
               var tmp = {
                 partnerClickUrl:"/pages/infoPartner/infoPartner?partnerId=" + res.data[i].serverId,
-                partnerProfile:"https://img.yzcdn.cn/vant/cat.jpeg",
+                partnerProfile: res.data[i].serverProfile,
                 partnerName:res.data[i].serverName,
                 partnerLocation:res.data[i].serverLocation,
-                partnerServiceTimes:"服务(0)",
-                partnerSubstituteTimes:"委托(0)",
+                partnerServiceTimes:"服务( )",
+                partnerSubstituteTimes:"委托( )",
               };
               partnerList.push(tmp);
             }

@@ -185,7 +185,7 @@ Component({
               serviceTime: serviceTime,
               isMulti: orderInfo.times + "次",
               clientLocation: ClientInfo.clientLocation,
-              clientProfile: "https://img.yzcdn.cn/vant/cat.jpeg",
+              clientProfile: ClientInfo.clientProfile,
             }
             itemList.push(tmp);
           }

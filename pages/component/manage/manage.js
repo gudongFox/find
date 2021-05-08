@@ -139,7 +139,7 @@ Component({
               var URIClientInfo = encodeURIComponent(JSON.stringify(clientInfo))
               var tmp = {
                 substituteClickUrl: "/pages/serverSubstitute/serverSubstitute?URIClientInfo=" + URIClientInfo,
-                substitutedClientProfile: "",
+                substitutedClientProfile: clientInfo.clientInfo.clientProfile,
                 substitutedClientName: clientInfo.clientInfo.clientName,
                 substitutedServiceObj: clientInfo.mostProject,
                 substitutedClientLocation: clientInfo.clientInfo.clientLocation,

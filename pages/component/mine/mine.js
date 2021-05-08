@@ -14,7 +14,7 @@ Component({
   /* 组件的初始数据 */
   data: {
     serverId:"",
-    serverProfile:"https://thirdwx.qlogo.cn/mmopen/vi_32/sHPrgfrTWlUuMveposfYmp2l1suPricsaxuP5OX3WnX8vye9QqcbMfwBZbibg18NkRJ247UPgWtH0l5icOwicyXQHA/132",
+    serverProfile:"",
     serverName:"",
     serverLocation:"",
     
@@ -44,6 +44,7 @@ Component({
         success (res) {
           that.setData({
             serverId: serverId,
+            serverProfile: res.data.serverProfile,
             serverName:res.data.serverName,
             serverLocation:res.data.serverLocation,
           })

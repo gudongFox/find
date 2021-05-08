@@ -13,7 +13,7 @@ Page({
     clientLocation: "",
 
     serverName: "",
-    serverProfile: "https://img.yzcdn.cn/vant/cat.jpeg",
+    serverProfile: "",
     serviceProject: "",
     serviceStartTime: "",
     serviceEndTime: "",
@@ -48,7 +48,7 @@ Page({
             // clientLocation: "成都市锦江文化中心",
 
             serverName: serverName,
-            serverProfile: "https://img.yzcdn.cn/vant/cat.jpeg",
+            serverProfile: serverProfile,
             serviceProject: orderData.serviceProject,
             serviceStartTime: orderData.startTime,
             serviceEndTime: orderData.endTime,
