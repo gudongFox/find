@@ -30,7 +30,8 @@ Page({
         clientId:wx.getStorageSync('openid')
       },
       success:function(res){
-        var clientInfo = res.data.data
+        var clientInfo = res.data.data.client
+        console.log(res)
         console.log(clientInfo.clientProfile)
         that.setData({
           myImage: clientInfo.clientProfile,
