@@ -15,7 +15,7 @@
         </commentGenerator>
         <!--jdbc的数据库连接 wg_insert 为数据库名字-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://129.211.68.243:3306/service_v5?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Hongkong"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/service_v5?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Hongkong"
                         userId="developer"
                         password="dev123456">
             <property name="nullCatalogMeansCurrent" value="true"/>
