@@ -151,8 +151,16 @@ Page({
   },
   //跳转到服务人详情页
   toAddServer:function(e){
-    wx.navigateTo({
-      url: '/pages/record/addServer/addServer',
+    // wx.navigateTo({
+    //   url: '/pages/record/addServer/addServer',
+    // })
+    wx.scanCode({
+      success(res){
+        console.log(res)
+        wx.request({
+          url: 'url',
+        })
+      }
     })
   }
 })
