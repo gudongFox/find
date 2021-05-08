@@ -374,8 +374,8 @@ public class ServerController {
      */
     @GetMapping(path = "/qrcode")
     public ResultBody getServerQrCode(@RequestParam(name = "serverId") String serverId,
-                                      @RequestParam(name = "width") Integer width,
-                                      @RequestParam(name = "height") Integer height) throws IOException, WriterException {
+                                      @RequestParam(name = "width", required = false) Integer width,
+                                      @RequestParam(name = "height", required = false) Integer height) throws IOException, WriterException {
         if (null == serverId) {
             return new ResultBody(ResultCode.FAIL);
         }
