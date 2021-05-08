@@ -13,8 +13,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/indexs/indexs",
-          "pathName": "pages/indexs/indexs",
+          "name": "pages/makeQRCode/makeQRCode",
+          "pathName": "pages/makeQRCode/makeQRCode",
           "query": "",
           "scene": null
         }

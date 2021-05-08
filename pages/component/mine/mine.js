@@ -110,6 +110,12 @@ Component({
         url: '/pages/infoServer/infoServer?serverId=' + this.data.serverId,
       })
     },
+
+    getQRCode:function(){
+      wx.navigateTo({
+        url: '/pages/makeQRCode/makeQRCode',
+      })
+    }
   
   }
 

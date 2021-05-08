@@ -9,7 +9,8 @@
           <text style="text-align:left">{{serverLocation}}</text>
         </view> 
         <view class="specialBlock"></view> 
-        <van-icon name="qr" size="90rpx" color="#00AA00" />
+        <!-- 二维码 -->
+        <van-icon name="qr" size="90rpx" color="#00AA00" bind:click="getQRCode" />
       </view>
       <view class="flexRow" style="justify-content:space-around;">
         <view style="display:flex;flex-direction:column;align-items:center">
