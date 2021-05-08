@@ -107,7 +107,7 @@
                 client_location,
             </if>
             <if test="clientProfile != null">
-                client_progile,
+                client_profile,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
