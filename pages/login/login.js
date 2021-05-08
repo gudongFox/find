@@ -17,8 +17,10 @@ Page({
       desc:'正在获取',//不写不弹提示框
     success:function(res){
       app.globalData.userInfo=res.userInfo //存储用户信息
+      console.log(res.userInfo.avatarUrl)
       wx.request({
         url: 'http://129.211.68.243:8080/client/info',
+        // url: 'http://localhost:8080/client/info',
         method: 'POST',
         data:{
           "clientId":wx.getStorageSync('openid'),
@@ -32,7 +34,8 @@ Page({
         }
       })
       wx.request({
-        url: 'http://localhost:8080/server/info',
+        url: 'http://129.211.68.243:8080/server/info',
+        // url: 'http://localhost:8080/server/info',
         method: 'POST',
         data:{
           "serverId":wx.getStorageSync('openid'),
@@ -42,6 +45,7 @@ Page({
           "serverAge":18,
           "serverTel":"13368227224",
           "serverLocation":res.userInfo.province+" "+res.userInfo.city,
+          "serverProfile":res.userInfo.avatarUrl
         }
       })
       console.log('获取成功: ',res)

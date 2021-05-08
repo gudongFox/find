@@ -29,6 +29,7 @@ Page({
         console.log(code);
         wx.request({
           url: 'http://129.211.68.243:8080/login/login',
+          // url: 'http://localhost:8080/login/login',
           method: 'GET',
           data: {
             code: code
@@ -39,6 +40,7 @@ Page({
             console.log(openid)
             wx.request({
               url: 'http://129.211.68.243:8080/client/info',
+              // url: 'http://localhost:8080/client/info',
               header: {
                 'content-type': 'application/json' // 默认值
               },
