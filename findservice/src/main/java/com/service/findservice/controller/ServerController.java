@@ -1,5 +1,6 @@
 package com.service.findservice.controller;
 
+import com.google.zxing.WriterException;
 import com.service.findservice.entity.*;
 import com.service.findservice.result.ResultBody;
 import com.service.findservice.result.ResultCode;
@@ -7,12 +8,14 @@ import com.service.findservice.server.ClientService;
 import com.service.findservice.server.DemandService;
 import com.service.findservice.server.OrderService;
 import com.service.findservice.server.ServerServiceService;
+import com.service.findservice.util.QrCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -358,6 +361,29 @@ public class ServerController {
             serverInfo.setWeeklyWorkTime(getWeeklyOrders(serverId, week));
         }
         return new ResultBody(ResultCode.SUCCESS, serverInfo);
+    }
+
+    /**
+     * 返回服务人员的二维码信息
+     * @param serverId server id
+     * @param width 二维码的宽
+     * @param height 二维码的高
+     * @return base64 url
+     * @throws IOException 输出流
+     * @throws WriterException 写入qrcode
+     */
+    @GetMapping(path = "/qrcode")
+    public ResultBody getServerQrCode(@RequestParam(name = "serverId") String serverId,
+                                      @RequestParam(name = "width") Integer width,
+                                      @RequestParam(name = "height") Integer height) throws IOException, WriterException {
+        if (null == serverId) {
+            return new ResultBody(ResultCode.FAIL);
+        }
+        if (null == width || null == height) {
+            width = 500;
+            height = 500;
+        }
+        return new ResultBody(ResultCode.SUCCESS, QrCode.getQrCodeBase64(serverId, width, height));
     }
 
     /**
