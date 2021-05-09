@@ -6,10 +6,10 @@ Page({
    */
   data: {
     platServerList:[
-      {clientInfo:{},serverInfo:{serverAge:30,serverGender:1,serverId:"0",serverLocation:"",serverName:"",serverSessionKey:"",serverTel:"",serverProfile:"https://img.yzcdn.cn/vant/cat.jpeg"}},
+      
     ],
     believeServerList:[
-      {clientInfo:{},serverInfo:{serverAge:30,serverGender:1,serverId:"0",serverLocation:"",serverName:"",serverSessionKey:"",serverTel:"",serverProfile:'https://img.yzcdn.cn/vant/cat.jpeg'}},
+      
     ],
     active:0,
     value:'',
@@ -156,10 +156,38 @@ Page({
     // })
     wx.scanCode({
       success(res){
-        console.log(res)
-        wx.request({
-          url: 'url',
-        })
+        console.log(res.result)
+        var serverId = res.result
+        var clientId = wx.getStorageSync('openid')
+        if(serverId==clientId){
+          wx.showToast({
+            title: '禁止添加自己本人',
+          })
+        }else{
+          wx.request({
+            url: 'http://129.211.68.243:8080/client_server/info',
+            method: 'POST',
+            data: {
+              serverId: serverId,
+              clientId: clientId
+            },
+            success:function(){
+              wx.showToast({
+                title: '添加服务人成功',
+                icon: 'success',
+                duration: 2000
+              })
+              onload();
+              
+            },
+            fail:function(){
+              wx.showToast({
+                title: '添加失败，请检查网络',
+              })
+            }
+          })
+        }
+        
       }
     })
   }
