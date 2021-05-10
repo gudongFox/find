@@ -159,36 +159,58 @@ Page({
         console.log(res.result)
         var serverId = res.result
         var clientId = wx.getStorageSync('openid')
-        if(serverId==clientId){
-          wx.showToast({
-            title: '禁止添加自己本人',
-          })
-        }else{
-          wx.request({
-            url: 'http://129.211.68.243:8080/client_server/info',
-            method: 'POST',
-            data: {
-              serverId: serverId,
-              clientId: clientId
-            },
-            success:function(){
-              wx.showToast({
-                title: '添加服务人成功',
-                icon: 'success',
-                duration: 2000
-              })
-              onload();
+        wx.request({
+          url: 'http://129.211.68.243:8080/client_server/info',
+          method: 'POST',
+          data: {
+            serverId: serverId,
+            clientId: clientId
+          },
+          success:function(){
+            wx.showToast({
+              title: '添加服务人成功',
+              icon: 'success',
+              duration: 2000
+            })
+            this.onload();
+            
+          },
+          fail:function(){
+            wx.showToast({
+              title: '添加失败，请检查网络',
+            })
+          }
+        // if(serverId==clientId){
+        //   wx.showToast({
+        //     title: '禁止添加自己本人',
+        //   })
+        // }else{
+        //   wx.request({
+        //     url: 'http://129.211.68.243:8080/client_server/info',
+        //     method: 'POST',
+        //     data: {
+        //       serverId: serverId,
+        //       clientId: clientId
+        //     },
+        //     success:function(){
+        //       wx.showToast({
+        //         title: '添加服务人成功',
+        //         icon: 'success',
+        //         duration: 2000
+        //       })
+        //       onload();
               
-            },
-            fail:function(){
-              wx.showToast({
-                title: '添加失败，请检查网络',
-              })
-            }
-          })
-        }
+        //     },
+        //     fail:function(){
+        //       wx.showToast({
+        //         title: '添加失败，请检查网络',
+        //       })
+        //     }
+        //   })
+        // }
         
-      }
+      })
+    }
     })
   }
 })

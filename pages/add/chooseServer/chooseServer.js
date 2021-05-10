@@ -15,7 +15,7 @@ Page({
       times: "7",
       remark: "服务质量不错"
       },
-      demand: wx.getStorageSync('demand')
+      demand: {}
   },
 
   /**
@@ -46,7 +46,7 @@ Page({
   },
   backIndex: function(){
     var that = this;
-    var demand = that.data.demand
+    var demand = wx.getStorageSync('demand')
     var server = that.data.server
     console.log(demand)
     wx.request({
@@ -57,8 +57,7 @@ Page({
         "demandId": demand.demandId,
         "clientId": demand.clientId,
         "demandComment": demand.demandComment,
-        "demandId": demand.demandId,
-        "endTime": '',
+        "endTime": demand.endTime,
         "intervalDays": demand.intervalDays,
         "mandatorId": demand.mandatorId,
         "serverId": server.serverId,
