@@ -53,7 +53,7 @@ Page({
     let m = dateObj.getMonth() + 1;
     let d = dateObj.getDate(); 
     this.setData({
-      day:y + "/" + m + "/" + d,
+      day:y + "-" + m + "-" + d,
       isShowDateSelection:false
     })
   },
@@ -112,16 +112,24 @@ Page({
   show3:function(e){
     var that = this;
     var demand = that.data.demand
+    var endT = that.data.time
+    var temp = Number(endT.substring(0,2))
+    temp = temp + Number(that.data.hour)
+    temp = temp.toString()
+    endT = temp + endT.substring(2,endT.length)
+    console.log(endT)
+
     that.setData({
       showTime: true,
       ['demand.clientId']: wx.getStorageSync('openid'),
-      ['demand.startTime']: that.data.day,
-      ['demand.endTime']: demand.startTime + that.data.time+that.data.hour,
+      ['demand.startTime']: that.data.day + " " + that.data.time + ":00",
+      ['demand.endTime']: that.data.day + " " + endT + ":00",
       ['demand.times']: that.data.times,
       ['demand.demandComment']: that.data.demandComment
     }),
     console.log(demand)
     wx.setStorageSync('demand', demand)
+    console.log(wx.getStorageSync('demand'))
   },
   change3:function(){
     var that = this;
