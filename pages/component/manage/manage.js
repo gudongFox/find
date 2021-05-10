@@ -80,7 +80,7 @@ Component({
             'content-type': 'application/json' // GET方式
           },
           success(res) {
-            // console.log(res);
+            console.log(res);
             var demandList = [];
             for (var i = 0; i < res.data.length; i++) {
               var clientInfo = res.data[i].client;
