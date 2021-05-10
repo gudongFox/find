@@ -116,52 +116,55 @@ Component({
     },
 
 
-  // 添加伙伴
-  addPartner: function () {
-    wx.scanCode({
-      success(res) {
-        console.log(res.result)
-        var partnerId = res.result
-        var serverId = wx.getStorageSync('openid')
-        if (partnerId == serverId) {
-          wx.showToast({
-            title: '禁止添加自己本人',
-            icon: "error",
-          })
-        }else if (partnerId.length != 18) {
-          wx.showToast({
-            title: "错误的伙伴二维码",
-            icon: "error",
-          })
-        }
-         else {
-          wx.request({
-            url: 'http://129.211.68.243:8080/server/addPartner/' + serverId + "/" + partnerId,
-            method: 'POST',
-            data: {
-              partnerId: partnerId,
-              serverId: serverId,
-            },
-            success: function () {
-              wx.showToast({
-                title: '添加服务人成功',
-                icon: 'success',
-                duration: 2000
-              })
-              onload();
+    // 添加伙伴
+    addPartner: function () {
+      var that = this;
+      wx.scanCode({
+        success(res) {
+          console.log(res.result)
+          var partnerId = res.result
+          var serverId = wx.getStorageSync('openid')
+          console.log(partnerId)
+          if (partnerId == serverId) {
+            wx.showToast({
+              title: '禁止添加自己本人',
+              icon: "error",
+            })
+          } else if (partnerId.length != 28) {
+            wx.showToast({
+              title: "错误的伙伴二维码",
+              icon: "error",
+              duration: 1000
+            })
+          } else {
+            wx.request({
+              url: 'http://129.211.68.243:8080/server/addPartner/' + serverId + "/" + partnerId,
+              method: 'POST',
+              data: {
+                partnerId: partnerId,
+                serverId: serverId,
+              },
+              success: function () {
+                wx.showToast({
+                  title: '添加服务人成功',
+                  icon: 'success',
+                  duration: 2000
+                })
+                that.clickTab();
+              },
+              fail: function () {
+                wx.showToast({
+                  title: '添加失败，请检查网络',
+                  icon: "error",
+                  duration: 1000
+                })
+              }
+            })
+          }
 
-            },
-            fail: function () {
-              wx.showToast({
-                title: '添加失败，请检查网络',
-              })
-            }
-          })
         }
-
-      }
-    })
-  },
+      })
+    },
 
   },
 })
