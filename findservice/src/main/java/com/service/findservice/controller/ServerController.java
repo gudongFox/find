@@ -46,8 +46,13 @@ public class ServerController {
         return serverService.getOrderInfo(orderList);
     }
 
-    //得到某个月的订单
-    //年月格式yyyy-mm
+    /**
+     * 得到某个月的订单
+     *
+     * @param server_id
+     * @param year_month 格式yyyy-mm
+     * @return orderList
+     */
     @RequestMapping(value = "/getOrderMonth/{server_id}/{year_month}")
     public List getOrderMonth(@PathVariable String server_id, @PathVariable String year_month) {
         List<Order> orderList = orderService.selectMonthlyOrdersByServerId(server_id, year_month);
