@@ -68,8 +68,14 @@ public class ServerController {
         return serverService.getOrderInfo(orderList);
     }
 
-    //根据日期查询订单
-    //年月日格式yyyy-mm-dd
+    /**
+     * 根据日期查询订单
+     *
+     * @param server_id
+     * @param date 格式yyyy-mm-dd
+     * @return orderList
+     * @throws ParseException
+     */
     @RequestMapping(value = "/getOrderByDate/{server_id}/{date}")
     public List<Order> getOrderByDate(@PathVariable String server_id, @PathVariable String date) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -77,8 +83,12 @@ public class ServerController {
         return serverService.getOrderInfo(orderList);
     }
 
-
-    //查询用户作为委托人的未结算信息
+    /**
+     * 查询用户作为委托人的未结算信息
+     *
+     * @param mandator_id
+     * @return 委托人的伙伴信息
+     */
     @RequestMapping(value = "/getUnFinOrderInfo/{mandator_id}")
     public List getUnFinOrderInfo(@PathVariable String mandator_id) {
         List<Map<String, Object>> infoList = new ArrayList<>();
@@ -86,7 +96,7 @@ public class ServerController {
         if (serverList != null) {
             for (String server_id : serverList) {
                 Map<String, Object> info = new HashMap<>();
-                //伙伴
+                //伙伴信息
                 Server server = serverService.findServerById(server_id);
                 info.put("server", server);
                 //委托数
@@ -101,14 +111,24 @@ public class ServerController {
         return infoList;
     }
 
-    //查询某一服务师未结算订单详情
+    /**
+     * 查询某一服务师未结算订单详情
+     *
+     * @param server_id
+     * @return order_detail
+     */
+
     @RequestMapping(value = "/getUnFinOrder/{server_id}")
     public List<Order> getUnFinOrder(@PathVariable String server_id) {
         return orderService.selectUnFinOrderBySId(server_id);
     }
 
-
-    //直接客户名单
+    /**
+     *直接客户名单
+     *
+     * @param server_id
+     * @return 直接客户的信息
+     */
     @RequestMapping(value = "/getClient/{server_id}")
     public List getClient(@PathVariable String server_id) {
         List<Map<String, Object>> infoList = new ArrayList<>();
@@ -130,7 +150,14 @@ public class ServerController {
         return infoList;
     }
 
-    //获取客户新需求
+    //
+
+    /**
+     *获取客户新需求
+     *
+     * @param server_id
+     * @return 客户信息+需求信息
+     */
     @RequestMapping(value = "/getDemand/{server_id}")
     public List getDemand(@PathVariable String server_id) {
         List<Map<String, Object>> infoList = new ArrayList<>();
@@ -148,19 +175,36 @@ public class ServerController {
         return infoList;
     }
 
-    //结算订单
+    /**
+     * 结算订单
+     *
+     * @param server_id
+     * @param order_id
+     * @return 1 -> 成功 0 -> 失败
+     */
     @RequestMapping(value = "/finishOrder/{server_id}/{order_id}")
     public int finishOrder(@PathVariable String server_id, @PathVariable int order_id) {
         return orderService.updateFinish(server_id, order_id);
     }
 
-    //中止订单
+    /**
+     * 中止订单
+     *
+     * @param order_id
+     * @return
+     */
     @RequestMapping(value = "/endOrder/{order_id}")
     public int endOrder(@PathVariable int order_id) {
         return orderService.deleteOrderServer(order_id);
     }
 
-    //更具客户名获取订单
+    /**
+     *
+     * 更具客户名获取订单
+     * @param server_id
+     * @param client_name
+     * @return orderList
+     */
     @RequestMapping(value = "/getOrderByCName/{server_id}/{client_name}")
     public List<Order> getOrderByCName(@PathVariable String server_id, @PathVariable String client_name) {
         List<Client> clients = clientService.selectByClientName(client_name);
@@ -171,30 +215,57 @@ public class ServerController {
         return orders;
     }
 
-    //获取伙伴名单
+    /**
+     * 获取伙伴名单
+     *
+     * @param server_id
+     * @return
+     */
     @RequestMapping(value = "/getPartner/{server_id}")
     public List<Server> getPartner(@PathVariable String server_id) {
         return serverServiceService.selectPartnerBySId(server_id);
     }
 
-
+    /**
+     * 设置截单时间
+     *
+     * @param server_id
+     * @param work_day
+     * @param work_hour
+     * @return 1 -> 成功 0 -> 失败
+     */
     @RequestMapping(value = "/updateWorkTime/{server_id}/{work_day}/{work_hour}")
     public int updateWorkTime(@PathVariable String server_id, @PathVariable int work_day, @PathVariable int work_hour) {
         return serverServiceService.updateSeverWorkTime(server_id, work_day, work_hour);
     }
 
+    /**
+     * 设置接单参数
+     *
+     * @param server_id
+     * @param max_distance
+     * @param max_interval_distance
+     * @param min_service_time
+     * @param min_interval_time
+     * @return 1 -> 成功 0 -> 失败
+     */
     @RequestMapping(value = "/updateServerParameter/{server_id}/{max_distance}/{max_interval_distance}/{min_service_time}/{min_interval_time}")
     public int updateServerParameter(@PathVariable String server_id, @PathVariable float max_distance, @PathVariable float max_interval_distance
             , @PathVariable float min_service_time, @PathVariable float min_interval_time) {
         return serverServiceService.updateServerParameter(server_id, max_distance, max_interval_distance, min_service_time, min_interval_time);
     }
 
-    //得到接单时间
+    /**
+     * 获取服务师信息
+     * @param server_id
+     * @return 服务师信息+接单时间
+     */
     @RequestMapping(value = "/getWorkTime/{server_id}")
     public Map getWorkTime(@PathVariable String server_id){
         //服务师信息
         Map<String, Object> info = new HashMap<>();
         info.put("serverInfo", serverService.findServerById(server_id));
+        //接单时间
         List<ServerWorkTime> timeList = serverService.getWorkTime(server_id);
         Map<Integer, Integer> workTime = new HashMap<>();
         if(timeList != null){
@@ -206,13 +277,24 @@ public class ServerController {
         return info;
     }
 
-    //得到接单参数
+    /**
+     * 得到接单参数
+     *
+     * @param server_id
+     * @return 接单参数
+     */
     @RequestMapping(value = "/getServerParameter/{server_id}")
     public ServerParameter getServerParameter(@PathVariable String server_id){
         return serverService.getServerParameter(server_id);
     }
 
-    //添加伙伴
+    /**
+     * 添加伙伴
+     *
+     * @param server_id
+     * @param partner_id
+     * @return 1 -> 成功 0 -> 失败
+     */
     @RequestMapping(value = "/addPartner/{server_id}/{partner_id}")
     public int addPartner(@PathVariable String server_id, @PathVariable String partner_id) {
         List<String> s_cl = serverServiceService.selectCIdBySid(server_id);
@@ -225,7 +307,14 @@ public class ServerController {
         }
     }
 
-    //接单
+    /**
+     * 接单
+     *
+     * @param server_id
+     * @param demand_id
+     * @param order
+     * @return
+     */
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
     @PostMapping("/receiveOrder/{server_id}/{demand_id}")
     public int receiveOrder(@PathVariable String server_id, @PathVariable int demand_id, @RequestBody Order order) {
@@ -235,17 +324,24 @@ public class ServerController {
         order.setClientId(demand.getClientId());
         order.setMandatorId("0");
         order.setIsSubstitue(0);
-        int i = orderService.insert(order);
-        int Oid = order.getOrderId();
-        if (i != 0) {
-            if (serverServiceService.insertOrderServers(Oid, server_id, 0) != 0) {
+        //如果新订单插入成功 将信息插入order_servers并删除对应需求；失败则直接返回0
+        if (orderService.insert(order) != 0) {
+            if (serverServiceService.insertOrderServers(order.getOrderId(), server_id, 0) != 0) {
                 return demandService.deleteByDemandId(demand_id);
             }
         }
         return 0;
     }
 
-    //委托
+    /**
+     * 委托
+     *
+     * @param mandator_id
+     * @param server_id
+     * @param demand_id
+     * @param order
+     * @return 1 -> 成功 0 -> 失败
+     */
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
     @PostMapping("/giveOrder/{mandator_id}/{server_id}/{demand_id}")
     public int giveOrder(@PathVariable String mandator_id, @PathVariable String server_id, @PathVariable int demand_id, @RequestBody Order order) {
@@ -257,10 +353,9 @@ public class ServerController {
         order.setStartTime(demand.getStartTime());
         order.setEndTime(demand.getEndTime());
         order.setIsSubstitue(0);
-        int i = orderService.insert(order);
-        int Oid = order.getOrderId();
-        if (i != 0) {
-            if (serverServiceService.insertOrderServers(Oid, server_id, 2) != 0) {
+        //如果新订单插入成功 将信息插入order_servers并删除对应需求；失败则直接返回0
+        if (orderService.insert(order) != 0) {
+            if (serverServiceService.insertOrderServers(order.getOrderId(), server_id, 2) != 0) {
                 return demandService.deleteByDemandId(demand_id);
             }
         }
@@ -268,44 +363,67 @@ public class ServerController {
     }
 
 
-    //替客户下单,并自己接单
+    /**
+     * 替客户下单,并自己接单
+     *
+     * @param server_id
+     * @param client_id
+     * @param order
+     * @return 1 -> 成功 0 -> 失败
+     */
     @PostMapping(value = "/makeOrderByS/{server_id}/{client_id}")
     public int makeOrderByS(@PathVariable String server_id, @PathVariable String client_id, @RequestBody Order order) {
         order.setOrderTime(new Date());
         order.setClientId(client_id);
         order.setMandatorId("0");
         order.setIsSubstitue(1);
-        int i = orderService.insert(order);
-        int Oid = order.getOrderId();
-        if (i != 0) {
-            return serverServiceService.insertOrderServers(Oid, server_id, 2);
+        if (orderService.insert(order) != 0) {
+            return serverServiceService.insertOrderServers(order.getOrderId(), server_id, 2);
         }
         return 0;
     }
 
-    //替客户下单,委托伙伴
+    /**
+     * 替客户下单,委托伙伴
+     *
+     * @param mandator_id
+     * @param server_id
+     * @param client_id
+     * @param order
+     * @return 1 -> 成功 0 -> 失败
+     */
     @PostMapping(value = "/makeOrderByM/{mandator_id}/{server_id}/{client_id}")
     public int makeOrderByS(@PathVariable String mandator_id, @PathVariable String server_id, @PathVariable String client_id, @RequestBody Order order) {
         order.setOrderTime(new Date());
         order.setClientId(client_id);
         order.setMandatorId(mandator_id);
         order.setIsSubstitue(1);
-        int i = orderService.insert(order);
-        int Oid = order.getOrderId();
-        if (i != 0) {
-            return serverServiceService.insertOrderServers(Oid, server_id, 2);
+        //如果新订单插入成功 将信息插入order_servers；失败则直接返回0
+        if (orderService.insert(order) != 0) {
+            return serverServiceService.insertOrderServers(order.getOrderId(), server_id, 2);
         }
         return 0;
     }
 
-    //sss
-    //得到基本信息
+
+    /**
+     * 得到基本信息
+     *
+     * @param server_id
+     * @return 1 -> 成功 0 -> 失败
+     */
     @RequestMapping(value = "/getServerInfo/{server_id}")
     public Server getServerInfo(@PathVariable String server_id) {
         return serverServiceService.selectServerBySId(server_id);
     }
 
-    //修改基本信息
+    /**
+     * 修改基本信息
+     *
+     * @param server_id
+     * @param server
+     * @return 1 -> 成功 0 -> 失败
+     */
     @RequestMapping(value = "/updateServerInfo/{server_id}")
     public int updateServerInfo(@PathVariable String server_id, Server server) {
         serverServiceService.selectServerBySId(server_id).setServerName(server.getServerName());
@@ -315,30 +433,19 @@ public class ServerController {
         return serverServiceService.updateServerInfo(serverServiceService.selectServerBySId(server_id));
     }
 
-    //设置项目和价格
+
+    /**
+     * 设置项目和价格
+     *
+     * @param server_id
+     * @param service
+     * @return 1 -> 成功 0 -> 失败
+     */
     @RequestMapping(value = "/updateService/{server_id}")
     public int updateService(@PathVariable String server_id, ServerService service) {
         serverServiceService.selectServiceBySId(server_id).setServiceProject(service.getServiceProject());
         serverServiceService.selectServiceBySId(server_id).setPrice(service.getPrice());
         return serverServiceService.updateServerService(serverServiceService.selectServiceBySId(server_id));
-    }
-
-    @RequestMapping("/test")
-    public int test() throws ParseException {
-        Order order = new Order();
-        order.setClientId("zhanglaoshi");
-        order.setOrderTime(new Date());
-        order.setMandatorId("0");
-        order.setServiceProject("钟点工");
-        order.setStartTime(new Date());
-        order.setEndTime(new Date());
-        order.setPrice(40.0f);
-        order.setTimes((short) 1);
-        order.setIntervalDays((short) 0);
-        order.setIsSubstitue(0);
-        order.setNumTimes((short) 1);
-        orderService.insert(order);
-        return order.getOrderId();
     }
 
 
