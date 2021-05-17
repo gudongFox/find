@@ -45,8 +45,8 @@ Component({
             'content-type': 'application/json' // GET方式
           },
           success(res) {
-            // console.log("历史订单");
-            // console.log(res);
+            console.log("历史订单");
+            console.log(res);
             var historyItemList = [];
             for (var i = 0; i < res.data.length; i++) {
               let clientInfo = res.data[i].ClientInfo;

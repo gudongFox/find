@@ -11,9 +11,30 @@
             <text style="color:#00AA00;font-size:small;margin-left:15rpx">一周订单日程表</text>
           </view>
           <view>
-						<button size="mini" type="primary" plain="true">修改日程</button>
+            <button size="mini" type="primary" plain="true">修改日程</button>
           </view>
         </view>
+
+        <!-- <van-tabs color="#00AA00" sswipeable="false">
+          <van-tab title="07/08(一)">
+            <van-grid gutter="10" square="true">
+              <van-grid-item text="马先生" />
+              <van-grid-item text="李先生" />
+              <van-grid-item text="张女士" />
+              <van-grid-item text="赵女士" />
+              <van-grid-item text="马先生" />
+              <van-grid-item text="李先生" />
+              <van-grid-item text="张女士" />
+              <van-grid-item text="赵女士" />
+            </van-grid>
+          </van-tab>
+          <van-tab title="07/09(二)">内容 2</van-tab>
+          <van-tab title="07/10(三)">内容 3</van-tab>
+          <van-tab title="07/11(四)">内容 3</van-tab>
+          <van-tab title="07/12(五)">内容 3</van-tab>
+          <van-tab title="07/13(六)">内容 3</van-tab>
+          <van-tab title="07/14(日)">内容 3</van-tab>
+        </van-tabs> -->
 
         <view class="flexRow">
           <view class="flexStart">
@@ -26,20 +47,20 @@
           <van-cell-group wx:for="{{itemList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
             <van-cell clickable="true" url="{{item.clickUrl}}">
               <view class="flexIcon">
-								<view class="flexCol">
-									<van-icon name="{{item.iconName}}" size="50rpx" color="#66BB6A"></van-icon>
-									<text style="font-size:10;color:#66BB6A">{{item.serviceProject}}</text>
-								</view>
-								<view class="flexCol" style="align-items:flex-start">
-									<view class="flexIcon" style="width:450rpx;">
-										<text style="font-size:large;color:black;">{{item.clientName}}</text>
-										<text>{{item.serviceTime}}</text>
-										<van-tag round type="primary">{{item.isMulti}}</van-tag>
-									</view>
-									<text>{{item.clientLocation}}</text>
-								</view>
-								<van-image round width="50" height="50" src="{{item.clientProfile}}" />
-							</view>
+                <view class="flexCol">
+                  <van-icon name="{{item.iconName}}" size="50rpx" color="#66BB6A"></van-icon>
+                  <text style="font-size:10;color:#66BB6A">{{item.serviceProject}}</text>
+                </view>
+                <view class="flexCol" style="align-items:flex-start">
+                  <view class="flexIcon" style="width:450rpx;">
+                    <text style="font-size:large;color:black;">{{item.clientName}}</text>
+                    <text>{{item.serviceTime}}</text>
+                    <van-tag round type="primary">{{item.isMulti}}</van-tag>
+                  </view>
+                  <text>{{item.clientLocation}}</text>
+                </view>
+                <van-image round width="50" height="50" src="{{item.clientProfile}}" />
+              </view>
             </van-cell>
             <view class="divLine"></view>
           </van-cell-group>
@@ -51,17 +72,9 @@
       <van-tab disabled></van-tab>
 
       <van-tab title="历史订单">
-        <van-search
-        value="{{ value }}"
-        placeholder="请输入客户姓名"
-        show-action
-        bind:search="onSearch"
-        bind:cancel="onCancel"/>
-        <van-calendar
-        title="{{ }}"
-        show-confirm="{{ false }}"
-        color="#66BB6A"
-        class="calendar"/>
+        <van-search value="{{ value }}" placeholder="请输入客户姓名" show-action bind:search="onSearch"
+          bind:cancel="onCancel" />
+        <van-calendar title="{{ }}" show-confirm="{{ false }}" color="#66BB6A" class="calendar" />
 
         <view class="flexRow">
           <view class="flexStart">
@@ -74,22 +87,22 @@
           <van-cell-group wx:for="{{historyItemList}}" wx:key="index">
             <van-cell clickable="true" url="{{item.historyClickUrl}}">
               <view class="flexIcon">
-								<view class="flexCol">
-									<van-icon name="{{item.historyOrderIconName}}" size="50rpx" color="#66BB6A"></van-icon>
-									<text style="font-size:10;color:#66BB6A">{{item.historyOrderServiceProject}}</text>
-								</view>
-								<view class="flexCol" style="align-items:flex-start;width:460rpx;">
-									<view class="flexIcon">
-										<text style="font-size:large;color:black;">{{item.historyOrderClientName}}</text>
-										<view class="specialBlock"></view>
-										<text>{{item.historyOrderServiceTime}}</text>
-										<view class="specialBlock"></view>
-										<van-tag round type="primary">{{item.historyOrderIsMulti}}</van-tag>
-									</view>
-									<text style="text-align:left;">{{item.historyOrderClientLocation}}</text>
-								</view>
-								<van-image round width="50" height="50" src="{{item.clientProfile}}" />
-							</view>
+                <view class="flexCol">
+                  <van-icon name="{{item.historyOrderIconName}}" size="50rpx" color="#66BB6A"></van-icon>
+                  <text style="font-size:10;color:#66BB6A">{{item.historyOrderServiceProject}}</text>
+                </view>
+                <view class="flexCol" style="align-items:flex-start;width:460rpx;">
+                  <view class="flexIcon">
+                    <text style="font-size:large;color:black;">{{item.historyOrderClientName}}</text>
+                    <view class="specialBlock"></view>
+                    <text>{{item.historyOrderServiceTime}}</text>
+                    <view class="specialBlock"></view>
+                    <van-tag round type="primary">{{item.historyOrderIsMulti}}</van-tag>
+                  </view>
+                  <text style="text-align:left;">{{item.historyOrderClientLocation}}</text>
+                </view>
+                <van-image round width="50" height="50" src="{{item.clientProfile}}" />
+              </view>
             </van-cell>
             <view class="divLine"></view>
           </van-cell-group>

@@ -9,8 +9,9 @@ Page({
     URIDemandInfo: "",
     // URINewInfo: "",
     demandId:"",
-    serviceProject: "家庭保洁",
-    projects: [{
+    serviceProject: "",
+    projects: [
+      {
         text: "家庭保洁",
         value: "家庭保洁",
       },

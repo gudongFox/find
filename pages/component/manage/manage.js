@@ -80,15 +80,26 @@ Component({
             'content-type': 'application/json' // GET方式
           },
           success(res) {
-            console.log(res);
+            // console.log("客户新需求")
+            // console.log(res);
             var demandList = [];
             for (var i = 0; i < res.data.length; i++) {
               var clientInfo = res.data[i].client;
               var demandInfo = res.data[i].demand;
-              var iconName = "wap-home-o";
-              if (demandInfo.serviceProject == "商业保洁") {
+              if(clientInfo == null || demandInfo == null){
+                continue;
+              }
+              // 根据服务类型判断图标
+              var serPro = "暂未确定";
+              var iconName = "circle";
+              if (demandInfo.serviceProject == "家庭保洁") {
+                serPro = "家庭保洁";
+                iconName = "wap-home-o";
+              } else if (demandInfo.serviceProject == "商业保洁") {
+                serPro = "商业保洁";
                 iconName = "hotel-o";
               } else if (res.data[i].servicePeoject == "钟点工") {
+                serPro = "钟点工";
                 iconName = "underway-o";
               }
               var serviceTime = "上门时间：未定";
@@ -103,7 +114,7 @@ Component({
               var tmp = {
                 clickUrl: "/pages/newDemandServer/newDemandServer?URIClientInfo=" + URIClientInfo + "&URIDemandInfo=" + URIDemandInfo,
                 iconName: iconName,
-                serviceProject: demandInfo.serviceProject,
+                serviceProject: serPro,
                 clientName: clientInfo.clientName,
                 serviceTime: serviceTime,
                 isMulti: demandInfo.times + "次",
