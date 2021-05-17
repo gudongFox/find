@@ -66,7 +66,8 @@
         <view>预计服务时长</view>
         <!-- <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button> -->
         <view class="flexCell">
-          <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceLength}}" bindinput="setServiceLength" />
+          <!-- <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceLength}}" bindinput="setServiceLength" /> -->
+          <van-stepper value="{{serviceLength}}" step="0.5" min="0" bind:change="setServiceLength" />
           <view class="textblack">小时</view>
         </view>
         <!-- <van-stepper value="{{servcieTime}}" /> -->
@@ -74,18 +75,25 @@
       </view>
       <view class="flexCell">
         <view>期望上门日期</view>
-        <input style="border-radius:10rpx;width:250rpx;background-color:#E0E0E0;text-align:center;color:black;margin:0rpx 0rpx 0rpx 0rpx" model:value="{{serviceDate}}" bindfocus="setServiceDate" />
+        <!-- <input style="border-radius:10rpx;width:250rpx;background-color:#E0E0E0;text-align:center;color:black;margin:0rpx 0rpx 0rpx 0rpx" model:value="{{serviceDate}}" bindfocus="setServiceDate" /> -->
+        <div style="border-radius:10rpx;width:250rpx;height:45rpx;background-color:#E0E0E0;text-align:center;color:black;" bindtap="setServiceDate">
+          {{serviceDate}}
+        </div>
         <!-- <view class="textblack">成都市锦江文化中心</view> -->
       </view>
       <view class="flexCell">
         <view>期望上门时间</view>
-        <input style="border-radius:10rpx;width:250rpx;background-color:#E0E0E0;text-align:center;color:black;margin:0rpx 0rpx 0rpx 0rpx" value="{{serviceTime}}" bindfocus="setServiceTime" />
+        <!-- <input style="border-radius:10rpx;width:250rpx;background-color:#E0E0E0;text-align:center;color:black;margin:0rpx 0rpx 0rpx 0rpx" value="{{serviceTime}}" bindfocus="setServiceTime" /> -->
+        <div style="border-radius:10rpx;width:250rpx;height:45rpx;background-color:#E0E0E0;text-align:center;color:black;" bindtap="setServiceTime">
+          {{serviceTime}}
+        </div>
       </view>
       <view class="flexCell">
         <view>次数</view>
         <view class="flexCell">
           <view class="textblack">第</view>
-          <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceNumthTimes}}" bindinput="setServiceNumthTimes" />
+          <!-- <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceNumthTimes}}" bindinput="setServiceNumthTimes" /> -->
+          <van-stepper value="{{serviceNumthTimes}}" step="1" min="1" bind:change="setServiceNumthTimes" />
           <view class="textblack">次</view>
         </view>
       </view>
@@ -93,7 +101,8 @@
         <view>总次数</view>
         <view class="flexCell">
           <view class="textblack">共</view>
-          <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceTotalTimes}}" bindinput="setServiceTotalTimes" />
+          <!-- <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceTotalTimes}}" bindinput="setServiceTotalTimes" /> -->
+          <van-stepper value="{{serviceTotalTimes}}" step="1" min="1" bind:change="setServiceTotalTimes" />
           <view class="textblack">次</view>
         </view>
       </view>
@@ -101,7 +110,8 @@
         <view>周期</view>
         <view class="flexCell">
           <view class="textblack">间隔</view>
-          <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceInterval}}" bindinput="setServiceInterval" />
+          <!-- <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceInterval}}" bindinput="setServiceInterval" /> -->
+          <van-stepper value="{{serviceInterval}}" step="1" min="0" bind:change="setServiceInterval" />
           <view class="textblack">天</view>
         </view>
       </view>
