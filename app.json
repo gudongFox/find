@@ -29,7 +29,8 @@
     "pages/receiveOrderServer/receiveOrderServer",
     "pages/receiveSubOrderServer/receiveSubOrderServer",
     "pages/record/addServer/addServer",
-    "pages/makeQRCode/makeQRCode"
+    "pages/makeQRCode/makeQRCode",
+    "pages/manage/orderDetail/orderDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

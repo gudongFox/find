@@ -54,7 +54,7 @@
         <view class="margin1">
           <van-icon name="bell" color="#8A2BE2" />
           <text style="color:#8A2BE2;font-size:small;margin-left:1rem">我信任的服务人</text>
-          <van-button plain type="primary" size="small" style="margin-left:280rpx" bindtap="toAddServer">扫二维码添加</van-button>
+          <van-button plain type="primary" size="small" style="margin-left:250rpx" bindtap="toAddServer">扫二维码添加</van-button>
         </view>
         <view bindtap="toServerInfo" wx:for="{{believeServerList}}" wx:key="id" data-id="{{item.serverInfo.serverId}}">
           <van-cell-group>

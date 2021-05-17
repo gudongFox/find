@@ -1,0 +1,69 @@
+<view class="flexRow">
+  <view class="flexStart">
+    <van-icon name="clock" color="#00AA00" />
+    <text style="color:#00AA00;font-size:small;margin-left:15rpx">订单详情</text>
+  </view>
+</view>
+
+<view>
+  <van-cell-group custom-class="margin2">
+    <van-cell>
+      <view class="flexCell">
+        <view>订单号</view>
+        <view class="textblack">{{orderId}}</view>
+      </view>
+      <view class="flexCell">
+        <view>下单时间</view>
+        <view class="textblack" space="emsp">{{orderTime}}</view>
+      </view>
+    </van-cell>
+    <van-divider contentPosition="center"></van-divider>
+    <van-cell>
+      <view class="flexCell">
+        <view>客户姓名</view>
+        <view class="textblack">{{clientName}}</view>
+      </view>
+      <view class="flexCell">
+        <view>联络电话</view>
+        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button>
+        <view class="textblack">{{clientPhoneNum}}</view>
+      </view>
+      <view class="flexCell">
+        <view>服务位置</view>
+        <view class="textblack">{{clientLocation}}</view>
+      </view>
+    </van-cell>
+    <van-divider contentPosition="center"></van-divider>
+    <van-cell>
+      <view class="flexCell">
+        <view>服务人</view>
+        <view class="textblack">{{serverName}}</view>
+      </view>
+    </van-cell>
+    <van-cell>
+      <view class="flexCell">
+        <view>服务类型</view>
+        <view class="textblack">{{serviceProject}}</view>
+      </view>
+      <view class="flexCell">
+        <view>上门时间</view>
+        <view class="textblack" space="emsp">{{serviceTime}}</view>
+      </view>
+      <view class="flexCell">
+        <view>次数/周期</view>
+        <view class="textblack">{{period}}</view>
+      </view>
+      <view class="flexCell">
+        <view>收费标准</view>
+        <view class="textblack" space="emsp">{{rates}}</view>
+      </view>
+      <view class="flexCell">
+        <view>备注</view>
+        <view class="textblack" space="emsp">{{comment}}</view>
+      </view>
+    </van-cell>
+
+    <van-divider contentPosition="center">已经到底啦</van-divider>
+
+  </van-cell-group>
+</view>

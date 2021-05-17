@@ -32,7 +32,10 @@ Page({
       minDate: new Date(2010, 0, 1).getTime(),
       maxDate: new Date(2010, 0, 31).getTime(),
   },
-  onLoad: function () {
+  onLoad: function(){
+    this.loadPage()
+  },
+  loadPage: function () {
     var that = this
     wx.login({
       success: function(res) {
@@ -151,9 +154,7 @@ Page({
   },
   //跳转到服务人详情页
   toAddServer:function(e){
-    // wx.navigateTo({
-    //   url: '/pages/record/addServer/addServer',
-    // })
+    var that = this
     wx.scanCode({
       success(res){
         console.log(res.result)
@@ -172,8 +173,7 @@ Page({
               icon: 'success',
               duration: 2000
             })
-            this.onload();
-            
+            that.loadPage()
           },
           fail:function(){
             wx.showToast({
@@ -210,6 +210,7 @@ Page({
         // }
         
       })
+
     }
     })
   }

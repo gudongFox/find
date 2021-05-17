@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    demandList:[{
+    orderList:[{
       demandId:3,clientId:"zhanglaoshi",serviceProject:"家庭保洁",mandatorId:"0",mandatorName:"",serverId:"liling",serverName:"李玲",startTime:"2020-07-08T00:00:00",endTime:"2020-07-08T02:00:00",times:10,intervalDays:7,demandComment:""
     },
     {
@@ -22,14 +22,14 @@ Page({
   onLoad: function () {
     var that = this;
     wx.request({
-      url: 'http://129.211.68.243:8080/demand/detail',
+      url: 'http://129.211.68.243:8080/order/detail',
       method:"GET",
       data:{
         clientId:wx.getStorageSync('openid')
       },
       success:function(res){
-        console.log(res.data.data.clientInfo)
-        var list = res.data.data.demandsInfo
+        console.log(res)
+        var list = res.data.data.executingOrders
         for(let i = 0; i < list.length; i++){
           var s = list[i].startTime;
           if(s != null){
@@ -39,7 +39,7 @@ Page({
           }
         }
           that.setData({
-            demandList:list,
+            orderList:list,
             clientName: res.data.data.clientInfo.clientName,
             clientLocation: res.data.data.clientInfo.clientLocation
           })
@@ -83,7 +83,7 @@ Page({
   },
   onclick:function(){
     wx.navigateTo({
-      url: '/pages/add/add',
+      url: '/pages/manage/orderDetail/orderDetail',
     })
   }
 })

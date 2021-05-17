@@ -32,11 +32,8 @@
 				</van-cell>
 
 			</van-cell-group>
-		</view>
-	</view>
-
-	<!-- 3=============== -->
-	<view class="appadingleft">{{steps[1].text}}
+				<!-- 3=============== -->
+	<view>{{steps[1].text}}
     <van-button plain type="primary" size="small" style="margin-left:150px" hairline round wx:if="{{showTime}}" bindtap="change3">修改</van-button>
 		<view class="margin2,whitebackground,top" wx:if="{{!showTime}}">
 			<form>
@@ -45,10 +42,10 @@
 					</van-field>
 				</van-cell-group>
 				<van-cell-group>
-					<van-field name="day" placeholder="2020.07.08" label="期望上门日期：" title-width="55%" border="{{ false }}" bindfocus="setServiceDate" model:value="{{day}}"/>
+					<van-field name="day" placeholder="2020.07.08" label="期望上门日期：" title-width="55%" border="{{ false }}" bindtap="setServiceDate" model:value="{{day}}" readonly/>
 				</van-cell-group>
 				<van-cell-group>
-					<van-field name="time" placeholder="8:00" label="期望上门时间：" title-width="55%" border="{{ false }}" bindfocus="setServiceTime" model:value="{{time}}"/>
+					<van-field name="time" placeholder="8:00" label="期望上门时间：" title-width="55%" border="{{ false }}" bindtap="setServiceTime" model:value="{{time}}" readonly/>
 				</van-cell-group>
 				<van-cell-group>
 					<van-field name="times" placeholder="请输入次数" label="次数/周次：" title-width="55%" border="{{ false }}" bind:change="onChange" model:value="{{times}}"/>
@@ -83,10 +80,8 @@
 					</van-row>
 				</van-cell>
 			</van-cell-group>
-		</view>
-	</view>
-	<!-- 4=================== -->
-	<view class="appadingleft">{{steps[2].text}}
+				<!-- 4=================== -->
+	<view>{{steps[2].text}}
 		<view class="margin2" wx:for="{{believeServerList}}" wx:key="id" data-id = "{{item.serverInfo.serverId}}" bindtap="chooseServicePerson">
 			<van-cell-group>
 				<van-cell clickable="true">
@@ -117,7 +112,14 @@
 	</view>
 	<!-- 5================== -->
 	<view>
-		<view class="appadingleft">{{steps[3].text}}</view>
+		<view>{{steps[3].text}}</view>
+		</view>
+	</view>
+		</view>
+	</view>
+
+
+
 		<!-- <van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="info-o" text="形成订单前，请认真核对上述信息！" />
 		<view class="margin2">
 			<van-cell-group custom-class="margin2">

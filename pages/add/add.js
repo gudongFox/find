@@ -12,6 +12,9 @@ Page({
     // 上门日期选择器相关
     isShowDateSelection:false,
     isShowTimeSelection: false,
+    currentDate: new Date().getTime(),
+    minDate: new Date().getTime(),
+    currentTime: "12:00",
     showServiceKind: false,
     showCustomer: false,
     showTime: false,
