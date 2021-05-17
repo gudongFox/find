@@ -13,6 +13,7 @@ Page({
   },
 
   onLoad: function () {
+    wx.stopPullDownRefresh()
     var that = this;
     wx.request({
       url: 'http://129.211.68.243:8080/demand/detail',
@@ -60,5 +61,8 @@ Page({
     wx.navigateTo({
       url: '/pages/todo/todo?demandId='+demandId,
     })
-  }
+  },
+  onPullDownRefresh: function () {
+    this.onLoad(); //重新加载onLoad()
+  },
 })

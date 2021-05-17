@@ -33,11 +33,12 @@
     </van-cell-group>
   <view class="divLine"></view>
   </view>
-      </van-tab>
+  <view class='placeholder'></view>
+</van-tab>
       <van-tab title="历史记录">
         <view style="margin-top:5px">
-        <van-cell title="选择单个日期" value="{{ date }}" bind:click="onDisplay" />
-        <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top"/>
+        <van-cell title="选择单个日期" value="{{ defaultDate }}" bind:click="onDisplay" />
+        <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top" min-date="{{ minDate }}" default-date="{{defaultDate}}"/>
         <view wx:for="{{historyList}}" wx:key="orderId" data-id="{{item.orderId}}" bindtap="onclick">
           <van-cell-group>
             <view class="margin1">
@@ -57,7 +58,7 @@
                 </van-col>
                 <van-col span="10">
                   <view class="display-center">
-                    <text class="textsmall">7月8日，8:00-10:00</text>
+                    <text class="textsmall">{{item.startTime}}</text>
                   </view>
                   <view class="display-center">
                     <text class="textsmall">{{item.times}}次</text>
@@ -77,6 +78,7 @@
           </van-cell-group>
         </view>
       </view>
+      <view class='placeholder'></view>
       </van-tab>
     </van-tabs>
   </view>

@@ -33,6 +33,7 @@ Page({
       maxDate: new Date(2010, 0, 31).getTime(),
   },
   onLoad: function(){
+    wx.stopPullDownRefresh()
     this.loadPage()
   },
   loadPage: function () {
@@ -213,5 +214,8 @@ Page({
 
     }
     })
-  }
+  },
+  onPullDownRefresh: function () {
+    this.onLoad(); //重新加载onLoad()
+  },
 })

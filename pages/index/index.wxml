@@ -34,3 +34,4 @@
   <van-icon name="add" size="120rpx" color="#8A2BE2" bind:click="onclick"/>
   </view>
 </view>
+<view class='placeholder'></view>
