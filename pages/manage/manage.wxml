@@ -3,12 +3,11 @@
   <view>
     <van-tabs active="{{ active }}" sticky color="#8A2BE2" class="tabw">
       <van-tab title="待执行订单">
-
-        <view class="margin1">
+        <view wx:for="{{orderList}}" wx:key="demandId" data-id="{{item.demandId}}" bindtap="onclick">
+          <view class="margin1">
           <van-icon name="bell" color="#8A2BE2" />
-          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">2021.01.11</text>
+          <text style="color:#8A2BE2;font-size:small;margin-left:1rem"></text>
         </view>
-        <view wx:for="{{demandList}}" wx:key="demandId" data-id="{{item.demandId}}" bindtap="toServiceInfo">
     <van-cell-group>
       <van-cell>
         <van-row>
@@ -39,12 +38,12 @@
         <view style="margin-top:5px">
         <van-cell title="选择单个日期" value="{{ date }}" bind:click="onDisplay" />
         <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top"/>
-        <view class="margin1">
+        <view wx:for="{{orderList}}" wx:key="demandId" data-id="{{item.demandId}}" bindtap="onclick">
+          <van-cell-group>
+            <view class="margin1">
           <van-icon name="bell" color="#8A2BE2" />
           <text style="color:#8A2BE2;font-size:small;margin-left:1rem">{{ date }}</text>
         </view>
-        <view wx:for="{{demandList}}" wx:key="demandId" data-id="{{item.demandId}}">
-          <van-cell-group>
             <van-cell clickable="true">
               <van-row>
                 <van-col span="5">

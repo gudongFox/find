@@ -26,17 +26,17 @@ options: {
       {"code":"下午","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
       {"code":"6:00","monday":"1","tuesday":"2","wednesday":"3","thursday":"4","friday":"5","saturday":"6","sunday":"7"},
       ],
-      checked: true,
+      checked: false,
   },
 
   /**
    * 组件的方法列表
    */
-  methods: {
-    onChange(event) {
-      this.setData({
-        checked: event.detail,
-      });
-    },
-  }
+  // methods: {
+  //   onChange(event) {
+  //     this.setData({
+  //       checked: event.detail,
+  //     });
+  //   },
+  // }
 })
