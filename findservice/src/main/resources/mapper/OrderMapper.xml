@@ -79,7 +79,7 @@
         select *
         from order_detail
         where client_id = #{clientId, jdbcType=VARCHAR}
-          and date_format(end_time, '%Y-%m-%d %H:%i:%s') &lt;= #{time, jdbcType=VARCHAR}
+          and date_format(end_time, '%Y-%m-%d %H:%i:%s') &gt;= #{time, jdbcType=VARCHAR}
         order by end_time
     </select>
     <select id="selectOrdersCountByDate" resultType="java.lang.Integer">
