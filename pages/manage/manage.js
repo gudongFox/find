@@ -5,12 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderList:[{
-      demandId:3,clientId:"zhanglaoshi",serviceProject:"家庭保洁",mandatorId:"0",mandatorName:"",serverId:"liling",serverName:"李玲",startTime:"2020-07-08T00:00:00",endTime:"2020-07-08T02:00:00",times:10,intervalDays:7,demandComment:""
-    },
-    {
-      demandId:4,clientId:"zhanglaoshi",serviceProject:"钟点工",mandatorId:"0",mandatorName:"",serverId:"liling",serverName:"李玲",startTime:"2020-07-08T00:00:00",endTime:"2020-07-08T02:00:00",times:10,intervalDays:7,demandComment:""
-    }],
+    orderList:[],
+    historyList:[],
     clentName:'',
     clientLocation:'',
     value: 0,
@@ -25,21 +21,33 @@ Page({
       url: 'http://129.211.68.243:8080/order/detail',
       method:"GET",
       data:{
-        clientId:wx.getStorageSync('openid')
+        clientId:wx.getStorageSync('openid'),
+        isExecuting: true
       },
       success:function(res){
         console.log(res)
         var list = res.data.data.executingOrders
+        var historyList = []
+        var readyList = []
         for(let i = 0; i < list.length; i++){
           var s = list[i].startTime;
           if(s != null){
             s = s.substring(0,10)
-            console.log(s)
             list[i].startTime = s
+            var now = Date.parse(new Date())
+            if(Date.parse(s) < now){
+              list[i].finished = true
+            }
+            if(list[i].finished == false){
+              readyList.push(list[i])
+            }else{
+              historyList.push(list[i])
+            }
           }
         }
           that.setData({
-            orderList:list,
+            orderList:readyList,
+            historyList: historyList,
             clientName: res.data.data.clientInfo.clientName,
             clientLocation: res.data.data.clientInfo.clientLocation
           })
@@ -81,9 +89,11 @@ Page({
   onShow: function(){
     this.getTabBar().init();
   },
-  onclick:function(){
+  onclick:function(e){
+    console.log(e)
+    var orderId = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/manage/orderDetail/orderDetail',
+      url: '/pages/manage/orderDetail/orderDetail?orderId='+orderId,
     })
   }
 })

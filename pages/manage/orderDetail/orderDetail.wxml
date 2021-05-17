@@ -25,7 +25,7 @@
       </view>
       <view class="flexCell">
         <view>联络电话</view>
-        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button>
+        
         <view class="textblack">{{clientPhoneNum}}</view>
       </view>
       <view class="flexCell">
@@ -39,7 +39,13 @@
         <view>服务人</view>
         <view class="textblack">{{serverName}}</view>
       </view>
+      <view class="flexCell">
+        <view>服务人电话</view>
+        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button>
+        <view class="textblack">{{serverTel}}</view>
+      </view>
     </van-cell>
+    <van-divider contentPosition="center"></van-divider>
     <van-cell>
       <view class="flexCell">
         <view>服务类型</view>
