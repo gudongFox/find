@@ -33,6 +33,7 @@ public class ServerService {
     @Autowired
     private ClientService clientService;
 
+
     public Server findServerById(String serverId) {
         return serverMapper.selectByServerId(serverId);
     }
@@ -96,4 +97,13 @@ public class ServerService {
     public ServerParameter getServerParameter(String server_id){
         return serverParameterMapper.selectByPrimaryKey(server_id);
     }
+
+    public int insertPara(ServerParameter serverParameter){
+        return serverParameterMapper.insertSelective(serverParameter);
+    }
+
+    public int updatePara(ServerParameter serverParameter){
+        return serverParameterMapper.updateByPrimaryKeySelective(serverParameter);
+    }
+
 }

@@ -239,25 +239,26 @@ public class ServerController {
      * @param work_hour
      * @return 1 -> 成功 0 -> 失败
      */
-    @RequestMapping(value = "/updateWorkTime/{server_id}/{work_day}/{work_hour}")
-    public int updateWorkTime(@PathVariable String server_id, @PathVariable int work_day, @PathVariable int work_hour) {
-        return serverServiceService.updateSeverWorkTime(server_id, work_day, work_hour);
-    }
+//    @RequestMapping(value = "/updateWorkTime/{server_id}/{work_day}/{work_hour}")
+//    public int updateWorkTime(@PathVariable String server_id, @RequestBody List<ServerWorkTime> serverWorkTimeList) {
+//        for(ServerWorkTime serverWorkTime : serverWorkTimeList){
+//
+//        }
+//    }
 
     /**
      * 设置接单参数
      *
      * @param server_id
-     * @param max_distance
-     * @param max_interval_distance
-     * @param min_service_time
-     * @param min_interval_time
-     * @return 1 -> 成功 0 -> 失败
+     * @param serverParameter
+     * @return  -> 成功 0 -> 失败
      */
     @RequestMapping(value = "/updateServerParameter/{server_id}/{max_distance}/{max_interval_distance}/{min_service_time}/{min_interval_time}")
-    public int updateServerParameter(@PathVariable String server_id, @PathVariable float max_distance, @PathVariable float max_interval_distance
-            , @PathVariable float min_service_time, @PathVariable float min_interval_time) {
-        return serverServiceService.updateServerParameter(server_id, max_distance, max_interval_distance, min_service_time, min_interval_time);
+    public int updateServerParameter(@PathVariable String server_id, @RequestBody ServerParameter serverParameter) {
+        if(serverService.getServerParameter(server_id) == null){
+            return serverService.insertPara(serverParameter);
+        }
+        return serverService.updatePara(serverParameter);
     }
 
     /**
