@@ -1,11 +1,11 @@
 <!--pages/manage/manage.wxml-->
 <view>
   <view>
-    <van-tabs active="{{ active }}" sticky color="#8A2BE2" class="tabw">
+    <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
       <van-tab title="平台推荐">
-        <view class="margin1">
-          <van-icon name="bell" color="#8A2BE2" />
-          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">为你推荐的服务人</text>
+        <view class="margin1,flexStart">
+          <van-icon name="clock" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:7px">为你推荐的服务人</text>
           <van-button plain type="primary" size="small" style="margin-left:300rpx" bind:click="showPopup">设置
           </van-button>
           <van-popup show="{{ show }}" bind:close="onClose" position="top">
@@ -45,16 +45,16 @@
               </van-row>
 
             </van-cell>
-
+            <view class="divLine"></view>
           </van-cell-group>
         </view>
         <view class="divLine"></view>
         <view class='placeholder'></view>
       </van-tab>
       <van-tab title="可信服务人">
-        <view class="margin1">
-          <van-icon name="bell" color="#8A2BE2" />
-          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">我信任的服务人</text>
+        <view class="margin1,flexStart">
+          <van-icon name="clock" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:7px">我信任的服务人</text>
           <van-button plain type="primary" size="small" style="margin-left:250rpx" bindtap="toAddServer">扫二维码添加</van-button>
         </view>
         <view bindtap="toServerInfo" wx:for="{{believeServerList}}" wx:key="id" data-id="{{item.serverInfo.serverId}}">
@@ -81,7 +81,7 @@
               </van-row>
 
             </van-cell>
-
+            <view class="divLine"></view>
           </van-cell-group>
         </view>
         <view class="divLine"></view>

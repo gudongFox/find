@@ -33,10 +33,10 @@
     "pages/manage/orderDetail/orderDetail"
   ],
   "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#8A2BE2",
-    "navigationBarTitleText": "下订单",
-    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#00AA00",
+    "navigationBarTitleText": "客户版",
+    "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
   "sitemapLocation": "sitemap.json",

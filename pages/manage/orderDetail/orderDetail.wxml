@@ -1,7 +1,7 @@
 <view class="flexRow">
   <view class="flexStart">
-    <van-icon name="clock" color="#8A2BE2" />
-    <text style="color:#8A2BE2;font-size:small;margin-left:15rpx">订单详情</text>
+    <van-icon name="clock" color="#00AA00" />
+    <text style="color:#00AA00;font-size:small;margin-left:15rpx">订单详情</text>
   </view>
 </view>
 
@@ -41,7 +41,7 @@
       </view>
       <view class="flexCell">
         <view>服务人电话</view>
-        <van-button plain round hairline size="small" icon="phone-o" color="#8A2BE2">联络</van-button>
+        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button>
         <view class="textblack">{{serverTel}}</view>
       </view>
     </van-cell>

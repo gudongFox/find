@@ -1,12 +1,12 @@
 <!--pages/manage/manage.wxml-->
 <view>
   <view>
-    <van-tabs active="{{ active }}" sticky color="#8A2BE2" class="tabw">
+    <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
       <van-tab title="待执行订单">
         <view wx:for="{{orderList}}" wx:key="orderId" data-id="{{item.orderId}}" bindtap="onclick">
           <view class="margin1">
-          <van-icon name="bell" color="#8A2BE2" />
-          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">{{item.startTime}}</text>
+          <van-icon name="clock" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:1rem">{{item.startTime}}</text>
         </view>
     <van-cell-group>
       <van-cell>
@@ -42,8 +42,8 @@
         <view wx:for="{{historyList}}" wx:key="orderId" data-id="{{item.orderId}}" bindtap="onclick">
           <van-cell-group>
             <view class="margin1">
-          <van-icon name="bell" color="#8A2BE2" />
-          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">{{item.startTime}}</text>
+          <van-icon name="clock" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:1rem">{{item.startTime}}</text>
         </view>
             <van-cell clickable="true">
               <van-row>

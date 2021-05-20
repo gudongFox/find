@@ -1,6 +1,6 @@
 <view class="margin1">
-  <van-icon name="bell" color="#8A2BE2" />
-  <text style="color:#8A2BE2;font-size:small;margin-left:1rem">服务人基本资料</text>
+  <van-icon name="clock" color="#00AA00" />
+  <text style="color:#00AA00;font-size:small;margin-left:1rem">服务人基本资料</text>
 </view>
 <view class="margin2,whitebackground,top">
   <van-cell-group>

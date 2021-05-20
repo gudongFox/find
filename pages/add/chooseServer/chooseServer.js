@@ -15,7 +15,9 @@ Page({
       times: "7",
       remark: "服务质量不错"
       },
-      demand: {}
+    serverId: '',
+    demand: {},
+    direct: false
   },
 
   /**
@@ -23,18 +25,32 @@ Page({
    */
   onLoad:function(e){
     var that = this
+    let myComponent = that.selectComponent('#myComponent')
     var serverId = e.id
+    myComponent.query(serverId);
+    console.log(wx.getStorageSync('demand'))
+    var demand = wx.getStorageSync('demand')
     wx.request({
-      url: 'http://129.211.68.243:8080/server/getServerInfo/'+serverId,
+      url: 'http://129.211.68.243:8080/server/getWorkTime/'+serverId,
       header: {
         'content-type': 'application/json' // 默认值
       },
       method: 'GET',
       success:function(res){
-        var list = res.data
-        console.log(that.data.demand)
+        console.log(res)
+        var list = res.data.serverInfo
+        console.log(list)
+        if(list.serverGender == 1){
+          list.serverGender = "男"
+        }else{
+          list.serverGender = "女"
+        }
+        list.servertype = demand.serviceProject
+        list.times = demand.directServeTimes
         that.setData({
-          server:list
+          server:list,
+          direct: demand.direct,
+          serverId: serverId
         })
       }
     })
@@ -48,6 +64,7 @@ Page({
     var that = this;
     var demand = wx.getStorageSync('demand')
     var server = that.data.server
+    var mandator = demand.direct == true ? 0 : 1
     console.log(demand)
     wx.request({
       url: 'http://129.211.68.243:8080/demand/detail',
@@ -58,12 +75,13 @@ Page({
         "clientId": demand.clientId,
         "demandComment": demand.demandComment,
         "endTime": demand.endTime,
-        "intervalDays": demand.intervalDays,
+        "intervalDays": demand.serviceInterval,
         "mandatorId": demand.mandatorId,
         "serverId": server.serverId,
         "serviceProject": demand.serviceProject,
         "startTime": demand.startTime,
-        "times": demand.times
+        "times": demand.times,
+        "mandatorId": mandator
       },
       success:function(res){
         console.log('保存成功')

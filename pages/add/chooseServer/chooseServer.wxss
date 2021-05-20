@@ -9,3 +9,6 @@
   bottom: 0;
   width: 750rpx;
 }
+.cellSize{
+  height: 40px;
+}

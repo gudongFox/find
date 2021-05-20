@@ -1,27 +1,85 @@
+
+
 <view class="table,textsmall">
+  <view class="tr bg-w">
+  <view class="th "></view>
+ <view class="th" wx:for="{{sevenDay}}">{{item}}</view>
+ </view>
  <view class="tr bg-w">
   <view class="th "></view>
- <view class="th">周一</view>
- <view class="th">周二</view>
- <view class="th ">周三</view>
- <view class="th ">周四</view>
- <view class="th ">周五</view>
- <view class="th ">周六</view>
- <view class="th ">周日</view>
- 
+ <view class="th" wx:for="{{weekDays}}">{{item}}</view>
+ </view>
+ <view class="tr bg-w">
+  <view class="th ">上午</view>
+  <view class="th "></view>
+  <view class="th "></view>
+  <view class="th "></view>
+  <view class="th "></view>
+  <view class="th "></view>
+  <view class="th "></view>
+  <view class="th "></view>
  </view>
  <block wx:for="{{listData}}" wx:key="{[code]}">
- <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
- <view class="td">{{item.code}}</view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
+ <view class="tr bg-g">
+ <view class="td">{{item[0]}}</view>
+ <view class="td">
+   <view wx:if="{{item[1]}}">
+    <view class="display-center1"></view>
+   </view>
+   <view wx:if="{{!item[1]}}">
+    <view class="display-center2"></view>
+   </view>
  </view>
- <view class="tr" wx:else>
+ <view class="td">
+  <view wx:if="{{item[2]}}">
+    <view class="display-center1"></view>
+   </view>
+   <view wx:if="{{!item[2]}}">
+    <view class="display-center2"></view>
+   </view>
+ </view>
+ <view class="td">
+  <view wx:if="{{item[3]}}">
+    <view class="display-center1"></view>
+   </view>
+   <view wx:if="{{!item[3]}}">
+    <view class="display-center2"></view>
+   </view>
+ </view>
+ <view class="td">
+  <view wx:if="{{item[4]}}">
+    <view class="display-center1"></view>
+   </view>
+   <view wx:if="{{!item[4]}}">
+    <view class="display-center2"></view>
+   </view>
+ </view>
+ <view class="td">
+  <view wx:if="{{item[5]}}">
+    <view class="display-center1"></view>
+   </view>
+   <view wx:if="{{!item[5]}}">
+    <view class="display-center2"></view>
+   </view>
+ </view>
+ <view class="td">
+  <view wx:if="{{item[6]}}">
+    <view class="display-center1"></view>
+   </view>
+   <view wx:if="{{!item[6]}}">
+    <view class="display-center2"></view>
+   </view>
+ </view>
+ <view class="td">
+  <view wx:if="{{item[7]}}">
+    <view class="display-center1"></view>
+   </view>
+   <view wx:if="{{!item[7]}}">
+    <view class="display-center2"></view>
+   </view>
+ </view>
+ </view>
+ <!-- <view class="tr" wx:else>
   <view class="td">{{item.code}}</view>
  <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
  <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
@@ -30,6 +88,6 @@
  <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
  <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
  <view class="td"><van-checkbox custom-class="display-center" value="{{ checked }}" shape="square" icon-size="15px" bind:change="onChange"></van-checkbox></view>
- </view>
+ </view> -->
  </block>
 </view>

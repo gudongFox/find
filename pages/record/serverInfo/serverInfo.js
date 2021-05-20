@@ -5,16 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    server: {
-      serverId: 0,
-      serverName: "张老师",
-      gender: "女",
-      serverAge: "48",
-      servertype: "家庭保洁/钟点工",
-      serverLocation: "虎溪花园，4栋3-3-1",
-      times: "7",
-      remark: "服务质量不错"
-      }
+    server: {}
   },
   onLoad:function(e){
     var that = this
@@ -29,6 +20,11 @@ Page({
         console.log(res)
         var list = res.data
         console.log(list)
+        if(list.serverGender == 1){
+          list.serverGender = "男"
+        }else{
+          list.serverGender = "女"
+        }
         that.setData({
           server:list
         })
