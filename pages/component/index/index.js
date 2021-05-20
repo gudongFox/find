@@ -17,6 +17,7 @@ Component({
     activeTab: 0,
     itemList: [],
     historyItemList: [],
+    historyToday: (new Date().getFullYear())+"年"+(new Date().getMonth()+1)+"月"+(new Date().getDate()+"日")
   },
 
   /**
@@ -122,6 +123,13 @@ Component({
         min = "0" + min;
       }
       return y + mon + d + h + min;
+    },
+
+    selectDate: function(event){
+      var date = event.detail;
+      this.setData ({
+        historyToday: date.getFullYear()+"年"+(date.getMonth()+1)+"月"+date.getDate()+"日"
+      });
     },
 
   },

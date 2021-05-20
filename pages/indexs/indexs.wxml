@@ -14,8 +14,33 @@
 
 <!-- 定义底部导航栏(线框风格) -->
 <van-tabbar active="{{active}}" active-color="#00AA00" bind:change="onChange">
-    <van-tabbar-item icon="notes-o" size="50px">订单日程</van-tabbar-item>
-    <van-tabbar-item icon="logistics">新订单</van-tabbar-item>
+    <!-- <van-tabbar-item icon="notes-o">订单日程</van-tabbar-item> -->
+    <!-- <van-tabbar-item icon="logistics">新订单</van-tabbar-item>
     <van-tabbar-item icon="friends-o">伙伴记录</van-tabbar-item>
-    <van-tabbar-item icon="user-o">我的</van-tabbar-item>
+    <van-tabbar-item icon="user-o">我的</van-tabbar-item> -->
+    <van-tabbar-item>
+      <view class="flexCol">
+        <van-icon name="notes-o" size="55rpx" />
+        <text class="tabbarText">订单日程</text>
+      </view>
+    </van-tabbar-item>
+    <van-tabbar-item>
+      <view class="flexCol">
+        <van-icon name="logistics" size="55rpx" />
+        <text class="tabbarText">新订单</text>
+      </view>
+    </van-tabbar-item>
+    <van-tabbar-item>
+      <view class="flexCol">
+        <van-icon name="friends-o" size="60rpx" />
+        <text class="tabbarText">伙伴记录</text>
+      </view>
+    </van-tabbar-item>
+    <van-tabbar-item>
+      <view class="flexCol">
+        <van-icon name="user-o" size="55rpx" />
+        <text class="tabbarText">我的</text>
+      </view>
+    </van-tabbar-item>
+    
 </van-tabbar>

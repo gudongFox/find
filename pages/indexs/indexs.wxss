@@ -36,3 +36,12 @@ page {
   display: none;
   flex: 1;
 }
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabbarText {
+  font-size: 25rpx;
+}

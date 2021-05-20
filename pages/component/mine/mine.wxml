@@ -5,12 +5,12 @@
         <van-image width="80" round height="80"
         src="{{serverProfile}}" />
         <view class="flexStart">
-          <text style="font-size:40rpx;color:black">{{serverName}}</text>
+          <text style="color:black">{{serverName}}</text>
           <text style="text-align:left">{{serverLocation}}</text>
         </view> 
         <view class="specialBlock"></view> 
         <!-- 二维码 -->
-        <van-icon name="qr" size="90rpx" color="#00AA00" bind:click="getQRCode" />
+        <van-icon name="qr" size="120rpx" color="#00AA00" bind:click="getQRCode" />
       </view>
       <view class="flexRow" style="justify-content:space-around;">
         <view style="display:flex;flex-direction:column;align-items:center">

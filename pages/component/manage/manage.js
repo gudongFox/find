@@ -71,6 +71,7 @@ Component({
       // console.log("获取openid");
       // console.log(serverId);
       // serverId = "liling";
+      // 如果是“客户新需求”标签页
       if (that.data.activeTab == 0) {
         // 查询客户新需求
         wx.request({
@@ -86,7 +87,7 @@ Component({
             for (var i = 0; i < res.data.length; i++) {
               var clientInfo = res.data[i].client;
               var demandInfo = res.data[i].demand;
-              if(clientInfo == null || demandInfo == null){
+              if (clientInfo == null || demandInfo == null) {
                 continue;
               }
               // 根据服务类型判断图标
@@ -164,7 +165,37 @@ Component({
             })
           }
         })
+      } else if (that.data.activeTab == 2) {
+        // 查询客户接单参数
+        wx.request({
+          url: "http://129.211.68.243:8080/server/getServerParameter/" + serverId,
+          method: "GET",
+          header: {
+            'content-type': 'application/json' // GET方式
+          },
+          success(res) {
+            console.log("客户接单时段及参数")
+            console.log(res);
+            // 若接单参数为空，则向其中插入初值
+            if (res.data == "") {
+              wx.request({
+                url: "http://129.211.68.243:8080/server/updateServerParameter/" + serverId + "/" + that.data.maxDistance + "/" + that.data.maxInterDistance + "/" + that.data.minServicLength + "/" + that.data.maxInterLength,
+                method: "POST",
+                header: {
+                  // GET方式
+                  // 'content-type': 'application/json'
+                  // POST方式
+                  "content-type": "application/x-www-form-urlencoded"
+                },
+                success(res) {
+                  console.log("成功插入初始参数");
+                }
+              })
+            }
+          }
+        })
       }
+
     },
 
     // 改变出发上门最大距离
