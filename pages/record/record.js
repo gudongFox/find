@@ -149,7 +149,7 @@ Page({
       url: '/pages/record/serverInfo/serverInfo?id='+id,
     })
   },
-  //跳转到服务人详情页
+  //扫描二维码
   toAddServer:function(e){
     // wx.navigateTo({
     //   url: '/pages/record/addServer/addServer',
@@ -161,7 +161,7 @@ Page({
         var clientId = wx.getStorageSync('openid')
         if(serverId==clientId){
           wx.showToast({
-            title: '禁止添加自己本人',
+            title: '禁止添加自己',
           })
         }else{
           wx.request({
