@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderNumber: '2021.5.5',
+    orderNumber: '',
     time:'待服务人处理',
     clientName: '马先生',
     tel: '13368227224',
@@ -14,8 +14,9 @@ Page({
     serviceType: '家庭保洁',
     serverName: '王阿姨',
     beginTime: '2021-5-5 8:00',
-    times: 1,
-    remark: ''
+    times: '',
+    remark: '',
+    intervalDays: ''
 
   },
   onLoad:function(e){
@@ -43,7 +44,8 @@ Page({
           serverName: demandsInfo[0].serverName,
           beginTime: demandsInfo[0].startTime,
           times: demandsInfo[0].times,
-          remark:demandsInfo[0].demandComment
+          remark:demandsInfo[0].demandComment,
+          intervalDays: demandsInfo[0].intervalDays
         })
       }
     })

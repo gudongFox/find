@@ -34,6 +34,36 @@
  }
  .display-center{
   display: flex;
-  justify-content: center; 
+  justify-content: center;
+}
+.display-center1{
+  display: flex;
+  justify-content: center;
+  width: 35px;
+  height: 15px;
+  background-color: #f7d28456;
+  border-width: medium;
+  border: 3rpx solid #bdb9b9;
+  margin-left: 4rpx;
+}
+.display-center2{
+  display: flex;
+  justify-content: center;
+  width: 35px;
+  height: 15px;
+  background-color: white;
+  border-width: medium;
+  border: 3rpx solid #bdb9b9;
+  margin-left: 4rpx;
+}
+.display-center3{
+  display: flex;
+  justify-content: center;
+  width: 35px;
+  height: 15px;
+  background-color: white;
+  border-width: medium;
+  border: 3rpx solid #e01717;
+  margin-left: 4rpx;
 }
  

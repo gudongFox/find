@@ -1,14 +1,13 @@
 <!--pages/manage/manage.wxml-->
 <view>
   <view>
-    <van-tabs active="{{ active }}" sticky color="#8A2BE2" class="tabw">
+    <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
       <van-tab title="待执行订单">
-
-        <view class="margin1">
-          <van-icon name="bell" color="#8A2BE2" />
-          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">2021.01.11</text>
+        <view wx:for="{{orderList}}" wx:key="orderId" data-id="{{item.orderId}}" bindtap="onclick">
+          <view class="margin1">
+          <van-icon name="clock" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:1rem">{{item.startTime}}</text>
         </view>
-        <view wx:for="{{demandList}}" wx:key="demandId" data-id="{{item.demandId}}" bindtap="toServiceInfo">
     <van-cell-group>
       <van-cell>
         <van-row>
@@ -34,17 +33,18 @@
     </van-cell-group>
   <view class="divLine"></view>
   </view>
-      </van-tab>
+  <view class='placeholder'></view>
+</van-tab>
       <van-tab title="历史记录">
         <view style="margin-top:5px">
-        <van-cell title="选择单个日期" value="{{ date }}" bind:click="onDisplay" />
-        <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top"/>
-        <view class="margin1">
-          <van-icon name="bell" color="#8A2BE2" />
-          <text style="color:#8A2BE2;font-size:small;margin-left:1rem">{{ date }}</text>
-        </view>
-        <view wx:for="{{demandList}}" wx:key="demandId" data-id="{{item.demandId}}">
+        <van-cell title="选择单个日期" value="{{ defaultDate }}" bind:click="onDisplay" />
+        <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top" min-date="{{ minDate }}" default-date="{{defaultDate}}"/>
+        <view wx:for="{{historyList}}" wx:key="orderId" data-id="{{item.orderId}}" bindtap="onclick">
           <van-cell-group>
+            <view class="margin1">
+          <van-icon name="clock" color="#00AA00" />
+          <text style="color:#00AA00;font-size:small;margin-left:1rem">{{item.startTime}}</text>
+        </view>
             <van-cell clickable="true">
               <van-row>
                 <van-col span="5">
@@ -58,7 +58,7 @@
                 </van-col>
                 <van-col span="10">
                   <view class="display-center">
-                    <text class="textsmall">7月8日，8:00-10:00</text>
+                    <text class="textsmall">{{item.startTime}}</text>
                   </view>
                   <view class="display-center">
                     <text class="textsmall">{{item.times}}次</text>
@@ -78,6 +78,7 @@
           </van-cell-group>
         </view>
       </view>
+      <view class='placeholder'></view>
       </van-tab>
     </van-tabs>
   </view>

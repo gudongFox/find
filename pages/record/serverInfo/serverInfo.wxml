@@ -1,33 +1,68 @@
 <view class="margin1">
-  <van-icon name="bell" color="#8A2BE2" />
-  <text style="color:#8A2BE2;font-size:small;margin-left:1rem">服务人基本资料</text>
+  <van-icon name="clock" color="#00AA00" />
+  <text style="color:#00AA00;font-size:small;margin-left:1rem">服务人基本资料</text>
 </view>
 <view class="margin2,whitebackground,top">
-  <van-cell-group>
-    <van-field name="name" type="number" label="服务人" title-width="30%" border="{{ false }}" value="{{server.serverName}}"
-      bind:change="onChange" readonly>
-      <van-button slot="button" size="small" type="primary">
-      联络
-      </van-button>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field name="gender"  label="性别" title-width="30%" border="{{ false }}" value="{{server.serverGender}}" readonly/>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field name="age"  label="年龄" title-width="30%" border="{{ false }}" value="{{server.serverAge}}" readonly/>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field name="servertype"  label="服务项目" title-width="30%" border="{{ false }}" value="{{server.servertype}}" readonly/>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field name="location"  label="出发位置" title-width="30%" border="{{ false }}" value="{{server.serverLocation}}" readonly/>
-  </van-cell-group>
-    <van-cell-group>
-    <van-field name="times"  label="直接客户数" title-width="30%" border="{{ false }}" value="{{server.times}}人" readonly/>
-    </van-cell-group>
-    <van-cell-group>
-    <van-field name="remark"  label="推荐理由" title-width="30%" border="{{ false }}" value="{{server.remark}}" readonly/>
-    </van-cell-group>
+  <view class="firstM">
+<view class="displayInline">
+  <view class="secondV">
+    <view class="textsmall,secondM">服务人姓名</view> 
+  </view>
+  <view class="thirdV">
+    <view class="textsmall,secondM">{{server.serverName}}</view>
+  </view>
 </view>
-<van-button slot="button" size="small" type="primary" style="margin-left:500rpx">查看日程</van-button>
+<view class="displayInline">
+  <view class="secondV">
+    <view class="textsmall,secondM">性别</view>
+  </view>
+  <view class="thirdV">
+    <view class="textsmall,secondM">{{server.serverGender}}</view>
+  </view>
+</view>
+<view class="displayInline">
+  <view class="secondV">
+    <view class="textsmall,secondM">年龄</view>
+  </view>
+  <view class="thirdV">
+    <view class="textsmall,secondM">{{server.serverAge}}</view>
+  </view>
+</view>
+<view class="displayInline">
+  <view class="secondV">
+    <view class="textsmall,secondM">服务项目</view>
+  </view>
+  <view class="thirdV">
+    <view class="textsmall,secondM">{{server.servertype}}</view>
+  </view>
+</view>
+<view class="displayInline">
+  <view class="secondV,endV">
+    <view class="textsmall,secondM">出发位置</view>
+  </view>
+  <view class="thirdV,endV">
+    <view class="textsmall,secondM">{{server.serverLocation}}</view>
+  </view>
+</view>
+
+  </view>
+  <view class="firstM" style="padding-top:5px">
+<view class="displayInline">
+  <view class="secondV">
+    <view class="textsmall,secondM">直接客户数</view>
+  </view>
+  <view class="thirdV">
+    <view class="textsmall,secondM">1人</view>
+  </view>
+</view>
+<view class="displayInline">
+  <view class="secondV,endV">
+    <view class="textsmall,secondM">推荐理由</view>
+  </view>
+  <view class="thirdV,endV">
+    <view class="textsmall,secondM">本周有部分空余服务时间</view>
+  </view>
+</view>
+  </view>
+</view>
+<van-button slot="button" size="small" type="primary" style="margin-left:580rpx">查看日程</van-button>

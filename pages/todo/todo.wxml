@@ -1,4 +1,4 @@
-<view class="margin1" style="color:#8A2BE2">
+<view class="margin1" style="color:#00AA00">
   <van-icon name="star" />
   <text> 需求详情</text>
 </view>
@@ -21,10 +21,6 @@
   </van-cell-group>
   <van-cell-group>
     <van-field label="服务位置" title-width="30%"  model:value="{{location}}" readonly>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field label="门牌号" title-width="30%"  model:value="{{doorNumber}}" readonly>
     </van-field>
   </van-cell-group>
   <van-cell-group>

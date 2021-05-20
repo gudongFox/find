@@ -4,12 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    demandList:[{
-      demandId:3,clientId:"zhanglaoshi",serviceProject:"家庭保洁",mandatorId:"0",mandatorName:"",serverId:"liling",serverName:"李玲",startTime:"2020-07-08T00:00:00",endTime:"2020-07-08T02:00:00",times:10,intervalDays:7,demandComment:""
-    },
-    {
-      demandId:4,clientId:"zhanglaoshi",serviceProject:"钟点工",mandatorId:"0",mandatorName:"",serverId:"liling",serverName:"李玲",startTime:"2020-07-08T00:00:00",endTime:"2020-07-08T02:00:00",times:10,intervalDays:7,demandComment:""
-    }],
+    demandList:[],
     active: 0,
     userInfo: {},
     hasUserInfo: false,
@@ -18,6 +13,7 @@ Page({
   },
 
   onLoad: function () {
+    wx.stopPullDownRefresh()
     var that = this;
     wx.request({
       url: 'http://129.211.68.243:8080/demand/detail',
@@ -27,18 +23,32 @@ Page({
       },
       success:function(res){
         var list = res.data.data.demandsInfo
-        console.log(res)
         for(let i = 0; i < list.length; i++){
           var s = list[i].startTime;
+          var s1 = list[i].endTime
           if(s != null){
-            s = s.substring(0,10)
-            console.log(s)
-            list[i].startTime = s
+            s = s.substring(0,16)
+            s1 = s1.substring(11,16)
+            list[i].startTime = s + '~' + s1
           }
-        }
-          that.setData({
-            demandList:list
+          wx.request({
+            url: 'http://129.211.68.243:8080/server/info',
+            method:"GET",
+            data:{
+              serverId: list[i].serverId,
+            },
+            success:function(res){
+              var imageUrl = res.data.data.serverInfo.serverProfile
+              list[i].imageUrl = imageUrl
+              if(i == list.length - 1){
+                that.setData({
+                  demandList:list
+                })
+                console.log(list)
+              }
+            }
           })
+        }
       }
     })
   },
@@ -66,5 +76,8 @@ Page({
     wx.navigateTo({
       url: '/pages/todo/todo?demandId='+demandId,
     })
-  }
+  },
+  onPullDownRefresh: function () {
+    this.onLoad(); //重新加载onLoad()
+  },
 })

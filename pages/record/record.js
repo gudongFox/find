@@ -32,7 +32,11 @@ Page({
       minDate: new Date(2010, 0, 1).getTime(),
       maxDate: new Date(2010, 0, 31).getTime(),
   },
-  onLoad: function () {
+  onLoad: function(){
+    wx.stopPullDownRefresh()
+    this.loadPage()
+  },
+  loadPage: function () {
     var that = this
     wx.login({
       success: function(res) {
@@ -150,10 +154,18 @@ Page({
     })
   },
   //扫描二维码
+    //跳转到信任服务人详情页
+    toBelieveInfo:function(e){
+      console.log(e)
+      var id = e.currentTarget.dataset.id
+      console.log(id)
+      wx.navigateTo({
+        url: '/pages/record/believeInfo/believeInfo?id='+id,
+      })
+    },
+  
   toAddServer:function(e){
-    // wx.navigateTo({
-    //   url: '/pages/record/addServer/addServer',
-    // })
+    var that = this
     wx.scanCode({
       success(res){
         console.log(res.result)
@@ -178,17 +190,42 @@ Page({
                 duration: 2000
               })
               onload();
+        // if(serverId==clientId){
+        //   wx.showToast({
+        //     title: '禁止添加自己本人',
+        //   })
+        // }else{
+        //   wx.request({
+        //     url: 'http://129.211.68.243:8080/client_server/info',
+        //     method: 'POST',
+        //     data: {
+        //       serverId: serverId,
+        //       clientId: clientId
+        //     },
+        //     success:function(){
+        //       wx.showToast({
+        //         title: '添加服务人成功',
+        //         icon: 'success',
+        //         duration: 2000
+        //       })
+        //       onload();
               
-            },
-            fail:function(){
-              wx.showToast({
-                title: '添加失败，请检查网络',
-              })
-            }
-          })
-        }
+        //     },
+        //     fail:function(){
+        //       wx.showToast({
+        //         title: '添加失败，请检查网络',
+        //       })
+        //     }
+        //   })
+        // }
         
+              }
+        })
+        }
       }
-    })
-  }
+      })
+    },
+  onPullDownRefresh: function () {
+    this.onLoad(); //重新加载onLoad()
+  },
 })
