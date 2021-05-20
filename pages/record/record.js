@@ -153,7 +153,16 @@ Page({
       url: '/pages/record/serverInfo/serverInfo?id='+id,
     })
   },
-  //跳转到服务人详情页
+    //跳转到信任服务人详情页
+    toBelieveInfo:function(e){
+      console.log(e)
+      var id = e.currentTarget.dataset.id
+      console.log(id)
+      wx.navigateTo({
+        url: '/pages/record/believeInfo/believeInfo?id='+id,
+      })
+    },
+  
   toAddServer:function(e){
     var that = this
     wx.scanCode({

@@ -165,7 +165,8 @@ Page({
   change1:function(){
     var that = this;
     that.setData({
-      showServiceKind: false
+      showServiceKind: false,
+      showTime: false
     })
   },
   show3:function(e){
@@ -188,12 +189,6 @@ Page({
     console.log(demand)
     var begin = that.data.day
     that.showServer(begin,demand.startTime)
-  },
-  change3:function(){
-    var that = this;
-    that.setData({
-      showTime: false
-    })
   },
   show4:function(e){
     var that = this;

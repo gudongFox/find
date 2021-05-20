@@ -30,7 +30,8 @@
     "pages/receiveSubOrderServer/receiveSubOrderServer",
     "pages/record/addServer/addServer",
     "pages/makeQRCode/makeQRCode",
-    "pages/manage/orderDetail/orderDetail"
+    "pages/manage/orderDetail/orderDetail",
+    "pages/record/believeInfo/believeInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
