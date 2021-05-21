@@ -40,9 +40,12 @@ Page({
         var list = res.data.data.dailyOrders
         for(let i = 0; i < list.length; i++){
           var s = list[i].startTime;
+          var s1 = list[i].endTime
           if(s != null){
-            s = s.substring(0,10)
-            list[i].startTime = s
+            list[i].endTime = s.substring(0,10).replaceAll('-','/')
+            s = s.substring(5,16)
+            s1 = s1.substring(11,16)
+            list[i].startTime = parseInt(s.substring(0,2))+"月"+ parseInt(s.substring(3,5))+"日，"+s.substring(6,11) + '-' + s1
           }
         }
         that.setData({
@@ -63,9 +66,12 @@ Page({
         var list = res.data.data.executingOrders
         for(let i = 0; i < list.length; i++){
           var s = list[i].startTime;
+          var s1 = list[i].endTime
           if(s != null){
-            s = s.substring(0,10)
-            list[i].startTime = s
+            list[i].endTime = s.substring(0,10).replaceAll('-','/')
+            s = s.substring(5,16)
+            s1 = s1.substring(11,16)
+            list[i].startTime = parseInt(s.substring(0,2))+"月"+ parseInt(s.substring(4,5))+"日，"+s.substring(6,11) + '-' + s1
           }
         }
           that.setData({

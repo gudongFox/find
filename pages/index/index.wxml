@@ -4,21 +4,20 @@
     <van-icon name="clock" color="#00AA00" />
     <text style="color:#00AA00;font-size:small;margin-left:7px">已提交的新需求</text>
   </view>
-  <view wx:for="{{demandList}}" wx:key="demandId" data-id="{{item.demandId}}" bindtap="toServiceInfo">
+  <view style="margin:5px" wx:for="{{demandList}}" wx:key="demandId" data-id="{{item.demandId}}" bindtap="toServiceInfo">
     <van-cell-group>
       <van-cell>
         <van-row>
           <van-col span="4">
-            <van-image round width="50" height="50" src="{{item.imageUrl}}" />
-            <view class="display-center" style="color:black"><text>{{item.serverName}}</text></view>
+            <van-image round width="50" height="50" src="{{item.imageUrl}}"/>
+            <view class="display-center,textsmall" style="color:black"><text>{{item.serverName}}</text></view>
           </van-col>
           <van-col span="7">
             <van-tag plain type="danger" size="medium" round>待服务人处理</van-tag>
             <view wx:if="{{item.mandatorId !='0'}}" style="margin:10px">
-              <van-icon name="arrow" size="80rpx"/>
-              <van-icon name="question-o" size="80rpx" color="red"/>
+              <van-icon name="arrow" size="70rpx"/>
+              <van-icon name="question-o" size="70rpx" color="red"/>
             </view>
-            
           </van-col>
           <van-col span="13">
             <van-tag plain type="primary" size="medium">{{item.serviceProject}}</van-tag>
@@ -33,7 +32,6 @@
         </van-row>
       </van-cell>
     </van-cell-group>
-  <view class="divLine"></view>
   </view>
   <view class="page__hd" style="position:fixed; bottom:200rpx; right:100rpx;width: 50rpx;">
   <van-icon name="add" size="120rpx" color="#00AA00" bind:click="onclick"/>
