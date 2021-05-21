@@ -253,7 +253,7 @@ public class ServerController {
      * @param serverParameter
      * @return  -> 成功 0 -> 失败
      */
-    @RequestMapping(value = "/updateServerParameter/{server_id}/{max_distance}/{max_interval_distance}/{min_service_time}/{min_interval_time}")
+    @RequestMapping(value = "/updateServerParameter/{server_id}")
     public int updateServerParameter(@PathVariable String server_id, @RequestBody ServerParameter serverParameter) {
         if(serverService.getServerParameter(server_id) == null){
             return serverService.insertPara(serverParameter);
