@@ -16,12 +16,14 @@ Page({
     beginTime: '2021-5-5 8:00',
     times: '',
     remark: '',
-    intervalDays: ''
+    intervalDays: '',
+    imageUrl: ''
 
   },
   onLoad:function(e){
     var that = this
     var demandId = e.demandId
+    var image = e.image
     wx.request({
       url: 'http://129.211.68.243:8080/demand/detail/',
       header: {
@@ -45,7 +47,8 @@ Page({
           beginTime: demandsInfo[0].startTime,
           times: demandsInfo[0].times,
           remark:demandsInfo[0].demandComment,
-          intervalDays: demandsInfo[0].intervalDays
+          intervalDays: demandsInfo[0].intervalDays,
+          imageUrl: image
         })
       }
     })

@@ -1,1 +1,24 @@
 /* pages/manage/manage.wxss */
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexIcon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.divLine{
+  background: #D1D1D1;
+  width: 750rpx;
+  height: 5rpx;
+}
+.tagLocation{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 10rpx;
+}

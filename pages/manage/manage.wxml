@@ -3,82 +3,73 @@
   <view>
     <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
       <van-tab title="待执行订单">
-        <view wx:for="{{orderList}}" wx:key="orderId" data-id="{{item.orderId}}" bindtap="onclick">
-          <view class="margin1">
-          <van-icon name="clock" color="#00AA00" />
-          <text style="color:#00AA00;font-size:small;margin-left:1rem">{{item.startTime}}</text>
-        </view>
-    <van-cell-group>
-      <van-cell>
-        <van-row>
-          <van-col span="4">
-            <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-            <view class="display-center"><text>{{item.serverName}}</text></view>
-          </van-col>
-          <van-col span="7">
-            <van-tag plain type="danger" size="medium" round>待服务人执行</van-tag>
-          </van-col>
-          <van-col span="13">
-            <van-tag plain type="primary" size="medium">{{item.serviceProject}}</van-tag>
-            <view class="display-center">
-              <text class="textsmall">{{item.startTime}}</text>
-            </view>
-            <view class="divLine"></view>
-            <view class="display-center">
-              <text class="textsmall">共{{item.times}}次/间隔{{item.intervalDays}}天</text>
-            </view>
-          </van-col>
-        </van-row>
-      </van-cell>
-    </van-cell-group>
-  <view class="divLine"></view>
-  </view>
-  <view class='placeholder'></view>
-</van-tab>
-      <van-tab title="历史记录">
-        <view style="margin-top:5px">
-        <van-cell title="选择单个日期" value="{{ defaultDate }}" bind:click="onDisplay" />
-        <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top" min-date="{{ minDate }}" default-date="{{defaultDate}}"/>
-        <view wx:for="{{historyList}}" wx:key="orderId" data-id="{{item.orderId}}" bindtap="onclick">
+        <view style="margin:5px" wx:for="{{orderList}}" wx:key="orderId" data-id="{{item.orderId}}"  data-time="{{item.endTime}}" data-image="{{item.imageUrl}}" bindtap="onclick">
+          <view class="margin1,flexStart">
+            <van-icon name="clock" color="#00AA00" />
+            <text style="color:#00AA00;font-size:small;margin-left:7px">{{item.endTime}}</text>
+          </view>
           <van-cell-group>
-            <view class="margin1">
-          <van-icon name="clock" color="#00AA00" />
-          <text style="color:#00AA00;font-size:small;margin-left:1rem">{{item.startTime}}</text>
-        </view>
             <van-cell clickable="true">
-              <van-row>
-                <van-col span="5">
-                  <view class="display-center">
-                    <van-icon name="wap-home-o" size="30px" color="#00BBFF" />
+              <view class="flexIcon">
+                <view class="flexCol">
+                  <view class="flexIcon" style="width:100rpx;">
+                    <van-image round width="50" height="50" src="{{item.imageUrl}}" />
                   </view>
-                  <view class="display-center"><text style="color:#00BBFF">{{item.serviceProject}}</text></view>
-                </van-col>
-                <van-col span="5">
-                  <view><text class="textblack">{{clientName}}</text></view>
-                </van-col>
-                <van-col span="10">
-                  <view class="display-center">
-                    <text class="textsmall">{{item.startTime}}</text>
+                  <text>{{item.serverName}}</text>
+                </view>
+                <view class="flexCol">
+                  <view  style="width:300rpx;">
+                    <van-tag plain type="primary" size="medium">{{item.serviceProject}}</van-tag>
+                    <view class="display-center">
+                      <text class="textsmall">{{item.startTime}}</text>
+                    </view>
+                    <view class="divLine"></view>
+                    <view class="display-center">
+                      <text class="textsmall">共 {{item.times}} 次 / 间隔 {{item.intervalDays}} 天</text>
+                    </view>
                   </view>
-                  <view class="display-center">
-                    <text class="textsmall">{{item.times}}次</text>
-                  </view>
-                  <view class="display-center">
-                    <text class="textsmall">{{clientLocation}}</text>
-                  </view>
-                </van-col>
-                <van-col span="4">
-                  <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-                  <view class="display-center"><text>{{item.serverName}}</text></view>
-                </van-col>
-              </van-row>
-
+                </view>
+              </view>
             </van-cell>
-
           </van-cell-group>
         </view>
-      </view>
-      <view class='placeholder'></view>
+      </van-tab>
+      <van-tab title="历史记录">
+        <view style="margin-top:5px">
+          <van-cell title="选择单个日期" value="{{ defaultDate }}" bind:click="onDisplay" />
+          <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top"
+            min-date="{{ minDate }}" default-date="{{defaultDate}}" />
+          <view style="margin:5px" wx:for="{{historyList}}" wx:key="orderId" data-id="{{item.orderId}}" data-time="{{item.endTime}}" data-image="{{item.imageUrl}}" bindtap="onclick">
+            <view class="margin1,flexStart">
+            <van-icon name="clock" color="#00AA00" />
+            <text style="color:#00AA00;font-size:small;margin-left:7px">{{item.endTime}}</text>
+          </view>
+            <van-cell-group>
+            <van-cell clickable="true">
+              <view class="flexIcon">
+                <view class="flexCol">
+                  <view class="flexIcon" style="width:100rpx;">
+                    <van-image round width="50" height="50" src="{{item.imageUrl}}" />
+                  </view>
+                  <text>{{item.serverName}}</text>
+                </view>
+                <view class="flexCol">
+                  <view  style="width:300rpx;">
+                    <van-tag plain type="primary" size="medium">{{item.serviceProject}}</van-tag>
+                    <view class="display-center">
+                      <text class="textsmall">{{item.startTime}}</text>
+                    </view>
+                    <view class="divLine"></view>
+                    <view class="display-center">
+                      <text class="textsmall">共 {{item.times}} 次 / 间隔 {{item.intervalDays}} 天</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </van-cell>
+          </van-cell-group>
+          </view>
+        </view>
       </van-tab>
     </van-tabs>
   </view>
