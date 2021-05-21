@@ -38,3 +38,12 @@
   display: flex;
   flex-direction: column;
 }
+
+text {
+  font-size: large;
+  color: black;
+}
+
+.itemName {
+  font-size: large;
+}

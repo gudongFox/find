@@ -1,14 +1,4 @@
 /* pages/todoService/todoService.wxss */
-.specialLine{
-  width: 750rpx;
-  height: 15rpx;
-}
-
-.specialBlock {
-  width: 15rpx;
-  height: 10rpx;
-}
-
 .flexStart {
   display: flex;
   flex-direction: row;
@@ -37,4 +27,13 @@
 .flexCol {
   display: flex;
   flex-direction: column;
+}
+
+text {
+  font-size: large;
+  color: black;
+}
+
+.itemName {
+  font-size: large;
 }

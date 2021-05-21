@@ -21,7 +21,7 @@
                     <text style="color:black;">{{item.substitutedClientName}}</text>
                     <van-tag type="warning" plain>{{item.substitutedUnfinishedTimes}}</van-tag>
                   </view>
-                  <text style="text-align:left;">{{item.substitutedClientLocation}}</text>
+                  <text style="text-align:left;font-size:medium">{{item.substitutedClientLocation}}</text>
                 </view>
                 <view style="display:flex;flex-direction:column">
                   <van-tag mark>{{item.serviceTimes}}</van-tag>
@@ -54,7 +54,7 @@
                 <van-image round width="50" height="50" src="{{item.partnerProfile}}" />
                 <view class="flexCol" style="width:400rpx">
                   <text style="color:black;">{{item.partnerName}}</text>
-                  <text>{{item.partnerLocation}}</text>
+                  <text style="font-size: medium">{{item.partnerLocation}}</text>
                 </view>
                 <view style="display:flex;flex-direction:column;">
                   <van-tag mark>{{item.partnerServiceTimes}}</van-tag>
@@ -62,7 +62,7 @@
                 </view>
               </view>
             </van-cell>
-            <view class="divLine"></view>
+            <!-- <view class="divLine"></view> -->
           </van-cell-group>
         </view>
       </van-tab>

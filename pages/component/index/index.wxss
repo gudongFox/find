@@ -34,41 +34,6 @@
   align-items: center;
 }
 
-.divLine{
-  background: #D1D1D1;
-  width: 750rpx;
-  height: 5rpx;
-}
-
-.textmedium{
-  font-size: medium;
-  align-self: center;
-}
-.textsmall{
-  font-size: small;
-}
-.textbig{
+text {
   font-size: large;
 }
-.textblack{
-  color: #000;
-}
-.textgreen{
-  color: green;
-}
-.tabw{
-  display: inline !important;
-}
-.textred{
-  color: red;
-}
-.textwhite{
-  color: white;
-}
-
-.calendar {
-  --calendar-height: 500rpx;
-}
-
-
-

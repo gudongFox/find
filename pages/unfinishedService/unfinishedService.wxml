@@ -1,40 +1,40 @@
 <view class="flexRow">
   <view class="flexStart">
     <van-icon name="clock" color="#00AA00" />
-    <text style="color:#00AA00;font-size:small;margin-left:15rpx">订单详情</text>
+    <text style="color:#00AA00;margin-left:15rpx">订单详情</text>
   </view>
 </view>
 
 <view>
-  <van-cell-group custom-class="margin2">
+  <van-cell-group>
     <van-cell>
       <view class="flexCell">
-        <view>订单号</view>
-        <view class="textblack">{{orderId}}</view>
+        <view class="itemName">订单号</view>
+        <text>{{orderId}}</text>
       </view>
       <view class="flexCell">
-        <view>下单时间</view>
-        <view class="textblack" space="emsp">{{orderTime}}</view>
+        <view class="itemName">下单时间</view>
+        <text>{{orderTime}}</text>
       </view>
     </van-cell>
     <van-divider contentPosition="center"></van-divider>
     <van-cell>
       <view class="flexCell">
-        <view>客户姓名</view>
-        <view class="textblack">{{clientName}}</view>
+        <view class="itemName">客户姓名</view>
+        <text>{{clientName}}</text>
       </view>
       <view class="flexCell">
-        <view>客户性别</view>
-        <view class="textblack">{{clientGender}}</view>
+        <view class="itemName">客户性别</view>
+        <text>{{clientGender}}</text>
       </view>
       <view class="flexCell">
-        <view>联络电话</view>
-        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button>
-        <view class="textblack">{{clientPhoneNum}}</view>
+        <view class="itemName">联络电话</view>
+        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00" custom-style="font-size:medium">联络</van-button>
+        <text>{{clientPhoneNum}}</text>
       </view>
       <view class="flexCell">
-        <view>服务位置</view>
-        <view class="textblack">{{clientLocation}}</view>
+        <view class="itemName">服务位置</view>
+        <text>{{clientLocation}}</text>
       </view>
     </van-cell>
 
@@ -42,10 +42,10 @@
 
     <van-cell>
       <view class="flexCell">
-        <view>服务人</view>
-        <text style="color:black">{{serverName}}</text>
+        <view class="itemName">服务人</view>
+        <text>{{serverName}}</text>
         <van-image round width="50" height="50" src="{{serverProfile}}" />
-        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button>
+        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00" custom-style="font-size:medium">联络</van-button>
       </view>
     </van-cell>
     
@@ -53,28 +53,28 @@
 
     <van-cell>
       <view class="flexCell">
-        <view>服务类型</view>
-        <view class="textblack">{{serviceProject}}</view>
+        <view class="itemName">服务类型</view>
+        <text>{{serviceProject}}</text>
       </view>
       <view class="flexCell">
-        <view>开始时间</view>
-        <view class="textblack" space="emsp">{{serviceStartTime}}</view>
+        <view class="itemName">开始时间</view>
+        <text>{{serviceStartTime}}</text>
       </view>
       <view class="flexCell">
-        <view>结束时间</view>
-        <view class="textblack" space="emsp">{{serviceEndTime}}</view>
+        <view class="itemName">结束时间</view>
+        <text>{{serviceEndTime}}</text>
       </view>
       <view class="flexCell">
-        <view>次数/周期</view>
-        <view class="textblack">{{servicePeriod}}</view>
+        <view class="itemName">次数/周期</view>
+        <text>{{servicePeriod}}</text>
       </view>
       <view class="flexCell">
-        <view>收费标准</view>
-        <view class="textblack" space="emsp">{{serviceRate}}</view>
+        <view class="itemName">收费标准</view>
+        <text>{{serviceRate}}</text>
       </view>
       <view class="flexCell">
-        <view>备注</view>
-        <view class="textblack" space="emsp">{{serviceComment}}</view>
+        <view class="itemName">备注</view>
+        <text>{{serviceComment}}</text>
       </view>
     </van-cell>
 
@@ -84,8 +84,8 @@
 <van-divider></van-divider>
 
 <view class="flexRow">
-  <van-button round plain type="danger" custom-style="width:250rpx;height:80rpx">中止订单</van-button>
-  <van-button round type="primary" color="#00AA00" custom-style="width:250rpx;height:80rpx;">结算</van-button>
+  <van-button round plain type="danger" custom-style="width:250rpx;height:80rpx;font-size:medium">中止订单</van-button>
+  <van-button round type="primary" color="#00AA00" custom-style="width:250rpx;height:80rpx;font-size:medium">结算</van-button>
 </view>
 
 <van-divider contentPosition="center">已经到底啦</van-divider>

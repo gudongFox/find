@@ -17,7 +17,10 @@ Component({
     activeTab: 0,
     itemList: [],
     historyItemList: [],
-    historyToday: (new Date().getFullYear())+"年"+(new Date().getMonth()+1)+"月"+(new Date().getDate()+"日")
+    historyToday: (new Date().getFullYear()) + "年" + (new Date().getMonth() + 1) + "月" + (new Date().getDate() + "日"),
+    minDate: new Date('2021/04/15').getTime(),
+    defaultDate: new Date().getTime(),
+    maxDate: new Date().getTime(),
   },
 
   /**
@@ -32,15 +35,22 @@ Component({
 
     clickTab: function () {
       var that = this;
+      console.log(that.data.activeTab)
       // 获取用户ID
       var serverId = wx.getStorageSync('openid');
       // console.log("获取openid");
       // console.log(serverId);
       // serverId = "liling";
-      if (that.data.activeTab == 3) {
+      // if(that.data.activeTab == 1){
+      //   that.lifetimes.attached()
+      // }
+      if (that.data.activeTab == 2) {
         // 查询历史订单
+        var date = new Date()
+        var hisToday = that.formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes())
+        console.log(hisToday)
         wx.request({
-          url: "http://129.211.68.243:8080/server/getAllOrder/" + serverId,
+          url: "http://129.211.68.243:8080/server/getOrderByDate/" + serverId + "/" + hisToday.substring(0, 4) + "-" + hisToday.substring(4, 6) + '-' + hisToday.substring(6, 8),
           method: "GET",
           header: {
             'content-type': 'application/json' // GET方式
@@ -52,25 +62,6 @@ Component({
             for (var i = 0; i < res.data.length; i++) {
               let clientInfo = res.data[i].ClientInfo;
               let orderInfo = res.data[i].orderInfo;
-              // 判断是否为历史订单
-              var now = new Date();
-              var orderTime = orderInfo.startTime;
-              now = that.formatDate(now.getFullYear(), now.getMonth() + 1, now.getDate(), now.getHours(), now.getMinutes())
-              orderTime = that.formatDate(Number(orderTime.split(" ")[0].split("-")[0]), Number(orderTime.split(" ")[0].split("-")[1]), Number(orderTime.split(" ")[0].split("-")[2]), Number(orderTime.split(" ")[1].split(":")[0]), Number(orderTime.split(" ")[1].split(":")[1]))
-              if (now < orderTime) {
-                continue;
-              }
-              // if (now.getFullYear() < Number(orderTime.split(" ")[0].split("-")[0])) {
-              //   continue;
-              // } else if (now.getMonth() + 1 < Number(orderTime.split(" ")[0].split("-")[1])) {
-              //   continue;
-              // } else if (now.getDate() < Number(orderTime.split(" ")[0].split("-")[2])) {
-              //   continue;
-              // } else if (now.getHours() < Number(orderTime.split(" ")[1].split(":")[0])) {
-              //   continue;
-              // } else if (now.getMinutes() < Number(orderTime.split(" ")[1].split(":")[1])) {
-              //   continue;
-              // }
               let iconName = "wap-home-o";
               if (orderInfo.serviceProject == "商业保洁") {
                 iconName = "hotel-o";
@@ -106,6 +97,7 @@ Component({
             })
           }
         })
+
       }
     },
 
@@ -125,11 +117,63 @@ Component({
       return y + mon + d + h + min;
     },
 
-    selectDate: function(event){
+    selectDate: function (event) {
+      var that = this;
+      var serverId = wx.getStorageSync('openid');
       var date = event.detail;
-      this.setData ({
-        historyToday: date.getFullYear()+"年"+(date.getMonth()+1)+"月"+date.getDate()+"日"
+      this.setData({
+        historyToday: date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日"
       });
+      var hisToday = that.formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes())
+      wx.request({
+        url: "http://129.211.68.243:8080/server/getOrderByDate/" + serverId + "/" + hisToday.substring(0, 4) + "-" + hisToday.substring(4, 6) + '-' + hisToday.substring(6, 8),
+        method: "GET",
+        header: {
+          'content-type': 'application/json' // GET方式
+        },
+        success(res) {
+          console.log("历史订单");
+          console.log(res);
+          var historyItemList = [];
+          for (var i = 0; i < res.data.length; i++) {
+            let clientInfo = res.data[i].ClientInfo;
+            let orderInfo = res.data[i].orderInfo;
+            let iconName = "wap-home-o";
+            if (orderInfo.serviceProject == "商业保洁") {
+              iconName = "hotel-o";
+            } else if (orderInfo.serviceProject == "钟点工") {
+              iconName = "underway-o";
+            }
+            // 格式化上门时间
+            let serviceTime = "上门时间：未定";
+            if (orderInfo.startTime != null) {
+              let startTime = orderInfo.startTime;
+              // var endTime = orderInfo.endTime;
+              serviceTime = startTime.substring(5, 7) + "/" + startTime.substring(8, 10) + " " + startTime.substring(11, 13) + ":" + startTime.substring(14, 16)
+            }
+            // 先对数据进行JSON
+            // 再对数据进行URI编码
+            var URIClientInfo = encodeURIComponent(JSON.stringify(clientInfo))
+            var URIOrderInfo = encodeURIComponent(JSON.stringify(orderInfo))
+            var tmp = {
+              historyClickUrl: "/pages/historyService/historyService?URIClientInfo=" + URIClientInfo + "&URIOrderInfo=" + URIOrderInfo,
+              historyOrderIconName: iconName,
+              historyOrderDate: orderInfo.startTime.substring(0, 4) + "年" + orderInfo.startTime.substring(5, 7) + "月" + orderInfo.startTime.substring(8, 10) + "日",
+              historyOrderServiceProject: orderInfo.serviceProject,
+              historyOrderClientName: clientInfo.clientName,
+              historyOrderServiceTime: serviceTime,
+              historyOrderIsMulti: orderInfo.times + "次",
+              historyOrderClientLocation: clientInfo.clientLocation,
+              clientProfile: clientInfo.clientProfile,
+            };
+            historyItemList.push(tmp);
+          }
+          that.setData({
+            historyItemList: historyItemList,
+          })
+        }
+      })
+
     },
 
   },

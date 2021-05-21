@@ -8,7 +8,7 @@
         <view class="flexRow">
           <view class="flexStart">
             <van-icon name="clock" color="#00AA00" />
-            <text style="color:#00AA00;font-size:large;margin-left:15rpx">一周订单日程表</text>
+            <text style="color:#00AA00;margin-left:15rpx">一周订单日程表</text>
           </view>
           <view>
             <button size="mini" type="primary" plain="true" style="font-size:medium">修改日程</button>
@@ -39,7 +39,7 @@
         <view class="flexRow">
           <view class="flexStart">
             <van-icon name="clock" color="#00AA00" />
-            <text style="color:#00AA00;font-size:large;margin-left:15rpx">今日待执行订单</text>
+            <text style="color:#00AA00;margin-left:15rpx">今日待执行订单</text>
           </view>
         </view>
 
@@ -49,15 +49,15 @@
               <view class="flexIcon">
                 <view class="flexCol">
                   <van-icon name="{{item.iconName}}" size="50rpx" color="#66BB6A"></van-icon>
-                  <text style="font-size:10;color:#66BB6A">{{item.serviceProject}}</text>
+                  <text style="font-size:10;color:#66BB6A;font-size:small">{{item.serviceProject}}</text>
                 </view>
                 <view class="flexCol" style="align-items:flex-start">
                   <view class="flexIcon" style="width:450rpx;">
-                    <text style="font-size:large;color:black;">{{item.clientName}}</text>
-                    <text>{{item.serviceTime}}</text>
+                    <text style="color:black;">{{item.clientName}}</text>
+                    <text style="font-size:medium">{{item.serviceTime}}</text>
                     <van-tag round type="primary">{{item.isMulti}}</van-tag>
                   </view>
-                  <text>{{item.clientLocation}}</text>
+                  <text style="font-size:medium">{{item.clientLocation}}</text>
                 </view>
                 <van-image round width="50" height="50" src="{{item.clientProfile}}" />
               </view>
@@ -72,11 +72,13 @@
       <van-tab disabled></van-tab>
 
       <van-tab title="历史订单" title-style="font-size:large">
+        <!-- 根据客户信息搜索 -->
         <van-search value="{{ value }}" placeholder="请输入客户姓名" show-action bind:search="onSearch"
           bind:cancel="onCancel" />
 
-        <van-calendar show-title="{{false}}" poppable="{{ false }}" show-confirm="{{ false }}" class="calendar" bind:select="selectDate"/>
+        <van-calendar show-title="{{false}}" poppable="{{ false }}" show-confirm="{{ false }}" min-date="{{minDate}}" default-date="{{defaultDate}}" max-date="{{maxDate}}" class="calendar" bind:select="selectDate"/>
 
+        <!-- 展示日期 -->
         <view class="flexRow">
           <view class="flexStart">
             <van-icon name="clock" color="#00AA00" />
@@ -90,22 +92,19 @@
               <view class="flexIcon">
                 <view class="flexCol">
                   <van-icon name="{{item.historyOrderIconName}}" size="50rpx" color="#66BB6A"></van-icon>
-                  <text style="font-size:10;color:#66BB6A">{{item.historyOrderServiceProject}}</text>
+                  <text style="font-size:small;color:#66BB6A">{{item.historyOrderServiceProject}}</text>
                 </view>
-                <view class="flexCol" style="align-items:flex-start;width:460rpx;">
+                <view class="flexCol" style="width:460rpx;">
                   <view class="flexIcon">
-                    <text style="font-size:large;color:black;">{{item.historyOrderClientName}}</text>
-                    <view class="specialBlock"></view>
-                    <text>{{item.historyOrderServiceTime}}</text>
-                    <view class="specialBlock"></view>
+                    <text style="color:black;">{{item.historyOrderClientName}}</text>
+                    <text style="font-size:medium">{{item.historyOrderServiceTime}}</text>
                     <van-tag round type="primary">{{item.historyOrderIsMulti}}</van-tag>
                   </view>
-                  <text style="text-align:left;">{{item.historyOrderClientLocation}}</text>
+                  <text style="text-align:left;font-size:medium">{{item.historyOrderClientLocation}}</text>
                 </view>
                 <van-image round width="50" height="50" src="{{item.clientProfile}}" />
               </view>
             </van-cell>
-            <view class="divLine"></view>
           </van-cell-group>
         </view>
         <van-divider content-position="center">已经到底了</van-divider>

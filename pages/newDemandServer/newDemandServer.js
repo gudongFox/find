@@ -14,14 +14,17 @@ Page({
       {
         text: "家庭保洁",
         value: "家庭保洁",
+        icon: "wap-home-o",
       },
       {
         text: "商业保洁",
         value: "商业保洁",
+        icon: "hotel-o",
       },
       {
         text: "钟点工",
         value: "钟点工",
+        icon: "underway-o",
       },
     ],
     serviceLength: 0,

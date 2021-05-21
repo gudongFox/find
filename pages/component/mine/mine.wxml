@@ -2,32 +2,31 @@
   <van-cell>
     <view class="flexCol">
       <view class="flexRow">
-        <van-image width="80" round height="80"
-        src="{{serverProfile}}" />
+        <van-image width="80" round height="80" src="{{serverProfile}}" />
         <view class="flexStart">
           <text style="color:black">{{serverName}}</text>
-          <text style="text-align:left">{{serverLocation}}</text>
-        </view> 
-        <view class="specialBlock"></view> 
+          <text style="text-align:left;font-size: medium">{{serverLocation}}</text>
+        </view>
+        <view class="specialBlock"></view>
         <!-- 二维码 -->
         <van-icon name="qr" size="120rpx" color="#00AA00" bind:click="getQRCode" />
       </view>
       <view class="flexRow" style="justify-content:space-around;">
         <view style="display:flex;flex-direction:column;align-items:center">
           <text>{{numClient}}</text>
-          <text style="font-size:25rpx">客户数</text>
+          <text style="font-size:medium">客户数</text>
         </view>
         <view style="display:flex;flex-direction:column;align-items:center">
           <text>{{numPartner}}</text>
-          <text style="font-size:25rpx">伙伴数</text>
+          <text style="font-size:medium">伙伴数</text>
         </view>
         <view style="display:flex;flex-direction:column;align-items:center">
           <text>{{numOrder}}</text>
-          <text style="font-size:25rpx">订单数</text>
+          <text style="font-size:medium">订单数</text>
         </view>
         <view style="display:flex;flex-direction:column;align-items:center">
           <text>{{numDelegation}}</text>
-          <text style="font-size:25rpx">委托单数</text>
+          <text style="font-size:medium">委托单数</text>
         </view>
       </view>
     </view>
@@ -59,5 +58,9 @@
 </van-cell-group>
 
 <van-divider></van-divider>
+
+<van-popup show="{{ showQR }}" round custom-style="height: {{popWidth}}px; width:{{popWidth}}" bind:close="closeQR">
+  <canvas canvas-id="myQrcode" style="background:#fff;width: {{popWidth}}px; height: {{popWidth}}px;"></canvas>
+</van-popup>
 
 <van-button plain hairline type="danger" size="large" bind:click="logout">退出登录</van-button>

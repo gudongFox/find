@@ -1,33 +1,33 @@
 <view class="flexRow">
   <view class="flexStart">
     <van-icon name="clock" color="#00AA00" />
-    <text style="color:#00AA00;font-size:small;margin-left:15rpx">伙伴信息</text>
+    <text style="color:#00AA00;margin-left:15rpx">伙伴信息</text>
   </view>
 </view>
 
 <view>
-  <van-cell-group custom-class="margin2">
+  <van-cell-group>
     <van-cell>
       <view class="flexCell">
-        <view>姓名</view>
-        <view class="textblack">{{partnerName}}</view>
+        <view class="itemName">姓名</view>
+        <text>{{partnerName}}</text>
       </view>
       <view class="flexCell">
-        <view>性别</view>
-        <view class="textblack" space="emsp">{{partnerGender}}</view>
+        <view class="itemName">性别</view>
+        <text>{{partnerGender}}</text>
       </view>
       <view class="flexCell">
-        <view>年龄</view>
-        <view class="textblack" space="emsp">{{partnerAge}}</view>
+        <view class="itemName">年龄</view>
+        <text>{{partnerAge}}</text>
       </view>
       <view class="flexCell">
-        <view>联络电话</view>
-        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button>
-        <view class="textblack">{{partnerPhoneNum}}</view>
+        <view class="itemName">联络电话</view>
+        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00" custom-style="font-size:medium;">联络</van-button>
+        <text>{{partnerPhoneNum}}</text>
       </view>
       <view class="flexCell">
-        <view>位置</view>
-        <view class="textblack">{{partnerLocation}}</view>
+        <view class="itemName">位置</view>
+        <text>{{partnerLocation}}</text>
       </view>
     </van-cell>
 

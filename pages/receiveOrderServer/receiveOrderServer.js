@@ -14,7 +14,7 @@ Page({
     serviceProject: "",
     serviceTime: "2000-01-01 00:00:00",
     serviceLength: 0,
-    servicePeriod: "第0次，共0次，间隔0天",
+    servicePeriod: "第1次，共1次，间隔0天",
     rates: 0,
     serviceComment: "",
   },

@@ -47,3 +47,12 @@
   width: 300rpx;
   border-radius: 30rpx;
 }
+
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  color: white;
+}

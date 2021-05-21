@@ -23,11 +23,11 @@
 									<view class="flexIcon">
 										<text style="color:black">{{item.clientName}}</text>
 										<view class="specialBlock"></view>
-										<text style="font-size:small">{{item.serviceTime}}</text>
+										<text style="font-size:medium">{{item.serviceTime}}</text>
 										<view class="specialBlock"></view>
 										<van-tag round type="primary">{{item.isMulti}}</van-tag>
 									</view>
-									<text style="text-align:left;font-size:small">{{item.clientLocation}}</text>
+									<text style="text-align:left;font-size:medium">{{item.clientLocation}}</text>
 								</view>
 								<van-tag plain type="warning" size="medium">{{item.serviceStatus}}</van-tag>
 							</view>
@@ -62,7 +62,7 @@
                     <text style="color:black;">{{item.substitutedClientName}}</text>
                     <van-tag type="primary" plain>{{item.substitutedServiceObj}}</van-tag>
                   </view>
-                  <text style="text-align:left;font-size:small">{{item.substitutedClientLocation}}</text>
+                  <text style="text-align:left;font-size:medium">{{item.substitutedClientLocation}}</text>
                 </view>
                 <view style="display:flex;flex-direction:column">
                   <van-tag mark>{{item.serviceTimes}}</van-tag>
@@ -70,7 +70,7 @@
                 </view>
               </view>
             </van-cell>
-            <view class="divLine"></view>
+            <!-- <view class="divLine"></view> -->
           </van-cell-group>
         </view>
 

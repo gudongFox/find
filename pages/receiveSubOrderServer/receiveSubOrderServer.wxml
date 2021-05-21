@@ -1,7 +1,7 @@
 <view class="flexRow">
   <view class="flexStart">
     <van-icon name="clock" color="#00AA00" />
-    <text style="color:#00AA00;font-size:small;margin-left:15rpx">需求详情</text>
+    <text style="color:#00AA00;margin-left:15rpx">需求详情</text>
   </view>
   <!-- <view>
     <button size="mini" type="primary" plain="true">修改</button>
@@ -12,48 +12,50 @@
   <van-cell-group custom-class="margin2">
     <van-cell>
       <view class="flexCell">
-        <view>客户姓名</view>
-        <view class="textblack">{{clientName}}</view>
+        <view class="itemName">客户姓名</view>
+        <text>{{clientName}}</text>
       </view>
       <view class="flexCell">
-        <view>客户性别</view>
-        <view class="textblack" space="emsp">{{clientGender}}</view>
+        <view class="itemName">客户性别</view>
+        <text>{{clientGender}}</text>
       </view>
       <view class="flexCell">
-        <view>联络电话</view>
-        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button>
-        <view class="textblack">{{clientPhoneNum}}</view>
+        <view class="itemName">联络电话</view>
+        <van-button plain round hairline size="small" icon="phone-o" color="#00AA00" custom-style="font-size:medium">
+          联络
+        </van-button>
+        <text>{{clientPhoneNum}}</text>
       </view>
       <view class="flexCell">
-        <view>服务位置</view>
-        <view class="textblack" space="emsp">{{clientLocation}}</view>
+        <view class="itemName">服务位置</view>
+        <text>{{clientLocation}}</text>
       </view>
     </van-cell>
 
     <van-cell>
       <view class="flexCell">
-        <view>服务类型</view>
-        <view class="textblack">{{serviceProject}}</view>
+        <view class="itemName">服务类型</view>
+        <text>{{serviceProject}}</text>
       </view>
       <view class="flexCell">
-        <view>服务时间</view>
-        <view class="textblack" space="emsp">{{serviceTime}}</view>
+        <view class="itemName">服务时间</view>
+        <text>{{serviceTime}}</text>
       </view>
       <view class="flexCell">
-        <view>服务时长</view>
-        <view class="textblack" space="emsp">{{serviceLength}}小时</view>
+        <view class="itemName">服务时长</view>
+        <text>{{serviceLength}}小时</text>
       </view>
       <view class="flexCell">
-        <view>次数/周期</view>
-        <view class="textblack">{{servicePeriod}}</view>
+        <view class="itemName">次数/周期</view>
+        <text>{{servicePeriod}}</text>
       </view>
       <view class="flexCell">
-        <view>收费标准</view>
-        <view class="textblack" space="emsp">{{rates}}元/小时</view>
+        <view class="itemName">收费标准</view>
+        <text>{{rates}}元/小时</text>
       </view>
       <view class="flexCell">
-        <view>备注</view>
-        <view class="textblack" space="emsp">{{serviceComment}}</view>
+        <view class="itemName">备注</view>
+        <text>{{serviceComment}}</text>
       </view>
     </van-cell>
   </van-cell-group>
@@ -61,8 +63,14 @@
   <van-divider></van-divider>
 
   <view class="flexRow">
-    <van-button round plain type="primary" color="#00AA00" custom-style="width:250rpx;height:80rpx" bind:click="cancelOrder">取消</van-button>
-    <van-button round type="primary" color="#00AA00" custom-style="width:250rpx;height:80rpx;" bind:click="confirmOrder">形成订单</van-button>
+    <van-button round plain type="primary" color="#00AA00" custom-style="width:250rpx;height:80rpx;font-size:medium"
+      bind:click="cancelOrder">
+      取消
+    </van-button>
+    <van-button round type="primary" color="#00AA00" custom-style="width:250rpx;height:80rpx;font-size:medium"
+      bind:click="confirmOrder">
+      形成订单
+    </van-button>
   </view>
 
 </view>
