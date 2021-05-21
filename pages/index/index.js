@@ -40,15 +40,15 @@ Page({
             success:function(res){
               var imageUrl = res.data.data.serverInfo.serverProfile
               list[i].imageUrl = imageUrl
-              if(i == list.length - 1){
-                that.setData({
-                  demandList:list
-                })
-                console.log(list)
-              }
+              that.setData({
+                demandList:list
+              })
             }
           })
         }
+        that.setData({
+          demandList:list
+        })
       }
     })
   },
@@ -73,8 +73,9 @@ Page({
     console.log(e)
     var demandId = e.currentTarget.dataset.id
     var clientId = wx.getStorageSync('openid')
+    var image = e.currentTarget.dataset.image
     wx.navigateTo({
-      url: '/pages/todo/todo?demandId='+demandId,
+      url: '/pages/todo/todo?demandId='+demandId+'&image='+image,
     })
   },
   onPullDownRefresh: function () {

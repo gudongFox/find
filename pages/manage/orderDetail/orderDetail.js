@@ -16,6 +16,7 @@ Page({
     comment: "",
     serverName: '',
     serverTel: '',
+    imageUrl:''
   },
 
   /**
@@ -23,30 +24,35 @@ Page({
    */
   onLoad: function (options) {
     var orderId = options.orderId
+    var date = options.time
     var that = this;
+    var image = options.image
     wx.request({
       url: 'http://129.211.68.243:8080/order/detail',
       method:"GET",
       data:{
         clientId:wx.getStorageSync('openid'),
-        isExecuting: true
+        isExecuting: true,
+        day: that.formatDate(date)
       },
       success:function(res){
         console.log(res)
         var list = res.data.data.executingOrders
+        var list1 = res.data.data.dailyOrders
         var clientInfo = res.data.data.clientInfo
-        console.log(clientInfo)
         var orderInfo = []
         for(let i = 0; i < list.length; i++){
           if(list[i].orderId == orderId){
             orderInfo = list[i];
           }
-          var s = list[i].startTime;
-          if(s != null){
-            s = s.substring(0,10)
-            console.log(s)
-            list[i].startTime = s
+        }
+        for(let i = 0; i < list1.length; i++){
+          if(list1[i].orderId == orderId){
+            orderInfo = list1[i];
           }
+        }
+        if(orderInfo.numTimes == null){
+          orderInfo.numTimes = 1
         }
         that.setData({
           orderId: orderInfo.orderId,
@@ -60,57 +66,13 @@ Page({
           rates: orderInfo.price + "元/小时",
           comment: orderInfo.orderComment,
           serverName: orderInfo.serverName,
+          imageUrl: image
     })
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  formatDate(date) {
+    date = new Date(date);
+    return `${date.getFullYear()}-${date.getMonth().length>1?date.getMonth() + 1 : '0'+(date.getMonth()+1)}-${date.getDate()}`;
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -4,7 +4,7 @@
     <van-icon name="clock" color="#00AA00" />
     <text style="color:#00AA00;font-size:small;margin-left:7px">已提交的新需求</text>
   </view>
-  <view style="margin:5px" wx:for="{{demandList}}" wx:key="demandId" data-id="{{item.demandId}}" bindtap="toServiceInfo">
+  <view style="margin:5px" wx:for="{{demandList}}" wx:key="demandId" data-id="{{item.demandId}}"  data-image="{{item.imageUrl}}" bindtap="toServiceInfo">
     <van-cell-group>
       <van-cell>
         <van-row>

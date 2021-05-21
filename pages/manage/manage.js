@@ -47,11 +47,24 @@ Page({
             s1 = s1.substring(11,16)
             list[i].startTime = parseInt(s.substring(0,2))+"月"+ parseInt(s.substring(3,5))+"日，"+s.substring(6,11) + '-' + s1
           }
+          wx.request({
+            url: 'http://129.211.68.243:8080/server/info',
+            method:"GET",
+            data:{
+              serverId: list[i].serverId,
+            },
+            success:function(res){
+              var imageUrl = res.data.data.serverInfo.serverProfile
+              list[i].imageUrl = imageUrl
+              that.setData({
+                historyList:list
+              })
+            }
+          })
         }
         that.setData({
           historyList: list
         })
-        console.log(that.data.historyList)
       }
     }),
     wx.request({
@@ -73,6 +86,20 @@ Page({
             s1 = s1.substring(11,16)
             list[i].startTime = parseInt(s.substring(0,2))+"月"+ parseInt(s.substring(4,5))+"日，"+s.substring(6,11) + '-' + s1
           }
+          wx.request({
+            url: 'http://129.211.68.243:8080/server/info',
+            method:"GET",
+            data:{
+              serverId: list[i].serverId,
+            },
+            success:function(res){
+              var imageUrl = res.data.data.serverInfo.serverProfile
+              list[i].imageUrl = imageUrl
+              that.setData({
+                orderList:list
+              })
+            }
+          })
         }
           that.setData({
             orderList:list,
@@ -121,8 +148,10 @@ Page({
   onclick:function(e){
     console.log(e)
     var orderId = e.currentTarget.dataset.id
+    var time = e.currentTarget.dataset.time
+    var image = e.currentTarget.dataset.image
     wx.navigateTo({
-      url: '/pages/manage/orderDetail/orderDetail?orderId='+orderId,
+      url: '/pages/manage/orderDetail/orderDetail?orderId='+orderId+'&time='+time+'&image='+image,
     })
   },
   onPullDownRefresh: function () {

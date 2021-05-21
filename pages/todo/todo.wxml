@@ -1,46 +1,110 @@
-<view class="margin1" style="color:#00AA00">
-  <van-icon name="star" />
-  <text> 需求详情</text>
+<view class="flexRow">
+  <view class="flexStart" style="padding-top:10rpx;margin-left:40rpx">
+    <van-icon name="clock" color="#00AA00" />
+    <text style="color:#00AA00;font-size:small;margin-left:15rpx">需求详情</text>
+  </view>
 </view>
 <view class="margin2,whitebackground,top">
-  <van-cell-group>
-    <van-field label="订单号" title-width="30%"  model:value="{{orderNumber}}" readonly>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field label="下单时间" error title-width="30%"  model:value="{{time}}" readonly>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field label="客户姓名" title-width="30%"  model:value="{{clientName}}" readonly>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field label="联络电话" title-width="30%"  model:value="{{tel}}" readonly>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field label="服务位置" title-width="30%"  model:value="{{location}}" readonly>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field label="服务类型" title-width="30%"  model:value="{{serviceType}}" readonly>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field label="服务人" title-width="30%"  model:value="{{serverName}}" readonly>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field label="上门时间" title-width="30%"  model:value="{{beginTime}}" readonly>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field label="次数/周期" title-width="30%"  model:value="{{times}}" readonly>
-    </van-field>
-  </van-cell-group>
-  <van-cell-group>
-    <van-field label="备注" title-width="30%"  model:value="{{orderNumber}}" readonly>
-    </van-field>
-  </van-cell-group>
+  <view class="firstM">
+    <view class="displayInline">
+      <view class="secondV">
+        <view class="textsmall,secondM">订单号</view>
+      </view>
+      <view class="thirdV">
+        <view class="textsmall,secondM">{{orderId}}</view>
+      </view>
+    </view>
+    <view class="displayInline">
+      <view class="secondV,endV">
+        <view class="textsmall,secondM">下单时间</view>
+      </view>
+      <view class="thirdV,endV">
+        <view class="textsmall,secondM" style="color:red">待服务人处理</view>
+      </view>
+    </view>
+
+  </view>
+  <view class="firstM">
+    <view class="displayInline">
+      <view class="secondV">
+        <view class="textsmall,secondM">客户姓名</view>
+      </view>
+      <view class="thirdV">
+        <view class="textsmall,secondM">{{clientName}}</view>
+      </view>
+    </view>
+    <view class="displayInline">
+      <view class="secondV">
+        <view class="textsmall,secondM">联络电话</view>
+      </view>
+      <view class="thirdV">
+        <view class="textsmall,secondM">{{tel}}</view>
+      </view>
+    </view>
+    <view class="displayInline">
+      <view class="secondV,endV">
+        <view class="textsmall,secondM">服务位置</view>
+      </view>
+      <view class="thirdV,endV">
+        <view class="textsmall,secondM">{{location}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="firstM">
+    <view class="displayInline">
+      <view class="secondV,endV" style="height:120rpx">
+        <view class="textsmall,secondM" style="padding-top:30rpx">服务人</view>
+      </view>
+      <view class="thirdV,endV" style="height:120rpx;display:flex">
+        <view class="textsmall,secondM" style="padding-top:30rpx">{{serverName}}</view>
+        <view class="page__hd" style="padding-top:10rpx;margin-left:100rpx">
+        <van-image round width="50" height="50" src="{{imageUrl}}" />
+        </view>
+      </view>
+      
+    </view>
+  </view>
+  <view class="firstM" style="padding-top:5px">
+    <view class="displayInline">
+      <view class="secondV">
+        <view class="textsmall,secondM">服务类型</view>
+      </view>
+      <view class="thirdV">
+        <view class="textsmall,secondM">{{serviceType}}</view>
+      </view>
+    </view>
+    <view class="displayInline">
+      <view class="secondV">
+        <view class="textsmall,secondM">上门时间</view>
+      </view>
+      <view class="thirdV">
+        <view class="textsmall,secondM">{{beginTime}}</view>
+      </view>
+    </view>
+    <view class="displayInline">
+      <view class="secondV">
+        <view class="textsmall,secondM">次数 / 周期</view>
+      </view>
+      <view class="thirdV">
+        <view class="textsmall,secondM">共{{times}}次 / 间隔{{intervalDays}}天</view>
+      </view>
+    </view>
+    <!-- <view class="displayInline">
+      <view class="secondV">
+        <view class="textsmall,secondM">收费标准</view>
+      </view>
+      <view class="thirdV">
+        <view class="textsmall,secondM">{{rates}}</view>
+      </view>
+    </view> -->
+    <view class="displayInline">
+      <view class="secondV,endV">
+        <view class="textsmall,secondM">备注</view>
+      </view>
+      <view class="thirdV,endV">
+        <view class="textsmall,secondM">{{remark}}</view>
+      </view>
+    </view>
+  </view>
 </view>
+<van-divider contentPosition="center">已经到底啦</van-divider>

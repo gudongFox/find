@@ -3,7 +3,7 @@
   <view>
     <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
       <van-tab title="待执行订单">
-        <view style="margin:5px" wx:for="{{orderList}}" wx:key="orderId" data-id="{{item.orderId}}" bindtap="onclick">
+        <view style="margin:5px" wx:for="{{orderList}}" wx:key="orderId" data-id="{{item.orderId}}"  data-time="{{item.endTime}}" data-image="{{item.imageUrl}}" bindtap="onclick">
           <view class="margin1,flexStart">
             <van-icon name="clock" color="#00AA00" />
             <text style="color:#00AA00;font-size:small;margin-left:7px">{{item.endTime}}</text>
@@ -13,7 +13,7 @@
               <view class="flexIcon">
                 <view class="flexCol">
                   <view class="flexIcon" style="width:100rpx;">
-                    <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                    <van-image round width="50" height="50" src="{{item.imageUrl}}" />
                   </view>
                   <text>{{item.serverName}}</text>
                 </view>
@@ -39,7 +39,7 @@
           <van-cell title="选择单个日期" value="{{ defaultDate }}" bind:click="onDisplay" />
           <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top"
             min-date="{{ minDate }}" default-date="{{defaultDate}}" />
-          <view style="margin:5px" wx:for="{{historyList}}" wx:key="orderId" data-id="{{item.orderId}}" bindtap="onclick">
+          <view style="margin:5px" wx:for="{{historyList}}" wx:key="orderId" data-id="{{item.orderId}}" data-time="{{item.endTime}}" data-image="{{item.imageUrl}}" bindtap="onclick">
             <view class="margin1,flexStart">
             <van-icon name="clock" color="#00AA00" />
             <text style="color:#00AA00;font-size:small;margin-left:7px">{{item.endTime}}</text>
@@ -49,7 +49,7 @@
               <view class="flexIcon">
                 <view class="flexCol">
                   <view class="flexIcon" style="width:100rpx;">
-                    <van-image round width="50" height="50" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                    <van-image round width="50" height="50" src="{{item.imageUrl}}" />
                   </view>
                   <text>{{item.serverName}}</text>
                 </view>
