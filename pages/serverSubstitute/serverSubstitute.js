@@ -34,8 +34,8 @@ Page({
     serviceDate: "",
     serviceTime: "",
     serviceNumthTimes: "",
-    serviceTotalTimes: "",
-    serviceInterval: "",
+    serviceTotalTimes: 1,
+    serviceInterval: 0,
     servicePrice: 0,
     serviceComment: "",
     isShowDateSelection: false,
@@ -174,6 +174,7 @@ Page({
       servicePrice: this.data.servicePrice,
       serviceComment: this.data.serviceComment,
     }
+    console.log(newInfo)
     var URINewInfo = encodeURIComponent(JSON.stringify(newInfo));
     // this.setData({
     //   URINewInfo: URINewInfo,

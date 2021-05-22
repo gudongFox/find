@@ -36,7 +36,7 @@ Page({
       clientLocation: clientInfo.clientLocation,
       serviceProject: orderInfo.serviceProject,
       serviceTime: orderInfo.startTime.substring(0,16) + "~" + orderInfo.endTime.substring(11,16),
-      period: "第"+orderInfo.numTimes+"次，共"+orderInfo.times+"次，间隔"+orderInfo.intervalDays+"天",
+      period: "共"+orderInfo.times+"次，间隔"+orderInfo.intervalDays+"天",
       rates: orderInfo.price + "元/小时",
       comment: orderInfo.orderComment,
     })

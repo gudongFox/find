@@ -31,7 +31,6 @@ Component({
   methods: {
 
     mydata: function (e) {
-      console.log(e.detail.data);
       this.selectToDo(e.detail.data);
     },
 
@@ -187,6 +186,8 @@ Component({
     // 根据提起查询待执行订单
     // date格式：2021-01-01
     selectToDo: function (date) {
+      console.log("今天的待执行订单");
+      console.log(date);
       var that = this;
       var serverId = wx.getStorageSync('openid');
       wx.request({
@@ -201,11 +202,15 @@ Component({
           console.log(res);
           var itemList = [];
           for (var i = 0; i < res.data.length; i++) {
+            // 客户信息
             let orderInfo = res.data[i].orderInfo;
+            // 需求信息
             let ClientInfo = res.data[i].ClientInfo;
             // 判断是否为历史订单
             // 若今日日期大于订单日期，则为历史订单
+            // 今天
             var now = new Date();
+            // 订单日期
             var orderTime = orderInfo.startTime;
             now = that.formatDate(now.getFullYear(), now.getMonth() + 1, now.getDate(), now.getHours(), now.getMinutes())
             orderTime = that.formatDate(Number(orderTime.split(" ")[0].split("-")[0]), Number(orderTime.split(" ")[0].split("-")[1]), Number(orderTime.split(" ")[0].split("-")[2]), Number(orderTime.split(" ")[1].split(":")[0]), Number(orderTime.split(" ")[1].split(":")[1]))
@@ -249,6 +254,117 @@ Component({
       })
     },
 
+    lastMon: function () {
+      var that = this;
+      // 应该判断当前年月是否小于等于允许的最小年月
+      // 是则可以执行操作，否则将按钮变灰
+      var nowDate = new Date(this.data.minDate);
+      var nowYear = nowDate.getFullYear();
+      var nowMon = nowDate.getMonth() + 1;
+      if (nowMon > 1) {
+        var newMon = nowMon - 1;
+        var newDay = 1;
+        switch (newMon) {
+          case 1:
+          case 3:
+          case 5:
+          case 7:
+          case 8:
+          case 10:
+          case 12:
+            newDay = 31;
+          case 2:
+            newDay = 28;
+          case 4:
+          case 6:
+          case 9:
+          case 11:
+            newDay = 30;
+        }
+        // 判断平年闰年
+        if (newMon == 2 && nowYear / 4 == 0) {
+          if (nowYear % 100 == 0) {
+            if (nowYear / 400 == 0) {
+              newDay = 29;
+            } else {
+              newDay = 28;
+            }
+          } else {
+            newDay = 29;
+          }
+        }
+        that.setData({
+          chosenDate: nowYear + "年" + (nowMon - 1) + "月",
+          minDate: new Date(nowYear + '/' + (nowMon - 1) + '/1').getTime(),
+          defaultDate: new Date(nowYear + '/' + (nowMon - 1) + '/1').getTime(),
+          maxDate: new Date(nowYear + '/' + newMon + '/' + newDay).getTime(),
+        })
+      } else {
+        that.setData({
+          chosenDate: (nowYear - 1) + "年" + "12月",
+          minDate: new Date((nowYear - 1) + '/12/1').getTime(),
+          defaultDate: new Date((nowYear - 1) + '/12/1').getTime(),
+          maxDate: new Date((nowYear - 1) + '/12/31').getTime(),
+        })
+      }
+    },
+
+    nextMon: function () {
+      var that = this;
+      // 应该判断当前年月是否大于今天
+      // 是则可以执行操作，否则将按钮变灰
+      var nowDate = new Date(this.data.minDate);
+      var nowYear = nowDate.getFullYear();
+      var nowMon = nowDate.getMonth() + 1;
+      var nowDay = nowDate.getDate();
+      if (nowMon < 12) {
+        var newMon = nowMon + 1;
+        var newDay = 1;
+        switch (newMon) {
+          case 1:
+          case 3:
+          case 5:
+          case 7:
+          case 8:
+          case 10:
+          case 12:
+            newDay = 31;
+          case 2:
+            newDay = 28;
+          case 4:
+          case 6:
+          case 9:
+          case 11:
+            newDay = 30;
+        }
+        // 判断平年闰年
+        if (newMon == 2 && nowYear / 4 == 0) {
+          if (nowYear % 100 == 0) {
+            if (nowYear / 400 == 0) {
+              newDay = 29;
+            } else {
+              newDay = 28;
+            }
+          } else {
+            newDay = 29;
+          }
+        }
+        that.setData({
+          chosenDate: nowYear + "年" + newMon+ "月",
+          minDate: new Date(nowYear + '/' + newMon + '/1').getTime(),
+          defaultDate: new Date(nowYear + '/' + newMon + '/1').getTime(),
+          maxDate: new Date(nowYear + '/' + newMon + '/' + newDay).getTime(),
+        })
+      } else {
+        that.setData({
+          chosenDate: (nowYear + 1) + "年" + "1月",
+          minDate: new Date((nowYear + 1) + '/1/1').getTime(),
+          defaultDate: new Date((nowYear + 1) + '/1/1').getTime(),
+          maxDate: new Date((nowYear + 1) + '/1/31').getTime(),
+        })
+      }
+    },
+
   },
 
   /**
@@ -258,6 +374,13 @@ Component({
     attached: function () {
       var that = this;
       var serverId = wx.getStorageSync('openid');
+
+      var today = new Date()
+      that.setData({
+        chosenDate: (new Date().getFullYear())+"年"+(new Date().getMonth() + 1)+"月",
+        minDate: new Date(today.getFullYear() + '/' + (today.getMonth() + 1) + '/1').getTime()
+      })
+
       // console.log("获取openid");
       // console.log(serverId);
       // serverId = "liling"

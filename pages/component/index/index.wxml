@@ -21,27 +21,6 @@
           <calendarMonth bindmydata="mydata"></calendarMonth>
         </view>
 
-        <!-- <van-tabs color="#00AA00" sswipeable="false">
-          <van-tab title="07/08(一)">
-            <van-grid gutter="10" square="true">
-              <van-grid-item text="马先生" />
-              <van-grid-item text="李先生" />
-              <van-grid-item text="张女士" />
-              <van-grid-item text="赵女士" />
-              <van-grid-item text="马先生" />
-              <van-grid-item text="李先生" />
-              <van-grid-item text="张女士" />
-              <van-grid-item text="赵女士" />
-            </van-grid>
-          </van-tab>
-          <van-tab title="07/09(二)">内容 2</van-tab>
-          <van-tab title="07/10(三)">内容 3</van-tab>
-          <van-tab title="07/11(四)">内容 3</van-tab>
-          <van-tab title="07/12(五)">内容 3</van-tab>
-          <van-tab title="07/13(六)">内容 3</van-tab>
-          <van-tab title="07/14(日)">内容 3</van-tab>
-        </van-tabs> -->
-
         <view class="flexRow">
           <view class="flexStart">
             <van-icon name="clock" color="#00AA00" />
@@ -82,8 +61,16 @@
         <van-search value="{{ value }}" placeholder="请输入客户姓名" show-action bind:search="onSearch"
           bind:cancel="onCancel" />
 
-        <van-calendar show-title="{{false}}" poppable="{{ false }}" show-confirm="{{ false }}" min-date="{{minDate}}"
-          default-date="{{defaultDate}}" max-date="{{maxDate}}" class="calendar" bind:select="selectDate" />
+        <van-overlay show="{{ true }}"
+          custom-style="background-color:white;top:190rpx;height:90rpx;display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+          <van-button icon="arrow-left" size="small" plain hairline type="primary" bind:click="lastMon">上一个月</van-button>
+          <text>{{chosenDate}}</text>
+          <van-button icon="arrow" size="small" plain hairline type="primary" bind:click="nextMon">下一个月</van-button>
+        </van-overlay>
+        <!-- 时间选择 -->
+        <van-calendar id="hisTimer" show-title="{{false}}" poppable="{{ false }}" show-confirm="{{ false }}"
+          min-date="{{minDate}}" default-date="{{defaultDate}}" max-date="{{maxDate}}" row-height="40" class="calendar"
+          bind:select="selectDate" />
 
         <!-- 展示日期 -->
         <view class="flexRow">

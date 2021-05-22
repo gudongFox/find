@@ -166,5 +166,9 @@ Component({
       })
     },
 
+    onPullDownRefresh: function () {
+      this.clickTab(); //重新加载onLoad()
+    },
+
   },
 })

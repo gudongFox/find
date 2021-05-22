@@ -94,7 +94,7 @@ Page({
       serviceProject: newInfo.serviceProject,
       serviceTime: newInfo.serviceDate + " " + newInfo.serviceTime,
       serviceLength: newInfo.serviceLength,
-      servicePeriod: "第" + newInfo.serviceNumthTimes + "次，共" + newInfo.serviceTotalTimes + "次，间隔" + newInfo.serviceInterval + "天",
+      servicePeriod: "共" + newInfo.serviceTotalTimes + "次~间隔" + newInfo.serviceInterval + "天",
       rates: newInfo.servicePrice,
       serviceComment: newInfo.serviceComment,
     })
