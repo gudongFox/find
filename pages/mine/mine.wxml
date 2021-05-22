@@ -23,11 +23,13 @@
     <view>
       <van-row>
         <van-col span="6">
+          <view bindtap="toMyInfo">
           <view class="text_align" style="margin-top:10rpx">
             <van-icon name="manager-o" size="70rpx" color="#8A2BE2" />
           </view>
           <view class="textsmall,text_align">个人信息
           </view>
+         </view>
         </van-col>
         <van-col span="6">
           <view class="text_align" style="margin-top:10rpx">

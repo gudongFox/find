@@ -1,0 +1,20 @@
+<view class="margin1,flexStart">
+  <van-icon name="clock" color="#00AA00" />
+  <text style="color:#00AA00;font-size:medium;margin-left:7px">个人基本信息</text>
+</view>
+<view class="margin2,whitebackground,top">
+  <van-cell-group>
+  <van-field value="{{ clientInfo.clientName }}" label="我的称呼"  border="{{ true }}"/>
+  <van-field value="{{ clientInfo.clientTel }}" label="我的电话"  border="{{ true }}"/>
+  <van-field value="{{ clientInfo.clientGender }}" label="性别"  border="{{ true }}"/>
+  <van-field value="{{ clientInfo.clientAge }}" label="年龄"  border="{{ true }}"/>
+  <van-field value="{{ clientInfo.clientLocation }}" label="服务位置"  border="{{ true }}"/>
+
+</van-cell-group>
+</view>
+
+
+
+<view class="footer,button-appading">
+  <van-button plain type="primary" size="normal" style="margin-left:550rpx" bindtap="saveInfo">修改</van-button>
+</view>

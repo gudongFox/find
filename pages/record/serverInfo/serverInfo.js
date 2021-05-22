@@ -5,11 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    server: {}
+    server: {},
+    showSchedule: false
   },
   onLoad:function(e){
     var that = this
     var serverId = e.id
+    let myComponent = that.selectComponent('#myComponent')
+    myComponent.query(serverId);
     wx.request({
       url: 'http://129.211.68.243:8080/server/getServerInfo/'+serverId,
       header: {
@@ -29,6 +32,12 @@ Page({
           server:list
         })
       }
+    })
+  },
+  showSchedules:function(){
+    var that = this
+    that.setData({
+      showSchedule: true
     })
   }
 })

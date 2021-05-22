@@ -1,0 +1,11 @@
+/* pages/mine/changeMyInfo/changeMyInfo.wxss */
+.footer{
+  background-color: white;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+}
+.whitebackground{
+  background-color: white !important;
+}

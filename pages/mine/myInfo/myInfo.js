@@ -1,59 +1,43 @@
-// pages/mine/mine.js
-var image_scr = ''
+// pages/mine/myInfo/myInfo.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    num:65,
-    total:207,
-    success:95.4+'%',
-    score:3.5,
-    myImage: "https://img.yzcdn.cn/vant/cat.jpeg",
-    name:"咕咚",
     clientInfo:[]
   },
-  click:function(){
-    wx.redirectTo({
-      url: '../nav/nav',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
     var that = this
-    wx.request({
-      url: 'http://129.211.68.243:8080/client/info',
-      method:"GET",
-      data:{
-        clientId:wx.getStorageSync('openid')
-      },
-      success:function(res){
-        var clientInfo = res.data.data.client
-        console.log(res)
-        console.log(clientInfo.clientProfile)
-        that.setData({
-          myImage: clientInfo.clientProfile,
-          name: clientInfo.clientName,
-          clientInfo:clientInfo
-        })
-      }
+    var clientInfo = JSON.parse(decodeURIComponent(options.URINewInfo));
+    // 解析性别
+    if (clientInfo.clientGender == 1) {
+      clientInfo.clientGender = "男";
+    } else if (clientInfo.clientGender == 2) {
+      clientInfo.clientGender = "女";
+    } else {
+      clientInfo.clientGender = "未知";
+    }
+    that.setData({
+      clientInfo:clientInfo
     })
   },
-  toMyInfo:function(){
+  toChangeMyInfo:function(){
     var clientInfo = this.data.clientInfo
     var URINewInfo = encodeURIComponent(JSON.stringify(clientInfo));
     wx.navigateTo({
-      url: '/pages/mine/myInfo/myInfo?URINewInfo='+URINewInfo,
+      url: '/pages/mine/changeMyInfo/changeMyInfo?URINewInfo='+URINewInfo,
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
@@ -96,8 +80,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  onShow: function(){
-    this.getTabBar().init();
   }
 })
