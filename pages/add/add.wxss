@@ -84,7 +84,7 @@
 }
 .secondV{
   color:#bdb9b9;
-  width: 30%;
+  width: 35%;
   height: 25px;
   border-width: medium;
   border-top: 1rpx solid #bdb9b9;
@@ -92,7 +92,7 @@
 }
 .thirdV{
   color:black;
-  width: 70%;
+  width: 65%;
   height: 25px;
   border-width: medium;
   border-top: 1rpx solid #bdb9b9;
@@ -111,5 +111,7 @@
   margin: 10px;
 }
 .secondM{
-  margin: 5px;
+  margin-left: 5px;
+  margin-bottom: 8%;
+  margin-top: 1%;
 }

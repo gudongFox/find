@@ -19,6 +19,7 @@ Page({
     success:function(res){
       app.globalData.userInfo=res.userInfo //存储用户信息
       console.log(res.userInfo.avatarUrl)
+      console.log(res)
       wx.request({
         url: 'http://129.211.68.243:8080/client/info',
         // url: 'http://localhost:8080/client/info',
@@ -28,9 +29,9 @@ Page({
           "clientSessionKey":"test",
           "clientName":res.userInfo.nickName,
           "clientGender":res.userInfo.gender,
-          "clientAge":18,
-          "clientTel":"13368227224",
-          "clientLocation":"北京市",
+          "clientAge":22,
+          "clientTel":"133********",
+          "clientLocation":res.userInfo.province+" "+res.userInfo.city,
           "clientProfile":res.userInfo.avatarUrl
         }
       })
@@ -43,8 +44,8 @@ Page({
           "serverSessionKey":"test",
           "serverName":res.userInfo.nickName,
           "serverGender":res.userInfo.gender,
-          "serverAge":18,
-          "serverTel":"13368227224",
+          "serverAge":22,
+          "serverTel":"133********",
           "serverLocation":res.userInfo.province+" "+res.userInfo.city,
           "serverProfile":res.userInfo.avatarUrl
         }

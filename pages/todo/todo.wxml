@@ -1,25 +1,25 @@
 <view class="flexRow">
   <view class="flexStart" style="padding-top:10rpx;margin-left:40rpx">
     <van-icon name="clock" color="#00AA00" />
-    <text style="color:#00AA00;font-size:small;margin-left:15rpx">需求详情</text>
+    <text style="color:#00AA00;font-size:medium;margin-left:15rpx">需求详情</text>
   </view>
 </view>
 <view class="margin2,whitebackground,top">
   <view class="firstM">
     <view class="displayInline">
       <view class="secondV">
-        <view class="textsmall,secondM">订单号</view>
+        <view class="textmedium,secondM">订单号</view>
       </view>
       <view class="thirdV">
-        <view class="textsmall,secondM">{{orderId}}</view>
+        <view class="textmedium,secondM">{{orderId}}</view>
       </view>
     </view>
     <view class="displayInline">
       <view class="secondV,endV">
-        <view class="textsmall,secondM">下单时间</view>
+        <view class="textmedium,secondM">下单时间</view>
       </view>
       <view class="thirdV,endV">
-        <view class="textsmall,secondM" style="color:red">待服务人处理</view>
+        <view class="textmedium,secondM" style="color:red">待服务人处理</view>
       </view>
     </view>
 
@@ -27,36 +27,36 @@
   <view class="firstM">
     <view class="displayInline">
       <view class="secondV">
-        <view class="textsmall,secondM">客户姓名</view>
+        <view class="textmedium,secondM">客户姓名</view>
       </view>
       <view class="thirdV">
-        <view class="textsmall,secondM">{{clientName}}</view>
+        <view class="textmedium,secondM">{{clientName}}</view>
       </view>
     </view>
     <view class="displayInline">
       <view class="secondV">
-        <view class="textsmall,secondM">联络电话</view>
+        <view class="textmedium,secondM">联络电话</view>
       </view>
       <view class="thirdV">
-        <view class="textsmall,secondM">{{tel}}</view>
+        <view class="textmedium,secondM">{{tel}}</view>
       </view>
     </view>
     <view class="displayInline">
       <view class="secondV,endV">
-        <view class="textsmall,secondM">服务位置</view>
+        <view class="textmedium,secondM">服务位置</view>
       </view>
       <view class="thirdV,endV">
-        <view class="textsmall,secondM">{{location}}</view>
+        <view class="textmedium,secondM">{{location}}</view>
       </view>
     </view>
   </view>
   <view class="firstM">
     <view class="displayInline">
       <view class="secondV,endV" style="height:120rpx">
-        <view class="textsmall,secondM" style="padding-top:30rpx">服务人</view>
+        <view class="textmedium,secondM" style="padding-top:30rpx">服务人</view>
       </view>
       <view class="thirdV,endV" style="height:120rpx;display:flex">
-        <view class="textsmall,secondM" style="padding-top:30rpx">{{serverName}}</view>
+        <view class="textmedium,secondM" style="padding-top:30rpx">{{serverName}}</view>
         <view class="page__hd" style="padding-top:10rpx;margin-left:100rpx">
         <van-image round width="50" height="50" src="{{imageUrl}}" />
         </view>
@@ -67,42 +67,42 @@
   <view class="firstM" style="padding-top:5px">
     <view class="displayInline">
       <view class="secondV">
-        <view class="textsmall,secondM">服务类型</view>
+        <view class="textmedium,secondM">服务类型</view>
       </view>
       <view class="thirdV">
-        <view class="textsmall,secondM">{{serviceType}}</view>
+        <view class="textmedium,secondM">{{serviceType}}</view>
       </view>
     </view>
     <view class="displayInline">
       <view class="secondV">
-        <view class="textsmall,secondM">上门时间</view>
+        <view class="textmedium,secondM">上门时间</view>
       </view>
       <view class="thirdV">
-        <view class="textsmall,secondM">{{beginTime}}</view>
+        <view class="textmedium,secondM">{{beginTime}}</view>
       </view>
     </view>
     <view class="displayInline">
       <view class="secondV">
-        <view class="textsmall,secondM">次数 / 周期</view>
+        <view class="textmedium,secondM">次数 / 周期</view>
       </view>
       <view class="thirdV">
-        <view class="textsmall,secondM">共{{times}}次 / 间隔{{intervalDays}}天</view>
+        <view class="textmedium,secondM">共{{times}}次 / 间隔{{intervalDays}}天</view>
       </view>
     </view>
     <!-- <view class="displayInline">
       <view class="secondV">
-        <view class="textsmall,secondM">收费标准</view>
+        <view class="textmedium,secondM">收费标准</view>
       </view>
       <view class="thirdV">
-        <view class="textsmall,secondM">{{rates}}</view>
+        <view class="textmedium,secondM">{{rates}}</view>
       </view>
     </view> -->
     <view class="displayInline">
       <view class="secondV,endV">
-        <view class="textsmall,secondM">备注</view>
+        <view class="textmedium,secondM">备注</view>
       </view>
       <view class="thirdV,endV">
-        <view class="textsmall,secondM">{{remark}}</view>
+        <view class="textmedium,secondM">{{remark}}</view>
       </view>
     </view>
   </view>

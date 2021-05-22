@@ -113,8 +113,9 @@
   padding: 0.5em;
 }
 .placeholder{
-  width: 100%;
+  width: 1%;
   height: 5rem !important;
+  background-color: #D1D1D1;
 }
 .flexStart {
   display: flex;

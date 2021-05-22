@@ -1,17 +1,17 @@
 <view class="appading">
 	<view class="top">
 		<text wx:if="{{!showServiceKind}}">{{steps[0].text}}</text>
-		<text wx:if="{{showServiceKind}}" style="color:green" class="textsmall">订单详情</text>
+		<text wx:if="{{showServiceKind}}" style="color:green" class="textmedium">订单详情</text>
 		<van-button plain type="primary" size="small" style="margin-left:450rpx" hairline round wx:if="{{showServiceKind}}"
 			bindtap="change1">修改</van-button>
 	</view>
 	<view class="margin2，whitebackground,top,appading1" wx:if="{{!showServiceKind}}">
 		<van-row gutter="20">
-			<van-col span="7">
-				<view class="display-center"><text class="textsmall,margin2">保洁服务</text></view>
+			<van-col span="8">
+				<view class="display-center"><text class="textmedium,margin2">保洁服务</text></view>
 			</van-col>
-			<van-col span="17">
-				<view class="flex">
+			<van-col span="16">
+				<view class="flex" style="margin-top:2%">
 					<van-button round plain type="primary" size="small" wx:for="{{serviceProject}}" wx:key="id"
 						data-id="{{item.id}}" class="button-appading" bindtap="show1">{{item.text}}
 					</van-button>
@@ -24,10 +24,10 @@
 			<view class="firstM">
 				<view class="displayInline">
 					<view class="secondV,endV">
-						<view class="textsmall,secondM">服务类型</view>
+						<view class="textmedium,secondM">服务类型</view>
 					</view>
 					<view class="thirdV,endV">
-						<view class="textsmall,secondM">{{demand.serviceProject}}</view>
+						<view class="textmedium,secondM">{{demand.serviceProject}}</view>
 					</view>
 				</view>
 
@@ -35,57 +35,57 @@
 			<view class="firstM" style="padding-top:5px" wx:if="{{showTime}}">
 				<view class="displayInline">
 					<view class="secondV">
-						<view class="textsmall,secondM">预计服务小时</view>
+						<view class="textmedium,secondM">预计服务小时</view>
 					</view>
 					<view class="thirdV">
-						<view class="textsmall,secondM">{{hour}}小时</view>
+						<view class="textmedium,secondM">{{hour}}小时</view>
 					</view>
 				</view>
 				<view class="displayInline">
 					<view class="secondV">
-						<view class="textsmall,secondM">期望上门日期</view>
+						<view class="textmedium,secondM">期望上门日期</view>
 					</view>
 					<view class="thirdV">
-						<view class="textsmall,secondM">{{day}}</view>
+						<view class="textmedium,secondM">{{day}}</view>
 					</view>
 				</view>
 				<view class="displayInline">
 					<view class="secondV">
-						<view class="textsmall,secondM">期望上门时间</view>
+						<view class="textmedium,secondM">期望上门时间</view>
 					</view>
 					<view class="thirdV">
-						<view class="textsmall,secondM">{{time}}</view>
+						<view class="textmedium,secondM">{{time}}</view>
 					</view>
 				</view>
 				<view class="displayInline">
 					<view class="secondV">
-						<view class="textsmall,secondM">总次数</view>
+						<view class="textmedium,secondM">总次数</view>
 					</view>
 					<view class="thirdV">
-						<view class="textsmall,secondM">{{times}}</view>
+						<view class="textmedium,secondM">{{times}}</view>
 					</view>
 				</view>
 				<view class="displayInline">
 					<view class="secondV">
-						<view class="textsmall,secondM">周期</view>
+						<view class="textmedium,secondM">周期</view>
 					</view>
 					<view class="thirdV">
-						<view class="textsmall,secondM">{{serviceInterval}}</view>
+						<view class="textmedium,secondM">{{serviceInterval}}</view>
 					</view>
 				</view>
 				<view class="displayInline">
 					<view class="secondV,endV">
-						<view class="textsmall,secondM">备注</view>
+						<view class="textmedium,secondM">备注</view>
 					</view>
 					<view class="thirdV,endV">
-						<view class="textsmall,secondM">{{demandComment}}</view>
+						<view class="textmedium,secondM">{{demandComment}}</view>
 					</view>
 				</view>
 			</view>
 		</view>
 		<view wx:if="{{showTime}}">
 				<!-- 4=================== -->
-				<view>{{steps[2].text}}
+				<view class="textmedium">{{steps[2].text}}
 					<view class="margin2" wx:for="{{believeServerList}}" wx:key="id" data-id="{{item.serverInfo.serverId}}"
 						bindtap="chooseServicePerson">
 						<van-cell-group>
@@ -97,7 +97,7 @@
 									<van-col span="10">
 										<view class="display-center"><text class="textbig,textblack">{{item.serverInfo.serverName}}</text>
 										</view>
-										<view class="display-center">
+										<view style="word-break:break-all;position: absolute;text-overflow:ellipsis">
 											<text class="textsmall">{{item.serverInfo.serverLocation}}</text>
 										</view>
 									</van-col>

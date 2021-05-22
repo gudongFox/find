@@ -50,5 +50,7 @@
   margin: 10px;
 }
 .secondM{
-  margin: 5px;
+  margin-left: 5px;
+  margin-bottom: 8%;
+  margin-top: 1%;
 }
