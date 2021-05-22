@@ -32,7 +32,7 @@ public class ClientController {
      * @param client information
      * @return success->200, fail->400
      */
-    @PatchMapping(path = "info")
+    @PatchMapping(path = "/info")
     public ResultBody updateClientInfo(@RequestBody Client client) {
         if (null == client || null == client.getClientId()) {
             return new ResultBody(ResultCode.FAIL);
