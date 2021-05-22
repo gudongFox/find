@@ -1,24 +1,3 @@
 {
-  "usingComponents": {},
-  "tabBar": {
-    "custom": true,
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "组件"
-      },
-      {
-        "pagePath": "pages/manage/manage",
-        "text": "接口"
-      },
-      {
-        "pagePath": "pages/record/record",
-        "text": "接口"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "text": "接口"
-      }
-    ]
-  }
+  "usingComponents": {}
 }

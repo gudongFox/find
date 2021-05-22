@@ -1,0 +1,49 @@
+<view class="margin1,flexStart">
+  <van-icon name="clock" color="#00AA00" />
+  <text style="color:#00AA00;font-size:medium;margin-left:7px">个人基本信息</text>
+  <van-button slot="button" size="small" type="primary" style="margin-left:300rpx" bindtap="toChangeMyInfo"><text class="textmedium">修改</text> </van-button>
+</view>
+<view class="margin2,whitebackground,top">
+  <view class="firstM">
+    <view class="displayInline">
+  <view class="secondV">
+    <view class="textmedium,secondM">我的称呼</view> 
+  </view>
+  <view class="thirdV">
+    <view class="textmedium,secondM">{{clientInfo.clientName}}</view>
+  </view>
+    </view>
+    <view class="displayInline">
+  <view class="secondV">
+    <view class="textmedium,secondM">性别</view>
+  </view>
+  <view class="thirdV">
+    <view class="textmedium,secondM">{{clientInfo.clientGender}}</view>
+  </view>
+    </view>
+    <view class="displayInline">
+  <view class="secondV">
+    <view class="textmedium,secondM">年龄</view>
+  </view>
+  <view class="thirdV">
+    <view class="textmedium,secondM">{{clientInfo.clientAge}}</view>
+  </view>
+    </view>
+    <view class="displayInline">
+  <view class="secondV">
+    <view class="textmedium,secondM">绑定电话</view>
+  </view>
+  <view class="thirdV">
+    <view class="textmedium,secondM">{{clientInfo.clientTel}}</view>
+  </view>
+    </view>
+    <view class="displayInline">
+  <view class="secondV,endV">
+    <view class="textmedium,secondM">服务位置</view>
+  </view>
+  <view class="thirdV,endV">
+    <view class="textmedium,secondM">{{clientInfo.clientLocation}}</view>
+  </view>
+    </view>
+  </view>
+</view>

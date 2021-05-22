@@ -1,7 +1,10 @@
-<view class="margin1">
+<view class="margin1,flexStart">
   <van-icon name="clock" color="#00AA00" />
-  <text style="color:#00AA00;font-size:medium;margin-left:1rem">服务人基本资料</text>
+  <text style="color:#00AA00;font-size:medium;margin-left:7px">服务人基本资料</text>
 </view>
+<view class="page__hd" style="position:fixed;top:96rpx; right:100rpx;width: 100rpx;">
+  <van-image round width="50" height="50" src="{{server.serverProfile}}" />
+  </view>
 <view class="margin2,whitebackground,top">
   <view class="firstM">
 <view class="displayInline">
@@ -65,4 +68,15 @@
 </view>
   </view>
 </view>
-<van-button slot="button" size="small" type="primary" style="margin-left:580rpx">查看日程</van-button>
+<view hidden="{{showSchedule}}">
+<van-button slot="button" size="small" type="primary" style="margin-left:550rpx" bindtap="showSchedules"><text class="textmedium">查看日程</text> </van-button>
+</view>
+<view class="margin1,flexStart" hidden="{{!showSchedule}}">
+  <van-icon name="clock" color="#00AA00" />
+  <text style="color:#00AA00;font-size:medium;margin-left:7px">服务人一周工作日程</text>
+</view>
+<view class="margin2,whitebackground,top" hidden="{{!showSchedule}}">
+  <view style="margin:10rpx;padding-top:20rpx;padding-bottom:40rpx">
+    <componet_schedule my-value="{{serverId}}" id="myComponent"/>
+  </view>
+</view>

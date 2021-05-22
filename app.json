@@ -30,10 +30,12 @@
     "pages/receiveSubOrderServer/receiveSubOrderServer",
     "pages/record/addServer/addServer",
     "pages/manage/orderDetail/orderDetail",
-    "pages/record/believeInfo/believeInfo"
+    "pages/record/believeInfo/believeInfo",
+    "pages/mine/myInfo/myInfo",
+    "pages/mine/changeMyInfo/changeMyInfo"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#00AA00",
     "navigationBarTitleText": "客户版",
     "navigationBarTextStyle": "white",
