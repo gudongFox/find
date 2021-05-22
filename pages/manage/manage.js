@@ -11,21 +11,29 @@ Page({
     clientLocation:'',
     value: 0,
     active:0,
-    show: false,
-    minDate: new Date(2020, 0, 1).getTime(),
+    minDate: '2021-01-01',
+    maxDate: new Date().toLocaleDateString(),
     defaultDate: new Date().toLocaleDateString(),
     month: new Date().getMonth()+1,
     day: new Date().getDate()
   },
   onLoad: function () {
+    var that = this
+    console.log(that.data.defaultDate)
+    var date = new Date()
+    var y = date.getFullYear().toString()
+    var m = date.getMonth()+1
+    m = m > 9 ? m : '0'+m
+    that.setData({
+      minDate: y+'-' + m + '-01'
+    })
     wx.stopPullDownRefresh()
-    this.query()
+    that.query()
   },
   query: function(){
     var that = this;
     // console.log(that.data.defaultDate.getDate())
     var date = that.data.defaultDate
-    
     console.log(that.formatDate(date))
     wx.request({
       url: 'http://129.211.68.243:8080/order/detail',
@@ -45,7 +53,8 @@ Page({
             list[i].endTime = s.substring(0,10).replaceAll('-','/')
             s = s.substring(5,16)
             s1 = s1.substring(11,16)
-            list[i].startTime = parseInt(s.substring(0,2))+"月"+ parseInt(s.substring(3,5))+"日，"+s.substring(6,11) + '-' + s1
+            var d = parseInt(s.substring(3,5)).toString()
+            list[i].startTime = parseInt(s.substring(0,2))+"月"+ d +"日，"+s.substring(6,11) + '-' + s1
           }
           wx.request({
             url: 'http://129.211.68.243:8080/server/info',
@@ -84,7 +93,7 @@ Page({
             list[i].endTime = s.substring(0,10).replaceAll('-','/')
             s = s.substring(5,16)
             s1 = s1.substring(11,16)
-            list[i].startTime = parseInt(s.substring(0,2))+"月"+ parseInt(s.substring(4,5))+"日，"+s.substring(6,11) + '-' + s1
+            list[i].startTime = parseInt(s.substring(0,2))+"月"+ parseInt(s.substring(3,5))+"日，"+s.substring(6,11) + '-' + s1
           }
           wx.request({
             url: 'http://129.211.68.243:8080/server/info',
@@ -125,12 +134,6 @@ Page({
     },
 
     // 日历
-    onDisplay() {
-      this.setData({ show: true });
-    },
-    onClose() {
-      this.setData({ show: false });
-    },
     formatDate(date) {
       date = new Date(date);
       return `${date.getFullYear()}-${date.getMonth().length>1?date.getMonth() + 1 : '0'+(date.getMonth()+1)}-${date.getDate()}`;

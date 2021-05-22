@@ -2,11 +2,11 @@
 <view>
   <view>
     <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
-      <van-tab title="待执行订单">
+      <van-tab title="待执行订单" title-style="font-size:large">
         <view style="margin:5px" wx:for="{{orderList}}" wx:key="orderId" data-id="{{item.orderId}}"  data-time="{{item.endTime}}" data-image="{{item.imageUrl}}" bindtap="onclick">
           <view class="margin1,flexStart">
             <van-icon name="clock" color="#00AA00" />
-            <text style="color:#00AA00;font-size:small;margin-left:7px">{{item.endTime}}</text>
+            <text style="color:#00AA00;font-size:medium;margin-left:7px">{{item.endTime}}</text>
           </view>
           <van-cell-group>
             <van-cell clickable="true">
@@ -33,16 +33,16 @@
             </van-cell>
           </van-cell-group>
         </view>
+        <view class='placeholder'></view>
       </van-tab>
-      <van-tab title="历史记录">
+      <van-tab title="历史记录" title-style="font-size:large">
         <view style="margin-top:5px">
-          <van-cell title="选择单个日期" value="{{ defaultDate }}" bind:click="onDisplay" />
-          <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" position="top"
-            min-date="{{ minDate }}" default-date="{{defaultDate}}" />
+          <van-calendar bind:confirm="onConfirm" show-title="{{false}}" poppable="{{ false }}"
+          row-height="40" max-date="{{ maxDate}}" min-date="{{minDate}}" default-date="{{defaultDate}}" class="calendar" show-confirm="{{ false }}" show-subtitle="{{false}}"/>
           <view style="margin:5px" wx:for="{{historyList}}" wx:key="orderId" data-id="{{item.orderId}}" data-time="{{item.endTime}}" data-image="{{item.imageUrl}}" bindtap="onclick">
             <view class="margin1,flexStart">
             <van-icon name="clock" color="#00AA00" />
-            <text style="color:#00AA00;font-size:small;margin-left:7px">{{item.endTime}}</text>
+            <text style="color:#00AA00;font-size:medium;margin-left:7px">{{item.endTime}}</text>
           </view>
             <van-cell-group>
             <van-cell clickable="true">
@@ -70,6 +70,7 @@
           </van-cell-group>
           </view>
         </view>
+        <view class='placeholder'></view>
       </van-tab>
     </van-tabs>
   </view>

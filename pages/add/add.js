@@ -230,13 +230,16 @@ Page({
           that.serverTime(list[i],day,startTime)
           that.getImage(list[i])
           list1.push(list[i])
+          if(i == list.length - 1){
+            setTimeout(()=>{
+              that.setData({
+                believeServerList:list1
+              })
+              console.log(list1)
+            },200)
+          }
         }
-        setTimeout(()=>{
-          that.setData({
-            believeServerList:list1
-          })
-          console.log(list1)
-        },100)
+        
       }
     })
   },

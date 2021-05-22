@@ -115,7 +115,9 @@ options: {
             console.log(starDay)
             console.log(startTime)
             console.log(endTime)
-            var col = that.getNumberOfDays(starDay,time) + 1
+            var col = that.getNumberOfDays(time,starDay)
+            console.log(that.getNumberOfDays(starDay,time))
+            col = parseInt(col) + 1
             console.log("列"+col)
             var row = parseInt(startTime)-8
             console.log(parseInt(startTime)-8)

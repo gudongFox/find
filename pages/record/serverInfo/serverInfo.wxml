@@ -1,47 +1,47 @@
 <view class="margin1">
   <van-icon name="clock" color="#00AA00" />
-  <text style="color:#00AA00;font-size:small;margin-left:1rem">服务人基本资料</text>
+  <text style="color:#00AA00;font-size:medium;margin-left:1rem">服务人基本资料</text>
 </view>
 <view class="margin2,whitebackground,top">
   <view class="firstM">
 <view class="displayInline">
   <view class="secondV">
-    <view class="textsmall,secondM">服务人姓名</view> 
+    <view class="textmedium,secondM">服务人姓名</view> 
   </view>
   <view class="thirdV">
-    <view class="textsmall,secondM">{{server.serverName}}</view>
+    <view class="textmedium,secondM">{{server.serverName}}</view>
   </view>
 </view>
 <view class="displayInline">
   <view class="secondV">
-    <view class="textsmall,secondM">性别</view>
+    <view class="textmedium,secondM">性别</view>
   </view>
   <view class="thirdV">
-    <view class="textsmall,secondM">{{server.serverGender}}</view>
+    <view class="textmedium,secondM">{{server.serverGender}}</view>
   </view>
 </view>
 <view class="displayInline">
   <view class="secondV">
-    <view class="textsmall,secondM">年龄</view>
+    <view class="textmedium,secondM">年龄</view>
   </view>
   <view class="thirdV">
-    <view class="textsmall,secondM">{{server.serverAge}}</view>
+    <view class="textmedium,secondM">{{server.serverAge}}</view>
   </view>
 </view>
 <view class="displayInline">
   <view class="secondV">
-    <view class="textsmall,secondM">服务项目</view>
+    <view class="textmedium,secondM">服务项目</view>
   </view>
   <view class="thirdV">
-    <view class="textsmall,secondM">{{server.servertype}}</view>
+    <view class="textmedium,secondM">{{server.servertype}}</view>
   </view>
 </view>
 <view class="displayInline">
   <view class="secondV,endV">
-    <view class="textsmall,secondM">出发位置</view>
+    <view class="textmedium,secondM">出发位置</view>
   </view>
   <view class="thirdV,endV">
-    <view class="textsmall,secondM">{{server.serverLocation}}</view>
+    <view class="textmedium,secondM">{{server.serverLocation}}</view>
   </view>
 </view>
 
@@ -49,18 +49,18 @@
   <view class="firstM" style="padding-top:5px">
 <view class="displayInline">
   <view class="secondV">
-    <view class="textsmall,secondM">直接客户数</view>
+    <view class="textmedium,secondM">直接客户数</view>
   </view>
   <view class="thirdV">
-    <view class="textsmall,secondM">1人</view>
+    <view class="textmedium,secondM">1人</view>
   </view>
 </view>
 <view class="displayInline">
   <view class="secondV,endV">
-    <view class="textsmall,secondM">推荐理由</view>
+    <view class="textmedium,secondM">推荐理由</view>
   </view>
   <view class="thirdV,endV">
-    <view class="textsmall,secondM">本周有部分空余服务时间</view>
+    <view class="textmedium,secondM">本周有部分空余服务时间</view>
   </view>
 </view>
   </view>

@@ -22,3 +22,6 @@
   justify-content: center;
   margin-left: 10rpx;
 }
+.calendar {
+  --calendar-height: 700rpx;
+}

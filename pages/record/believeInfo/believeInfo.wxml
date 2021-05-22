@@ -1,6 +1,6 @@
 <view class="margin1">
   <van-icon name="clock" color="#00AA00" />
-  <text style="color:#00AA00;font-size:small;margin-left:1rem">服务人基本资料</text>
+  <text style="color:#00AA00;font-size:medium;margin-left:1rem">服务人基本资料</text>
 </view>
 <view class="page__hd" style="position:fixed;top:96rpx; right:100rpx;width: 100rpx;">
   <van-image round width="50" height="50" src="{{server.serverProfile}}" />
@@ -9,42 +9,42 @@
   <view class="firstM">
 <view class="displayInline">
   <view class="secondV">
-    <view class="textsmall,secondM">服务人姓名</view> 
+    <view class="textmedium,secondM">服务人姓名</view> 
   </view>
   <view class="thirdV">
-    <view class="textsmall,secondM">{{server.serverName}}</view>
+    <view class="textmedium,secondM">{{server.serverName}}</view>
   </view>
 </view>
 <view class="displayInline">
   <view class="secondV">
-    <view class="textsmall,secondM">性别</view>
+    <view class="textmedium,secondM">性别</view>
   </view>
   <view class="thirdV">
-    <view class="textsmall,secondM">{{server.serverGender}}</view>
+    <view class="textmedium,secondM">{{server.serverGender}}</view>
   </view>
 </view>
 <view class="displayInline">
   <view class="secondV">
-    <view class="textsmall,secondM">年龄</view>
+    <view class="textmedium,secondM">年龄</view>
   </view>
   <view class="thirdV">
-    <view class="textsmall,secondM">{{server.serverAge}}</view>
+    <view class="textmedium,secondM">{{server.serverAge}}</view>
   </view>
 </view>
 <view class="displayInline">
   <view class="secondV">
-    <view class="textsmall,secondM">服务项目</view>
+    <view class="textmedium,secondM">服务项目</view>
   </view>
   <view class="thirdV">
-    <view class="textsmall,secondM">{{server.servertype}}</view>
+    <view class="textmedium,secondM">{{server.servertype}}</view>
   </view>
 </view>
 <view class="displayInline">
   <view class="secondV,endV">
-    <view class="textsmall,secondM">出发位置</view>
+    <view class="textmedium,secondM">出发位置</view>
   </view>
   <view class="thirdV,endV">
-    <view class="textsmall,secondM">{{server.serverLocation}}</view>
+    <view class="textmedium,secondM">{{server.serverLocation}}</view>
   </view>
 </view>
 
@@ -52,18 +52,18 @@
   <view class="firstM" style="padding-top:5px">
 <view class="displayInline">
   <view class="secondV">
-    <view class="textsmall,secondM">为我服务</view>
+    <view class="textmedium,secondM">为我服务</view>
   </view>
   <view class="thirdV">
-    <view class="textsmall,secondM">直接服务5次，委托服务1次</view>
+    <view class="textmedium,secondM">直接服务5次，委托服务1次</view>
   </view>
 </view>
 <view class="displayInline">
   <view class="secondV,endV">
-    <view class="textsmall,secondM">我的备注</view>
+    <view class="textmedium,secondM">我的备注</view>
   </view>
   <view class="thirdV,endV">
-    <view class="textsmall,secondM">服务质量不错</view>
+    <view class="textmedium,secondM">服务质量不错</view>
   </view>
 </view>
   </view>
