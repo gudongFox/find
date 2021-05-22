@@ -12,9 +12,9 @@ Page({
     clientLocation: "",
     serviceProject: "",
     serviceTime: "",
-    serviceLength: 0,
+    serviceLength: "",
     servicePeriod: "",
-    rates: 0,
+    rates: "",
     serviceComment: "",
   },
 

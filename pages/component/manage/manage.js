@@ -73,7 +73,7 @@ Component({
       // serverId = "liling";
       // 如果是“客户新需求”标签页
       if (that.data.activeTab == 0) {
-        // 查询客户新需求
+        // 查询所有客户新需求
         wx.request({
           url: "http://129.211.68.243:8080/server/getDemand/" + serverId,
           method: "GET",
@@ -87,7 +87,8 @@ Component({
             for (var i = 0; i < res.data.length; i++) {
               var clientInfo = res.data[i].client;
               var demandInfo = res.data[i].demand;
-              if (clientInfo == null || demandInfo == null) {
+              // 如果客户信息为空，则跳过
+              if (clientInfo == null) {
                 continue;
               }
               // 根据服务类型判断图标
@@ -106,7 +107,7 @@ Component({
               var serviceTime = "上门时间：未定";
               if (demandInfo.startTime != null) {
                 var startTime = demandInfo.startTime;
-                serviceTime = startTime.substring(5, 7) + "/" + startTime.substring(8, 10) + " " + startTime.substring(11, 13) + ":" + startTime.substring(14, 16)
+                serviceTime = startTime.split(" ")[0].split("-")[1] + "/" + startTime.split(" ")[0].split("-")[2] + " " + startTime.split(" ")[1].split(":")[0] + ":" + startTime.split(" ")[1].split(":")[1]
               }
               // 先对数据进行JSON
               // 再对数据进行URI编码, 如果不进行这一步操作, 数据有可能会被截断, 少量数据没有问题, 如果是一个大的对象, 就容易被截断获取不到完整的数据

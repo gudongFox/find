@@ -12,10 +12,10 @@ Page({
     clientPhoneNum: "",
     clientLocation: "",
     serviceProject: "",
-    serviceTime: "2000-01-01 00:00:00",
-    serviceLength: 0,
-    servicePeriod: "第1次，共1次，间隔0天",
-    rates: 0,
+    serviceTime: "",
+    serviceLength: "",
+    servicePeriod: "",
+    rates: "",
     serviceComment: "",
   },
 
@@ -58,7 +58,7 @@ Page({
           "intervalDays": Number(this.data.servicePeriod.split("间隔")[1].split("天")[0]),
           "orderComment": this.data.serviceComment,
           "isSubstitue": 0,
-          "numTimes": Number(this.data.servicePeriod.split("第")[1].split("次")[0]),
+          "numTimes": 0,
       },
       success: function (res){
         // console.log(res);
@@ -98,7 +98,7 @@ Page({
       serviceProject: newInfo.serviceProject,
       serviceTime: newInfo.serviceDate + " " + newInfo.serviceTime,
       serviceLength: newInfo.serviceLength,
-      servicePeriod: "第" + newInfo.serviceNumthTimes + "次，共" + newInfo.serviceTotalTimes + "次，间隔" + newInfo.serviceInterval + "天",
+      servicePeriod: "共" + newInfo.serviceTotalTimes + "次~间隔" + newInfo.serviceInterval + "天",
       rates: newInfo.servicePrice,
       serviceComment: newInfo.serviceComment,
     })

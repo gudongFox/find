@@ -1,12 +1,14 @@
-<view class="flexRow">
+<!-- <view class="flexRow">
   <view class="flexStart">
     <van-icon name="clock" color="#00AA00" />
     <text style="color:#00AA00;margin-left:15rpx">需求详情</text>
   </view>
-  <!-- <view>
+  <view>
     <button size="mini" type="primary" plain="true">修改</button>
-  </view> -->
-</view>
+  </view>
+</view> -->
+
+<van-divider contentPosition="center" custom-style="color:#00AA00;font-size:medium;border-color: #E0E0E0">客户信息</van-divider>
 
 <view>
   <van-cell-group custom-class="margin2">
@@ -31,6 +33,8 @@
         <text>{{clientLocation}}</text>
       </view>
     </van-cell>
+
+    <van-divider contentPosition="center" custom-style="color:#00AA00;font-size:medium;border-color: #E0E0E0">需求详情</van-divider>
 
     <van-cell>
       <view class="flexCell">

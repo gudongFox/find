@@ -15,6 +15,12 @@
           </view>
         </view>
 
+        <!-- <van-calendar show-title="{{false}}" poppable="{{ false }}" show-confirm="{{ false }}" min-date="{{minDate}}" default-date="{{defaultDate}}" max-date="{{maxDate}}" class="calendar" bind:select="selectDate"/> -->
+
+        <view>
+          <calendarMonth bindmydata="mydata"></calendarMonth>
+        </view>
+
         <!-- <van-tabs color="#00AA00" sswipeable="false">
           <van-tab title="07/08(一)">
             <van-grid gutter="10" square="true">
@@ -76,7 +82,8 @@
         <van-search value="{{ value }}" placeholder="请输入客户姓名" show-action bind:search="onSearch"
           bind:cancel="onCancel" />
 
-        <van-calendar show-title="{{false}}" poppable="{{ false }}" show-confirm="{{ false }}" min-date="{{minDate}}" default-date="{{defaultDate}}" max-date="{{maxDate}}" class="calendar" bind:select="selectDate"/>
+        <van-calendar show-title="{{false}}" poppable="{{ false }}" show-confirm="{{ false }}" min-date="{{minDate}}"
+          default-date="{{defaultDate}}" max-date="{{maxDate}}" class="calendar" bind:select="selectDate" />
 
         <!-- 展示日期 -->
         <view class="flexRow">

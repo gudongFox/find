@@ -33,15 +33,15 @@
   </van-cell-group>
 </view>
 
-<view class="flexRow">
+<!-- <view class="flexRow">
   <view class="flexStart">
     <van-icon name="clock" color="#00AA00" />
     <text style="color:#00AA00;margin-left:15rpx">我的一周日程表</text>
-  </view>
+  </view> -->
   <!-- <view>
     <button size="mini" type="primary" plain="true">修改</button>
   </view> -->
-</view>
+<!-- </view> -->
 
 <view class="flexRow">
   <view class="flexStart">
@@ -59,7 +59,7 @@
       <view class="flexCell">
         <view class="itemName">服务类型</view>
         <van-dropdown-menu>
-          <van-dropdown-item value="{{serviceProject}}" options="{{projects}}" />
+          <van-dropdown-item value="{{serviceProject}}" options="{{projects}}" bind:change="setServiceProject" />
         </van-dropdown-menu>
       </view>
       <view class="flexCell">
@@ -67,8 +67,9 @@
         <!-- <van-button plain round hairline size="small" icon="phone-o" color="#00AA00">联络</van-button> -->
         <view class="flexCell">
           <!-- <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceLength}}" bindinput="setServiceLength" /> -->
-          <van-stepper value="{{serviceLength}}" step="0.5" min="0" bind:change="setServiceLength" input-width="40px" button-size="32px" />
-          <text>小时</text>
+          <van-stepper value="{{serviceLength}}" step="0.5" min="0" bind:change="setServiceLength" input-width="40px" button-size="32px" input-class="stepper" />
+          <!-- <text>小时</text> -->
+          <view class="itemName">小时</view>
         </view>
         <!-- <van-stepper value="{{servcieTime}}" /> -->
         <!-- <view class="textblack">小时</view> -->
@@ -76,7 +77,7 @@
       <view class="flexCell">
         <view class="itemName">期望上门日期</view>
         <!-- <input style="border-radius:10rpx;width:250rpx;background-color:#E0E0E0;text-align:center;color:black;margin:0rpx 0rpx 0rpx 0rpx" model:value="{{serviceDate}}" bindfocus="setServiceDate" /> -->
-        <div style="border-radius:10rpx;width:250rpx;height:45rpx;background-color:#E0E0E0;text-align:center;color:black;" bindtap="setServiceDate">
+        <div class="flexDate" bindtap="setServiceDate">
           {{serviceDate}}
         </div>
         <!-- <view class="textblack">成都市锦江文化中心</view> -->
@@ -84,47 +85,52 @@
       <view class="flexCell">
         <view class="itemName">期望上门时间</view>
         <!-- <input style="border-radius:10rpx;width:250rpx;background-color:#E0E0E0;text-align:center;color:black;margin:0rpx 0rpx 0rpx 0rpx" value="{{serviceTime}}" bindfocus="setServiceTime" /> -->
-        <div style="border-radius:10rpx;width:250rpx;height:45rpx;background-color:#E0E0E0;text-align:center;color:black;" bindtap="setServiceTime">
+        <div class="flexDate" bindtap="setServiceTime">
           {{serviceTime}}
         </div>
       </view>
-      <view class="flexCell">
-        <view class="itemName">次数</view>
-        <view class="flexCell">
-          <text>第</text>
+      <!-- <view class="flexCell"> -->
+        <!-- <view class="itemName">次数</view> -->
+        <!-- <view class="flexCell"> -->
+          <!-- <text>第</text> -->
           <!-- <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceNumthTimes}}" bindinput="setServiceNumthTimes" /> -->
-          <van-stepper value="{{serviceNumthTimes}}" step="1" min="1" bind:change="setServiceNumthTimes" input-width="40px" button-size="32px" />
-          <text>次</text>
-        </view>
-      </view>
+          <!-- <van-stepper value="{{serviceNumthTimes}}" step="1" min="1" bind:change="setServiceNumthTimes" input-width="40px" button-size="32px" /> -->
+          <!-- <text>次</text> -->
+        <!-- </view> -->
+      <!-- </view> -->
       <view class="flexCell">
         <view class="itemName">总次数</view>
         <view class="flexCell">
-          <text>共</text>
+          <!-- <text>共</text> -->
+          <view class="itemName">共</view>
           <!-- <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceTotalTimes}}" bindinput="setServiceTotalTimes" /> -->
-          <van-stepper value="{{serviceTotalTimes}}" step="1" min="1" bind:change="setServiceTotalTimes" input-width="40px" button-size="32px" />
-          <text>次</text>
+          <van-stepper value="{{serviceTotalTimes}}" step="1" min="1" bind:change="setServiceTotalTimes" input-width="40px" button-size="32px" input-class="stepper" />
+          <!-- <text>次</text> -->
+          <view class="itemName">次</view>
         </view>
       </view>
       <view class="flexCell">
         <view class="itemName">周期</view>
         <view class="flexCell">
-          <text>间隔</text>
+          <!-- <text>间隔</text> -->
+          <view class="itemName">间隔</view>
           <!-- <input style="border-radius:10rpx;width:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceInterval}}" bindinput="setServiceInterval" /> -->
-          <van-stepper value="{{serviceInterval}}" step="1" min="0" bind:change="setServiceInterval" input-width="40px" button-size="32px" />
-          <text>天</text>
+          <van-stepper value="{{serviceInterval}}" step="1" min="0" bind:change="setServiceInterval" input-width="40px" button-size="32px" input-class="stepper" />
+          <!-- <text>天</text> -->
+          <view class="itemName">天</view>
         </view>
       </view>
       <view class="flexCell">
         <view class="itemName">收费标准</view>
         <view class="flexCell">
-          <input style="border-radius:10rpx;width:150rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{servicePrice}}" bindinput="setServiceRate" />
-          <text>元/小时</text>
+          <input class="flexDate" style="width:140rpx;" value="{{servicePrice}}" bindinput="setServiceRate" />
+          <!-- <text>元/小时</text> -->
+          <view class="itemName">元/小时</view>
         </view>
       </view>
       <view class="flexCell">
         <view class="itemName">备注</view>
-        <input style="border-radius:10rpx;width:400rpx;height:100rpx;background-color:#E0E0E0;text-align:center;color:black;" value="{{serviceComment}}" bindinput="setServiceComment" />
+        <input class="flexDate" style="width:265rpx;" value="{{serviceComment}}" bindinput="setServiceComment" />
       </view>
     </van-cell>
 
@@ -153,3 +159,5 @@
 <van-popup show="{{isShowTimeSelection}}" round position="bottom">
   <van-datetime-picker type="time" value="{{currentTime}}" title="请选择上门时间" bind:confirm="confirmTime" bind:cancel="cancelTime" />
 </van-popup>
+<!-- 展示提示信息 -->
+<van-dialog id="van-dialog" />

@@ -11,6 +11,13 @@
   flex-direction: column;
 }
 
+.flexStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 text{
   font-size: large;
 }

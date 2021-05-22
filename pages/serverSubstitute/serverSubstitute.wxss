@@ -6,6 +6,20 @@
   align-items: center;
 }
 
+.flexDate {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius:10rpx;
+  width:260rpx;
+  height:60rpx;
+  background-color:#F5F5F5;
+  font-size:large;
+  text-align: center;
+  color:black;
+}
+
 .flexRow {
   display: flex;
   flex-direction: row;
@@ -22,6 +36,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 80rpx;
 }
 
 .flexCol {
@@ -36,4 +51,8 @@ text {
 
 .itemName {
   font-size: large;
+}
+
+.stepper {
+  font-size: large !important;
 }

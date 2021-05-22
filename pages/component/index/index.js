@@ -21,12 +21,20 @@ Component({
     minDate: new Date('2021/04/15').getTime(),
     defaultDate: new Date().getTime(),
     maxDate: new Date().getTime(),
+
+    chosenDate: "", //被选中的查询待执行订单的日期
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+
+    mydata: function (e) {
+      console.log(e.detail.data);
+      this.selectToDo(e.detail.data);
+    },
+
     changeTab: function (event) {
       this.setData({
         activeTab: event.detail.name,
@@ -174,6 +182,71 @@ Component({
         }
       })
 
+    },
+
+    // 根据提起查询待执行订单
+    // date格式：2021-01-01
+    selectToDo: function (date) {
+      var that = this;
+      var serverId = wx.getStorageSync('openid');
+      wx.request({
+        url: 'http://129.211.68.243:8080/server/getOrderByDate/' + serverId + "/" + date,
+        method: "GET",
+        header: {
+          'content-type': 'application/json', // 默认值
+          // 'content-type': 'application/x-www-form-urlencoded',//POST方式
+        },
+        success: function (res) {
+          console.log("待执行订单");
+          console.log(res);
+          var itemList = [];
+          for (var i = 0; i < res.data.length; i++) {
+            let orderInfo = res.data[i].orderInfo;
+            let ClientInfo = res.data[i].ClientInfo;
+            // 判断是否为历史订单
+            // 若今日日期大于订单日期，则为历史订单
+            var now = new Date();
+            var orderTime = orderInfo.startTime;
+            now = that.formatDate(now.getFullYear(), now.getMonth() + 1, now.getDate(), now.getHours(), now.getMinutes())
+            orderTime = that.formatDate(Number(orderTime.split(" ")[0].split("-")[0]), Number(orderTime.split(" ")[0].split("-")[1]), Number(orderTime.split(" ")[0].split("-")[2]), Number(orderTime.split(" ")[1].split(":")[0]), Number(orderTime.split(" ")[1].split(":")[1]))
+            if (now > orderTime) {
+              continue;
+            }
+            // 设置服务类型图标
+            let iconName = "wap-home-o";
+            if (orderInfo.serviceProject == "商业保洁") {
+              iconName = "hotel-o";
+            } else if (orderInfo.serviceProject == "钟点工") {
+              iconName = "underway-o";
+            }
+            // 格式化上门时间
+            let serviceTime = "上门时间：未定";
+            if (orderInfo.startTime != null) {
+              let startTime = orderInfo.startTime;
+              // var endTime = orderInfo.endTime;
+              serviceTime = startTime.substring(5, 7) + "/" + startTime.substring(8, 10) + " " + startTime.substring(11, 13) + ":" + startTime.substring(14, 16)
+            }
+            // 先对数据进行JSON
+            // 再对数据进行URI编码
+            var URIClientInfo = encodeURIComponent(JSON.stringify(ClientInfo))
+            var URIOrderInfo = encodeURIComponent(JSON.stringify(orderInfo))
+            let tmp = {
+              clickUrl: "/pages/todoService/todoService?URIClientInfo=" + URIClientInfo + "&URIOrderInfo=" + URIOrderInfo,
+              iconName: iconName,
+              serviceProject: orderInfo.serviceProject,
+              clientName: ClientInfo.clientName,
+              serviceTime: serviceTime,
+              isMulti: orderInfo.times + "次",
+              clientLocation: ClientInfo.clientLocation,
+              clientProfile: ClientInfo.clientProfile,
+            }
+            itemList.push(tmp);
+          }
+          that.setData({
+            itemList: itemList,
+          })
+        }
+      })
     },
 
   },

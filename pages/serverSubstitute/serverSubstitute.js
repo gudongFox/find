@@ -1,4 +1,5 @@
 // pages/newDemandServer/newDemandServer.js
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
 
   /**
@@ -29,12 +30,12 @@ Page({
         icon: "underway-o",
       },
     ],
-    serviceLength: 0,
+    serviceLength: "",
     serviceDate: "",
     serviceTime: "",
-    serviceNumthTimes: 1,
-    serviceTotalTimes: 1,
-    serviceInterval: 0,
+    serviceNumthTimes: "",
+    serviceTotalTimes: "",
+    serviceInterval: "",
     servicePrice: 0,
     serviceComment: "",
     isShowDateSelection: false,
@@ -43,19 +44,26 @@ Page({
     isShowTimeSelection: false,
     currentTime: "12:00",
   },
-  // 设置服务时长
-  setServiceLength: function (e) {
+
+  // 设置服务类型
+  setServiceProject:function(value){
     this.setData({
-      serviceLength: e.detail.value
+      serviceProject: value.detail
+    })
+  },
+  // 设置服务时长
+  setServiceLength: function (value) {
+    this.setData({
+      serviceLength: value.detail
     })
   },
   // 设置上门日期
   setServiceDate: function () {
     this.setData({
-      // serviceDate:e.detail.value
       isShowDateSelection: true
     })
   },
+  // 确定选择此上门日期
   confirmDate: function (val) {
     let dateObj = new Date(val.detail);
     let y = dateObj.getFullYear();
@@ -66,6 +74,7 @@ Page({
       isShowDateSelection: false
     })
   },
+  // 取消选择日期
   cancelDate: function () {
     this.setData({
       isShowDateSelection: false
@@ -78,13 +87,14 @@ Page({
       isShowTimeSelection: true
     })
   },
-
+  // 确定选择此上门时间
   confirmTime: function (val) {
     this.setData({
       serviceTime: val.detail,
       isShowTimeSelection: false
     })
   },
+  // 取消选择上门时间
   cancelTime: function () {
     this.setData({
       isShowTimeSelection: false
@@ -92,21 +102,21 @@ Page({
   },
 
   // 设置当前次数
-  setServiceNumthTimes: function (e) {
+  setServiceNumthTimes: function (value) {
     this.setData({
-      serviceNumthTimes: e.detail.value
+      serviceNumthTimes: value.detail
     })
   },
   // 设置总次数
-  setServiceTotalTimes: function (e) {
+  setServiceTotalTimes: function (value) {
     this.setData({
-      serviceTotalTimes: e.detail.value
+      serviceTotalTimes: value.detail
     })
   },
   // 设置周期
-  setServiceInterval: function (e) {
+  setServiceInterval: function (value) {
     this.setData({
-      serviceInterval: e.detail.value
+      serviceInterval: value.detail
     })
   },
   // 设置收费标准
@@ -125,6 +135,33 @@ Page({
   // 确认接单按钮响应
   // 接单跳转到形成订单页面
   clickReceive: function () {
+    // 检查数据是否完整
+    if(this.data.serviceProject == ""){
+      Dialog.alert({
+        message: '请选择服务类型',
+      });
+      return
+    }else if(this.data.serviceLength <= 0){
+      Dialog.alert({
+        message: "服务时长需大于0小时",
+      });
+      return
+    }else if(this.data.serviceDate == ""){
+      Dialog.alert({
+        message: '请选择上门日期',
+      });
+      return
+    }else if(this.data.serviceTime == ""){
+      Dialog.alert({
+        message: '请选择上门时间',
+      });
+      return
+    }else if(this.data.servicePrice <= 0){
+      Dialog.alert({
+        message: '收费标准不应为0',
+      });
+      return
+    }
     // 将更新后到数据传递
     var newInfo = {
       serviceProject: this.data.serviceProject,

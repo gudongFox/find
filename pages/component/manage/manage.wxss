@@ -32,3 +32,7 @@
 text{
   font-size: large;
 }
+
+.stepper {
+  font-size: large !important;
+}

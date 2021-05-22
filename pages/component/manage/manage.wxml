@@ -81,18 +81,15 @@
 
 		<van-tab title="设置" title-style="font-size:large">
 			
-				<!-- <view class="specialLine"></view> -->
-        <view class="flexRow">
+        <!-- <view class="flexRow">
           <view class="flexStart">
-            <!-- <view class="specialBlock"></view> -->
             <van-icon name="setting-o" color="#00AA00" />
             <text style="color:#00AA00;margin-left:15rpx">可接单时段</text>
           </view>
           <view>
 						<button size="mini" type="primary" plain="true" style="font-size:medium">修改</button>
           </view>
-        </view>
-        <!-- <view class="specialLine"></view> -->
+        </view> -->
 				
 				<!-- <van-grid column-num="8" square>
 					<van-grid-item text="上午(时)" />
@@ -126,19 +123,19 @@
 				<view class="flexCol">
 					<view class="flexRow">
 						<text>出发上门最大距离（公里）</text>
-						<van-stepper value="{{maxDistance}}" bind:change="changeMaxDis" />
+						<van-stepper value="{{maxDistance}}" bind:change="changeMaxDis" input-class="stepper" />
 					</view>
 					<view class="flexRow">
 						<text>两单间隔最大距离（公里）</text>
-						<van-stepper value="{{maxInterDistance}}" bind:change="changeMaxInterDis" />
+						<van-stepper value="{{maxInterDistance}}" bind:change="changeMaxInterDis" input-class="stepper" />
 					</view>
 					<view class="flexRow">
 						<text>最小服务时长（小时）</text>
-						<van-stepper value="{{minServicLength}}" step="0.5" decimal-length="{{1}}" bind:change="changeMinServiceLen" />
+						<van-stepper value="{{minServicLength}}" step="0.5" decimal-length="{{1}}" bind:change="changeMinServiceLen" input-class="stepper" />
 					</view>
 					<view class="flexRow">
 						<text>两单间隔最大时间</text>
-						<van-stepper value="{{maxInterLength}}" step="0.5" decimal-length="{{1}}" bind:change="changeMaxInterLen" />
+						<van-stepper value="{{maxInterLength}}" step="0.5" decimal-length="{{1}}" bind:change="changeMaxInterLen" input-class="stepper" />
 					</view>
 				</view>
 				
