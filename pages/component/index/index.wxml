@@ -61,16 +61,19 @@
         <van-search value="{{ value }}" placeholder="请输入客户姓名" show-action bind:search="onSearch"
           bind:cancel="onCancel" />
 
-        <van-overlay show="{{ true }}"
-          custom-style="background-color:white;top:190rpx;height:90rpx;display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
-          <van-button icon="arrow-left" size="small" plain hairline type="primary" bind:click="lastMon">上一个月</van-button>
-          <text>{{chosenDate}}</text>
-          <van-button icon="arrow" size="small" plain hairline type="primary" bind:click="nextMon">下一个月</van-button>
-        </van-overlay>
-        <!-- 时间选择 -->
-        <van-calendar id="hisTimer" show-title="{{false}}" poppable="{{ false }}" show-confirm="{{ false }}"
-          min-date="{{minDate}}" default-date="{{defaultDate}}" max-date="{{maxDate}}" row-height="40" class="calendar"
-          bind:select="selectDate" />
+        <view>
+          <van-overlay show="{{ true }}"
+            custom-style="position:absolute;background-color:white;top:85rpx;height:90rpx;display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+            <van-button icon="arrow-left" size="small" plain hairline type="primary" bind:click="lastMon">上一个月
+            </van-button>
+            <text>{{chosenDate}}</text>
+            <van-button icon="arrow" size="small" plain hairline type="primary" bind:click="nextMon">下一个月</van-button>
+          </van-overlay>
+          <!-- 时间选择 -->
+          <van-calendar id="hisTimer" show-title="{{false}}" poppable="{{ false }}" show-confirm="{{ false }}"
+            min-date="{{minDate}}" default-date="{{defaultDate}}" max-date="{{maxDate}}" row-height="40"
+            class="calendar" bind:select="selectDate" />
+        </view>
 
         <!-- 展示日期 -->
         <view class="flexRow">
