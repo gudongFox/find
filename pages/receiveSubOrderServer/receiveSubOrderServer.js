@@ -54,7 +54,7 @@ Page({
           "intervalDays": Number(this.data.servicePeriod.split("间隔")[1].split("天")[0]),
           "orderComment": this.data.serviceComment,
           "isSubstitue": 0,
-          "numTimes": Number(this.data.servicePeriod.split("第")[1].split("次")[0]),
+          "numTimes": 0,
       },
       success: function (res){
         wx.redirectTo({
