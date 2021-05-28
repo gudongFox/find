@@ -54,7 +54,7 @@ public class ClientServerController {
      * @param record ClientServer information
      * @return 200->success 400->fail
      */
-    @PatchMapping(path = "/info")
+    @PutMapping(path = "/info")
     public ResultBody updateClientServerInfo(@RequestBody ClientServer record) {
         if (null == record || (null == record.getClientId() || null == record.getServerId())) {
             return new ResultBody(ResultCode.FAIL);
