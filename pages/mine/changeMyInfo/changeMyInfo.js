@@ -26,10 +26,23 @@ Page({
     }else{
       clientInfo.clientGender = 2
     }
-    // wx.request({
-    //   url: 'http://129.211.68.243:8080/client/info',
-    //   method: 'PUT'
-    // })
+    wx.request({
+      url: 'http://129.211.68.243:8080/client/info',
+      method: 'PATCH',
+      data:{
+        "clientId":clientInfo.clientId,
+        "clientSessionKey":clientInfo.clientSessionKey,
+        "clientName":clientInfo.clientName,
+        "clientGender":clientInfo.clientGender,
+        "clientAge":clientInfo.clientAge,
+        "clientTel":clientInfo.clientTel,
+        "clientLocation":clientInfo.clientLocation,
+        "clientProfile":clientInfo.clientProfile
+      },
+      success:function(){
+        console.log("保存成功")
+      }
+    })
   },
 
   /**

@@ -157,6 +157,113 @@ Page({
       url: '/pages/manage/orderDetail/orderDetail?orderId='+orderId+'&time='+time+'&image='+image,
     })
   },
+  lastMon: function () {
+    var that = this;
+    // 应该判断当前年月是否小于等于允许的最小年月
+    // 是则可以执行操作，否则将按钮变灰
+    var nowDate = new Date(this.data.minDate);
+    var nowYear = nowDate.getFullYear();
+    var nowMon = nowDate.getMonth() + 1;
+    if (nowMon > 1) {
+      var newMon = nowMon - 1;
+      var newDay = 1;
+      switch (newMon) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+          newDay = 31;
+        case 2:
+          newDay = 28;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+          newDay = 30;
+      }
+      // 判断平年闰年
+      if (newMon == 2 && nowYear / 4 == 0) {
+        if (nowYear % 100 == 0) {
+          if (nowYear / 400 == 0) {
+            newDay = 29;
+          } else {
+            newDay = 28;
+          }
+        } else {
+          newDay = 29;
+        }
+      }
+      that.setData({
+        minDate: new Date(nowYear + '/' + (nowMon - 1) + '/1').getTime(),
+        defaultDate: new Date(nowYear + '/' + (nowMon - 1) + '/1').getTime(),
+        maxDate: new Date(nowYear + '/' + newMon + '/' + newDay).getTime(),
+      })
+    } else {
+      that.setData({
+        minDate: new Date((nowYear - 1) + '/12/1').getTime(),
+        defaultDate: new Date((nowYear - 1) + '/12/1').getTime(),
+        maxDate: new Date((nowYear - 1) + '/12/31').getTime(),
+      })
+    }
+  },
+
+  nextMon: function () {
+    var that = this;
+    // 应该判断当前年月是否大于今天
+    // 是则可以执行操作，否则将按钮变灰
+    var nowDate = new Date(this.data.minDate);
+    var nowYear = nowDate.getFullYear();
+    var nowMon = nowDate.getMonth() + 1;
+    var nowDay = nowDate.getDate();
+    if (nowMon < 12) {
+      var newMon = nowMon + 1;
+      var newDay = 1;
+      switch (newMon) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+          newDay = 31;
+        case 2:
+          newDay = 28;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+          newDay = 30;
+      }
+      // 判断平年闰年
+      if (newMon == 2 && nowYear / 4 == 0) {
+        if (nowYear % 100 == 0) {
+          if (nowYear / 400 == 0) {
+            newDay = 29;
+          } else {
+            newDay = 28;
+          }
+        } else {
+          newDay = 29;
+        }
+      }
+      that.setData({
+        minDate: new Date(nowYear + '/' + newMon + '/1').getTime(),
+        defaultDate: new Date(nowYear + '/' + newMon + '/1').getTime(),
+        maxDate: new Date(nowYear + '/' + newMon + '/' + newDay).getTime(),
+      })
+    } else {
+      that.setData({
+        minDate: new Date((nowYear + 1) + '/1/1').getTime(),
+        defaultDate: new Date((nowYear + 1) + '/1/1').getTime(),
+        maxDate: new Date((nowYear + 1) + '/1/31').getTime(),
+      })
+    }
+  },
+
   onPullDownRefresh: function () {
     this.onLoad(); //重新加载onLoad()
   },

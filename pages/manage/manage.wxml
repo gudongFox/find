@@ -36,6 +36,13 @@
         <view class='placeholder'></view>
       </van-tab>
       <van-tab title="历史记录" title-style="font-size:large">
+        <van-overlay show="{{ true }}"
+            custom-style="position:absolute;background-color:white;top:620rpx;height:90rpx;display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
+            <van-button icon="arrow-left" size="small" plain hairline type="primary" bind:click="lastMon">上一个月
+            </van-button>
+            <!-- <text>{{chosenDate}}</text> -->
+            <van-button icon="arrow" size="small" plain hairline type="primary" bind:click="nextMon">下一个月</van-button>
+          </van-overlay>
         <view style="margin-top:5px">
           <van-calendar bind:confirm="onConfirm" show-title="{{false}}" poppable="{{ false }}"
           row-height="40" max-date="{{ maxDate}}" min-date="{{minDate}}" default-date="{{defaultDate}}" class="calendar" show-confirm="{{ false }}" show-subtitle="{{false}}"/>
