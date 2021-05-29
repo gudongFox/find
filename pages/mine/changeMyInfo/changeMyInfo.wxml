@@ -4,11 +4,11 @@
 </view>
 <view class="margin2,whitebackground,top">
   <van-cell-group>
-  <van-field value="{{ clientInfo.clientName }}" label="我的称呼"  border="{{ true }}"/>
-  <van-field value="{{ clientInfo.clientTel }}" label="我的电话"  border="{{ true }}"/>
-  <van-field value="{{ clientInfo.clientGender }}" label="性别"  border="{{ true }}"/>
-  <van-field value="{{ clientInfo.clientAge }}" label="年龄"  border="{{ true }}"/>
-  <van-field value="{{ clientInfo.clientLocation }}" label="服务位置"  border="{{ true }}"/>
+  <van-field model:value="{{ clientName }}" label="我的称呼"  border="{{ true }}"/>
+  <van-field model:value="{{ clientTel }}" label="我的电话"  border="{{ true }}"/>
+  <van-field model:value="{{ clientGender }}" label="性别"  border="{{ true }}"/>
+  <van-field model:value="{{ clientAge }}" label="年龄"  border="{{ true }}"/>
+  <van-field model:value="{{ clientLocation }}" label="服务位置"  border="{{ true }}"/>
 
 </van-cell-group>
 </view>

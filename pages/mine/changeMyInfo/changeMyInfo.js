@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    clientInfo:[]
+    clientId:'',
+    clientSessionKey:'',
+    clientName:'',
+    clientGender:'',
+    clientAge:'',
+    clientTel:'',
+    clientLocation:'',
+    clientProfile:''
   },
 
   /**
@@ -15,31 +22,48 @@ Page({
     var that = this
     var clientInfo = JSON.parse(decodeURIComponent(options.URINewInfo));
     that.setData({
-      clientInfo:clientInfo
+      clientId:clientInfo.clientId,
+      clientSessionKey:clientInfo.clientSessionKey,
+      clientName:clientInfo.clientName,
+      clientGender:clientInfo.clientGender,
+      clientAge:clientInfo.clientAge,
+      clientTel:clientInfo.clientTel,
+      clientLocation:clientInfo.clientLocation,
+      clientProfile:clientInfo.clientProfile
     })
   },
   saveInfo:function(){
     var that = this
-    var clientInfo = that.data.clientInfo
-    if(clientInfo.clientGender == "男"){
-      clientInfo.clientGender = 1
+    var clientGender = that.data.clientGender
+    if(clientGender == "男"){
+      clientGender = 1
     }else{
-      clientInfo.clientGender = 2
+      clientGender = 2
     }
+    console.log(that.data.clientId)
+    console.log(that.data.clientSessionKey)
+    console.log(that.data.clientName)
+    console.log(that.data.clientGender)
+    console.log(that.data.clientAge)
+    console.log(that.data.clientTel)
+    console.log(that.data.clientLocation)
+    console.log(that.data.clientProfile)
+
     wx.request({
       url: 'http://129.211.68.243:8080/client/info',
       method: 'PATCH',
       data:{
-        "clientId":clientInfo.clientId,
-        "clientSessionKey":clientInfo.clientSessionKey,
-        "clientName":clientInfo.clientName,
-        "clientGender":clientInfo.clientGender,
-        "clientAge":clientInfo.clientAge,
-        "clientTel":clientInfo.clientTel,
-        "clientLocation":clientInfo.clientLocation,
-        "clientProfile":clientInfo.clientProfile
+        "clientId":that.data.clientId,
+        "clientSessionKey":that.data.clientSessionKey,
+        "clientName":that.data.clientName,
+        "clientGender":clientGender,
+        "clientAge":that.data.clientAge,
+        "clientTel":that.data.clientTel,
+        "clientLocation":that.data.clientLocation,
+        "clientProfile":that.data.clientProfile
       },
-      success:function(){
+      success:function(res){
+        console.log(res)
         console.log("保存成功")
       }
     })
