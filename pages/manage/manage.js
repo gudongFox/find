@@ -5,6 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //下拉刷新
+    scrolltop:20,
+    refreshText:null,
+    icon:null,
+    shouldRefresh:false,
+    istouching:false,
+    //scorll-view的高度
+    scrollHeight:600,
     orderList:[],
     historyList:[],
     clentName:'',
@@ -19,7 +27,14 @@ Page({
   },
   onLoad: function () {
     var that = this
-    console.log(that.data.defaultDate)
+    //处理scroll-view的高度，底部的空白占80px
+    wx.getSystemInfo({
+      success: (result) => {
+        that.setData({
+          scrollHeight:result.windowHeight-80
+        })
+      },
+    })
     var date = new Date()
     var y = date.getFullYear().toString()
     var m = date.getMonth()+1
@@ -27,8 +42,8 @@ Page({
     that.setData({
       minDate: y+'-' + m + '-01'
     })
-    wx.stopPullDownRefresh()
     that.query()
+    
   },
   query: function(){
     var that = this;
@@ -263,8 +278,25 @@ Page({
       })
     }
   },
+  //自定义下拉刷新
+  onPulling(e) {
+  },
 
-  onPullDownRefresh: function () {
-    this.onLoad(); //重新加载onLoad()
+  onRefresh() {
+    if (this._freshing) return
+    this._freshing = true
+    setTimeout(() => {
+      this.setData({
+        triggered: false,
+      })
+      this._freshing = false
+    }, 1000)
+    this.onLoad()
+  },
+
+  onRestore(e) {
+  },
+
+  onAbort(e) {
   },
 })

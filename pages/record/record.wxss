@@ -1,4 +1,10 @@
 /* pages/record/record.wxss */
+page{
+  height: 100%;
+}
+.h1{
+  height: 100% !important;
+}
 .calendar {
   --calendar-height: 300px;
 }
@@ -27,4 +33,12 @@
   align-items: flex-start;
   justify-content: center;
   margin-left: 10rpx;
+}
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+
+.trans {
+  transition: .2s;
 }

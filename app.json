@@ -39,7 +39,7 @@
     "navigationBarBackgroundColor": "#00AA00",
     "navigationBarTitleText": "客户版",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {

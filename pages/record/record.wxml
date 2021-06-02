@@ -1,74 +1,108 @@
 <!--pages/manage/manage.wxml-->
-<view>
-  <view>
-    <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
-      <van-tab title="平台推荐" title-style="font-size:large">
-        <view class="margin1,flexStart">
-          <van-icon name="clock" color="#00AA00" />
-          <text style="color:#00AA00;font-size:medium;margin-left:7px">为你推荐的服务人</text>
-          <van-button plain type="primary" size="small" style="margin-left:250rpx" bind:click="showPopup"><view class="textmedium">设置</view> 
-          </van-button>
-          <van-popup show="{{ show }}" bind:close="onClose" position="top">
-            <view>
-              <van-checkbox-group value="{{ result }}" bind:change="onChange1">
-                <van-cell-group>
-                  <van-cell wx:for="{{ list }}" wx:key="index" title="{{ item }}" value-class="value-class"
-                    clickable data-index="{{ index }}" bind:click="toggle">
-                    <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item }}" />
-                  </van-cell>
-                </van-cell-group>
-              </van-checkbox-group>
+<!-- 下拉刷新 -->
+<wxs module="refresh">
+  module.exports = {
+  onPulling: function(evt, instance) {
+  var p = Math.min(evt.detail.dy / 80, 1)
+  console.log(p)
+  var view = instance.selectComponent('.refresh-container')
+  view.setStyle({
+  opacity: p,
+  transform: "scale(" + p + ")"
+  })
+  }
+  }
+</wxs>
+<van-tabs active="{{ active }}" ellipsis="flase" sticky="true" color="#00AA00" custom-class="tabw,h1">
+  <van-tab title="平台推荐" title-style="font-size:large" tab-class="h1">
+  <!-- 自定义下拉刷新 -->
+    <scroll-view scroll-y style="width: 100%; height: {{scrollHeight}}px;" refresher-enabled="{{true}}" refresher-threshold="{{100}}"
+      refresher-default-style="black" refresher-background="white" refresher-triggered="{{triggered}}"
+      bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore"
+      bindrefresherabort="onAbort">
+      <view class="margin1,flexStart">
+        <van-icon name="clock" color="#00AA00" />
+        <text style="color:#00AA00;font-size:medium;margin-left:7px">为你推荐的服务人</text>
+        <van-button plain type="primary" size="small" style="margin-left:250rpx" bind:click="showPopup">
+          <view class="textmedium">设置</view>
+        </van-button>
+        <van-popup show="{{ show }}" bind:close="onClose" position="top">
+          <view>
+            <van-checkbox-group value="{{ result }}" bind:change="onChange1">
+              <van-cell-group>
+                <van-cell wx:for="{{ list }}" wx:key="index" title="{{ item }}" value-class="value-class" clickable
+                  data-index="{{ index }}" bind:click="toggle">
+                  <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item }}" />
+                </van-cell>
+              </van-cell-group>
+            </van-checkbox-group>
+          </view>
+        </van-popup>
+      </view>
+      <view style="margin:5px" bindtap="toServerInfo" wx:for="{{platServerList}}" wx:key="id"
+        data-id="{{item.serverInfo.serverId}}">
+        <van-cell-group>
+          <van-cell clickable="true">
+            <view class="flexIcon">
+              <van-image round width="50" height="50" src="{{item.serverInfo.serverProfile}}" />
+              <view class="flexCol" style="align-items:flex-start">
+                <view class="flexIcon" style="width:400rpx;">
+                  <view style="font-size:large;color:black;">{{item.serverInfo.serverName}}
+                    <van-tag color="red" round size="medium" custom-class="tagLocation">荐</van-tag>
+                  </view>
+                </view>
+                <text>{{item.serverInfo.serverLocation}}</text>
+                <text wx:if="{{!item.serverInfo.serverLocation}}">北京</text>
+              </view>
+              <view class="flexCol">
+                <view style="font-size:10;color:#66BB6A">
+                  <van-tag color="blue" plain size="medium">家庭保洁</van-tag>
+                </view>
+              </view>
             </view>
-          </van-popup>
-        </view>
-        <view style="margin:5px" bindtap="toServerInfo" wx:for="{{platServerList}}" wx:key="id" data-id = "{{item.serverInfo.serverId}}">
-          <van-cell-group >
-            <van-cell clickable="true" >
-              <view class="flexIcon">
-                <van-image round width="50" height="50" src="{{item.serverInfo.serverProfile}}" />
-                <view class="flexCol" style="align-items:flex-start">
-                  <view class="flexIcon" style="width:400rpx;">
-                    <view style="font-size:large;color:black;">{{item.serverInfo.serverName}}
-                      <van-tag color="red" round size="medium" custom-class="tagLocation">荐</van-tag></view>
-                  </view>
-                  <text>{{item.serverInfo.serverLocation}}</text>
-                  <text wx:if="{{!item.serverInfo.serverLocation}}">北京</text>
-                </view>
-                <view class="flexCol">
-                  <view style="font-size:10;color:#66BB6A"><van-tag color="blue" plain size="medium">家庭保洁</van-tag></view>
-                </view>
-              </view>
-            </van-cell>
-          </van-cell-group>
-        </view>
-      </van-tab>
-      <van-tab title="可信服务人" title-style="font-size:large">
-        <view class="margin1,flexStart">
-          <van-icon name="clock" color="#00AA00" />
-          <text style="color:#00AA00;font-size:medium;margin-left:7px">我信任的服务人</text>
-          <van-button plain type="primary" size="small" style="margin-left:250rpx" bindtap="toAddServer"><view class="textmedium">扫码添加</view></van-button>
-        </view>
-        <view style="margin:5px" bindtap="toBelieveInfo" wx:for="{{believeServerList}}" wx:key="id" data-id = "{{item.serverInfo.serverId}}">
-          <van-cell-group border="true">
-            <van-cell clickable="true" border="true">
-              <view class="flexIcon">
-                <van-image round width="50" height="50" src="{{item.serverInfo.serverProfile}}" />
-                <view class="flexCol" style="align-items:flex-start">
-                  <view class="flexIcon" style="width:400rpx;">
-                    <view style="font-size:large;color:black;">{{item.serverInfo.serverName}}
-                      <van-tag color="red" round size="medium" custom-class="tagLocation">荐</van-tag></view>
-                  </view>
-                  <text>{{item.serverInfo.serverLocation}}</text>
-                  <text wx:if="{{!item.serverInfo.serverLocation}}">北京</text>
-                </view>
-                <view class="flexCol">
-                  <view style="font-size:10;color:#66BB6A"><van-tag color="blue" plain size="medium">家庭保洁</van-tag></view>
+          </van-cell>
+        </van-cell-group>
+      </view>
+    </scroll-view>
+  </van-tab>
+  <van-tab title="可信服务人" title-style="font-size:large">
+    <scroll-view scroll-y style="width: 100%; height: {{scrollHeight}}px;" refresher-enabled="{{true}}" refresher-threshold="{{100}}"
+      refresher-default-style="black" refresher-background="white" refresher-triggered="{{triggered}}"
+      bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore"
+      bindrefresherabort="onAbort">
+    <view class="margin1,flexStart">
+      <van-icon name="clock" color="#00AA00" />
+      <text style="color:#00AA00;font-size:medium;margin-left:7px">我信任的服务人</text>
+      <van-button plain type="primary" size="small" style="margin-left:250rpx" bindtap="toAddServer">
+        <view class="textmedium">扫码添加</view>
+      </van-button>
+    </view>
+    <view style="margin:5px" bindtap="toBelieveInfo" wx:for="{{believeServerList}}" wx:key="id"
+      data-id="{{item.serverInfo.serverId}}">
+      <van-cell-group border="true">
+        <van-cell clickable="true" border="true">
+          <view class="flexIcon">
+            <van-image round width="50" height="50" src="{{item.serverInfo.serverProfile}}" />
+            <view class="flexCol" style="align-items:flex-start">
+              <view class="flexIcon" style="width:400rpx;">
+                <view style="font-size:large;color:black;">{{item.serverInfo.serverName}}
+                  <van-tag color="red" round size="medium" custom-class="tagLocation">荐</van-tag>
                 </view>
               </view>
-            </van-cell>
-          </van-cell-group>
-        </view>
-      </van-tab>
-    </van-tabs>
-  </view>
-</view>
+              <text>{{item.serverInfo.serverLocation}}</text>
+              <text wx:if="{{!item.serverInfo.serverLocation}}">北京</text>
+            </view>
+            <view class="flexCol">
+              <view style="font-size:10;color:#66BB6A">
+                <van-tag color="blue" plain size="medium">家庭保洁</van-tag>
+              </view>
+            </view>
+          </view>
+        </van-cell>
+      </van-cell-group>
+    </view>
+    </scroll-view>
+  </van-tab>
+  <van-tab disabled></van-tab>
+</van-tabs>
+<view class='placeholder'></view>

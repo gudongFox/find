@@ -1,5 +1,10 @@
 <!--index.wxml-->
-<view>
+<view style="height:100%">
+<!-- 自定义下拉刷新，增加scroll-view -->
+<scroll-view scroll-y style="width: 100%; height: {{scrollHeight}}px;overflow:auto" refresher-enabled="{{true}}" refresher-threshold="{{100}}"
+      refresher-default-style="black" refresher-background="white" refresher-triggered="{{triggered}}"
+      bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore"
+      bindrefresherabort="onAbort">
   <view class="margin1,flexStart">
     <van-icon name="clock" color="#00AA00" />
     <text style="color:#00AA00;font-size:medium;margin-left:7px">已提交的新需求</text>
@@ -35,8 +40,9 @@
       </van-cell>
     </van-cell-group>
   </view>
+</scroll-view>
+</view>
   <view class="page__hd" style="position:fixed; bottom:200rpx; right:100rpx;width: 50rpx;">
   <van-icon name="add" size="120rpx" color="#00AA00" bind:click="onclick"/>
   </view>
-</view>
 <view class='placeholder'></view>

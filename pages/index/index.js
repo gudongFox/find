@@ -4,6 +4,14 @@ const app = getApp()
 
 Page({
   data: {
+    //下拉刷新
+    scrolltop:20,
+    refreshText:null,
+    icon:null,
+    shouldRefresh:false,
+    istouching:false,
+    //scorll-view的高度
+    scrollHeight:600,
     demandList:[],
     active: 0,
     userInfo: {},
@@ -13,8 +21,16 @@ Page({
   },
 
   onLoad: function () {
-    wx.stopPullDownRefresh()
+    console.log("刷新")
     var that = this;
+    //处理scroll-view的高度，底部的空白占50px
+    wx.getSystemInfo({
+      success: (result) => {
+        that.setData({
+          scrollHeight:result.windowHeight-50
+        })
+      },
+    })
     wx.request({
       url: 'http://129.211.68.243:8080/demand/detail',
       method:"GET",
@@ -80,5 +96,27 @@ Page({
   },
   onPullDownRefresh: function () {
     this.onLoad(); //重新加载onLoad()
+  },
+
+  //自定义下拉刷新
+  onPulling(e) {
+  },
+
+  onRefresh() {
+    if (this._freshing) return
+    this._freshing = true
+    setTimeout(() => {
+      this.setData({
+        triggered: false,
+      })
+      this._freshing = false
+    }, 1000)
+    this.onLoad()
+  },
+
+  onRestore(e) {
+  },
+
+  onAbort(e) {
   },
 })

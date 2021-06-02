@@ -3,6 +3,10 @@
   <view>
     <van-tabs active="{{ active }}" sticky color="#00AA00" class="tabw">
       <van-tab title="待执行订单" title-style="font-size:large">
+        <scroll-view scroll-y style="width: 100%; height: {{scrollHeight}}px;overflow:auto" refresher-enabled="{{true}}" refresher-threshold="{{100}}"
+      refresher-default-style="black" refresher-background="white" refresher-triggered="{{triggered}}"
+      bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore"
+      bindrefresherabort="onAbort">
         <view style="margin:5px" wx:for="{{orderList}}" wx:key="orderId" data-id="{{item.orderId}}"  data-time="{{item.endTime}}" data-image="{{item.imageUrl}}" bindtap="onclick">
           <view class="margin1,flexStart">
             <van-icon name="clock" color="#00AA00" />
@@ -33,6 +37,7 @@
             </van-cell>
           </van-cell-group>
         </view>
+        </scroll-view>
         <view class='placeholder'></view>
       </van-tab>
       <van-tab title="历史记录" title-style="font-size:large">

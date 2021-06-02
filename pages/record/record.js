@@ -5,6 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //下拉刷新
+    scrolltop:20,
+    refreshText:null,
+    icon:null,
+    shouldRefresh:false,
+    istouching:false,
+    //scroll高度
+    scrollHeight:60,
     platServerList:[
       
     ],
@@ -33,8 +41,16 @@ Page({
       maxDate: new Date(2010, 0, 31).getTime(),
   },
   onLoad: function(){
-    wx.stopPullDownRefresh()
     this.loadPage()
+    //处理高度tab：44px，底部50px
+    wx.getSystemInfo({
+      success: (result) => {
+        this.setData({
+          scrollHeight:result.windowHeight-94
+        })
+        console.log(this.data.scrollHeight)
+      },
+    })
   },
   loadPage: function () {
     var that = this
@@ -227,5 +243,44 @@ Page({
     },
   onPullDownRefresh: function () {
     this.onLoad(); //重新加载onLoad()
+  },
+  
+  //自定义下拉刷新
+  // onReady: function () {
+  //   const arr = []
+  //   for (let i = 0; i < 100; i++) arr.push(i)
+  //   this.setData({
+  //     arr
+  //   })
+
+  //   setTimeout(() => {
+  //     this.setData({
+  //       triggered: true,
+  //     })
+  //   }, 1000)
+  // },
+
+  onPulling(e) {
+    console.log('onPulling:', e)
+  },
+
+  onRefresh() {
+    if (this._freshing) return
+    this._freshing = true
+    setTimeout(() => {
+      this.setData({
+        triggered: false,
+      })
+      this._freshing = false
+    }, 1000)
+    this.loadPage()
+  },
+
+  onRestore(e) {
+    console.log('onRestore:', e)
+  },
+
+  onAbort(e) {
+    console.log('onAbort', e)
   },
 })
