@@ -25,7 +25,7 @@ Page({
   onLoad: function () {
     var that = this
     wx.request({
-      url: 'http://129.211.68.243:8080/client/info',
+      url: 'http://101.34.21.175:8080/client/info',
       method:"GET",
       data:{
         clientId:wx.getStorageSync('openid')

@@ -40,7 +40,7 @@ Page({
     // serverId = "liling";
     var demandId = this.data.demandId;
     wx.request({
-      url: 'http://129.211.68.243:8080/server/receiveOrder/' + serverId + "/" + demandId,
+      url: 'http://101.34.21.175:8080/server/receiveOrder/' + serverId + "/" + demandId,
       method: "POST",
       header: {
         'content-type': 'application/json', // 默认值

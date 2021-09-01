@@ -49,7 +49,7 @@ Component({
       // serverId = "liling";
       // 获取姓名、地址
       wx.request({
-        url: "http://129.211.68.243:8080/server/getServerInfo/" + serverId,
+        url: "http://101.34.21.175:8080/server/getServerInfo/" + serverId,
         method: "GET",
         header: {
           'content-type': 'application/json' // GET方式
@@ -65,7 +65,7 @@ Component({
       })
       // 获取客户数
       wx.request({
-        url: "http://129.211.68.243:8080/server/getClient/" + serverId,
+        url: "http://101.34.21.175:8080/server/getClient/" + serverId,
         method: "GET",
         header: {
           'content-type': 'application/json' // GET方式
@@ -78,7 +78,7 @@ Component({
       })
       // 获取伙伴数目
       wx.request({
-        url: "http://129.211.68.243:8080/server/getPartner/" + serverId,
+        url: "http://101.34.21.175:8080/server/getPartner/" + serverId,
         method: "GET",
         header: {
           'content-type': 'application/json' // GET方式
@@ -91,7 +91,7 @@ Component({
       })
       // 获取所有订单
       wx.request({
-        url: "http://129.211.68.243:8080/server/getAllOrder/" + serverId,
+        url: "http://101.34.21.175:8080/server/getAllOrder/" + serverId,
         method: "GET",
         header: {
           'content-type': 'application/json' // GET方式

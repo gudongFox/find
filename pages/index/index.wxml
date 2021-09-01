@@ -14,7 +14,7 @@
       <van-cell>
         <van-row gutter="10">
           <van-col span="4">
-            <view style="padding-right:1%">
+            <view>
               <van-image round width="50" height="50" src="{{item.imageUrl}}"/>
             </view>
             <view style="word-break:break-all;position: absolute;text-overflow:ellipsis"><text>{{item.serverName}}</text></view>

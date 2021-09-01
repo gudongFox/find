@@ -57,7 +57,7 @@ Component({
         var hisToday = that.formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes())
         console.log(hisToday)
         wx.request({
-          url: "http://129.211.68.243:8080/server/getOrderByDate/" + serverId + "/" + hisToday.substring(0, 4) + "-" + hisToday.substring(4, 6) + '-' + hisToday.substring(6, 8),
+          url: "http://101.34.21.175:8080/server/getOrderByDate/" + serverId + "/" + hisToday.substring(0, 4) + "-" + hisToday.substring(4, 6) + '-' + hisToday.substring(6, 8),
           method: "GET",
           header: {
             'content-type': 'application/json' // GET方式
@@ -133,7 +133,7 @@ Component({
       });
       var hisToday = that.formatDate(date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes())
       wx.request({
-        url: "http://129.211.68.243:8080/server/getOrderByDate/" + serverId + "/" + hisToday.substring(0, 4) + "-" + hisToday.substring(4, 6) + '-' + hisToday.substring(6, 8),
+        url: "http://101.34.21.175:8080/server/getOrderByDate/" + serverId + "/" + hisToday.substring(0, 4) + "-" + hisToday.substring(4, 6) + '-' + hisToday.substring(6, 8),
         method: "GET",
         header: {
           'content-type': 'application/json' // GET方式
@@ -191,7 +191,7 @@ Component({
       var that = this;
       var serverId = wx.getStorageSync('openid');
       wx.request({
-        url: 'http://129.211.68.243:8080/server/getOrderByDate/' + serverId + "/" + date,
+        url: 'http://101.34.21.175:8080/server/getOrderByDate/' + serverId + "/" + date,
         method: "GET",
         header: {
           'content-type': 'application/json', // 默认值
@@ -385,7 +385,7 @@ Component({
       // console.log(serverId);
       // serverId = "liling"
       wx.request({
-        url: 'http://129.211.68.243:8080/server/getOrderToday/' + serverId,
+        url: 'http://101.34.21.175:8080/server/getOrderToday/' + serverId,
         method: "GET",
         header: {
           'content-type': 'application/json', // 默认值

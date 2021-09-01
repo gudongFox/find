@@ -28,7 +28,7 @@ Page({
     var that = this;
     var image = options.image
     wx.request({
-      url: 'http://129.211.68.243:8080/order/detail',
+      url: 'http://101.34.21.175:8080/order/detail',
       method:"GET",
       data:{
         clientId:wx.getStorageSync('openid'),

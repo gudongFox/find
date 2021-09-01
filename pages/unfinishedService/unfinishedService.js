@@ -31,7 +31,7 @@ Page({
     var serverId = options.serverId;
     var serverName = options.serverName;
     wx.request({
-      url: "http://129.211.68.243:8080/server/getUnFinOrder/" + serverId,
+      url: "http://101.34.21.175:8080/server/getUnFinOrder/" + serverId,
       method: "GET",
       header: {
         'content-type': 'application/json' // GET方式
@@ -57,7 +57,7 @@ Page({
             serviceComment: orderData.orderComment,
           }),
           wx.request({
-            url: "http://129.211.68.243:8080/client/info/",
+            url: "http://101.34.21.175:8080/client/info/",
             method: "GET",
             data: {
               clientId: orderData.clientId,

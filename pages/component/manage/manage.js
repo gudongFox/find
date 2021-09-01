@@ -75,7 +75,7 @@ Component({
       if (that.data.activeTab == 0) {
         // 查询所有客户新需求
         wx.request({
-          url: "http://129.211.68.243:8080/server/getDemand/" + serverId,
+          url: "http://101.34.21.175:8080/server/getDemand/" + serverId,
           method: "GET",
           header: {
             'content-type': 'application/json' // GET方式
@@ -133,7 +133,7 @@ Component({
       } else if (that.data.activeTab == 1) {
         // 查询直接客户名单
         wx.request({
-          url: "http://129.211.68.243:8080/server/getClient/" + serverId,
+          url: "http://101.34.21.175:8080/server/getClient/" + serverId,
           method: "GET",
           header: {
             'content-type': 'application/json' // GET方式
@@ -169,7 +169,7 @@ Component({
       } else if (that.data.activeTab == 2) {
         // 查询客户接单参数
         wx.request({
-          url: "http://129.211.68.243:8080/server/getServerParameter/" + serverId,
+          url: "http://101.34.21.175:8080/server/getServerParameter/" + serverId,
           method: "GET",
           header: {
             'content-type': 'application/json' // GET方式
@@ -180,7 +180,7 @@ Component({
             // 若接单参数为空，则向其中插入初值
             if (res.data == "") {
               wx.request({
-                url: "http://129.211.68.243:8080/server/updateServerParameter/" + serverId + "/" + that.data.maxDistance + "/" + that.data.maxInterDistance + "/" + that.data.minServicLength + "/" + that.data.maxInterLength,
+                url: "http://101.34.21.175:8080/server/updateServerParameter/" + serverId + "/" + that.data.maxDistance + "/" + that.data.maxInterDistance + "/" + that.data.minServicLength + "/" + that.data.maxInterLength,
                 method: "POST",
                 header: {
                   // GET方式
@@ -211,7 +211,7 @@ Component({
       var maxInterDistance = that.data.maxInterDistance;
       var minServicLength = that.data.minServicLength;
       var maxInterLength = that.data.maxInterLength;
-      var requestUrl = "http://129.211.68.243:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
+      var requestUrl = "http://101.34.21.175:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
       wx.request({
         url: requestUrl,
         method: "POST",
@@ -238,7 +238,7 @@ Component({
       var maxInterDistance = event.detail;
       var minServicLength = that.data.minServicLength;
       var maxInterLength = that.data.maxInterLength;
-      var requestUrl = "http://129.211.68.243:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
+      var requestUrl = "http://101.34.21.175:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
       wx.request({
         url: requestUrl,
         method: "POST",
@@ -265,7 +265,7 @@ Component({
       var maxInterDistance = that.data.maxInterDistance;
       var minServicLength = event.detail;
       var maxInterLength = that.data.maxInterLength;
-      var requestUrl = "http://129.211.68.243:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
+      var requestUrl = "http://101.34.21.175:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
       wx.request({
         url: requestUrl,
         method: "POST",
@@ -292,7 +292,7 @@ Component({
       var maxInterDistance = that.data.maxInterDistance;
       var minServicLength = that.data.minServicLength;
       var maxInterLength = event.detail;
-      var requestUrl = "http://129.211.68.243:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
+      var requestUrl = "http://101.34.21.175:8080/server/updateServerParameter/" + serverId + "/" + maxDistance + "/" + maxInterDistance + "/" + minServicLength + "/" + maxInterLength;
       wx.request({
         url: requestUrl,
         method: "POST",

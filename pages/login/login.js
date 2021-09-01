@@ -21,7 +21,7 @@ Page({
       console.log(res.userInfo.avatarUrl)
       console.log(res)
       wx.request({
-        url: 'http://129.211.68.243:8080/client/info',
+        url: 'http://101.34.21.175:8080/client/info',
         // url: 'http://localhost:8080/client/info',
         method: 'POST',
         data:{
@@ -36,7 +36,7 @@ Page({
         }
       })
       wx.request({
-        url: 'http://129.211.68.243:8080/server/info',
+        url: 'http://101.34.21.175:8080/server/info',
         // url: 'http://localhost:8080/server/info',
         method: 'POST',
         data:{

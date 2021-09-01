@@ -14,7 +14,7 @@ Page({
     let myComponent = that.selectComponent('#myComponent')
     myComponent.query(serverId);
     wx.request({
-      url: 'http://129.211.68.243:8080/server/getServerInfo/'+serverId,
+      url: 'http://101.34.21.175:8080/server/getServerInfo/'+serverId,
       header: {
         'content-type': 'application/json' // 默认值
       },

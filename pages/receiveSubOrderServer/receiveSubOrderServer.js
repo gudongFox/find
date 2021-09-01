@@ -37,7 +37,7 @@ Page({
     // console.log(serverId);
     // serverId = "liling";
     wx.request({
-      url: 'http://129.211.68.243:8080/server/makeOrderByS/' + serverId + "/" + this.data.clientId,
+      url: 'http://101.34.21.175:8080/server/makeOrderByS/' + serverId + "/" + this.data.clientId,
       method: "POST",
       header: {
         'content-type': 'application/json', // 默认值

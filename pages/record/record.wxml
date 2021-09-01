@@ -14,7 +14,7 @@
   }
 </wxs>
 <van-tabs active="{{ active }}" ellipsis="flase" sticky="true" color="#00AA00" custom-class="tabw,h1">
-  <van-tab title="平台推荐" title-style="font-size:large" tab-class="h1">
+  <van-tab title="平台推荐" title-style="font-size:35rpx" tab-class="h1">
   <!-- 自定义下拉刷新 -->
     <scroll-view scroll-y style="width: 100%; height: {{scrollHeight}}px;" refresher-enabled="{{true}}" refresher-threshold="{{100}}"
       refresher-default-style="black" refresher-background="white" refresher-triggered="{{triggered}}"
@@ -22,7 +22,7 @@
       bindrefresherabort="onAbort">
       <view class="margin1,flexStart">
         <van-icon name="clock" color="#00AA00" />
-        <text style="color:#00AA00;font-size:medium;margin-left:7px">为你推荐的服务人</text>
+        <text style="color:#00AA00;font-size:35rpx;margin-left:7px">为你推荐的服务人</text>
         <van-button plain type="primary" size="small" style="margin-left:250rpx" bind:click="showPopup">
           <view class="textmedium">设置</view>
         </van-button>
@@ -48,7 +48,7 @@
               <view class="flexCol" style="align-items:flex-start">
                 <view class="flexIcon" style="width:400rpx;">
                   <view style="font-size:large;color:black;">{{item.serverInfo.serverName}}
-                    <van-tag color="red" round size="medium" custom-class="tagLocation">荐</van-tag>
+                    <van-tag color="red" round size="medium">荐</van-tag>
                   </view>
                 </view>
                 <text>{{item.serverInfo.serverLocation}}</text>
@@ -65,14 +65,14 @@
       </view>
     </scroll-view>
   </van-tab>
-  <van-tab title="可信服务人" title-style="font-size:large">
+  <van-tab title="可信服务人" title-style="font-size:35rpx">
     <scroll-view scroll-y style="width: 100%; height: {{scrollHeight}}px;" refresher-enabled="{{true}}" refresher-threshold="{{100}}"
       refresher-default-style="black" refresher-background="white" refresher-triggered="{{triggered}}"
       bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore"
       bindrefresherabort="onAbort">
     <view class="margin1,flexStart">
       <van-icon name="clock" color="#00AA00" />
-      <text style="color:#00AA00;font-size:medium;margin-left:7px">我信任的服务人</text>
+      <text style="color:#00AA00;font-size:35rpx;margin-left:7px">我信任的服务人</text>
       <van-button plain type="primary" size="small" style="margin-left:250rpx" bindtap="toAddServer">
         <view class="textmedium">扫码添加</view>
       </van-button>
@@ -86,14 +86,14 @@
             <view class="flexCol" style="align-items:flex-start">
               <view class="flexIcon" style="width:400rpx;">
                 <view style="font-size:large;color:black;">{{item.serverInfo.serverName}}
-                  <van-tag color="red" round size="medium" custom-class="tagLocation">荐</van-tag>
+                  <van-tag color="red" round size="medium" >荐</van-tag>
                 </view>
               </view>
               <text>{{item.serverInfo.serverLocation}}</text>
               <text wx:if="{{!item.serverInfo.serverLocation}}">北京</text>
             </view>
             <view class="flexCol">
-              <view style="font-size:10;color:#66BB6A">
+              <view>
                 <van-tag color="blue" plain size="medium">家庭保洁</van-tag>
               </view>
             </view>

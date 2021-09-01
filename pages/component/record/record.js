@@ -55,7 +55,7 @@ Component({
       // mandatorId = "liling"
       if (that.data.activeTab == 0) {
         // 查询与伙伴间的未结算委托订单
-        var requestUrl = "http://129.211.68.243:8080/server/getUnFinOrderInfo/" + mandatorId;
+        var requestUrl = "http://101.34.21.175:8080/server/getUnFinOrderInfo/" + mandatorId;
         wx.request({
           url: requestUrl,
           method: "GET",
@@ -85,7 +85,7 @@ Component({
         })
       } else {
         // 查询伙伴名单
-        var requestUrl = "http://129.211.68.243:8080/server/getPartner/" + mandatorId;
+        var requestUrl = "http://101.34.21.175:8080/server/getPartner/" + mandatorId;
         wx.request({
           url: requestUrl,
           method: "GET",
@@ -138,7 +138,7 @@ Component({
             })
           } else {
             wx.request({
-              url: 'http://129.211.68.243:8080/server/addPartner/' + serverId + "/" + partnerId,
+              url: 'http://101.34.21.175:8080/server/addPartner/' + serverId + "/" + partnerId,
               method: 'POST',
               data: {
                 partnerId: partnerId,

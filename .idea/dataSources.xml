@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="service_v5@129.211.68.243" uuid="352ece1a-eecb-4ce5-9c86-0cea3a64266c">
+    <data-source source="LOCAL" name="service_v5@101.34.21.175" uuid="352ece1a-eecb-4ce5-9c86-0cea3a64266c">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://129.211.68.243:3306/service_v5</jdbc-url>
+      <jdbc-url>jdbc:mysql://101.34.21.175:3306/service_v5</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <driver-properties>
         <property name="serverTimezone" value="Hongkong" />

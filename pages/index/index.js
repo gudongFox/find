@@ -32,7 +32,7 @@ Page({
       },
     })
     wx.request({
-      url: 'http://129.211.68.243:8080/demand/detail',
+      url: 'http://101.34.21.175:8080/demand/detail',
       method:"GET",
       data:{
         clientId:wx.getStorageSync('openid'),
@@ -48,7 +48,7 @@ Page({
             list[i].startTime = parseInt(s.substring(0,2))+"月"+ parseInt(s.substring(3,5))+"日，"+s.substring(6,11) + '-' + s1
           }
           wx.request({
-            url: 'http://129.211.68.243:8080/server/info',
+            url: 'http://101.34.21.175:8080/server/info',
             method:"GET",
             data:{
               serverId: list[i].serverId,

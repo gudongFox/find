@@ -28,7 +28,7 @@ Page({
         var code = res.code;
         console.log(code);
         wx.request({
-          url: 'http://129.211.68.243:8080/login/login',
+          url: 'http://101.34.21.175:8080/login/login',
           // url: 'http://localhost:8080/login/login',
           method: 'GET',
           data: {
@@ -39,7 +39,7 @@ Page({
             wx.setStorageSync('openid', openid)
             console.log(openid)
             wx.request({
-              url: 'http://129.211.68.243:8080/client/info',
+              url: 'http://101.34.21.175:8080/client/info',
               // url: 'http://localhost:8080/client/info',
               header: {
                 'content-type': 'application/json' // 默认值

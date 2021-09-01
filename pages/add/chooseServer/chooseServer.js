@@ -31,7 +31,7 @@ Page({
     console.log(wx.getStorageSync('demand'))
     var demand = wx.getStorageSync('demand')
     wx.request({
-      url: 'http://129.211.68.243:8080/server/getWorkTime/'+serverId,
+      url: 'http://101.34.21.175:8080/server/getWorkTime/'+serverId,
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -67,7 +67,7 @@ Page({
     var mandator = demand.direct == true ? 0 : 1
     console.log(demand)
     wx.request({
-      url: 'http://129.211.68.243:8080/demand/detail',
+      url: 'http://101.34.21.175:8080/demand/detail',
       header: {'content-type': 'application/json'},
       method: 'POST',
       data:{

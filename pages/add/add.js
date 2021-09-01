@@ -214,7 +214,7 @@ Page({
     var that = this
     var openid = wx.getStorageSync('openid')
     wx.request({
-      url: 'http://129.211.68.243:8080/client_server/info',
+      url: 'http://101.34.21.175:8080/client_server/info',
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -248,7 +248,7 @@ Page({
     var that = this
     var serverId = list.serverInfo.serverId
     wx.request({
-      url: 'http://129.211.68.243:8080/server/getOrderByDate/'+serverId+'/'+day,
+      url: 'http://101.34.21.175:8080/server/getOrderByDate/'+serverId+'/'+day,
       method: 'GET',
       success:function(res){
         var serverList = res.data
@@ -271,7 +271,7 @@ Page({
   getImage: function(list){
     var serverId = list.serverInfo.serverId
     wx.request({
-      url: 'http://129.211.68.243:8080/server/info',
+      url: 'http://101.34.21.175:8080/server/info',
       method:"GET",
       data:{
         serverId: serverId,
