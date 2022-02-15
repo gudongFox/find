@@ -57,7 +57,8 @@ Page({
     h = h > 9 ? h : '0' + h
     that.setData({
       day: year + '-' + month + '-' + day,
-      time: h + ":00"
+      time: h + ":00",
+      currentTime: h + ":00"
     })
   },
   // 设置上门日期
@@ -86,7 +87,7 @@ Page({
   // 设置上门时间
   setServiceTime:function(){
     this.setData({
-      isShowTimeSelection:true
+      isShowTimeSelection:true,
     })
   },
   confirmTime:function(val){

@@ -144,7 +144,7 @@
 						<view class="flexCell">
 							<view>期望上门日期</view>
 							<div
-								style="border-radius:10rpx;width:250rpx;height:45rpx;background-color:#E0E0E0;text-align:center;color:black;"
+								style="border-radius:10rpx;width:250rpx;height:45rpx;background-color:#f8f7f7e5;text-align:center;color:black;"
 								bindtap="setServiceDate">
 								{{day}}
 							</div>
@@ -152,7 +152,7 @@
 						<view class="flexCell">
 							<view>期望上门时间</view>
 							<div
-								style="border-radius:10rpx;width:250rpx;height:45rpx;background-color:#E0E0E0;text-align:center;color:black;"
+								style="border-radius:10rpx;width:250rpx;height:45rpx;background-color:#f8f7f7e5;text-align:center;color:black;"
 								bindtap="setServiceTime">
 								{{time}}
 							</div>
@@ -176,7 +176,7 @@
 						<view class="flexCell">
 							<view>备注</view>
 							<input
-								style="border-radius:10rpx;width:400rpx;height:100rpx;background-color:#E0E0E0;text-align:center;color:black;"
+								style="border-radius:10rpx;width:400rpx;height:100rpx;background-color:#f8f7f7e5;text-align:center;color:black;"
 								value="{{demandComment}}" bindinput="setDemandComment" />
 						</view>
 					</van-cell>

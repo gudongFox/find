@@ -1,11 +1,11 @@
 <!--pages/nav/nav.wxml-->
 <view class="center,display-center,margin1">
 	<van-image round width="100rpx" height="100rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-	<text style="font-size:large;">【成都】服务中心</text>
+	<text style="font-size:22px;">【成都】服务中心</text>
 </view>
 <view class="center,display-center">
 	<view class="block1, item"> 
-		平台特色
+		我是客户
 		<!-- <text class="item">平台特色</text> -->
 	</view>
 	<view>
@@ -27,7 +27,7 @@
 </view>
 <view class="center,display-center">
 	<view class="block5,item" bindtap="jump">
-		我是客户
+		平台特色
 		<!-- <text style="margin:20rpx" class="textwhite">我是客户</text> -->
 	</view>
 	<view>

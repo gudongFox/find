@@ -48,7 +48,7 @@
 
 /* ==========================text=============== */
 .textmedium{
-  font-size: 35rpx;
+  font-size: 38rpx;
   align-self: center;
 }
 .textsmall{

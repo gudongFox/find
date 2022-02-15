@@ -8,12 +8,12 @@
     </van-col>
     <van-col span="11">
       <view style="display:flex;flex-direction: column;">
-        <text class="alignandappading">\n\n{{name}}</text>
+        <text class="alignandappading" style="font-size: 40rpx;">\n\n{{name}}</text>
       </view>
     </van-col>
     <van-col span="6">
       <text>\n</text>
-      <van-tag color="#9999FF" round>实名认证</van-tag>
+      <van-tag color="#9999FF" size="large">实名认证</van-tag>
     </van-col>
   </van-row>
 </view>
@@ -42,17 +42,21 @@
           <view class="text_align" style="margin-top:10rpx">
             <van-icon name="label-o" size="70rpx" color="#8A2BE2" />
           </view>
-          <view class="textsmall,text_align">使用帮助
+          <view class="textsmall,text_align" link-type="navigateTo" url="/pages/mine/register/register">养老社区
           </view>
         </van-col>
       </van-row>
     </view>
   </view>
-  <view>
-    <van-cell is-link title="注册成为服务人" link-type="navigateTo" url="/pages/mine/register/register">
+  <!--<view>
+    <van-cell is-link title="养老社区"  style="font-size: large;" link-type="navigateTo" url="/pages/mine/register/register">
     </van-cell>
   </view>
+  -->
   <view bindtap="click" style="margin-top:10px">
-    <van-button plain hairline type="default" block><text class="textred" >退出登录</text></van-button>
+    <van-button plain hairline type="default" block><text class="textred" style="font-size: 40rpx;" > 紧急报警 </text></van-button>
+  </view>
+  <view bindtap="click" style="margin-top:10px">
+    <van-button plain hairline type="default" block><text class="textred" style="font-size: 40rpx;" >退出登录</text></van-button>
   </view>
 </view>
